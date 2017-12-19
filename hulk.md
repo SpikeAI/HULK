@@ -5,7 +5,7 @@ A fast algorithm for unsupervised learning
 alternatives:
 - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
 
-## Résumé
+## fr: Résumé
 
 La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de cette architecture est majoritairement auto-organisée.
 Dans le cortex visuel primaire des mammifères par exemple, on observe ainsi au cours du développement l’émergence de cellules sélectives à l'orientation locale qui mènent à l'élaboration d'une représentation des contours à partir de l'image visuelle.
@@ -17,7 +17,7 @@ De plus, nous proposons une simplification de cette règle optimale d’homéost
 Par rapport à la règle d’homéostasie optimale, nous montrons que cette heuristique permet d’implémenter un algorithme plus rapide d’apprentissage non supervisé tout en gardant une large part de son efficacité.
 Enfin, nous montrons qu'un tel algorithme peut être étendu à des architectures de type convolutionnel et nous montrons les résultats obtenus sur différentes bases d’image naturelles. Ces résultats démontrent son application potentielle à des algorithmes rapides de classification des images, par exemple dans des architectures hiérarchiques et dynamiques.
 
-## Abstract
+## en: Abstract
 
 The formation of structures in neural populations is mostly an unsupervised learning process, that is, that the emergence of this architecture is mostly self-organized.
 In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features and that lead to the development of a rough representation of contours of the retinal image in this area.
@@ -29,11 +29,12 @@ In addition, we propose a simplification of this optimal rule of homeostasis by 
 Compared to the optimal homeostasis rule, we show that this heuristic makes it possible to implement a faster unsupervised learning algorithm while keeping a large part of its efficiency.
 Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 
-## Introduction
+## fr: Introduction
 
-L’architecture neuronale consiste en un système dynamique complexe qui opèrent à différentes échelles de temps.
-Dans le cas du corps texte vite visuel primaire dans le cas du cortex visuel primaire par exemple des mammifères on peut observer un codage rapide de l’entrée rétinienne comme une un processus de transmission d’une image rétinienne en une une esquisse brute qui représente les contours de l’image. De l’image.
-Cette opération est rapide de l’ordre de 50 000 secondes et la clé des résultats de Hubel et Wiesel qui ont montré que les cellules du cortex visuel primaire sont majeurs majoritairement sélective à désorientation sur des champs récepteurs localiser.
+L’architecture neurale consiste en un système dynamique complexe qui opère à différentes échelles de temps et en particulier de réussir le tour de force de pouvoir à la fois représenter rapidement une information (par exemple visuelle) mais aussi de pouvoir s'adapter sur le long terme pour optimiser ce codage.
+Dans le cas du cortex visuel primaire des mammifères, on peut par exemple observer un codage rapide de l’entrée rétinienne comme un processus de transmission d’une image rétinienne en une une esquisse brute qui représente les contours de l’image.
+``>>> LUP IS HERE <<<<``
+Cette opération rapide, inférieure à 50 milli-secondes chez les primates, est la clé des résultats de Hubel et Wiesel qui ont montré que les cellules du cortex visuel primaire sont majoritairement sélectifs à des orientation sur des champs récepteurs localisés.
 Une étape majeur dans la compréhension de ce mécanisme a été de montrer que quand elle a une émergence de ses filtres peut être expliqué comme le couplage d’un simple apprentissage de type est bien avec un codage optimal de l’image.
 En effet les travaux de Bruno le savait scène ont montré quand on imposant un codage parcimonieux de l’âge on peut obtenir l’émergence de telles cellules dans un modèle de type neuronale.
 
@@ -88,12 +89,14 @@ En développant cet algorithme rapide d’apprentissage nous espérons son appli
 Ce type d’architecture de type économique efficace et rapide permet de renouveler l’ensemble des algorithmes de type algorithme profond qui sont très gourmand en ressources à 20 %.
 Nous espérons ainsi que ce nouveau type d’algorithme rapport rapide d’apprentissage non cyber mon supervisez puisse fournir une théorie normative pour le codage de l’information dans Lézères corticale primaire et dans le traitement sensoriel va niveau qu’il soit visuelle ou auditive.
 
+## en: Introduction
 
-
-## Algorithme
+## fr: Algorithme
 
 
 Le principe de l’algorithme consiste à rajouter des variables latentes qui vont permettre de prédire les déviations dans le codage ou l’apprentissage pendant l’apprentissage.
+
+## en: Algorithm
 
 
 ## Méthode
@@ -103,8 +106,6 @@ Le principe de l’algorithme consiste à rajouter des variables latentes qui vo
 ## Résultat : apprentissage de noyau de convolution
 
 ## Discussion et conclusions
-
-## références
 
 In addition to learning filters we have a place is better today on the coverage of colors compilation Calmels
 Caramels Karen else Karen else cuddles kill themselves care of that isNine
@@ -120,3 +121,5 @@ Cette manipulation permet tout en préservant l’intégralité du principe de l
 
 Nous avons appliquer cette méthode à l’apprentissage des noyaux de convolution pour différentes classes d’image. Une première classe d’image constitué d’images naturel montre un Libergère localiser sélectif a des tailles et orientations différentes.
 En utilisant uneConduisant une base de données d’image représentant des visages nous obtenons un autre ensemble de dictionnaire de noyau de composition ceci représente des caractéristiques spécifiques au visage comme la bouche les yeux le visage et qui correspondent aux différentes parties qui constituent l’intégralité d’un visage.
+
+## références
