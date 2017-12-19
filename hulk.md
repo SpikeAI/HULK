@@ -2,26 +2,17 @@
 
 A fast algorithm for unsupervised learning
 
-
- A Fast Learning Algorithm for Deep Belief Nets
-
 ## Résumé
 
-La formation des structures déconnexion de Randall neuronale est un processus largement non superviser c’est-à-dire que l’émergence de structure et mais genre majoritairement auto organisée.
-Dans le cortex visuel primaire Des mammifères par exemple on observe l’émergence de cellules sélective à désorientation locale et de taille déterminée.
-Nous proposons ici un algorithme rapide permettant l’apprentissage de telles caractéristiques est compatible avec l’architecture neuronale.
-
-Une difficulté majeur pour les des algorithmes d’apprentissage l’amphi supervisez non supervisé et l’antagonisme entre d’un côté le codage d’une entrée connaissant une structure non mature et de l’autre côté de l’adaptation de sesTexture de cette structure connaissant un code n’en encore optimisé.
-La clé de cet algorithme réside dans un mécanisme simple d’homéostasie qui permet de réconcilier les processus antagoniste qui ont lieu à l’échelle de temps du codage est à la chaîne de tempsTissage
-Point de l’apprentissage.
-Nous appliquons cette algorithme d’homéostasie pour différents des algorithmes existant d’apprentissage non superviser couplé avec des algorithmes de codage neuronale différent.
-
-Nous démontrerons aussi
-
-Nous démontrons aussi une simplification de la famille de me saisir d’homéostasie est possible en implémentant une simple Vestit des activités des différents dorade sur la probabilité d’activité des différents neurones.
-Par rapport à la règle d’homéostasie optimal nous montrant que cette heuristique permet d’implémenter un algorithme rapide d’apprentissage dans supervisez d’apprentissage non supervisé.
-Ainsi un tel algorithme peut être étendu à des architectures de type le type hiérarchique ou convolution elle et nous montrons les résultats obtenus sur différentes bases d’image naturel naturel et qui montre son application potentiel à des algorithmes rapide de classification des images.
-
+La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de l'architecture est majoritairement auto-organisée.
+Dans le cortex visuel primaire des mammifères par exemple, on observe ainsi au cours du développement l’émergence de cellules sélectives à l'orientation locale qui mènent à l'élaboration d'une représentation des contours dans l'image visuelle.
+Une difficulté majeure pour la définition des algorithmes d’apprentissage non supervisé est qu'au cours de l'apprentissage, d’un côté le codage est effectué connaissent une structure non mature et de l’autre côté de l’adaptation de cette structure est effectuée connaissant un code n’en encore optimisé.
+Nous proposons ici un algorithme rapide permettant l’apprentissage de telles caractéristiques et compatible avec une architecture neurale.
+La clé de cet algorithme réside dans un mécanisme simple d’homéostasie qui permet de réconcilier ces processus antagonistes qui ont lieu à l’échelle de temps du codage est à l'échelle de l’apprentissage.
+Nous avons testé cet algorithme non-supervisé avec cette règle optimale d'homéostasie pour différents algorithmes existant d’apprentissage non supervisé couplé avec des algorithmes différents de codage neuronal.
+D'autre part, nous proposons une simplification de cette règle optimale d’homéostasie en implémentant une simple heuristique sur la probabilité d’activité des différents neurones.
+Par rapport à la règle d’homéostasie optimale, nous montrons que cette heuristique permet d’implémenter un algorithme plus rapide d’apprentissage non supervisé tout en gardant son efficacité.
+Enfin, nous montrons qu'un tel algorithme peut être étendu à des architectures de type convolutionnel et nous montrons les résultats obtenus sur différentes bases d’image naturelles. Ces résultats démontrent son application potentielle à des algorithmes rapides de classification des images, par exemple dans des architectures hiérarchiques et dynamiques.
 
 ## Introduction
 
