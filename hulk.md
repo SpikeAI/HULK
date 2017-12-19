@@ -62,7 +62,13 @@ Toutefois des études récentes mettre en cause ce principe de codage parcimonie
 Afin d’ offrir une perspective plus large sur ce problème nous allons essayer de l’exprimer sous la forme d’un problème probabiliste.
 Cette approche est déjà largement exploité dans les travaux anciens de parano est sorti ni Vassalent et on conduit à traduire ce travail et ont conduit à traduire ce principe d’apprentissage non super Asie sous le terme de codage efficace par exemple en implémentant des règles d’inhibition dans le champ récepteurs de la rétine.
 D’autres études montrent que ces systèmes reviennent à imposer la critique alité du système et à balancer entre codage et apprentissage
+l'hoimeosatsie a une part  predicitve
 Plus généralement nous placerons notre modèle sous la théorie de laine en utilisant la théorie de l’énergie libre formulée par Karl Friston et qui permet de poser explicitement le problème du codage imparfait durant la prends tissage l’apprentissage durant l’apprentissage.
+L'apprentissage L'apprentissage n'est plus un but par lui-même.
+Le but de global de la formation des connexionsEt d'obtenir une structure telle queL'entrée sur ce rielEst-on mieux prédit l'entrée sensorielle est au mieux prédit l'entrée sensorielle et au mieux prédite par la structure de la population dans.
+L'ensemble des processusAux différentes échelles de tempsDu codageAllô mais au stage est à l'apprentissage sont ainsi considérésDans une même théorieNormative.Le but de l'apprentissage et simplementDe ne pas être surpris par l'entrée sensorielle.
+À ce titre le but de l'apprentissage et d'obtenir un codage qu'il se soit le moins variablesA priori c'est-à-dire avant d'avoirReçu à l'information sensorielle.
+
 
 Ce papier est organisé suivant le plan suivant.
 Tout d’abord nous montrerons l’impôtL’importance l’importance de l’homéostasie dans de l’eau mais Austasie dans des algorithmes d’apprentissage ah non superviser et dériveront une règle optimal pour l’apprentissage basé sur une et quoi Lisa Sion de l’histogramme et quoi Lisa Sion de l’histogramme.
@@ -84,7 +90,8 @@ Nous espérons ainsi que ce nouveau type d’algorithme rapport rapide d’appre
 ## Algorithme
 
 
-Le principe de l’algorithme consiste à rajouter des variables l’attente qui vont permettre de prédire les déviations dans le codage ou l’apprentissage pendant l’apprentissage
+Le principe de l’algorithme consiste à rajouter des variables latentes qui vont permettre de prédire les déviations dans le codage ou l’apprentissage pendant l’apprentissage.
+
 
 ## Méthode
 
