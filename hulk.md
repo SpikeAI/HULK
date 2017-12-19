@@ -73,22 +73,22 @@ Le but de l'apprentissage et simplement de ne pas être surpris par l'entrée se
 D'une part, cette théorie étend celle d'Olshausen et montre alors que l'homéostasie a aussi une part prédictive qui va permettre de surcroit de formuler une théorie normative du code neural à l'échelle de temps de l'homéostasie en l'associant à des mécanismes d'adaptation (Rao Balard).
 Ainsi, l'ensemble des processus aux différentes échelles de temps sont ainsi considéré dans une et même théorie normative.
 
-``>>> LUP IS HERE <<<<``
 Ce papier est organisé suivant le plan suivant.
 Tout d’abord nous montrerons l’importance de l’homéostasie dans les algorithmes d’apprentissage non supervisé. Nous dériverons une règle optimal pour l’adaptation homéostatique basée sur une égalisation de l’histogramme.
-Nous montrerons ensuite des résultats quantitatifs de cet algorithme optimal en l’appliquant à différents couples dalgorithmes de codage et d’apprentissage.En utilisant différentes bases d’apprentissage nous pourrons donner une analyse quantitative qui permettra de comparer ces différentes solutions.
-Nous délivrerons ensuite un algorithme neuro-mimétique d’homéostasie dérivé à partir de la règle optimale grâce à une simple heuristique.
-Nous comparerons alors les résultats de ce nouvel algorithme avec l’algorithme optimal ainsi qu’avec d'autres algorithmes existant d’apprentissage non supervisé.
+Nous montrerons ensuite des résultats quantitatifs de cet algorithme optimal en l’appliquant à différents couples d'algorithmes de codage et d’apprentissage. En utilisant différentes bases d’apprentissage nous pourrons donner une analyse quantitative qui permettra de comparer ces différentes solutions.
+Pour simplifier la règle optimale d'homéostasie, nous délivrerons ensuite un algorithme neuro-mimétique d’homéostasie dérivé à partir de la règle optimale grâce à une simple heuristique.
+Nous comparerons alors les résultats de ce nouvel algorithme avec l’algorithme optimal ainsi qu’avec d'autres algorithmes existant d’apprentissage non supervisé (Olshausen, Sandin).
 De par sa nature, cet algorithme peut facilement être étendu à des réseaux de type convolutionnels du type de ceux utilisés en apprentissage profond.
 Cette extension est possible en étendant le dictionnaire de filtre par l’hypothèse d’une invariances à la translation des représentations.
-Nos résultats sur différentes bases d’apprentissage montre l’émergence stable et rapide de filtres caractéristiques à ces différentes bases. Ce résultat montre un e perspective probable d'extension de cette représentation  et pour lesquelles nous espérons obtenir des résultats de classification supérieurs aux algorithmes existant dans l'état-de-l'art.
+Nos résultats sur différentes bases d’apprentissage montre l’émergence stable et rapide de filtres caractéristiques à ces différentes bases. Ce résultat montre une perspective probable d'extension de cette représentation et pour lesquelles nous espérons obtenir des résultats de classification supérieurs aux algorithmes existant dans l'état-de-l'art.
 Enfin nous conclurons en montrant l’importance de l’homéostasie dans les algorithmes d'apprentissage non supervisés.
 En développant cet algorithme rapide d’apprentissage nous espérons son application rapide dans des algorithmes d’intelligence artificielle.
-Ce type d’architecture est à la fois économique, efficace et rapide. Il  permet de renouveler l’ensemble des algorithmes de type algorithme profonds dont le défaut majeur est d'être très gourmands en ressources de calcul.
-Notamment, nous envisageons des perspectives pour les réseaux dynamiques et nous espérons appliquer ce type d’algorithme sur des systèmes embarqués du types de robots aériens.
+Ce type d’architecture est à la fois économique, efficace et rapide. Il  permet de renouveler l’ensemble des algorithmes de type algorithme profonds dont un défaut majeur est d'être très gourmands en ressources de calcul.
+Notamment, nous envisageons des perspectives pour les réseaux dynamiques et nous espérons appliquer ce type d’algorithme sur des systèmes embarqués comme des robots aériens.
 En parallèle, nous espérons ainsi que ce nouveau type d’algorithme rapide d’apprentissage non supervisé puisse fournir une théorie normative pour le codage de l’information dans le traitement sensoriel de bas niveau, qu’il soit par exemple visuel ou auditif.
 
 ## en: Introduction
+``>>> LUP IS HERE <<<<``
 
 ## fr: Algorithme
 
