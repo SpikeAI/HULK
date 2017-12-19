@@ -2,6 +2,9 @@
 
 A fast algorithm for unsupervised learning
 
+alternatives:
+- Homeostasis is necessary for the unsupervised learning of orientation-selective cells
+
 ## Résumé
 
 La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de cette architecture est majoritairement auto-organisée.
@@ -114,12 +117,6 @@ Cette manipulation permet D’augmenter la dimension de représentation dans les
 Cette manipulation permet tout en préservant l’intégralité du principe de l’algorithme d’augmenter la dimension de la représentation du dictionnaire
 
 
-Peter
-Title
-A male status as necessary falls and supervised learning of Canada Calmels Charles capitals caramels
-How many with Palos help with pages homeostasis who meals tases line
-
-Homeostasis is necessary for the unsupervised learning of call of the conversation Calmels
 
 Nous avons appliquer cette méthode à l’apprentissage des noyaux de convolution pour différentes classes d’image. Une première classe d’image constitué d’images naturel montre un Libergère localiser sélectif a des tailles et orientations différentes.
 En utilisant uneConduisant une base de données d’image représentant des visages nous obtenons un autre ensemble de dictionnaire de noyau de composition ceci représente des caractéristiques spécifiques au visage comme la bouche les yeux le visage et qui correspondent aux différentes parties qui constituent l’intégralité d’un visage.
