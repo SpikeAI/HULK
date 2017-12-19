@@ -98,45 +98,45 @@ In particular, this algorithm allows the extraction of the independent component
 This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1.
 A recent rapprochement between these algorithms and machine learning  algorithms makes it possible to place them in a new perspective. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost. This cost makes it possible to quantitatively evaluate the exploration of new components in the signal for learning with respect to the exploitation of these components in the coding. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
 
-``>>> LUP IS HERE <<<<``
-A component often ignored in this type of learning is the set of mechanisms of homeostasis. Indeed, these are implemented in the original algorithms (Olshausen, Rehn, ...) as a heuristic that simply prevents the algorithm from diverging. It consists in recent algorithms to constitute only an equalization of the energy of each component (Mairal).
+A component often ignored in this type of learning is the set of mechanisms of homeostasis. Indeed, these are implemented in the original algorithms (Olshausen, Rehn, ...) as a heuristic that simply prevents the algorithm from diverging. It consists in some recent algorithms to constitute only of an equalization of the energy of each component of the dictionary (Mairal).
 However, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall functioning of the neural code.
-For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of the neuron population.
+For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of neural populations.
 This mechanism then makes it possible to balance the contribution of the excitatory activity with respect to the inhibitory activity.
-By this mechanism, this type of balanced network can explain many features inherent in the primary visual cortex (Hansel).
+By this mechanism, this type of so-called balanced networks can explain many features inherent in the primary visual cortex (Hansel).
 These mechanisms, which often take the form of normalization rules (Schwartz) in the network, are often used as normative theory to explain the mechanisms present in the primary visual cortex (see Heeger).
-However, this work is often intended to show that the cells that emerge from this algorithm have the same characteristics as that observed in neurophysiology (Rehn, Loxley).
+However, this work is often intended to show that the cells that emerge from these algorithms have the same characteristics as that observed in neurophysiology (Rehn, Loxley).
 Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuromimic algorithms (Gerstner and Brito). These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence.
-However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the unsupervised algorithm from the gradient descent on the cost of representation.
+However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem of unsupervised learning.
 
 In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
-This approach is already widely used in Barlow's early work under the term Redundancy Reduction Principle (see also Atick).
-They led to translating this learning problem into effective coding, for example by implementing inhibition rules in the retinal receptor field of the saber-toothed tiger (Srinivasan, 1981).
-Other studies show that these rules are tantamount to requiring the system to be close to a criticality limit and to optimize the balance between optimization of coding and learning (Beggo, 2008 in Sandin)
+This approach is already widely used in Barlow's early work under the term of redundancy reduction principle (see also Atick).
+It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981).
+Other studies show that these rules are tantamount to requiring the system to be close to a criticality regime and to optimize the balance between optimization of coding and learning (Beggo, 2008 in Sandin)
 More generally, we will place ourselves in the framework of the theory of minimization of free energy formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning.
 In this theory, learning is no longer a goal in itself but participates in the minimization of free energy at different time scales, from coding to learning but also to the intermediate time of homeostasis.
-According to this principle, the overall goal of neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections).
-The purpose of learning and simply not to be surprised by the sensory input.
-As such, the purpose of learning and obtaining a coding that is the least variable a priori, that is to say before having received the sensory information.
-On the one hand, this theory extends that of Olshausen and shows that homeostasis also has a predictive part that will allow us to formulate a normative theory of the neural code at the time scale of homeostasis. associating with adaptation mechanisms (Rao Balard).
-Thus, the set of processes at different time scales are thus considered in one and the same normative theory.
+According to this principle, the overall goal of neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning.
+The goal of these processes is thus simply to not be surprised by the sensory input.
+As such, the purpose of learning is to obtain a coding that is the least variable a priori, that is to say before having received the sensory information.
+On the one hand, this theory extends that of Olshausen and shows that homeostasis also has a predictive part that will allow us to formulate a normative theory of the neural code at the time scale of homeostasis.
+This allows us also to associate homeostasis with adaptation mechanisms (Rao Balard).
+Thus, the set of processes at different time scales are thus considered as working synergestically and provide for a novel normative theory of coding in early sensory areas such as V1.
 
 This paper is organized according to the following plan.
 First we will show the importance of homeostasis in unsupervised learning algorithms. We will derive an optimal rule for homeostatic adaptation based on histogram equalization.
-We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning bases we will be able to give a quantitative analysis that will make it possible to compare these different solutions.
-To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule using a simple heuristic.
+We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning databases, we will be able to give a quantitative analysis that will make it possible to compare these different solutions.
+To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule by using a simple heuristic.
 We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms (Olshausen, Sandin).
-By its nature, this algorithm can easily be extended to convolutional type networks of those used in deep learning.
+Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks.
 This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations.
-Our results on different learning bases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable perspective of extension of this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art.
+Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable perspective of extension of this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art.
 Finally we will conclude by showing the importance of homeostasis in unsupervised learning algorithms.
 By developing this fast learning algorithm we hope for its rapid application in artificial intelligence algorithms.
-This type of architecture is economical, efficient and fast. It makes it possible to renew all the algorithms of the deep algorithm type, a major flaw of which is to be very greedy in computing resources.
-In particular, we are considering perspectives for dynamic networks and we hope to apply this type of algorithm on embedded systems such as aerial robots.
+This type of architecture is economical, efficient and fast. It makes it possible to be transferred to most deep learning algorithms, a major flaw of which is to be very greedy in computing resources.
+In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots.
 In parallel, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory, for example.
 
 ## fr: Algorithme
-
+``>>> LUP IS HERE <<<<``
 
 Le principe de l’algorithme consiste à rajouter des variables latentes qui vont permettre de prédire les déviations dans le codage ou l’apprentissage pendant l’apprentissage.
 
