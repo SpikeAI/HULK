@@ -50,29 +50,29 @@ Plutôt, ces travaux ont pour objectif de montrer que les cellules qui émergent
 D’autres algorithmes utilisent des non-linéarité qui implémentent de façon implicite des règles homéostatiques dans des algorithmes neuro-mimétiques (Gartner et Brito). Ces non-linéarités sont majoritairement utilisées dans la sortie des couches successives des réseaux d’apprentissage profond qui sont utilisé maintenant pour la classification d’images ou l’intelligence artificielle.
 Toutefois la plupart de ces règles de normalisation non-linéaire sont basées sur des heuristiques imitant les mécanismes neuronaux mais ne sont pas justifiées comme partie intégrante de l’algorithme non supervisé à partir de la descente de gradient sur le coût de représentation.
 
-Il est important de noter à ce point que les que les algorithmes d’apprentissage utilisés en intelligence artificielle peuvent nous apporter un nouvel éclairage sur le fonctionnement de ces processus neuraux et notamment sur l'apprentissage non supervisé.
-Dans le domaine de l’apprentissage machine, l’apprentissage non supervisé correspond à l’apprentissage de dictionnaires de représentation quand des données de catégorisation sont inconnus. Cet apprentissage est donc effectué de façon autonome et il est notamment utilisé en compression d’image et du signal, en détection d'objets, en séparation de source mais aussi pour la diminution du bruit dans des signaux bruts.
+Il est important de noter à ce point que les algorithmes d’apprentissage utilisés en intelligence artificielle peuvent nous apporter un nouvel éclairage sur le fonctionnement de ces processus neuraux et notamment sur l'apprentissage non supervisé.
+Dans le domaine de l’apprentissage machine, l’apprentissage non supervisé correspond à l’apprentissage de dictionnaires de représentation quand les données de catégorisation sont inconnues. Cet apprentissage est donc effectué de façon autonome et il est notamment utilisé en compression d’image et du signal, en détection d'objets, en séparation de sources mais aussi pour la diminution du bruit dans des signaux bruts.
 À ce titre, cette classe d’algorithmes est extrêmement utile dans les premières couches des algorithmes d’intelligence artificielle comme les algorithmes profonds.
 Il existe de nombreuses variantes de tels algorithmes qui prennent la forme soit d’une optimisation du transfert d'information (Bell), soit sous la forme de règles d’apprentissages dans l’apprentissage profond ou encore sous la forme d’algorithmes récursifs en statistiques et probabilités avec par exemple la poursuite de projection.
 Une classe importante de ces algorithmes considère que l’ensemble des solutions qu’ils vont être considéré sont celles qui correspondent à un codage optimal sous la forme d’un codage parcimonieux c’est-à-dire pour lequel pour lequel un petit nombre de composantes seront sélectionnés.
-Ce principe est assez général pour être appliqué à de nombreuses classes de signaux et permettre une analyse mathématique de ce principe.
-Ainsi, il a été montré qu’un tel codage permet d’améliorer des algorithmes de classification en particulier en limitant le nombre de couches nécessaires dans un algorithme d’apprentissage profond permettant la classification de d'mages contenant ou ne contenant pas des animaux (Perrinet et Bednar, 2015).
-En particulier nous avons montré précédemment qu’un algorithme rapide de codage de type par ce manuel peut être implémenté dans une implémenté dans une architecture de type normal neuronale (Perrinet, 2010).
-Toutefois des études récentes mettre en cause ce principe de codage parcimonieux (Eichhorn 2009, Zoran et Weiss 2012) et suggère qu’un simple analyse de type analyse en composantes principales appliqués dans une métrique complexe est suffisante pour expliquer émergence de filtres sélectifs à l’orientation similaires à ceux observés dans le cortex visuel primaire.
+Ce principe est assez général pour être appliqué à de nombreuses classes de signaux et permettre une analyse mathématique de ce  (Donoho).
+Ainsi, il a été montré qu’un tel codage permet d’améliorer des algorithmes de classification en particulier en limitant le nombre de couches nécessaires dans un algorithme d’apprentissage profond permettant la classification de d'images contenant ou ne contenant pas des animaux (Perrinet et Bednar, 2015).
+En particulier nous avons montré précédemment qu’un algorithme rapide de codage de type parcimonieux peut être implémenté dans une architecture de type normal neural (Perrinet, 2010).
+Toutefois, des études récentes semblent remettre en cause ce principe de codage parcimonieux (Eichhorn 2009, Zoran et Weiss 2012) et suggère qu’une analyse plus simple appliquée dans une métrique complexe est suffisante pour expliquer émergence de filtres sélectifs à l’orientation similaires à ceux observés dans le cortex visuel primaire.
 
-``>>> LUP IS HERE <<<<``
-Afin d’offrir une perspective plus large sur ce problème, nous allons essayer de l’exprimer sous la forme d’un problème probabiliste.
-Cette approche est déjà largement exploité dans les travaux anciens de Barlow sous le terme de principe de réduction de redondance.
+Afin d’offrir une perspective plus large sur ce problème, nous allons essayer de l’exprimer sous la forme générique d’un problème probabiliste.
+Cette approche est déjà largement exploitée dans les travaux anciens de Barlow sous le terme de principe de réduction de redondance (voir aussi Atick).
 Ils ont conduit à traduire ce problème d’apprentissage en terme de codage efficace par exemple en implémentant des règles d’inhibition dans le champ récepteurs de la rétine (Srinivasan, 1981).
 D’autres études montrent que ces règles reviennent à imposer au système d'être proche d'un limite de criticalité et à optimiser la balance entre optimisation du codage et de l'apprentissage (Beggo, 2008 in Sandin)
-Plus généralement, nous placerons notre modèle sous la théorie de laine en utilisant la théorie de l’énergie libre formulée par Karl Friston et qui permet de poser explicitement le problème du codage imparfait durant la prends tissage l’apprentissage durant l’apprentissage.
-L'apprentissage L'apprentissage n'est plus un but par lui-même.
-l'hoimeosatsie a une part  predicitve (Rao Balard)
-Le but de global de la formation des connexionsEt d'obtenir une structure telle queL'entrée sur ce rielEst-on mieux prédit l'entrée sensorielle est au mieux prédit l'entrée sensorielle et au mieux prédite par la structure de la population dans.
-L'ensemble des processusAux différentes échelles de tempsDu codageAllô mais au stage est à l'apprentissage sont ainsi considérésDans une même théorieNormative.Le but de l'apprentissage et simplementDe ne pas être surpris par l'entrée sensorielle.
-À ce titre le but de l'apprentissage et d'obtenir un codage qu'il se soit le moins variablesA priori c'est-à-dire avant d'avoirReçu à l'information sensorielle.
+Plus généralement, nous nous placerons dans le cadre de la théorie de minimisation de l’énergie libre formulée par Karl Friston. Ce principe permet de poser explicitement le problème du codage et de l'apprentissage non supervisé, aussi durant l’apprentissage.
+Dans cette théorie, l'apprentissage n'est plus un but en lui-même mais participe à la minimisation de l'énergie libre à différentes échelles de temps, depuis le codage à l'apprentissage mais aussi au temps intermédiaire de l'homéostasie.
+D'une part, cette théorie étend celle d'Olshausen et montre alors que l'homéostasie a aussi une part prédictive qui va permettre de surcroit de formuler une théorie normative du code neural à l'échelle de temps de l'homéostasie en l'associant à des mécanismes d'adaptation (Rao Balard).
+Selon ce principe, le but global de de système neural est de pouvoir au mieux prévoir n'importe quelle entrée sensorielle. Ce principe se traduit par des modifications de la structure de la population (connections synaptiques)).
+Le but de l'apprentissage et simplement de ne pas être surpris par l'entrée sensorielle.
+À ce titre, le but de l'apprentissage et d'obtenir un codage qui soit le moins variables a priori, c'est-à-dire avant d'avoir reçu l'information sensorielle.
+Ainsi, l'ensemble des processus aux différentes échelles de temps sont ainsi considéré dans une et même théorie normative.
 
-
+``>>> LUP IS HERE <<<<``
 Ce papier est organisé suivant le plan suivant.
 Tout d’abord nous montrerons l’impôtL’importance l’importance de l’homéostasie dans de l’eau mais Austasie dans des algorithmes d’apprentissage ah non superviser et dériveront une règle optimal pour l’apprentissage basé sur une et quoi Lisa Sion de l’histogramme et quoi Lisa Sion de l’histogramme.
 Basé sur une égalisation de lest histogramme de l’histogramme.
