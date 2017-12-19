@@ -75,19 +75,18 @@ Ainsi, l'ensemble des processus aux différentes échelles de temps sont ainsi c
 
 ``>>> LUP IS HERE <<<<``
 Ce papier est organisé suivant le plan suivant.
-Tout d’abord nous montrerons l’impôtL’importance l’importance de l’homéostasie dans de l’eau mais Austasie dans des algorithmes d’apprentissage ah non superviser et dériveront une règle optimal pour l’apprentissage basé sur une et quoi Lisa Sion de l’histogramme et quoi Lisa Sion de l’histogramme.
-Basé sur une égalisation de lest histogramme de l’histogramme.
-Nous montrerons ensuite des résultats quantitatifs de cet algorithme optimal de me saisi en l’appliquant à différents des algorithmes aussi bien de codage que d’apprentissage.
-En utilisant différentes bases d’apprentissage nous pourrons donner une analyse quantitative qui permettra de comparer ses différentes solutions.
-Nous délivrons ensuite un algorithme Neuro mimétique d’homéostasie dérivés à partir de la règle optimal par rapport à une Aurice tique heuristique heuristique.
-Nous comparons les résultats de ce nouvel algorithme avec l’algorithme optimal ainsi qu’avec les les algorithmes existe existant d’apprentissage dans supervisant non supervisez non supervisez.
-De par sa nature Jules cet algorithme de par sa nature de par sa nature, cette algorithme peut facilement être étendu à des réseaux convolution L. Deux types de ceux utilisés en apprentissage profond.
-C’est dépenses extension est possible en n’étant dans le dictionnaire de filtre par l’hypothèse d’un variances à la translation des représentations.
-Nos résultats sur différentes bases d’apprentissage montre l’émergence stable et rapide de filtre caractéristiques à ses différentes bases et pour lesquelles nous espérons obtenir des résultats de classification supérieur aux algorithmes existant.
-Enfin nous conclurons en montrant L’importance en montrant l’importance de l’homéostasie dans les algorithmes non supervisé.
-En développant cet algorithme rapide d’apprentissage nous espérons son application rapide dans des algorithmes d’intelligence artificielle et notamment avec des perspectives pour les réseaux dynamiques en particulier nous espérons appliquer ce type d’algorithme sur j’ai embarqué deux types de grandes robot aérien.
-Ce type d’architecture de type économique efficace et rapide permet de renouveler l’ensemble des algorithmes de type algorithme profond qui sont très gourmand en ressources à 20 %.
-Nous espérons ainsi que ce nouveau type d’algorithme rapport rapide d’apprentissage non cyber mon supervisez puisse fournir une théorie normative pour le codage de l’information dans Lézères corticale primaire et dans le traitement sensoriel va niveau qu’il soit visuelle ou auditive.
+Tout d’abord nous montrerons l’importance de l’homéostasie dans les algorithmes d’apprentissage non supervisé. Nous dériverons une règle optimal pour l’adaptation homéostatique basée sur une égalisation de l’histogramme.
+Nous montrerons ensuite des résultats quantitatifs de cet algorithme optimal en l’appliquant à différents couples dalgorithmes de codage et d’apprentissage.En utilisant différentes bases d’apprentissage nous pourrons donner une analyse quantitative qui permettra de comparer ces différentes solutions.
+Nous délivrerons ensuite un algorithme neuro-mimétique d’homéostasie dérivé à partir de la règle optimale grâce à une simple heuristique.
+Nous comparerons alors les résultats de ce nouvel algorithme avec l’algorithme optimal ainsi qu’avec d'autres algorithmes existant d’apprentissage non supervisé.
+De par sa nature, cet algorithme peut facilement être étendu à des réseaux de type convolutionnels du type de ceux utilisés en apprentissage profond.
+Cette extension est possible en étendant le dictionnaire de filtre par l’hypothèse d’une invariances à la translation des représentations.
+Nos résultats sur différentes bases d’apprentissage montre l’émergence stable et rapide de filtres caractéristiques à ces différentes bases. Ce résultat montre un e perspective probable d'extension de cette représentation  et pour lesquelles nous espérons obtenir des résultats de classification supérieurs aux algorithmes existant dans l'état-de-l'art.
+Enfin nous conclurons en montrant l’importance de l’homéostasie dans les algorithmes d'apprentissage non supervisés.
+En développant cet algorithme rapide d’apprentissage nous espérons son application rapide dans des algorithmes d’intelligence artificielle.
+Ce type d’architecture est à la fois économique, efficace et rapide. Il  permet de renouveler l’ensemble des algorithmes de type algorithme profonds dont le défaut majeur est d'être très gourmands en ressources de calcul.
+Notamment, nous envisageons des perspectives pour les réseaux dynamiques et nous espérons appliquer ce type d’algorithme sur des systèmes embarqués du types de robots aériens.
+En parallèle, nous espérons ainsi que ce nouveau type d’algorithme rapide d’apprentissage non supervisé puisse fournir une théorie normative pour le codage de l’information dans le traitement sensoriel de bas niveau, qu’il soit par exemple visuel ou auditif.
 
 ## en: Introduction
 
