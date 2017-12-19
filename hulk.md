@@ -7,7 +7,7 @@ alternatives:
 
 ## fr: Résumé
 
-La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de cette architecture est majoritairement auto-organisée.
+La formation des structures de connexions neurales est un processus largement non supervisé, c’est-à-dire que l’émergence de cette architecture est majoritairement auto-organisée.
 Dans le cortex visuel primaire des mammifères par exemple, on observe ainsi au cours du développement l’émergence de cellules sélectives à l'orientation locale qui mènent à l'élaboration d'une représentation des contours à partir de l'image visuelle.
 Une difficulté majeure pour la définition des algorithmes d’apprentissage non supervisé est qu'au cours de ce processus, d’un côté le codage est effectué connaissent une structure non mature et de l’autre côté de l’adaptation de cette structure est effectuée connaissant un code qui n'est pas encore optimal.
 Nous proposons ici un algorithme rapide compatible avec une architecture neuro-mimétique qui résout ce problème et permet l’apprentissage de filtres localisés sensibles à l'orientation.
@@ -21,8 +21,8 @@ Enfin, nous montrons qu'un tel algorithme peut être étendu à des architecture
 
 The formation of structures in neural populations is mostly an unsupervised learning process, that is, that the emergence of this architecture is mostly self-organized.
 In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features and that lead to the development of a rough representation of contours of the retinal image in this area.
-A major difficulty for the definition of unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other side the adaptation of this structure is performed knowing a code that is not yet optimal.
-We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows the fast emergence of localized filters sensitive to orientation.
+A major difficulty for the definition of unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is performed knowing a code that is not yet optimal.
+We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the fast emergence of localized filters sensitive to orientation.
 The key to this algorithm lies in a simple yet optimal mechanism of homeostasis that reconciles the antagonistic processes that take place at the time scale of coding and learning.
 We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms.
 In addition, we propose a simplification of this optimal rule of homeostasis by implementing a simple heuristic on the probability of activation of the neurons.
@@ -31,17 +31,16 @@ Finally, we show that such an algorithm can be extended to convolutional archite
 
 ## fr: Introduction
 
-L’architecture neurale consiste en un système dynamique complexe qui opère à différentes échelles de temps et en particulier de réussir le tour de force de pouvoir à la fois représenter rapidement une information (par exemple visuelle) mais aussi de pouvoir s'adapter sur le long terme pour optimiser ce codage.
+L’architecture neurale consiste en un système dynamique complexe qui opère à différentes échelles de temps. En particulier, une de ses propriétés est de réussir le tour de force de pouvoir à la fois représenter rapidement une information mais aussi de pouvoir s'y adapter sur le long terme pour optimiser ce codage.
 Dans le cas du cortex visuel primaire des mammifères, on peut par exemple observer un codage rapide de l’entrée rétinienne comme un processus de transmission d’une image rétinienne en une une esquisse brute qui représente les contours de l’image.
+Cette opération rapide, de l'ordre de 50 milli-secondes chez les humains, est la clé des résultats de Hubel et Wiesel qui ont montré que les cellules du cortex visuel primaire des mammifères sont majoritairement sélectifs à des orientation sur des champs récepteurs localisés.
+Une étape majeur dans la compréhension de ce mécanisme a été de montrer que l'émergence de ces filtres peut être expliquée comme le couplage d’un simple apprentissage de type Hebbien avec un codage optimal de l’image.
+En effet les travaux de Bruno Olshausen ont montré qu'en imposant un codage parcimonieux de l’image, on peut obtenir l’émergence de telles cellules dans un modèle de type neural.
+Ce type d'algorithme d’apprentissage non supervisé a été mis en relation avec de nombreux autyres types d'algorithmes de représentation optimal aussi bien utilisés en traitement du signal qu'en intelligence artificielle.
+En particulier, cet algorithme permet l’extraction des composantes indépendantes du signal, par exemple les orientations dans l'image. Cette représentation permet de voir l'émergence de représentations invariantes à des transformées géométriques comme les rotations.
+Un rapprochement récent entre ces algorithmes et des algorithmes de type probabiliste permettent de les placer dans une nouvelle perspective. En effet, ces algorithmes non supervisés sont équivalents à l'optimisation par descente de gradient d’un coût de codage de type informationnel. Celui-ci permet d’évaluer de façon de façon quantitative l’exploration de nouvelles composantes dans le signal pour l'apprentissage par rapport à l’exploitation de ces composantes dans le codage. À ce titre, cet apprentissage consiste en deux mécanismes antagonistes, un à long échelle de temps qui correspond à l’apprentissage est à l’exploration de nouvelles composantes et un à une échelle plus rapide qui correspond au codage.
+
 ``>>> LUP IS HERE <<<<``
-Cette opération rapide, inférieure à 50 milli-secondes chez les primates, est la clé des résultats de Hubel et Wiesel qui ont montré que les cellules du cortex visuel primaire sont majoritairement sélectifs à des orientation sur des champs récepteurs localisés.
-Une étape majeur dans la compréhension de ce mécanisme a été de montrer que quand elle a une émergence de ses filtres peut être expliqué comme le couplage d’un simple apprentissage de type est bien avec un codage optimal de l’image.
-En effet les travaux de Bruno le savait scène ont montré quand on imposant un codage parcimonieux de l’âge on peut obtenir l’émergence de telles cellules dans un modèle de type neuronale.
-
-C’est algorithme d’apprentissage non supervisez a été mis en relation avec de nombreux des algorithmes de représentation optimal utiliser aussi bien en traitement du signal quand intelligence artificielle.
-En particulier, cette algorithme permet l’extraction des composantes indépendante du signal et ainsi de l’extraction Des composantes principales et indépendante du signal.
-Un rapprochement récent entre ces algorithmes et des algorithmes probabiliste permettent de le mettre dans une nouvelle perspective. En effet l’algorithme mon supervisez revient à une optimisation d’un coup complète cinq Solaine de type informationnel. Celui-ci permet d’évaluer de façon de façon quantitative l’exploration de nouvelles composantes dans le signal par rapport à l’exploitation de ses composantes dans le codage. À ce titre c’est apprentissage non superviser consiste en deux mécanismes antagoniste un à long échelle de temps qui correspond à l’apprentissage est à l’exploration de nouvelles composantes et un à une échelle plus rapide qui correspond au codage.
-
 Une composante souvent ignoré dans ce type d’apprentissage sont les mécanismes d’homéostasie. En effet ceux-ci sont implémenté dans les algorithmes originaux des hommes savent scène commune heuristique qui permet simplement d’éviter l’algorithme d’atteindre un minimum local dans la fonction de coup.
 Les mécanismes
 Les mécanismes neuronaux sont à l’œuvre dans de nombreuses composantes du code Nordal neuronale.
