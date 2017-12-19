@@ -14,17 +14,17 @@ De plus, nous proposons une simplification de cette règle optimale d’homéost
 Par rapport à la règle d’homéostasie optimale, nous montrons que cette heuristique permet d’implémenter un algorithme plus rapide d’apprentissage non supervisé tout en gardant une large part de son efficacité.
 Enfin, nous montrons qu'un tel algorithme peut être étendu à des architectures de type convolutionnel et nous montrons les résultats obtenus sur différentes bases d’image naturelles. Ces résultats démontrent son application potentielle à des algorithmes rapides de classification des images, par exemple dans des architectures hiérarchiques et dynamiques.
 
-## Summary
+## Abstract
 
-The formation of neuronal connection structures is a largely unsupervised process, that is, the emergence of this architecture is mostly self-organized.
-In the primary visual cortex of mammals, for example, there is the emergence of local-oriented selective cells during development that lead to the development of a representation of contours from the visual image.
-A major difficulty for the definition of unsupervised learning algorithms is that during this process, on the one hand the coding is performed know an immature structure and on the other side the adaptation of this structure is performed knowing a code that is not yet optimal.
-We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows the learning of localized filters sensitive to orientation.
-The key to this algorithm lies in a simple mechanism of homeostasis that reconciles these antagonistic processes that take place at the time scale of coding and learning.
-We tested this unsupervised algorithm with this optimal homeostasis rule for different existing unsupervised learning algorithms coupled with different neural coding algorithms.
+The formation of structures in neural populations is mostly an unsupervised learning process, that is, that the emergence of this architecture is mostly self-organized.
+In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features and that lead to the development of a rough representation of contours of the retinal image in this area.
+A major difficulty for the definition of unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other side the adaptation of this structure is performed knowing a code that is not yet optimal.
+We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows the fast emergence of localized filters sensitive to orientation.
+The key to this algorithm lies in a simple yet optimal mechanism of homeostasis that reconciles the antagonistic processes that take place at the time scale of coding and learning.
+We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms.
 In addition, we propose a simplification of this optimal rule of homeostasis by implementing a simple heuristic on the probability of activation of the neurons.
 Compared to the optimal homeostasis rule, we show that this heuristic makes it possible to implement a faster unsupervised learning algorithm while keeping a large part of its efficiency.
-Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image bases. These results demonstrate its potential application to fast image classification algorithms, for example in hierarchical and dynamic architectures.
+Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 
 ## Introduction
 
