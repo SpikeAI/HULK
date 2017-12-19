@@ -4,14 +4,14 @@ A fast algorithm for unsupervised learning
 
 ## Résumé
 
-La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de l'architecture est majoritairement auto-organisée.
-Dans le cortex visuel primaire des mammifères par exemple, on observe ainsi au cours du développement l’émergence de cellules sélectives à l'orientation locale qui mènent à l'élaboration d'une représentation des contours dans l'image visuelle.
-Une difficulté majeure pour la définition des algorithmes d’apprentissage non supervisé est qu'au cours de l'apprentissage, d’un côté le codage est effectué connaissent une structure non mature et de l’autre côté de l’adaptation de cette structure est effectuée connaissant un code n’en encore optimisé.
-Nous proposons ici un algorithme rapide permettant l’apprentissage de telles caractéristiques et compatible avec une architecture neurale.
-La clé de cet algorithme réside dans un mécanisme simple d’homéostasie qui permet de réconcilier ces processus antagonistes qui ont lieu à l’échelle de temps du codage est à l'échelle de l’apprentissage.
-Nous avons testé cet algorithme non-supervisé avec cette règle optimale d'homéostasie pour différents algorithmes existant d’apprentissage non supervisé couplé avec des algorithmes différents de codage neuronal.
-D'autre part, nous proposons une simplification de cette règle optimale d’homéostasie en implémentant une simple heuristique sur la probabilité d’activité des différents neurones.
-Par rapport à la règle d’homéostasie optimale, nous montrons que cette heuristique permet d’implémenter un algorithme plus rapide d’apprentissage non supervisé tout en gardant son efficacité.
+La formation des structures de connexions neuronales est un processus largement non supervisé, c’est-à-dire que l’émergence de cette architecture est majoritairement auto-organisée.
+Dans le cortex visuel primaire des mammifères par exemple, on observe ainsi au cours du développement l’émergence de cellules sélectives à l'orientation locale qui mènent à l'élaboration d'une représentation des contours à partir de l'image visuelle.
+Une difficulté majeure pour la définition des algorithmes d’apprentissage non supervisé est qu'au cours de ce processus, d’un côté le codage est effectué connaissent une structure non mature et de l’autre côté de l’adaptation de cette structure est effectuée connaissant un code qui n'est pas encore optimal.
+Nous proposons ici un algorithme rapide compatible avec une architecture neuro-mimétique qui résout ce problème et permet l’apprentissage de filtres localisés sensibles à l'orientation.
+La clé de cet algorithme réside dans un mécanisme simple d’homéostasie qui permet de réconcilier ces processus antagonistes qui ont lieu à l’échelle de temps du codage et  de l’apprentissage.
+Nous avons testé cet algorithme non supervisé avec cette règle optimale d'homéostasie pour différents algorithmes existants d’apprentissage non supervisé couplé avec des algorithmes différents de codage neural.
+De plus, nous proposons une simplification de cette règle optimale d’homéostasie en implémentant une simple heuristique sur la probabilité d’activation des neurones.
+Par rapport à la règle d’homéostasie optimale, nous montrons que cette heuristique permet d’implémenter un algorithme plus rapide d’apprentissage non supervisé tout en gardant une large part de son efficacité.
 Enfin, nous montrons qu'un tel algorithme peut être étendu à des architectures de type convolutionnel et nous montrons les résultats obtenus sur différentes bases d’image naturelles. Ces résultats démontrent son application potentielle à des algorithmes rapides de classification des images, par exemple dans des architectures hiérarchiques et dynamiques.
 
 ## Introduction
