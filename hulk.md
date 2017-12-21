@@ -87,9 +87,9 @@ Notamment, nous envisageons des perspectives pour les réseaux dynamiques et nou
 En parallèle, nous espérons ainsi que ce nouveau type d’algorithme rapide d’apprentissage non supervisé puisse fournir une théorie normative pour le codage de l’information dans le traitement sensoriel de bas niveau, qu’il soit par exemple visuel ou auditif.
 
 ## en: Introduction
-Neural architecture consists of a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding.
+Neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding.
 In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the visual information into a rough sketch that represents the outlines of objects in the image.
-This rapid 50-milli-second operation (in humans) is key to the results of Hubel and Wiesel, who showed that some mammalian primary visual cortex cells have receptive fields which are predominantly selective at relatively localized orientations.
+This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of Hubel and Wiesel, who showed that some mammalian primary visual cortex cells have relatively localized receptive fields which are predominantly selective at different orientations.
 A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an optimal coding of the image.
 Indeed, the work of Bruno Olshausen has shown that by imposing a sparse encoding of the image, we can obtain the emergence of such cells in a neural-type model.
 This type of unsupervised learning algorithm has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence.
@@ -100,12 +100,37 @@ A recent rapprochement between these algorithms and machine learning  algorithms
 A component often ignored in this type of learning is the set of mechanisms of homeostasis. Indeed, these are implemented in the original algorithms (Olshausen, Rehn, ...) as a heuristic that simply prevents the algorithm from diverging. It consists in some recent algorithms to constitute only of an equalization of the energy of each component of the dictionary (Mairal).
 However, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall functioning of the neural code.
 For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of neural populations.
-This mechanism then makes it possible to balance the contribution of the excitatory activity with respect to the inhibitory activity.
+This mechanism then makes it possible to balance the contribution of the excitatory populations with respect to that in inhibitory populations.
 By this mechanism, this type of so-called balanced networks can explain many features inherent in the primary visual cortex (Hansel).
 These mechanisms, which often take the form of normalization rules (Schwartz) in the network, are often used as normative theory to explain the mechanisms present in the primary visual cortex (see Heeger).
 However, this work is often intended to show that the cells that emerge from these algorithms have the same characteristics as that observed in neurophysiology (Rehn, Loxley).
 Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuromimic algorithms (Gerstner and Brito). These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence.
 However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem of unsupervised learning.
+
+It is important to note at this point that learning algorithms used in artificial intelligence can shed new light on the functioning of these neural processes and in particular on unsupervised learning.
+In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. This training is therefore carried out autonomously and is particularly used for image and signal compression, object detection, source separation and noise reduction in raw signals.
+As such, this class of algorithms is extremely useful in the first layers of artificial intelligence algorithms such as deep algorithms.
+There are many variants of such algorithms that take the form of either an optimization of information transfer (Bell), or in the form of learning rules in deep learning or recursive algorithms in statistics and probabilities with, for example, projection continuation.
+An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. These solutions take the form of parsimonious coding, i. e. for which a small number of components will be selected according to the size of the dictionary.
+This principle is general enough to be applied to many signal classes and allow a mathematical analysis of this problem (Donoho).
+In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture (Perrinet, 2010).
+It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals (Perrinet and Bednar, 2015).
+However, recent studies seem to question this principle of parsimonious coding (Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis applied in a complex metric is sufficient to explain the emergence of selective filters with orientation similar to those observed in the primary visual cortex.
+
+In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
+This approach is already widely used in Barlow's early work as a redundancy reduction principle (see also Atick).
+They have led to translating this learning problem into effective coding, for example by implementing inhibition rules in the retina receptor field in saber-tooth tigers (Srinivasan, 1981).
+Other studies show that these rules are tantamount to forcing the system to be close to a critical limit and optimizing the balance between coding and learning optimization (Beggo, 2008 in Sandin)
+More generally, we will place ourselves within the framework of the theory of free energy minimization formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning.
+In this theory, learning is no longer a goal in itself but contributes to the minimization of free energy at different time scales, from coding to learning but also to the intermediate time of homeostasis.
+According to this principle, the overall goal of the neural system is to be able to better predict any sensory input. This principle is reflected in changes in population structure (synaptic connections).
+The purpose of learning and simply not to be surprised by the sensory input.
+As such, the aim of learning and to obtain a coding that is the least variable a priori, i. e. before having received the sensory information.
+On the one hand, this theory expands Olshausen's theory and shows that homeostasis also has a predictive part, which will allow us to formulate a normative theory of the neural code on the time scale of homeostasis by associating it with adaptation mechanisms (Rao Balard).
+Thus, all processes at different time scales are thus considered in one and the same normative theory.
+
+
+Translated with www.DeepL.com/Translator
 
 In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
 This approach is already widely used in Barlow's early work under the term of redundancy reduction principle (see also Atick).
