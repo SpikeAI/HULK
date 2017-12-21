@@ -18,15 +18,14 @@ Par rapport à la règle d’homéostasie optimale, nous montrons que cette heur
 Enfin, nous montrons qu'un tel algorithme peut être étendu à des architectures de type convolutionnel et nous montrons les résultats obtenus sur différentes bases d’image naturelles. Ces résultats démontrent son application potentielle à des algorithmes rapides de classification des images, par exemple dans des architectures hiérarchiques et dynamiques.
 
 ## en: Abstract
-
-The formation of structures in neural populations is mostly an unsupervised learning process, that is, that the emergence of this architecture is mostly self-organized.
-In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features and that lead to the development of a rough representation of contours of the retinal image in this area.
-A major difficulty for the definition of unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is performed knowing a code that is not yet optimal.
+The formation of structure in the brain, that is, of the connection between cells within neural populations, is a largely unsupervised learning process, that is, that the emergence of this architecture is mostly self-organized.
+In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features. This lead to the development of a rough representation of contours of the retinal image in area V1.
+A major difficulty in defining unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is carried out knowing a code that is not yet optimal.
 We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the fast emergence of localized filters sensitive to orientation.
-The key to this algorithm lies in a simple yet optimal mechanism of homeostasis that reconciles the antagonistic processes that take place at the time scale of coding and learning.
+The key to this algorithm lies in a simple yet optimal mechanism of homeostasis that reconciles the antagonistic processes that occur at coding and learning time scale.
 We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms.
-In addition, we propose a simplification of this optimal rule of homeostasis by implementing a simple heuristic on the probability of activation of the neurons.
-Compared to the optimal homeostasis rule, we show that this heuristic makes it possible to implement a faster unsupervised learning algorithm while keeping a large part of its efficiency.
+In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurons.
+Compared to the optimal homeostasis rule, we show that this heuristic allows to implement a faster unsupervised learning algorithm while keeping a large part of its effectiveness.
 Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 
 ## fr: Introduction
