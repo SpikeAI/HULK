@@ -159,11 +159,6 @@ Le principe de l’algorithme consiste à rajouter des variables latentes qui vo
 
 ## Résultat : apprentissage de noyau de convolution
 
-## Discussion et conclusions
-
-In addition to learning filters we have a place is better today on the coverage of colors compilation Calmels
-Caramels Karen else Karen else cuddles kill themselves care of that isNine
-Leppo to sessional cigars it thi
 L’apprentissage non supervisez de filtre peut être étendu à l’apprentissage de noyau de convolution.
 En incluant une hypothèse d’un variances à la translation dans le modèle génératif des imagess
 On peut augmenter le dictionnaire de représentation en incluant les filtres à toutes les positions de l’image et en mettant des zéro autre part
@@ -175,5 +170,9 @@ Cette manipulation permet tout en préservant l’intégralité du principe de l
 
 Nous avons appliquer cette méthode à l’apprentissage des noyaux de convolution pour différentes classes d’image. Une première classe d’image constitué d’images naturel montre un Libergère localiser sélectif a des tailles et orientations différentes.
 En utilisant uneConduisant une base de données d’image représentant des visages nous obtenons un autre ensemble de dictionnaire de noyau de composition ceci représente des caractéristiques spécifiques au visage comme la bouche les yeux le visage et qui correspondent aux différentes parties qui constituent l’intégralité d’un visage.
+
+## Discussion et conclusions
+
+
 
 ## références
