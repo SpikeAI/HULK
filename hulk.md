@@ -118,30 +118,15 @@ It has also been shown that such coding can improve classification algorithms, i
 However, recent studies seem to question this principle of parsimonious coding (Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis applied in a complex metric is sufficient to explain the emergence of selective filters with orientation similar to those observed in the primary visual cortex.
 
 In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
-This approach is already widely used in Barlow's early work as a redundancy reduction principle (see also Atick).
-They have led to translating this learning problem into effective coding, for example by implementing inhibition rules in the retina receptor field in saber-tooth tigers (Srinivasan, 1981).
-Other studies show that these rules are tantamount to forcing the system to be close to a critical limit and optimizing the balance between coding and learning optimization (Beggo, 2008 in Sandin)
-More generally, we will place ourselves within the framework of the theory of free energy minimization formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning.
-In this theory, learning is no longer a goal in itself but contributes to the minimization of free energy at different time scales, from coding to learning but also to the intermediate time of homeostasis.
-According to this principle, the overall goal of the neural system is to be able to better predict any sensory input. This principle is reflected in changes in population structure (synaptic connections).
-The purpose of learning and simply not to be surprised by the sensory input.
-As such, the aim of learning and to obtain a coding that is the least variable a priori, i. e. before having received the sensory information.
-On the one hand, this theory expands Olshausen's theory and shows that homeostasis also has a predictive part, which will allow us to formulate a normative theory of the neural code on the time scale of homeostasis by associating it with adaptation mechanisms (Rao Balard).
-Thus, all processes at different time scales are thus considered in one and the same normative theory.
-
-
-Translated with www.DeepL.com/Translator
-
-In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
 This approach is already widely used in Barlow's early work under the term of redundancy reduction principle (see also Atick).
 It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981).
-Other studies show that these rules are tantamount to requiring the system to be close to a criticality regime and to optimize the balance between optimization of coding and learning (Beggo, 2008 in Sandin)
-More generally, we will place ourselves in the framework of the theory of minimization of free energy formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning.
-In this theory, learning is no longer a goal in itself but participates in the minimization of free energy at different time scales, from coding to learning but also to the intermediate time of homeostasis.
+Other studies show that these rules are tantamount to forcing the system to be close to a criticality regime and optimizing the balance between coding and learning optimization (Beggo, 2008 in Sandin)
+More generally, we will place ourselves in the framework of the principle of free energy minimization formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning.
+In this theory, learning is no longer a goal in itself but contributes to the the minimization of free energy at different time scales, from coding to learning but also to the intermediate time of homeostasis.
 According to this principle, the overall goal of neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning.
 The goal of these processes is thus simply to not be surprised by the sensory input.
-As such, the purpose of learning is to obtain a coding that is the least variable a priori, that is to say before having received the sensory information.
-On the one hand, this theory extends that of Olshausen and shows that homeostasis also has a predictive part that will allow us to formulate a normative theory of the neural code at the time scale of homeostasis.
+As such, the aim of learning is to obtain a coding that is the least variable a priori, that is to say, before having received the sensory information.
+On the one hand, this theory extends that of Olshausen and shows that homeostasis also has a predictive part. Thus, this will also allow us to formulate a normative theory of the neural code at the time scale of homeostasis.
 This allows us also to associate homeostasis with adaptation mechanisms (Rao Balard).
 Thus, the set of processes at different time scales are thus considered as working synergestically and provide for a novel normative theory of coding in early sensory areas such as V1.
 
@@ -152,12 +137,13 @@ To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimeti
 We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms (Olshausen, Sandin).
 Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks.
 This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations.
-Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable perspective of extension of this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art.
+Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases.
+This result shows a probable prospect of extending this representation and  for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art.
 Finally we will conclude by showing the importance of homeostasis in unsupervised learning algorithms.
 By developing this fast learning algorithm we hope for its rapid application in artificial intelligence algorithms.
 This type of architecture is economical, efficient and fast. It makes it possible to be transferred to most deep learning algorithms, a major flaw of which is to be very greedy in computing resources.
 In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots.
-In parallel, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory, for example.
+Along with this, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory, for example.
 
 ## fr: Algorithme
 ``>>> LUP IS HERE <<<<``
