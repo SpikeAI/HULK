@@ -33,7 +33,7 @@ A fast algorithm for unsupervised learning
 \newcommand{\Abstract}{
 The formation of structure in the brain, that is, of the connection
 between cells within neural populations, is a largely unsupervised
-learning process, that is, that the emergence of this architecture is
+learning process: The emergence of this architecture is
 mostly self-organized. In the primary visual cortex of mammals, for
 example, one may observe during development the emergence of cells
 selective to localized, oriented features. This lead to the development
@@ -54,11 +54,11 @@ simplification of this optimal homeostasis rule by implementing a simple
 heuristic on the probability of activation of neurons. Compared to the
 optimal homeostasis rule, we show that this heuristic allows to
 implement a faster unsupervised learning algorithm while keeping a large
-part of its effectiveness. Finally, we show that such an algorithm can
-be extended to convolutional architectures and we show the results
-obtained on different natural image databases. These results demonstrate
-the potential application of such a strategy to the fast classification
-of images, for example in hierarchical and dynamic architectures.
+part of its effectiveness. 
+% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. 
+These results demonstrate the potential application 
+of such a strategy to the fast classification of images, 
+for example in hierarchical and dynamic architectures.
 %
 %One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
  %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
@@ -363,7 +363,7 @@ pdfsubject={\Acknowledgments}%
 %\makebox[.45\linewidth]{\FirstNameA\ \AuthorA}
 %\and \makebox[.45\linewidth]{\FirstNameB\ \AuthorB}% \\ \Institute\ \Organism
 %\makebox[.9\linewidth]{\FirstNameA\ \AuthorA and \FirstNameB\ \AuthorB} %\\ \Institute\
-\FirstNameA\ \AuthorA \and \FirstNameB\ \AuthorB
+\FirstNameA\ \AuthorA \and \FirstNameB\ \AuthorB \and \FirstNameC\ \AuthorC
 }
 \date{\Institute\ \\ 
 \Organism\
