@@ -1,10 +1,11 @@
-%!TEX root = BoutinRuffierPerrinet17spars_poster.tex
+%!TEX root = hulk.tex
 %!TeX TS-program = Lualatex
 %!TeX encoding = UTF-8 Unicode
 %!TeX spellcheck = en-US
 %!BIB TS-program = bibtex
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
+\documentclass[a4paper, 11pt]{article} % For LaTeX2e
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{1}%
 \def\Draft{0}%
@@ -73,9 +74,438 @@ This work was supported by XXX and the Doc2Amu project which received funding fr
 \end{itemize}
 } %
 
+%2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
+%3. application to asynchronous / focal  log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
+
+%To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid,  energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a  database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).% 
+%
+%[1] :
+%Hubel DH, Wiesel TN. Receptive fields and functional architecture of monkey striate cortex. J Physiol. 1968;195:215?243
+%[2] : 
+%Olshausen BA, and Field DJ. (1996). "Emergence of Simple-Cell Receptive Field Properties by Learning a Sparse Code for Natural Images." Nature, 381: 607-609. [PDF]
+%[3] :
+%L. U. Perrinet, ?Sparse models for computer vision?, in Biolog- ically Inspired Computer Vision, G. Cristo?bal, L. Perrinet, and M. S. Keil, Eds., Wiley-VCH Verlag GmbH & Co. KGaA, 2015, ch. 13.
 
 
-\subsection{Introduction}\label{introduction}
+%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
+
+
+% --------------------------------------------------------------------------
+\usepackage{filecontents}
+
+\begin{filecontents}{hulk.bib}
+
+@article{olshausen1996emergence,
+  title={Emergence of simple-cell receptive field properties by learning a sparse code for natural images},
+  author={Olshausen, Bruno A and Field, David J},
+  journal={Nature},
+  volume={381},
+  number={6583},
+  pages={607},
+  year={1996},
+  publisher={Nature Publishing Group}
+}
+
+@article{Olshausen97,
+	Abstract = {The spatial receptive fields of simple cells in mammalian striate cortex have been reasonably well described physiologically and can be characterized as being localized, oriented, and bandpass, comparable to the basis functions of wavelet transforms. Previously, we have shown that these receptive field properties may be accounted for in terms of a strategy for producing a sparse distribution of output activity in response to natural images (Olshausen and Field, 1996a). Here, in addition to describing this work in a more expansive fashion, we examine the neurobiological implications of sparse coding. Of particular interest is the case when the code is overcomplete---i.e., when the number of code elements is greater than the effective dimensionality of the input space. Because the basis functions are non-orthogonal and not linearly independent of each other, sparsifying the code will recruit only those basis functions necessary for representing a given input, and so the input-output fun...},
+	Author = {Olshausen, Bruno A. and Field, David J.},
+	Citeulike-Article-Id = {9026860},
+	Citeulike-Linkout-0 = {http://dx.doi.org/10.1016/S0042-6989(97)00169-7},
+	Citeulike-Linkout-1 = {http://citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.27.712},
+	Date-Added = {2017-01-02 14:34:49 +0000},
+	Date-Modified = {2017-01-02 14:34:49 +0000},
+	Doi = {10.1016/S0042-6989(97)00169-7},
+	Issn = {0042-6989},
+	Journal = {Vision Research},
+	Keywords = {area-v1, assofield, bicv-sparse, sparse\_hebbian\_learning},
+	Month = dec,
+	Number = {23},
+	Pages = {3311--3325},
+	Priority = {0},
+	Title = {Sparse coding with an overcomplete basis set: A strategy employed by {V1}?},
+	Url = {http://dx.doi.org/10.1016/S0042-6989(97)00169-7},
+	Volume = {37},
+	Year = {1997},
+	Bdsk-Url-1 = {http://dx.doi.org/10.1016/S0042-6989(97)00169-7}}
+
+
+@article{hubel1968receptive,
+  title={Receptive fields and functional architecture of monkey striate cortex},
+  author={Hubel, David H and Wiesel, Torsten N},
+  journal={The Journal of {P}hysiology},
+  volume={195},
+  number={1},
+  pages={215--243},
+  year={1968},
+  publisher={Wiley Online Library}
+}
+
+
+@article{Serre07,
+abstract = {Primates are remarkably good at recognizing objects. The level of performance of their visual system and its robustness to image degradations still surpasses the best computer vision systems despite decades of engineering effort. In particular, the high accuracy of primates in ultra rapid object categorization and rapid serial visual presentation tasks is remarkable. Given the number of processing stages involved and typical neural latencies, such rapid visual processing is likely to be mostly feedforward. Here we show that a specific implementation of a class of feedforward theories of object recognition (that extend the Hubel and Wiesel simple-to-complex cell hierarchy and account for many anatomical and physiological constraints) can predict the level and the pattern of performance achieved by humans on a rapid masked animal vs. non-animal categorization task.},
+author = {Serre, Thomas and Oliva, Aude and Poggio, Tomaso},
+doi = {10.1073/pnas.0700622104},
+file = {:Users/lolo/quantic/science/bibtexing/Serre, Oliva, Poggio/Serre, Oliva, Poggio_2007_A feedforward architecture accounts for rapid categorization.pdf:pdf},
+issn = {1091-6490},
+journal = {Proceedings of the National Academy of Sciences},
+keywords = {assofield,bicv-sparse,perrinet11sfn,perrinetbednar15},
+mendeley-tags = {assofield,perrinet11sfn},
+number = {15},
+pages = {6424--6429},
+pmid = {17404214},
+publisher = {National Academy of Sciences},
+title = {{A feedforward architecture accounts for rapid categorization}},
+type = {Journal article},
+url = {http://dx.doi.org/10.1073/pnas.0700622104 http://www.pnas.org/content/104/15/6424.abstract http://www.pnas.org/content/104/15/6424.full.pdf http://www.pnas.org/cgi/content/abstract/104/15/6424},
+volume = {104},
+year = {2007}
+}
+@article{Carandini12,
+abstract = {There is increasing evidence that the brain relies on a set of canonical neural computations, repeating them across brain regions and modalities to apply similar operations to different problems. A promising candidate for such a computation is normalization, in which the responses of neurons are divided by a common factor that typically includes the summed activity of a pool of neurons. Normalization was developed to explain responses in the primary visual cortex and is now thought to operate throughout the visual system, and in many other sensory modalities and brain regions. Normalization may underlie operations such as the representation of odours, the modulatory effects of visual attention, the encoding of value and the integration of multisensory information. Its presence in such a diversity of neural systems in multiple species, from invertebrates to mammals, suggests that it serves as a canonical neural computation.},
+author = {Carandini, Matteo and Heeger, David J Dj},
+doi = {10.1038/nrn3136},
+isbn = {1471-0048 (Electronic)\n1471-003X (Linking)},
+issn = {1471-003X},
+journal = {Nature Reviews Neuroscience},
+keywords = {Adaptation,Afferent Pathways,Anim,Physiological,contrast_response,divisive_normalization,normalization},
+mendeley-tags = {contrast_response,divisive_normalization,normalization},
+month = {jan},
+number = {November},
+pages = {1--12},
+pmid = {22108672},
+publisher = {Nature Publishing Group},
+title = {{Normalization as a canonical neural computation.}},
+type = {Journal article},
+url = {http://discovery.ucl.ac.uk/1332718/ http://www.ncbi.nlm.nih.gov/pubmed/22108672 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC3273486},
+volume = {13},
+year = {2012}
+}
+
+@article{PerrinetBednar15,
+	Abstract = {Making a judgment about the semantic category of a visual scene, such as whether it contains an animal, is typically assumed to involve high-level associative brain areas. Previous explanations require progressively analyzing the scene hierarchically at increasing levels of abstraction, from edge extraction to mid-level object recognition and then object categorization. Here we show that the statistics of edge co-occurrences alone are sufficient to perform a rough yet robust (translation, scale, and rotation invariant) scene categorization. We first extracted the edges from images using a scale-space analysis coupled with a sparse coding algorithm. We then computed the ``association field'' for different categories (natural, man-made, or containing an animal) by computing the statistics of edge co-occurrences. These differed strongly, with animal images having more curved configurations. We show that this geometry alone is sufficient for categorization, and that the pattern of errors made by humans is consistent with this procedure. Because these statistics could be measured as early as the primary visual cortex, the results challenge widely held assumptions about the flow of computations in the visual system. The results also suggest new algorithms for image classification and signal processing that exploit correlations between low-level structure and the underlying semantic category.},
+	Author = {Perrinet, Laurent U. and Bednar, James A.},
+	Doi = {10.1038/srep11400},
+	Issn = {2045-2322},
+	Journal = {Scientific Reports},
+	Keywords = {anr-trax,assofield,bicv-sparse,perrinetbednar15,sanz12jnp,vacher14},
+	Language = {en},
+	Month = {jun},
+	Pages = {11400},
+	Pmid = {26096913},
+	Publisher = {Nature Publishing Group},
+	Title = {{Edge co-occurrences can account for rapid categorization of natural versus animal images}},
+	Url = {http://www.nature.com/doifinder/10.1038/srep11400 http://www.nature.com/srep/2015/150622/srep11400/full/srep11400.html http://www.nature.com/articles/srep11400},
+	Volume = {5},
+	Year = {2015},
+	Bdsk-Url-1 = {http://www.nature.com/doifinder/10.1038/srep11400%20http://www.nature.com/srep/2015/150622/srep11400/full/srep11400.html%20http://www.nature.com/articles/srep11400},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1038/srep11400}}
+
+
+@article{Perrinet10shl,
+	Abstract = {Neurons in the input layer of primary visual cortex in primates develop edge-like receptive fields. One approach to understanding the emergence of this response is to state that neural activity has to efficiently represent sensory data with respect to the statistics of natural scenes. Furthermore, it is believed that such an efficient coding is achieved using a competition across neurons so as to generate a sparse representation, that is, where a relatively small number of neurons are simultaneously active. Indeed, different models of sparse coding coupled with Hebbian learning and homeostasis have been proposed that successfully match the observed emergent response. However, the specific role of homeostasis in learning such sparse representations is still largely unknown. By quantitatively assessing the efficiency of the neural representation during learning, we derive a cooperative homeostasis mechanism which optimally tunes the competition between neurons within the sparse coding algorithm. We apply this homeostasis while learning small patches taken from natural images and compare its efficiency with state-of-the-art algorithms. Results show that while different sparse coding algorithms give similar coding results, the homeostasis provides an optimal balance for the representation of natural images within the population of neurons. Competition in sparse coding is optimized when it is fair: By contributing to optimize statistical competition across neurons, homeostasis is crucial in providing a more efficient solution to the emergence of independent components.},
+	Annote = {Posted Online March 17, 2010.},
+	Author = {Perrinet, Laurent U.},
+	Citeulike-Article-Id = {7158387},
+	Citeulike-Linkout-0 = {http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl},
+	Citeulike-Linkout-1 = {http://dx.doi.org/10.1162/neco.2010.05-08-795},
+	Citeulike-Linkout-2 = {http://www.mitpressjournals.org/doi/abs/10.1162/neco.2010.05-08-795},
+	Citeulike-Linkout-3 = {http://view.ncbi.nlm.nih.gov/pubmed/20235818},
+	Citeulike-Linkout-4 = {http://www.hubmed.org/display.cgi?uids=20235818},
+	Date-Added = {2017-01-02 13:44:42 +0000},
+	Date-Modified = {2017-01-02 13:44:42 +0000},
+	Day = {17},
+	Doi = {10.1162/neco.2010.05-08-795},
+	Issn = {1530-888X},
+	Journal = {Neural Computation},
+	Keywords = {adaptive, assofield, bicv-sparse, cell, coding, competition-optimized, cooperative, fields, hebbian, homeostasis, images, khoei13jpp, learning, matching, matching-pursuit, natural, natural-scenes, neural, of, overcomplete\_dictionaries, perrinet10shl, perrinet11sfn, perrinet12pred, population, pursuit, receptive, sanz12jnp, simple, sparse, sparse\_coding, sparse\_hebbian\_learning, sparse\_spike\_coding, statistics, unsupervised, vacher14},
+	Month = jul,
+	Number = {7},
+	Pages = {1812--36},
+	Pmid = {20235818},
+	Priority = {0},
+	Publisher = {MIT Press},
+	Title = {Role of homeostasis in learning sparse representations},
+	Url = {http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl},
+	Volume = {22},
+	Year = {2010},
+	Bdsk-Url-1 = {http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl},
+	Bdsk-Url-2 = {http://dx.doi.org/10.1162/neco.2010.05-08-795}}
+
+@incollection{Perrinet15bicv,
+	Author = {Perrinet, Laurent U.},
+	Booktitle = {Biologically Inspired Computer Vision},
+	Chapter = {13},
+	Citeulike-Article-Id = {13566753},
+	Date-Added = {2017-01-02 13:44:42 +0000},
+	Date-Modified = {2017-01-02 13:44:42 +0000},
+	Editor = {Crist{\'{o}}bal, Gabriel and Perrinet, Laurent and Keil, Matthias S.},
+	Isbn = {9783527680863},
+	Keywords = {bicv-sparse},
+	Month = {nov},
+	Priority = {2},
+	Publisher = {Wiley-VCH Verlag},
+	Title = {Sparse Models for Computer Vision},
+	Url = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary},
+	Year = {2015},
+	Bdsk-Url-1 = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary}}
+
+
+\end{filecontents}
+
+
+\usepackage[utf8]{luainputenc}
+%============ common ===================
+\usepackage[english]{babel}%
+%\usepackage{csquotes}%
+\usepackage[autostyle]{csquotes}
+%% Sans-serif Arial-like fonts
+\renewcommand{\rmdefault}{phv} 
+\renewcommand{\sfdefault}{phv} 
+     \usepackage{textcomp}
+     \usepackage{libertine}%[sb]
+     \usepackage[varqu,varl]{inconsolata}% sans serif typewriter
+     \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
+     \usepackage[cal=boondoxo]{mathalfa} % mathcal
+%     \useosf % osf for text, not math
+     \usepackage[supstfm=libertinesups,%
+       supscaled=1.2,%
+       raised=-.13em]{superiors}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\usepackage{hyperref}       % hyperlinks
+\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
+\hypersetup{%
+pdftitle={\Title},%
+pdfauthor={Corrresponding author: \AuthorB < \EmailB > \Address - \Website },%
+pdfkeywords={\Keywords},%
+pdfsubject={\Acknowledgments}%
+}%
+\usepackage{url}            % simple URL typesetting
+\usepackage{booktabs}       % professional-quality tables
+\usepackage{amsfonts}       % blackboard math symbols
+\usepackage{nicefrac}       % compact symbols for 1/2, etc.
+\usepackage{microtype}      % microtypography
+
+\usepackage[dvipsnames]{xcolor}
+
+\usepackage{tikz}%
+%\if 1\Draft
+%\usepackage{setspace}
+%\fi
+% MATHS (AMS)
+%\usepackage{amsmath}
+%%\usepackage{amsfonts}
+%\usepackage{amssymb}
+%\usepackage{amsthm}
+%\usepackage{amsfonts, amssymb, amscd}
+\newcommand{\norm}[1]{|\!| #1 |\!|}
+\newcommand{\dotp}[2]{\langle #1,\,#2\rangle}
+\newcommand{\eqdef}{\ensuremath{\stackrel{\mbox{\upshape\tiny def.}}{=}}}
+\newcommand{\eqset}{\ensuremath{\stackrel{\mbox{\upshape\tiny set}}{=}}}
+\newcommand{\eq}[1]{\begin{equation*}#1\end{equation*}}
+\newcommand{\eql}[1]{\begin{equation}#1\end{equation}}
+\newcommand{\pd}[2]{ \frac{ \partial #1}{\partial #2} }
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+\usepackage{siunitx}
+%\renewcommand{\cite}{\citep}%
+\newcommand{\ms}{\si{\milli\second}}%
+\newcommand{\m}{\si{\meter}}%
+\newcommand{\s}{\si{\second}}%
+\usepackage[natbib=true,
+			style=ieee, %numeric-comp,
+      		sortcites=true,
+			abbreviate=true,
+			maxcitenames=2,
+			maxnames = 5,
+%			firstinits=true,
+%			uniquename=init,
+%			sorting=none,
+			doi=false,
+			url=true,
+			isbn=false,
+			eprint=false,
+			texencoding=utf8,
+			bibencoding=latin1,
+			%autocite=superscript,
+			backend=bibtex,
+			%articletitle=false,
+			]{biblatex}%
+\AtEveryBibitem{
+  \clearfield{month}
+  \clearfield{day}
+  \clearfield{url}
+  \clearfield{note}
+  \clearfield{comment}
+%  \clearfield{edition}
+%  \clearfield{publisher}
+}
+\addbibresource{hulk.bib}%
+
+\newcommand{\coef}{\mathbf{a}} % image's hidden param
+\newcommand{\image}{\mathbf{I}} % the image
+\newcommand{\dico}{\Phi} % the dictionary
+%\showthe\columnwidth
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+%\usepackage{titling}
+%\setlength{\droptitle}{-6em}
+%\posttitle{\par\end{center}\vspace{-2.3em}}
+
+\title{\Title}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{%
+%\makebox[.45\linewidth]{\FirstNameA\ \AuthorA}
+%\and \makebox[.45\linewidth]{\FirstNameB\ \AuthorB}% \\ \Institute\ \Organism
+%\makebox[.9\linewidth]{\FirstNameA\ \AuthorA and \FirstNameB\ \AuthorB} %\\ \Institute\
+\FirstNameA\ \AuthorA \and \FirstNameB\ \AuthorB
+}
+\date{\Institute\ \\ 
+\Organism\
+}
+
+% http://www.cosyne.org/c/index.php?title=Image:Cosyne-abstract-template.tex
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% COSYNE-2007 Abstract Template
+%%% Version 1.0
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% NOTE: the following two lines require pdflatex.  If you are using latex
+%%% then they will generate an error, and can be removed.  However, you
+%%% will then need to be certain a US letter sized document is generated
+%%% when converting the .dvi file to a PDF file.  Using pdflatex is preferred.
+%%%
+%%% Do not change \paperwidth, \paperheight, \textwidth, or \textheight values.
+%%%
+\setlength{\pdfpagewidth}{\paperwidth}
+\setlength{\pdfpageheight}{\paperheight}
+
+
+
+\usepackage{times}
+
+\usepackage{graphicx}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
+
+\usepackage{fancyhdr}
+
+
+%\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
+\usepackage[margin=0.5in]{geometry}
+%\oddsidemargin 0.0in		% margin, in addition to 1" standard
+%\textwidth 6.5in		% 8.5" - 2*(1+\oddsidemargin)
+%
+%%\topmargin -0.25in		% in addition to 1.5" standard margin
+%\topmargin -.75in		% in addition to 1.5" standard margin
+%\textheight 8.75in 		% 11 - ( 1.5 + \topmargin + <bottom-margin> )
+%
+%\columnsep 0.1in
+%
+%\parindent 0pt
+%\parskip 12pt
+%
+%\flushbottom \sloppy
+%\topskip    = 0.0truein
+%\topmargin  = 0.0truein
+%\headheight = 0.0truein
+%\headsep    = 0.0truein
+%\hoffset    = -0.48truein
+%\voffset    = -0.9truein
+%\parskip    = \baselineskip
+%\parindent  = 0pt
+%\textwidth  = 6.4truein
+%\textheight = 10.1truein
+%\flushbottom
+%Submission Format
+%
+%Before you log onto the submission website, you should have the following items prepared. Submissions that do not meet these guidelines may be rejected. Abstract selection is a competitive process, so please read carefully:
+%
+%    * Title - 100 characters or fewer (including spaces), capitalized in sentence case
+%    * Author list - including email addresses of all authors
+%    * Summary - 300 words or fewer, text only. This summary will appear in the printed conference program if your submission is accepted.
+%    * PDF submission - This should be one page (A4 or US Letter) in PDF format. The title and author names should appear at the head of the page (contact info may be omitted), followed by the 300-word Summary. The rest of the document should expand upon the central question(s), approach, results, and/or conclusions of the study. Figures are optional. You may include equations as appropriate. Font size (including any figure legends) must be at least 12 point. Margins should be at least 0.5". Because space is limited, you do not need to touch upon all the major points of the Summary; rather you should aim to add whatever detail is need to help reviewers evaluate the technical correctness and significance of your study.
+%    * Two Program Committee members (see below) who could handle your submission. We cannot honor all specific requests, but your list will help us direct your submission to Program Committee members with appropriate expertise. 
+%
+%Evaluation Criteria
+%
+%PDF submissions will be evaluated on the basis of the following criteria (equally weighted):
+%
+%    * Significance, originality, and potential impact of your claims to the COSYNE audience. Please indicate why your question is important and how your claims advance the field. Reviewers will be asked to rate your claims in this regard, without regard to whether your methods/results technically support those claims (see below). If your aim is to develop a new approach or technique, indicate why this is useful. Implicitly included in this category is the quality of fit of your abstract for the COSYNE conference audience -- potentially inappropriate abstracts include pure machine learning studies, or studies of single cells with no clear implications for neural systems.
+%    * Technical correctness. Reviewers will be asked to rate the quality of your methods and/or data in supporting your claims (see above). Thus, you should clearly outline the methods used, results obtained, and critical controls. Include sufficient detail in your submission to allow reviewers to evaluate whether your approach is appropriate for supporting your claims, and whether your results are technically sound. However, your submission should not be as detailed as the Methods section of a full-length paper (e.g., do not list concentrations of drugs, etc.). 
+%
+%You should not feel obliged to fill the entire page, and we expect that many successful submissions will not include figures.
+%
+%Approximately 20 submissions will be chosen for short talks and ~300 will be chosen for poster presentations. We expect ~20% of submissions will be rejected due to limitations on poster space. 
+
+\usepackage{multicol}
+\makeatletter
+
+\pagestyle{empty}		% No page numbers
+\begin{document}
+%
+% make the title area
+\maketitle
+%%%----------------------------------------------------------------- 
+%{\LARGE\bf  
+%Title of Our Abstract
+%}
+%
+%{\Large\bf
+%First Author$^1$, Second Author$^2$, and Third Author$^1$ 
+%}
+%
+%{\Large
+%$^1$Renowned University, \hspace{1em} $^2$Another University
+%}
+
+%%%----------------------------------------------------------------- 
+\vspace*{-.6cm}
+%\begin{abstract}
+{\bf Abstract.}
+\Abstract
+\vspace*{-.4cm}
+%\end{abstract}
+\thispagestyle{empty}
+
+%The full text of the abstract, including any equations, tables, and
+%figures, should appear here.  Left  margin is 1 inch (2.54 cm), and
+%text width is 6.75 inches (16.5 cm), which leaves a 1 inch right
+%margin on U.S.-letter sized paper.  Text is full-justified (i.e., both
+%right and left side are aligned).
+%
+%Paragraphs should be separated by a blank line, and the first line 
+%should not be indented.  
+%
+%\Figure
+%\ParagIntro
+
+\section{Introduction}\label{introduction}
+%
+%\newcommand{\ParagIntro}{%
+%It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+%\begin{equation}%
+%\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+%\end{equation}%
+%During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
+%}%
+%\newcommand{\ParagLongIntro}{%
+%It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex.
+%
+%Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to use a more generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+%\begin{equation}%
+%\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+%\end{equation}%
+%It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl}. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
+%
+%To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+%
+%We compared qualitatively the set $\dico$ of receptive filters generated by the proposed algorithm when the homeostasis is first turned-off and then enabled  (see Fig.~\ref{fig:map}). A more quantitative study of the coding is shown by comparing selection distribution of sparse coefficients when the homeostasis mechanism is turned on (see Fig.~\ref{fig:quant}). We demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an increase of the Shanon entropy. Finally, an interesting perspective is to apply the homeostatic regulation algorithm in a classical fully connected deep-learning neural network and applied on the MNIST recognition task. By using the sparse coefficients as the input layer of the network, we can compare the performance obtained with and without the homeostatic mechanism. Preliminary results show that the improvement in efficiency is more acute when using sparse representations (5 out of 324 coefficients).
+%}%
 
 Neural architecture is a complex dynamic system that operates at
 different time scales. In particular, one of its properties is to
@@ -239,10 +669,53 @@ algorithm can provide a normative theory for the coding of information
 in low-level sensory processing, whether it is visual or auditory, for
 example.
 
-\subsection{Algorithm}\label{algorithm}}
+\section{Algorithm}\label{algorithm}
 
 
-%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
+
+
+\subsection{Objective}\label{objective}
+
+Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, we achieve sparse coding using a gradient descent~\citep{olshausen1996emergence,Olshausen97} over a  cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness~\citep{Perrinet10shl,Perrinet15bicv}, by simply counting the number of non-zero coefficients:
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
+During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. In particular, we will set the a priori probability of selecting coefficients {\color{BrickRed} $\forall (i,j), P(\coef_i)=P(\coef_j)$} to ensure the optimality of the choice of the  pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.%
+
+\subsection{Algorithm}\label{algorithm}
+
+
+The proposed algorithm is:
+\begin{enumerate}%
+{\color{MidnightBlue} 
+\item Initialize the point non-linear gain functions $z_i$ to similar cumulative distribution functions and the components $\dico_i$ to random points on the unit $L$-dimensional sphere,%
+\item repeat until learning converged:%
+\begin{enumerate}%
+{\color{OliveGreen}
+	\item draw a signal $\image$ from the database, its energy is $E = \| \image \|^2$,%
+	\item set sparse vector $\coef$ to zero, initialize $\bar{a}_i=<\image, \dico_i >$ for all $i$,% using~\seeEq{coco},%
+	\item while the residual energy $E$ is above a given threshold do:
+	\begin{enumerate}
+		{\color{BrickRed}
+			\item select the best match: $i^\ast = \mbox{ArgMax}_{i} [z_i( \bar{a}_i )]$,% with~\seeEq{mp1},
+		}
+		\item set the sparse coefficient: $a_{i^\ast} = \bar{a}_{i^\ast}$,
+		\item update residual coefficients: $\forall i, \bar{a}_i \leftarrow \bar{a}_i - a_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
+		\item update energy: $E \leftarrow E - a_{i^\ast}^2 $.
+	\end{enumerate}
+}
+\item when we have the sparse representation vector $\coef$, apply $\forall i$:
+\begin{enumerate}
+\item modify dictionary: $\dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image - \dico\coef)$,% using~\seeEq{learn}, 
+\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \| \dico_{i}\|$,% using~\seeEq{learn}, 
+{\color{BrickRed}
+\item update homeostasis functions: $z_i( \cdot ) \leftarrow (1- \eta_h ) z_i( \cdot ) + \eta_h \delta( a_i \leq \cdot)$.% using~\seeEq{learn_homeo}
+}
+\end{enumerate}
+\end{enumerate}
+}
+\end{enumerate}
+
 
 % LUP\ IS\ HERE\ 
 
@@ -250,11 +723,31 @@ Le principe de l'algorithme consiste à rajouter des variables latentes
 qui vont permettre de prédire les déviations dans le codage ou
 l'apprentissage pendant l'apprentissage.
 
-\hypertarget{algorithm}{%
-\subsection{en: Algorithm}\label{algorithm}}
-
-\hypertarget{muxe9thode}{%
-\subsection{Méthode}\label{muxe9thode}}
+\section{Methods}\label{methods}
 
 
-\subsection{Discussion and conclusion}\label{discussion-et-conclusion}
+\section{Results}\label{results}
+
+
+\section{Discussion and conclusion}\label{discussion-et-conclusion}
+
+%\FigureMap
+%\columnbreak
+%tata
+%\Figure
+%\FigureQuant
+%\end{multicols}
+
+%%%%%----------------------------------------------------------------- 
+%%\section*{Acknowledgments}
+%%%{\bf Acknowledgments}\\
+%%\Acknowledgments
+
+%%%----------------------------------------------------------------- 
+%{\bf References} \\
+\printbibliography
+%Column 1
+%\columnbreak
+%Column 2
+
+\end{document}
