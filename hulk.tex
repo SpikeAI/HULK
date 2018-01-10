@@ -676,6 +676,8 @@ example.
 
 \subsection{Objective}\label{objective}
 
+% Link with VAE : https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/
+
 Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, we achieve sparse coding using a gradient descent~\citep{olshausen1996emergence,Olshausen97} over a  cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness~\citep{Perrinet10shl,Perrinet15bicv}, by simply counting the number of non-zero coefficients:
 \begin{equation}%
 \mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
