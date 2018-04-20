@@ -6,6 +6,24 @@
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 \documentclass[a4paper, 11pt]{article} % For LaTeX2e
+
+% if you need to pass options to natbib, use, e.g.:
+% \PassOptionsToPackage{numbers, compress}{natbib}
+% before loading nips_2017
+%
+% to avoid loading the natbib package, add option nonatbib:
+% \usepackage[nonatbib]{nips_2017}
+
+\usepackage{nips_2017}
+\input{CHAMP_Metadata}
+% to compile a camera-ready version, add the [final] option, e.g.:
+%\usepackage[final]{nips_2017}
+
+\usepackage[utf8]{inputenc} % allow utf-8 input
+\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{hyperref}       % hyperlinks
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{1}%
 \def\Draft{0}%
@@ -369,19 +387,47 @@ pdfsubject={\Acknowledgments}%
 \Organism\
 }
 
-% http://www.cosyne.org/c/index.php?title=Image:Cosyne-abstract-template.tex
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% COSYNE-2007 Abstract Template
-%%% Version 1.0
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% The \author macro works with any number of authors. There are two
+% commands used to separate the names and addresses of multiple
+% authors: \And and \AND.
+%
+% Using \And between authors leaves it to LaTeX to determine where to
+% break the lines. Using \AND forces a line break at that point. So,
+% if LaTeX puts 3 of 4 authors names on the first line, and the last
+% on the second line, try using \AND instead of \And before the third
+% author name.
 
-%%% NOTE: the following two lines require pdflatex.  If you are using latex
-%%% then they will generate an error, and can be removed.  However, you
-%%% will then need to be certain a US letter sized document is generated
-%%% when converting the .dvi file to a PDF file.  Using pdflatex is preferred.
-%%%
-%%% Do not change \paperwidth, \paperheight, \textwidth, or \textheight values.
-%%%
+\author{
+David S.~Hippocampus\thanks{Use footnote for providing further
+information about author (webpage, alternative
+address)---\emph{not} for acknowledging funding agencies.} \\
+Department of Computer Science\\
+Cranberry-Lemon University\\
+Pittsburgh, PA 15213 \\
+\texttt{hippo@cs.cranberry-lemon.edu} \\
+%% examples of more authors
+%% \And
+%% Coauthor \\
+%% Affiliation \\
+%% Address \\
+%% \texttt{email} \\
+%% \AND
+%% Coauthor \\
+%% Affiliation \\
+%% Address \\
+%% \texttt{email} \\
+%% \And
+%% Coauthor \\
+%% Affiliation \\
+%% Address \\
+%% \texttt{email} \\
+%% \And
+%% Coauthor \\
+%% Affiliation \\
+%% Address \\
+%% \texttt{email} \\
+}
+
 \setlength{\pdfpagewidth}{\paperwidth}
 \setlength{\pdfpageheight}{\paperheight}
 
