@@ -14,7 +14,7 @@
 % to avoid loading the natbib package, add option nonatbib:
 % \usepackage[nonatbib]{nips_2017}
 
-\usepackage[nonatbib]{nips_2017}
+\usepackage[nonatbib]{nips_2018}
 %\input{CHAMP_Metadata}
 % to compile a camera-ready version, add the [final] option, e.g.:
 %\usepackage[final]{nips_2017}
@@ -66,13 +66,13 @@ propose here a fast algorithm compatible with a neuromimetic
 architecture which solves this problem and allows for the fast emergence
 of localized filters sensitive to orientation. The key to this algorithm
 lies in a simple yet optimal mechanism of homeostasis that reconciles
-the antagonistic processes that occur at coding and learning time scale.
+the antagonistic processes that occur at the coding and learning time scales.
 We tested this unsupervised algorithm with this homeostasis rule for a
 range of existing unsupervised learning algorithms coupled with
 different neural coding algorithms. In addition, we propose a
 simplification of this optimal homeostasis rule by implementing a simple
-heuristic on the probability of activation of neurones. Compared to the
-optimal homeostasis rule, we show that this heuristic allows to
+heuristic on the probability of activation of neurones. 
+Compared to the optimal homeostasis rule, we show that this heuristic allows to
 implement an even faster unsupervised learning algorithm while keeping a large
 part of its effectiveness. 
 These results demonstrate the potential application 
@@ -89,22 +89,6 @@ This work was supported by XXX and the Doc2Amu project which received funding fr
 \item Code and supplementary material available at \url{\WebsiteC/Publications/BoutinFranciosiniPerrinet18hulk}.
 \end{itemize}
 } %
-
-%2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
-%3. application to asynchronous / focal  log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
-
-%To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid,  energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a  database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).% 
-%
-%[1] :
-%Hubel DH, Wiesel TN. Receptive fields and functional architecture of monkey striate cortex. J Physiol. 1968;195:215?243
-%[2] : 
-%Olshausen BA, and Field DJ. (1996). "Emergence of Simple-Cell Receptive Field Properties by Learning a Sparse Code for Natural Images." Nature, 381: 607-609. [PDF]
-%[3] :
-%L. U. Perrinet, ?Sparse models for computer vision?, in Biolog- ically Inspired Computer Vision, G. Cristo?bal, L. Perrinet, and M. S. Keil, Eds., Wiley-VCH Verlag GmbH & Co. KGaA, 2015, ch. 13.
-
-
-%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
-
 
 % --------------------------------------------------------------------------
 \usepackage{filecontents}
@@ -435,7 +419,7 @@ Pittsburgh, PA 15213 \\
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
-\usepackage{fancyhdr}
+%\usepackage{fancyhdr}
 
 
 %\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
@@ -527,7 +511,47 @@ Pittsburgh, PA 15213 \\
 %\ParagIntro
 
 \section{Introduction}\label{introduction}
-%
+
+The neural architecture is a complex dynamic system that operates at
+different time scales. In particular, one of its properties is to
+succeed in the feat of being able to both represent information quickly
+but also to be able to adapt in the long term autonomously
+(self-organized) to optimize this coding. In the case of the mammalian
+primary visual cortex (V1) for instance, one can observe the rapid
+coding of retinal image, as a process of transforming the visual
+information into a rough sketch that represents the outlines of objects
+in the image. This rapid operation, of the order of 50 milli-seconds in
+humans, is key to the results of~\textcite{hubel1968receptive}, who showed that some
+cells of the mammalian primary visual cortex have relatively localized
+receptive fields which are predominantly selective at different
+orientations. A major step in understanding this observation has been to
+show that the emergence of these filters can be explained as the
+coupling of a simple Hebbian learning with an optimal coding of the
+image. Indeed, the work of~\textcite{olshausen1996emergence} has shown that by imposing a
+sparse encoding of the image, we can obtain the emergence of such cells
+in a neural-type model. This type of unsupervised learning algorithm~\citep{Olshausen97} has
+been related to many other types of optimal representation algorithms
+used in both signal processing and artificial intelligence. In
+particular, this algorithm allows the extraction of the independent
+components of the signal, for example the orientations in the image.
+This representation makes it possible to observe the emergence of
+representations which are invariant to geometric transforms such as
+rotations and translations in V1. A recent rapprochement between these
+algorithms and machine learning algorithms makes it possible to place
+them in a new perspective. Indeed, these unsupervised algorithms are
+equivalent to a gradient descent optimization over an informational-type
+coding cost. This cost makes it possible to quantitatively evaluate the
+exploration of new components in the signal for learning with respect to
+the exploitation of these components in the coding. As such, this remark
+shows us that unsupervised learning consists of two antagonistic
+mechanisms, a long time scale that corresponds to the learning and
+exploration of new components and a faster scale that corresponds to
+coding.
+
+%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
+
+
+
 %\newcommand{\ParagIntro}{%
 %It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
 %\begin{equation}%
@@ -549,41 +573,7 @@ Pittsburgh, PA 15213 \\
 %We compared qualitatively the set $\dico$ of receptive filters generated by the proposed algorithm when the homeostasis is first turned-off and then enabled  (see Fig.~\ref{fig:map}). A more quantitative study of the coding is shown by comparing selection distribution of sparse coefficients when the homeostasis mechanism is turned on (see Fig.~\ref{fig:quant}). We demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an increase of the Shanon entropy. Finally, an interesting perspective is to apply the homeostatic regulation algorithm in a classical fully connected deep-learning neural network and applied on the MNIST recognition task. By using the sparse coefficients as the input layer of the network, we can compare the performance obtained with and without the homeostatic mechanism. Preliminary results show that the improvement in efficiency is more acute when using sparse representations (5 out of 324 coefficients).
 %}%
 
-Neural architecture is a complex dynamic system that operates at
-different time scales. In particular, one of its properties is to
-succeed in the feat of being able to both represent information quickly
-but also to be able to adapt in the long term autonomously
-(self-organized) to optimize this coding. In the case of the mammalian
-primary visual cortex (V1) for instance, one can observe the rapid
-coding of retinal image, as a process of transforming the visual
-information into a rough sketch that represents the outlines of objects
-in the image. This rapid operation, of the order of 50 milli-seconds in
-humans, is key to the results of Hubel and Wiesel, who showed that some
-mammalian primary visual cortex cells have relatively localized
-receptive fields which are predominantly selective at different
-orientations. A major step in understanding this observation has been to
-show that the emergence of these filters can be explained as the
-coupling of a simple Hebbian learning with an optimal coding of the
-image. Indeed, the work of Bruno Olshausen has shown that by imposing a
-sparse encoding of the image, we can obtain the emergence of such cells
-in a neural-type model. This type of unsupervised learning algorithm has
-been related to many other types of optimal representation algorithms
-used in both signal processing and artificial intelligence. In
-particular, this algorithm allows the extraction of the independent
-components of the signal, for example the orientations in the image.
-This representation makes it possible to observe the emergence of
-representations which are invariant to geometric transforms such as
-rotations and translations in V1. A recent rapprochement between these
-algorithms and machine learning algorithms makes it possible to place
-them in a new perspective. Indeed, these unsupervised algorithms are
-equivalent to a gradient descent optimization over an informational-type
-coding cost. This cost makes it possible to quantitatively evaluate the
-exploration of new components in the signal for learning with respect to
-the exploitation of these components in the coding. As such, this remark
-shows us that unsupervised learning consists of two antagonistic
-mechanisms, a long time scale that corresponds to the learning and
-exploration of new components and a faster scale that corresponds to
-coding.
+
 
 A component often ignored in this type of learning is the set of
 mechanisms of homeostasis. Indeed, these are implemented in the original
@@ -781,6 +771,11 @@ l'apprentissage pendant l'apprentissage.
 %One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
  %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
 
+%2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
+%3. application to asynchronous / focal  log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
+
+%To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid,  energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a  database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).% 
+%
 
 %\FigureMap
 %\columnbreak
