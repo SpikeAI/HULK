@@ -538,8 +538,9 @@ This representation makes it possible to observe the emergence of
 representations which are invariant to geometric transforms such as
 rotations and translations in V1. A recent rapprochement between these
 algorithms and machine learning algorithms makes it possible to place
-them in a new perspective. Indeed, these unsupervised algorithms are
-equivalent to a gradient descent optimization over an informational-type
+them in a new perspective. 
+%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
+Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type
 coding cost. This cost makes it possible to quantitatively evaluate the
 exploration of new components in the signal for learning with respect to
 the exploitation of these components in the coding. As such, this remark
@@ -547,10 +548,6 @@ shows us that unsupervised learning consists of two antagonistic
 mechanisms, a long time scale that corresponds to the learning and
 exploration of new components and a faster scale that corresponds to
 coding.
-
-%https://blog.keras.io/building-autoencoders-in-keras.html Otherwise, one reason why they have attracted so much research and attention is because they have long been thought to be a potential avenue for solving the problem of unsupervised learning, i.e. the learning of useful representations without the need for labels. Then again, autoencoders are not a true unsupervised learning technique (which would imply a different learning process altogether), they are a self-supervised technique, a specific instance of supervised learning where the targets are generated from the input data. 
-
-
 
 %\newcommand{\ParagIntro}{%
 %It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
