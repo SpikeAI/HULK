@@ -14,8 +14,8 @@
 % to avoid loading the natbib package, add option nonatbib:
 % \usepackage[nonatbib]{nips_2017}
 
-\usepackage{nips_2017}
-\input{CHAMP_Metadata}
+\usepackage[nonatbib]{nips_2017}
+%\input{CHAMP_Metadata}
 % to compile a camera-ready version, add the [final] option, e.g.:
 %\usepackage[final]{nips_2017}
 
@@ -44,6 +44,7 @@
 \newcommand{\EmailA}{victor.boutin@univ-amu.fr}%
 \newcommand{\EmailB}{angelo.franciosini@univ-amu.fr}%
 \newcommand{\EmailC}{laurent.perrinet@univ-amu.fr}%victor.boutin@univ-amu.fr
+\newcommand{\WebsiteC}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\Title}{%
 A fast algorithm for unsupervised learning
 %alternatives: - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
@@ -70,17 +71,13 @@ We tested this unsupervised algorithm with this homeostasis rule for a
 range of existing unsupervised learning algorithms coupled with
 different neural coding algorithms. In addition, we propose a
 simplification of this optimal homeostasis rule by implementing a simple
-heuristic on the probability of activation of neurons. Compared to the
+heuristic on the probability of activation of neurones. Compared to the
 optimal homeostasis rule, we show that this heuristic allows to
-implement a faster unsupervised learning algorithm while keeping a large
+implement an even faster unsupervised learning algorithm while keeping a large
 part of its effectiveness. 
-% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. 
 These results demonstrate the potential application 
 of such a strategy to the fast classification of images, 
 for example in hierarchical and dynamic architectures.
-%
-%One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
- %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
 }
 \newcommand{\Keywords}{Retina, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\Acknowledgments}{%
@@ -290,14 +287,13 @@ year = {2012}
        supscaled=1.2,%
        raised=-.13em]{superiors}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%\usepackage{hyperref}       % hyperlinks
-\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
-\hypersetup{%
-pdftitle={\Title},%
-pdfauthor={Corrresponding author: \AuthorB < \EmailB > \Address - \Website },%
-pdfkeywords={\Keywords},%
-pdfsubject={\Acknowledgments}%
-}%
+%\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
+%\hypersetup{%
+%pdftitle={\Title},%
+%pdfauthor={Corrresponding author: \AuthorC < \EmailC > \Address - \WebsiteC },%
+%pdfkeywords={\Keywords},%
+%pdfsubject={\Acknowledgments}%
+%}%
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{amsfonts}       % blackboard math symbols
@@ -429,8 +425,8 @@ Pittsburgh, PA 15213 \\
 %% \texttt{email} \\
 }
 
-\setlength{\pdfpagewidth}{\paperwidth}
-\setlength{\pdfpageheight}{\paperheight}
+%\setlength{\pdfpagewidth}{\paperwidth}
+%\setlength{\pdfpageheight}{\paperheight}
 
 
 
@@ -443,7 +439,7 @@ Pittsburgh, PA 15213 \\
 
 
 %\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
-\usepackage[margin=0.5in]{geometry}
+%\usepackage[margin=0.5in]{geometry}
 %\oddsidemargin 0.0in		% margin, in addition to 1" standard
 %\textwidth 6.5in		% 8.5" - 2*(1+\oddsidemargin)
 %
@@ -489,7 +485,6 @@ Pittsburgh, PA 15213 \\
 %
 %Approximately 20 submissions will be chosen for short talks and ~300 will be chosen for poster presentations. We expect ~20% of submissions will be rejected due to limitations on poster space. 
 
-\usepackage{multicol}
 \makeatletter
 
 \pagestyle{empty}		% No page numbers
@@ -780,12 +775,18 @@ l'apprentissage pendant l'apprentissage.
 
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 
+
+% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. 
+%
+%One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
+ %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
+
+
 %\FigureMap
 %\columnbreak
 %tata
 %\Figure
 %\FigureQuant
-%\end{multicols}
 
 %%%%%----------------------------------------------------------------- 
 %%\section*{Acknowledgments}
