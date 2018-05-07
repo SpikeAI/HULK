@@ -71,15 +71,9 @@ We tested this unsupervised algorithm with this homeostasis rule for a
 range of existing unsupervised learning algorithms coupled with
 different neural coding algorithms. In addition, we propose a
 simplification of this optimal homeostasis rule by implementing a simple
-heuristic on the probability of activation of neurones. 
-Compared to the optimal homeostasis rule, we show that this heuristic allows to
-implement an even faster unsupervised learning algorithm while keeping a large
-part of its effectiveness. 
-These results demonstrate the potential application 
-of such a strategy to the fast classification of images, 
-for example in hierarchical and dynamic architectures.
+heuristic on the probability of activation of neurones. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement an even faster unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 }
-\newcommand{\Keywords}{Retina, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
+\newcommand{\Keywords}{Vision, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\Acknowledgments}{%
 This work was supported by XXX and the Doc2Amu project which received funding from a co-fund with the European Union's Horizon 2020 research and innovation programme and the region Provence Alpes Cote d'Azur. }
 \newcommand{\Links}{%
@@ -698,12 +692,12 @@ algorithm can provide a normative theory for the coding of information
 in low-level sensory processing, whether it is visual or auditory, for
 example.
 
-\section{Algorithm}\label{algorithm}
+\section{Algorithms for homeostasis}\label{algorithm}
 
 
 
 
-\subsection{Objective}\label{objective}
+%\subsection{Objective}\label{objective}
 
 % Link with VAE : https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/
 
@@ -713,7 +707,7 @@ Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, w
 \end{equation}%
 During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. In particular, we will set the a priori probability of selecting coefficients {\color{BrickRed} $\forall (i,j), P(\coef_i)=P(\coef_j)$} to ensure the optimality of the choice of the  pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.%
 
-\subsection{Algorithm}\label{algorithm}
+\subsection{Algorithm: Optimal homeostasis}\label{HEH}
 
 
 The proposed algorithm is:
@@ -754,11 +748,38 @@ Le principe de l'algorithme consiste à rajouter des variables latentes
 qui vont permettre de prédire les déviations dans le codage ou
 l'apprentissage pendant l'apprentissage.
 
+
+\subsection{Algorithm: Approximate homeostasis}\label{HAP}
+
+
 \section{Methods}\label{methods}
+\subsection{Simulation of unsupervised learning}
+%: scripts on github
+
+%: coding validated on sklearn
+
+%: architecture to test zillions of parameters
+
+\subsection{Quantitative Evaluation of dictionaries}
+
+
 
 
 \section{Results}\label{results}
 
+\subsection{Fast unsupervised learning using homeostasis}
+
+
+\subsection{Approximate homeostasis yields similar performance}
+
+
+\subsection{Robustness of results}
+
+% effect of coding algorithm
+
+% effect of eta, eta_homeo
+
+%: structural complexity: effect of size fo dictionary, 
 
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 
