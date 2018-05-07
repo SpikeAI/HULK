@@ -254,7 +254,6 @@ year = {2012}
 	Url = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary},
 	Year = {2015},
 	Bdsk-Url-1 = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary}}
-
 \end{filecontents}
 \usepackage[natbib=true,
 			style=ieee, %numeric-comp,
@@ -451,36 +450,16 @@ year = {2012}
 \end{abstract}
 \thispagestyle{empty}
 \section{Introduction}\label{introduction}
-%: 
-The neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding. In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the visual information into a rough sketch that represents the outlines of objects in the image. This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of~\textcite{hubel1968receptive}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations. A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image. Indeed, the work of~\textcite{olshausen1996emergence} has shown that by imposing a sparse encoding of the image, we can obtain the emergence of such cells in a neural-type model. This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost. This cost makes it possible to quantitatively evaluate the exploration of new components in the signal for learning with respect to the exploitation of these components in the coding. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
+%: introducing sparseness
+The neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding. In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the visual information into a rough sketch that represents the outlines of objects in the image. This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of~\textcite{hubel1968receptive}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations. A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image. Indeed, the work of~\textcite{olshausen1996emergence} has shown that by imposing a sparse encoding of the image, we can obtain the emergence of such cells in a neural-type model. This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost (Elad, VAE). This cost makes it possible to quantitatively evaluate the exploration of new components in the signal for learning with respect to the exploitation of these components in the coding. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
 
-A component often ignored in this type of learning is the set of
-mechanisms of homeostasis. Indeed, these are implemented in the original
-algorithms (Olshausen, Rehn, \ldots{}) as a heuristic that simply
-prevents the algorithm from diverging. It consists in some recent
-algorithms to constitute only of an equalization of the energy of each
-component of the dictionary (Mairal). However, the neural mechanisms of
-homeostasis are at work in many components of the neural code and are
-essential to the overall functioning of the neural code. For example,
-the networks of GABA-type inhibitory neurons make it possible to
-regulate the overall activity of neural populations. This mechanism then
-makes it possible to balance the contribution of the excitatory
-populations with respect to that in inhibitory populations. By this
-mechanism, this type of so-called balanced networks can explain many
-features inherent in the primary visual cortex (Hansel). These
-mechanisms, which often take the form of normalization rules (Schwartz)
-in the network, are often used as normative theory to explain the
-mechanisms present in the primary visual cortex (see Heeger or gain normalization by Simoncelli). However,
-this work is often intended to show that the cells that emerge from
-these algorithms have the same characteristics as that observed in
-neurophysiology (Rehn, Loxley). Other algorithms use nonlinearities that
-implicitly implement homeostatic rules in neuromimic algorithms
-(Gerstner and Brito). These non-linearities are mainly used in the
-output of successive layers of deep learning networks that are nowadays
-widely used for image classification or artificial intelligence. However
-most of these non-linear normalization rules are based on heuristics
-mimicking neural mechanisms but are not justified as part of the global
-problem of unsupervised learning.
+%: in machine learning
+It is important to note at this point that learning algorithms used in artificial intelligence can shed new light on the functioning of these neural processes and in particular on unsupervised learning. In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. This training is therefore carried out autonomously and is particularly used for image and signal compression, object detection, source separation and noise reduction in raw signals. As such, this class of algorithms is extremely useful in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of either an optimization of information transfer (Bell), or in the form of recursive algorithms in statistics and probabilities with, for example, projection continuation. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. These solutions take the form of parsimonious coding, i. e. for which a small number of components will be selected according to the size of the dictionary. This principle is general enough to be applied to many signal classes and allow a mathematical analysis of this problem (Donoho). In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture~\citep{Perrinet10shl}. It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals~\citep{PerrinetBednar15}. However, recent studies seem to question this principle of parsimonious coding (Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis applied in a complex metric is sufficient to explain the emergence of selective filters with orientation similar to those observed in the primary visual cortex.
+
+%: encompassed in probabilistic approaches
+In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem. This approach is already widely used in Barlow's early work under the term of redundancy reduction principle (see also Atick). It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981). Other studies show that these rules are tantamount to forcing the system to be close to a criticality regime and optimizing the balance between coding and learning (Beggo, 2008 in Sandin) More generally, we will place ourselves in the framework of the principle of free energy minimization formulated by Karl Friston. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning. In this theory, learning is no longer a goal in itself but contributes to the the minimization of free energy at different time scales, from coding to learning. According to this principle, the overall goal of neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning. The goal of these processes is thus simply to not be surprised by the sensory input. As such, the aim of learning is to obtain a coding that is the least variable a priori, that is to say, before having received the sensory information. On the one hand, this theory extends that of Olshausen and shows that overall, sparse coding also has a predictive part. Thus, this will also allow us to formulate a normative theory of the neural code at its different time scales. Thus, the set of processes at different time scales are thus considered as working synergestically and provide for a novel normative theory of coding in early sensory areas such as V1.
+
+%: homeostasis
 %------------------------------%
 %: see Figure~\ref{fig:map}
 \begin{figure}%[!ht]%%[p!]
@@ -500,88 +479,13 @@ We show the results of Sparse Hebbian Learning using  different homeostasis algo
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
+In particular, a component often ignored in this type of learning is the set of mechanisms of homeostasis. Indeed, these are implemented in the original algorithms (Olshausen, Rehn, \ldots{}) as a heuristic that simply prevents the algorithm from diverging. It consists in some recent algorithms to constitute only of an equalization of the energy of each component of the dictionary (Mairal). However, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall functioning of the neural code. For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of neural populations (citation needed). This mechanism then makes it possible to balance the contribution of the excitatory populations with respect to that in inhibitory populations. By this mechanism, this type of so-called balanced networks can explain many features inherent in the primary visual cortex (Hansel). These mechanisms, which often take the form of normalization rules (Schwartz) in the network, are often used as normative theory to explain the mechanisms present in the primary visual cortex (see Heeger or gain normalization by Simoncelli). However, this work is often intended to show that the cells that emerge from these algorithms have the same characteristics as that observed in neurophysiology (Rehn, Loxley). Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuromimic algorithms (Gerstner and Brito). These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence. However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem of unsupervised learning. Framing this problem in a probabilistic framework allows to consider in addition to coding a	nd learning the intermediate time scale of homeostasis. This allows us also to associate homeostasis with adaptation mechanisms (Rao Balard). Our main argument is that by optimizing unsupervised learning at different time scales, we allow for the implementation of fast algorithms compatible with the performance of biological networks and in comparison with classical (Olshausen) or Deep Learning approaches.
 
-It is important to note at this point that learning algorithms used in
-artificial intelligence can shed new light on the functioning of these
-neural processes and in particular on unsupervised learning. In the
-field of machine learning, unsupervised learning corresponds to learning
-representation dictionaries when the categorization data is unknown.
-This training is therefore carried out autonomously and is particularly
-used for image and signal compression, object detection, source
-separation and noise reduction in raw signals. As such, this class of
-algorithms is extremely useful in the first layers of artificial
-intelligence algorithms such as deep algorithms. There are many variants
-of such algorithms that take the form of either an optimization of
-information transfer (Bell), or in the form of learning rules in deep
-learning or recursive algorithms in statistics and probabilities with,
-for example, projection continuation. An important class of these
-algorithms considers that all the solutions that will be considered are
-those that correspond to an optimal coding. These solutions take the
-form of parsimonious coding, i. e. for which a small number of
-components will be selected according to the size of the dictionary.
-This principle is general enough to be applied to many signal classes
-and allow a mathematical analysis of this problem (Donoho). In
-particular, we have shown above that a rapid algorithm of parsimonious
-coding can be implemented in a normal neural architecture (Perrinet,
-2010). It has also been shown that such coding can improve
-classification algorithms, in particular by limiting the number of
-layers required in a deep learning algorithm for classifying images that
-contain or do not contain animals (Perrinet and Bednar, 2015). However,
-recent studies seem to question this principle of parsimonious coding
-(Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis
-applied in a complex metric is sufficient to explain the emergence of
-selective filters with orientation similar to those observed in the
-primary visual cortex.
-
-In order to offer a broader perspective on this problem, we will try to
-express it in the generic form of a probabilistic problem. This approach
-is already widely used in Barlow's early work under the term of
-redundancy reduction principle (see also Atick). It led to translating
-this learning problem into a problem of efficient coding, for example by
-implementing inhibition rules in the retinal receptive field of the
-saber-toothed tiger (??? Srinivasan, 1981). Other studies show that
-these rules are tantamount to forcing the system to be close to a
-criticality regime and optimizing the balance between coding and
-learning optimization (Beggo, 2008 in Sandin) More generally, we will
-place ourselves in the framework of the principle of free energy
-minimization formulated by Karl Friston. This principle makes it
-possible to explicitly address the problem of coding and unsupervised
-learning, also during learning. In this theory, learning is no longer a
-goal in itself but contributes to the the minimization of free energy at
-different time scales, from coding to learning but also to the
-intermediate time of homeostasis. According to this principle, the
-overall goal of neural system is to be able to best predict any sensory
-input. This principle results in changes in the structure of the
-population (synaptic connections) but also in adaptation rule before the
-convergence of the learning. The goal of these processes is thus simply
-to not be surprised by the sensory input. As such, the aim of learning
-is to obtain a coding that is the least variable a priori, that is to
-say, before having received the sensory information. On the one hand,
-this theory extends that of Olshausen and shows that homeostasis also
-has a predictive part. Thus, this will also allow us to formulate a
-normative theory of the neural code at the time scale of homeostasis.
-This allows us also to associate homeostasis with adaptation mechanisms
-(Rao Balard). Thus, the set of processes at different time scales are
-thus considered as working synergestically and provide for a novel
-normative theory of coding in early sensory areas such as V1.
-
-This paper is organized according to the following plan. First we will
-show the importance of homeostasis in unsupervised learning algorithms.
-We will derive an optimal rule for homeostatic adaptation based on
-histogram equalization. We will then show quantitative results of this
-optimal algorithm by applying it to different pairs of coding and
-learning algorithms. By using different learning databases, we will be
-able to give a quantitative analysis that will make it possible to
-compare these different solutions. To simplify the optimal rule of
-homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm
-derived from the optimal rule by using a simple heuristic. We will then
-compare the results of this new algorithm with the optimal algorithm as
-well as with other existing unsupervised learning algorithms (Olshausen,
-Sandin). %Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. 
-Finally we will conclude by showing the importance
-of homeostasis in unsupervised learning algorithms.
-
+%: outline
+This paper is organized according to the following plan. First we will show the importance of homeostasis in unsupervised learning algorithms. We will derive an optimal rule for homeostatic adaptation based on histogram equalization. We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning databases, we will be able to give a quantitative analysis that will make it possible to compare these different solutions. To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule by using a simple heuristic. We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms (Olshausen, Sandin). Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. Finally we will conclude by showing the importance of homeostasis in unsupervised learning algorithms.
+% ----------------------------------------------------------------------
 \section{Algorithms for unsupervised learning}\label{algorithm}
+% ----------------------------------------------------------------------
 Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
 %\begin{equation}%
 %\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
