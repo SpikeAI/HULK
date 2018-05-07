@@ -486,47 +486,24 @@ This paper is organized according to the following plan. First we will show the 
 % ----------------------------------------------------------------------
 \section{Algorithms for unsupervised learning}\label{algorithm}
 % ----------------------------------------------------------------------
-Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Llearning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
-%\begin{equation}%
-%\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
-%\end{equation}%
-%During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
-%}%
-%\newcommand{\ParagLongIntro}{%
-%It is observed that simple cell neurones in mammalian primary visual cortex are selective to orientation, spatial localisation, and frequencies~\citep{hubel1968receptive}. It is demonstrated that developing a coding strategy that maximises sparseness is sufficient to form receptive fields that account for all three of the above properties~\citep{olshausen1996emergence}. Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items~\citep{Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex.
-%
-%Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to use a more generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
-%\begin{equation}%
-%\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
-%\end{equation}%
-%It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl}. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
-%
-%To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
-%
-%We compared qualitatively the set $\dico$ of receptive filters generated by the proposed algorithm when the homeostasis is first turned-off and then enabled  (see Fig.~\ref{fig:map}). A more quantitative study of the coding is shown by comparing selection distribution of sparse coefficients when the homeostasis mechanism is turned on (see Fig.~\ref{fig:quant}). We demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an increase of the Shanon entropy. Finally, an interesting perspective is to apply the homeostatic regulation algorithm in a classical fully connected deep-learning neural network and applied on the MNIST recognition task. By using the sparse coefficients as the input layer of the network, we can compare the performance obtained with and without the homeostatic mechanism. Preliminary results show that the improvement in efficiency is more acute when using sparse representations (5 out of 324 coefficients).
-%}%
+%: free-energy formulation
+Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items. Given a set $\image = (\image_k)_{k=1}^L \in \RR^{L \times M} $ of $L$ signals $\image_k \in \RR^M$ (raveled images of $M$ pixels), dictionary learning aims at finding the best dictionary $\dico=(\dico_i)_{i=1}^N$ of $N$ atoms $\dico_i \in \RR^M$ such that they best represent the data. In probabilistic term, this amounts to minimize the (negative) free-energy $F$ as a bound on surprise:
+$$ F = KL( p(\image ) || q(\image | \coef, \dico ) )$$
+which is the Kullback-Leibler distance between the density of images according to a known generative model and the current approximation of this density using the current estimate of sparse coefficients $\coef = (\coef)_{k=1}^L \in \RR^{L \times N} $ and of the dictionary $\dico$.
 
-Given a set $\image = (\image_j)_{j=1}^M \in \RR^{L \times M} $ of $L$ signals
-$\image_j \in \RR^M$, dictionary learning aims at finding the best
-dictionary $\dico=(\dico_i)_{i=1}^p$ of $p$ atoms $\dico_i \in \RR^n$ such that they fit to the data:
+Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. 
+In particular, using a known coding of the image $\coef$, we may approximate the probability using
+$$ p(\image | \dico ) = \int  p(\image | \coef, \dico ) dP(\coef) \approx q = p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) $$
+%$$\hat{\coef}= \Arg\Max $$
+This is the classical formulation from Olshausen and Field but this ignores the approximation during learning (objective only valid at convergence) - a nice move would be to use free-energy as a bound on surprise - and that homeosatsis comes as a additional mechanism - restricts the set of possible dictionaries.
 
-$$ \image = \dico \cdot Y + \epsilon $$
+% - noise comes from independent mixings (Cournot) - inversely, knowing the mixes, we extract the signal
+% - we wish to reduce noise as much as possible by having the least number of sources => sparse coding (inverse fof central limit theorem?)
+% - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
+% - goals = memory / separation / representation
 
-Coding using
-$$ p(\image | \dico ) = \int  p(\image | \coef, \dico ) dP(\coef) \approx p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) $$
+% Link with VAE : https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/
 
-with $\coef  \in \RR^N$ 
-
-This is the classical formulation from Olshausen and Field but this ignores the approximation durting learning (objective only valid at convergence) - a nice move would be to use free-energy as a bound on surprise - and that homeosatsis comes as a additional mechanism - restricts the set of possible dictionaries
-
-%$$ q(\coeff | \image; \dico) $$ tries to match
-%$$ p(\coeff | \image; \dico) $$
-
-in particular, we know that in the external world (of $p$) all coeffs are active - in $q$ we have to set a threshold
-
-
-%$$\hat{Y}= \Arg\Max $$
-In this paper, we consider that each $\image_j \in \RR^N$ is a patch of size $N=w \times w$ extracted from a natural scene.
 
 %
 %The idea of learning dictionaries to sparse code image patch was first
@@ -536,27 +513,31 @@ In this paper, we consider that each $\image_j \in \RR^N$ is a patch of size $N=
 %Olshausen BA, and Field DJ.,
 %<http://www.nature.com/nature/journal/v381/n6583/abs/381607a0.html Emergence of Simple-Cell Receptive Field Properties by Learning a Sparse Code for Natural Images.>
 %Nature, 381: 607-609, 1996.
+%~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps
 
+Assuming a Generative Linear Model, such that $\image = \dico \cdot \coef + \epsilon $, where $\epsilon  \in \RR^{L \times M}$ is without loss of generality a Normal iid noise.  The sparse coding is obtained by minimizing a $\ell^0$ constrained optimization
+$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
+where the $\ell^0$ pseudo-norm of $\coef_i \in \RR^N$ is
+$$ \norm{\coef_k}_0 = \abs{\enscond{i}{\coef_k(i) \neq 0}}. $$
+The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding.
 
-The sparse coding of a single data $y=y_j$ for some $j=1,\ldots,m$
-is obtained by minimizing a $\ell^0$ constrained optimization
-$$ \umin{ \norm{x}_0 \leq k } \frac{1}{2}\norm{y-Dx}^2 .  $$
-where the $\ell^0$ pseudo-norm of $x \in \RR^p$ is
-$$ \norm{x}_0 = \abs{\enscond{i}{x(i) \neq 0}}. $$
-
-
-The parameter $k>0$ controls the amount of sparsity.
-
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
 
 
 \subsection{Objective}\label{objective}
 
-% - noise comes from independent mixings (Cournot) - inversely, knowing the mixes, we extract the signal
-% - we wish to reduce noise as much as possible by having the least number of sources => sparse coding (inverse fof central limit theorem?)
-% - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
-% - goals = memory / separation / representation
 
-% Link with VAE : https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/
+
+First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+
+In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to use a more generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
+\begin{equation}%
+\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+\end{equation}%
+It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl}. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
+%
 
 Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, we achieve sparse coding using a gradient descent~\citep{olshausen1996emergence,Olshausen97} over a  cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness~\citep{Perrinet10shl,Perrinet15bicv}, by simply counting the number of non-zero coefficients:
 \begin{equation}%
@@ -655,6 +636,7 @@ link of sparse coding with the cortical architecture (see rao and ballard) :
 \subsection{Algorithm: Optimal homeostasis}\label{HEH}
 
 % we know that during learning, there are distortions in the code / dictionary : normalisation is not enough.
+During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
 
 During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. In particular, we will set the a priori probability of selecting coefficients {\color{BrickRed} $\forall (i,j), P(\coef_i)=P(\coef_j)$} to ensure the optimality of the choice of the  pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.%
 
@@ -730,6 +712,9 @@ The proposed algorithm is:
 %}%
 %\end{figure}%
 %%%------------------------------%
+To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+
+We compared qualitatively the set $\dico$ of receptive filters generated by the proposed algorithm when the homeostasis is first turned-off and then enabled  (see Fig.~\ref{fig:map}). A more quantitative study of the coding is shown by comparing selection distribution of sparse coefficients when the homeostasis mechanism is turned on (see Fig.~\ref{fig:quant}). We demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an increase of the Shanon entropy. Finally, an interesting perspective is to apply the homeostatic regulation algorithm in a classical fully connected deep-learning neural network and applied on the MNIST recognition task. By using the sparse coefficients as the input layer of the network, we can compare the performance obtained with and without the homeostatic mechanism. Preliminary results show that the improvement in efficiency is more acute when using sparse representations (5 out of 324 coefficients).
 
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
