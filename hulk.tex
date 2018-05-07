@@ -525,29 +525,13 @@ The parameter $N_0>0$ controls the amount of sparsity that we impose to the codi
 \mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
 \end{equation}%
 
+It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl} by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
 
 \subsection{Objective}\label{objective}
 
-
-
-First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
-
-In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to use a more generic $\ell_0$ norm sparseness, by simply counting the number of non-zero coefficients:
-\begin{equation}%
-\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
-\end{equation}%
-It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl}. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
-%
-
-Knowing a dictionary of receptive fields $\dico_i$~\citep{hubel1968receptive}, we achieve sparse coding using a gradient descent~\citep{olshausen1996emergence,Olshausen97} over a  cost derived from a sparse prior probability distribution function of the coefficients $a_i$, where we use the generic $\ell_0$ norm sparseness~\citep{Perrinet10shl,Perrinet15bicv}, by simply counting the number of non-zero coefficients:
-\begin{equation}%
-\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
-\end{equation}%
-
-% gradient descetn on $log[ p(x | \dico) ]:
-
-% \frac{\partial }{\partial \dico_i } = \frac{-1}{2 \sigma^2} \frac{\partial }{\partial \dico_i }[(\image - \dico \coef)^T (\image - \dico \coef)] = \frac{-1}{2 \sigma^2} \hat{\coef} (\image - \dico \hat{\coef})]
-
+In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. An alternative is to 
+perform a gradient descent on $\log[ F ] $:
+$$ \frac{\partial }{\partial \dico_i } F = \frac{-1}{2 \sigma^2} \frac{\partial }{\partial \dico_i }[(\image - \dico \coef)^T (\image - \dico \coef)] = \frac{-1}{2 \sigma^2} \hat{\coef} (\image - \dico \hat{\coef})].$$
 It is linear (at the single neuraon level) but the sparse code is not linear (at population level) - link with back-propagation
 
 % cf sparsity_4_dictionary_learning
@@ -558,74 +542,6 @@ where, for $j=1,\ldots,m$, $ x_j $
 is the set of coefficients of the data $y_j$. This joint optimization reads
 $$ \umin{ D \in \Dd, X \in \Xx_k } E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
 \frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
-
-
-%The constraint set on $D$ reads
-%$$ \Dd = \enscond{D \in \RR^{n \times p} }{
-%      \forall i=1,\ldots,p, \quad \norm{D_{\cdot,i}} \leq 1  }, $$
-%(the columns of the dictionary are unit normalized).
-%The sparsity constraint set on $X$ reads
-%$$ \Xx_k = \enscond{X \in \RR^{p \times m}}{ \forall j, \: \norm{X_{\cdot,j}}_0 \leq k }. $$
-%
-%
-%We propose to use a block-coordinate descent method to minimize $E$:
-%$$ X^{(\ell+1)} \in \uargmin{X \in \Xx_k} E(X,D^{(\ell)}), $$
-%$$ D^{(\ell+1)} \in \uargmin{D \in \Dd} E(X^{(\ell+1)},D). $$
-%
-%
-%One can show the convergence of this minimization scheme, see for
-%instance
-%
-%
-%P. Tseng, <http://www.math.washington.edu/~tseng/papers/archive/bcr_jota.pdf Convergence of Block Coordinate Descent Method for Nondifferentiable Minimization>,
-%J. Optim. Theory Appl., 109, 2001, 475-494.
-%
-%
-%We now define the parameter of the problem.
-%
-%
-%Width $w$ of the patches.
-
-
-%Update the Dictionary $D$
-%---------------------------
-%Once the sparse coefficients $X$ have been computed, one
-%can udpate the dictionary. This is achieve by performing the minimization
-%$$ \umin{D \in \Dd} \frac{1}{2}\norm{Y-D X}^2. $$
-%
-%
-%One can perform this minimization with a projected gradient descent
-%$$ D \leftarrow \text{Proj}_{\Cc}\pa{ D - \tau (DX - Y)X^* } $$
-%where $ \tau < 2/\norm{XX^*}. $
-%
-%
-%Note that the orthogonal projector $\text{Proj}_{\Cc}$ is implemented in the function
-%|ProjC| already defined.
-
-%Update of the Coefficients $X$
-%--------------------------------
-%The optimization on the coefficients $X$ requires, for each $y_j =
-%Y_{\cdot,j}$ to compute $x_j = X_{\cdot,j}$ that solves
-%$$ \umin{ \norm{x_j}_0 \leq k } \frac{1}{2} \norm{y-D x_j}^2. $$
-%
-%
-%This is a non-smooth and non-convex minimization, that can be shown to be
-%NP-hard. A heuristic to solve this method is to compute a stationary
-%point of the energy using the Foward-Backward iterative scheme (projected gradient descent):
-%$$ x_j \leftarrow \text{Proj}_{\Xx_k}\pa{
-%      x_j - \tau D^* ( D x_j - y )
-%      }$
-%      \qwhereq \tau < \frac{2}{\norm{D D^*}}. $$
-%
-%
-%Denoting $\abs{\bar x(1)} \leq \ldots \leq \abs{\bar x(n)}$ the ordered
-%magnitudes of a vector $ x \in \RR^n $, the orthogonal projector on
-%$\Xx_k$ reads $z = \text{Proj}_{\Xx_k}(x)$ with
-%$$ \forall i=1,\ldots,n, \quad
-%      z(i) = \choice{ x(i) \qifq \abs{x(i)} \geq \abs{\bar x(k)}, \\
-%      z(i) = 0 \quad \text{otherwise}.
-%  }$
-%$$
 
 
 link of sparse coding with the cortical architecture (see rao and ballard) : 
