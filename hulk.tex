@@ -1,8 +1,8 @@
 %!TEX root = hulk.tex
-%!TeX TS-program = Lualatex
+%!TeX TS-program = pdflatex
 %!TeX encoding = UTF-8 Unicode
 %!TeX spellcheck = en-US
-%!BIB TS-program = bibtex
+%!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -20,27 +20,29 @@
 %
 % to avoid loading the natbib package, add option nonatbib:
 \usepackage[nonatbib]{nips_2018}
+%\usepackage{nips_2018}
 %\usepackage[final]{nips_2018}
 %
 %============ common ===================
-\usepackage[utf8]{luainputenc}
-\usepackage[english]{babel}%
-%\usepackage{csquotes}%
-\usepackage[autostyle]{csquotes}
-%% Sans-serif Arial-like fonts
-\renewcommand{\rmdefault}{phv} 
-\renewcommand{\sfdefault}{phv} 
-     \usepackage{textcomp}
-     \usepackage{libertine}%[sb]
-     \usepackage[varqu,varl]{inconsolata}% sans serif typewriter
-     \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
-     \usepackage[cal=boondoxo]{mathalfa} % mathcal
-%     \useosf % osf for text, not math
-     \usepackage[supstfm=libertinesups,%
-       supscaled=1.2,%
-       raised=-.13em]{superiors}
-\usepackage[utf8]{inputenc} % allow utf-8 input
-\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+%\usepackage[utf8]{luainputenc}
+%\usepackage[english]{babel}%
+%%\usepackage{csquotes}%
+%\usepackage[autostyle]{csquotes}
+%%% Sans-serif Arial-like fonts
+%\renewcommand{\rmdefault}{phv} 
+%\renewcommand{\sfdefault}{phv} 
+%     \usepackage{textcomp}
+%     \usepackage{libertine}%[sb]
+%     \usepackage[varqu,varl]{inconsolata}% sans serif typewriter
+%     \usepackage[libertine,bigdelims,vvarbb]{newtxmath} % bb from STIX
+%     \usepackage[cal=boondoxo]{mathalfa} % mathcal
+%%     \useosf % osf for text, not math
+%     \usepackage[supstfm=libertinesups,%
+%       supscaled=1.2,%
+%       raised=-.13em]{superiors}
+%\usepackage[utf8]{inputenc} % allow utf-8 input
+%\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
+\usepackage{dsfont}
 \usepackage{hyperref}       % hyperlinks
 % --------------------------------------------------------------------------
 %                    METADATA
@@ -254,7 +256,22 @@ year = {2012}
 	Url = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary},
 	Year = {2015},
 	Bdsk-Url-1 = {http://onlinelibrary.wiley.com/doi/10.1002/9783527680863.ch14/summary}}
+	
+	
+@article{Doersch2016,
+	Abstract = {In just three years, Variational Autoencoders (VAEs) have emerged as one of the most popular approaches to unsupervised learning of complicated distributions. VAEs are appealing because they are built on top of standard function approximators (neural networks), and can be trained with stochastic gradient descent. VAEs have already shown promise in generating many kinds of complicated data, including handwritten digits, faces, house numbers, CIFAR images, physical models of scenes, segmentation, and predicting the future from static images. This tutorial introduces the intuitions behind VAEs, explains the mathematics behind them, and describes some empirical behavior. No prior knowledge of variational Bayesian methods is assumed.},
+	Author = {Doersch, Carl},
+	Journal = {arXiv:1606.05908 [cs, stat]},
+	Keywords = {Computer Science - Learning, Statistics - Machine Learning},
+	Month = jun,
+	Note = {00083 arXiv: 1606.05908},
+	Title = {Tutorial on {Variational} {Autoencoders}},
+	Url = {http://arxiv.org/abs/1606.05908},
+	Urldate = {2018-05-11},
+	Year = {2016},
+	Bdsk-Url-1 = {http://arxiv.org/abs/1606.05908}}
 \end{filecontents}
+%\usepackage[backend=biber]{biblatex}
 \usepackage[natbib=true,
 			style=ieee, %numeric-comp,
       		sortcites=true,
@@ -271,7 +288,7 @@ year = {2012}
 			texencoding=utf8,
 			bibencoding=latin1,
 			%autocite=superscript,
-			backend=bibtex,
+			backend=biber,
 			%articletitle=false,
 			]{biblatex}%
 \AtEveryBibitem{
@@ -284,6 +301,8 @@ year = {2012}
 %  \clearfield{publisher}
 }
 \addbibresource{hulk.bib}%
+%\newcommand{\citep}[1]{(\cite{#1})}
+%\newcommand{\citet}[1]{(\textcite{#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
 %\hypersetup{%
@@ -407,35 +426,6 @@ year = {2012}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
-%\usepackage{fancyhdr}
-
-
-%\usepackage[top=2cm, bottom=2cm, left=2cm, right=2cm]{geometry}
-%\usepackage[margin=0.5in]{geometry}
-%\oddsidemargin 0.0in		% margin, in addition to 1" standard
-%\textwidth 6.5in		% 8.5" - 2*(1+\oddsidemargin)
-%
-%%\topmargin -0.25in		% in addition to 1.5" standard margin
-%\topmargin -.75in		% in addition to 1.5" standard margin
-%\textheight 8.75in 		% 11 - ( 1.5 + \topmargin + <bottom-margin> )
-%
-%\columnsep 0.1in
-%
-%\parindent 0pt
-%\parskip 12pt
-%
-%\flushbottom \sloppy
-%\topskip    = 0.0truein
-%\topmargin  = 0.0truein
-%\headheight = 0.0truein
-%\headsep    = 0.0truein
-%\hoffset    = -0.48truein
-%\voffset    = -0.9truein
-%\parskip    = \baselineskip
-%\parindent  = 0pt
-%\textwidth  = 6.4truein
-%\textheight = 10.1truein
-%\flushbottom\makeatletter
 
 %\pagestyle{empty}		% No page numbers
 \begin{document}
@@ -451,7 +441,7 @@ year = {2012}
 \thispagestyle{empty}
 \section{Introduction}\label{introduction}
 %: introducing sparseness
-The neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding. In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the visual information into a rough sketch that represents the outlines of objects in the image. This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of~\textcite{hubel1968receptive}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations. A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image. Indeed, the work of~\textcite{olshausen1996emergence} has shown that by imposing a sparse encoding of the image, we can obtain the emergence of such cells in a neural-type model. This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost (Elad, VAE). This cost makes it possible to quantitatively evaluate the exploration of new components in the signal for learning with respect to the exploitation of these components in the coding. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
+The neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt in the long term autonomously (self-organized) to optimize this coding. In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the visual information into a rough sketch that represents the outlines of objects in the image. This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of~\citet{hubel1968receptive}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations. A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image. Indeed, the work of~\citet{olshausen1996emergence} has shown that by imposing a sparse encoding of the image, we can obtain the emergence of such cells in a neural-type model. This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost (Elad, VAE). This cost makes it possible to quantitatively evaluate the exploration of new components in the signal for learning with respect to the exploitation of these components in the coding. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
 
 %: in machine learning
 It is important to note at this point that learning algorithms used in artificial intelligence can shed new light on the functioning of these neural processes and in particular on unsupervised learning. In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. This training is therefore carried out autonomously and is particularly used for image and signal compression, object detection, source separation and noise reduction in raw signals. As such, this class of algorithms is extremely useful in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of either an optimization of information transfer (Bell), or in the form of recursive algorithms in statistics and probabilities with, for example, projection continuation. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. These solutions take the form of parsimonious coding, i. e. for which a small number of components will be selected according to the size of the dictionary. This principle is general enough to be applied to many signal classes and allow a mathematical analysis of this problem (Donoho). In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture~\citep{Perrinet10shl}. It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals~\citep{PerrinetBednar15}. However, recent studies seem to question this principle of parsimonious coding (Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis applied in a complex metric is sufficient to explain the emergence of selective filters with orientation similar to those observed in the primary visual cortex.
@@ -488,7 +478,7 @@ This paper is organized according to the following plan. First we will show the 
 % ----------------------------------------------------------------------
 %: free-energy formulation
 Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items. Given a set $\image = (\image_k)_{k=1}^L \in \RR^{L \times M} $ of $L$ signals $\image_k \in \RR^M$ (raveled images of $M$ pixels), dictionary learning aims at finding the best dictionary $\dico=(\dico_i)_{i=1}^N$ of $N$ atoms $\dico_i \in \RR^M$ such that they best represent the data. In probabilistic term, this amounts to minimize the (negative) free-energy $F$ as a bound on surprise:
-$$ F = KL( p(\image ) || q(\image | \coef, \dico ) )$$
+$$ F = KL( q(\coef, \dico  | \image ) ||  p( \coef, \dico | \image) )$$
 which is the Kullback-Leibler distance between the density of images according to a known generative model and the current approximation of this density using the current estimate of sparse coefficients $\coef = (\coef)_{k=1}^L \in \RR^{L \times N} $ and of the dictionary $\dico$.
 
 Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. 
@@ -503,7 +493,7 @@ This is the classical formulation from Olshausen and Field but this ignores the 
 % - goals = memory / separation / representation
 
 % Link with VAE : https://wiseodd.github.io/techblog/2016/12/10/variational-autoencoder/
-
+\citep{Doersch2016}
 
 %
 %The idea of learning dictionaries to sparse code image patch was first
@@ -519,7 +509,7 @@ This is the classical formulation from Olshausen and Field but this ignores the 
 % the value of the positive coefficient does not matter much : more bits on address than on quantification: form of independenace...
 
 Assuming a Generative Linear Model, such that $\image = \dico \cdot \coef + \epsilon $, where $\epsilon  \in \RR^{L \times M}$ is without loss of generality a Normal iid noise.  The sparse coding is obtained by minimizing a $\ell^0$ constrained optimization
-$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
+%$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
 where the $\ell^0$ pseudo-norm of $\coef_i \in \RR^N$ is
 $$ \norm{\coef_k}_0 = \abs{\enscond{i}{\coef_k(i) \neq 0}}. $$
 The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding.
@@ -544,8 +534,10 @@ Dictionary learning performs an optimization both on the dictionary $D$
 and the set of coefficients $ X = (x_j)_{j=1}^m \in \RR^{p \times m} $
 where, for $j=1,\ldots,m$, $ x_j $
 is the set of coefficients of the data $y_j$. This joint optimization reads
-$$ \umin{ D \in \Dd, X \in \Xx_k } E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
-\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
+%$$ \umin{ D \in \Dd, X \in \Xx_k } E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
+%\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
+$$E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
+%\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
 
 
 link of sparse coding with the cortical architecture (see rao and ballard) : 
@@ -555,9 +547,12 @@ link of sparse coding with the cortical architecture (see rao and ballard) :
 
 \subsection{Algorithm: Optimal homeostasis}\label{HEH}
 
+Knowing a dictionary and a sparse coding algorithm, we may transform any data $\image$ into a set of sparse coefficients. As we have seen, 
+
 % we know that during learning, there are distortions in the code / dictionary : normalisation is not enough.
 During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation. 
 % method zero = just normalizing the coefficitents (Mairal) -  first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
+
 
 To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
 
@@ -756,10 +751,6 @@ example.
 %%\Acknowledgments
 
 %%%----------------------------------------------------------------- 
-%{\bf References} \\
 \printbibliography
-%Column 1
-%\columnbreak
-%Column 2
 
 \end{document}
