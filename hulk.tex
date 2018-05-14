@@ -474,18 +474,21 @@ In particular, a component often ignored in this type of learning is the set of 
 %: outline
 This paper is organized according to the following plan. First we will show the importance of homeostasis in unsupervised learning algorithms. We will derive an optimal rule for homeostatic adaptation based on histogram equalization. We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning databases, we will be able to give a quantitative analysis that will make it possible to compare these different solutions. To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule by using a simple heuristic. We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms (Olshausen, Sandin). Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. Finally we will conclude by showing the importance of homeostasis in unsupervised learning algorithms.
 % ----------------------------------------------------------------------
-\section{Algorithms for unsupervised learning}\label{algorithm}
+\section{Algorithms for unsupervised learning}%\label{algorithm}
 % ----------------------------------------------------------------------
 %: free-energy formulation
-Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items. Given a set $\image = (\image_k)_{k=1}^L \in \RR^{L \times M} $ of $L$ signals $\image_k \in \RR^M$ (raveled images of $M$ pixels), dictionary learning aims at finding the best dictionary $\dico=(\dico_i)_{i=1}^N$ of $N$ atoms $\dico_i \in \RR^M$ such that they best represent the data. In probabilistic term, this amounts to minimize the (negative) free-energy $F$ as a bound on surprise:
-$$ F = KL( q(\coef, \dico  | \image ) ||  p( \coef, \dico | \image) )$$
-which is the Kullback-Leibler distance between the density of images according to a known generative model and the current approximation of this density using the current estimate of sparse coefficients $\coef = (\coef)_{k=1}^L \in \RR^{L \times N} $ and of the dictionary $\dico$.
+Visual items composing natural images are often sparse, such that the brain may use this sparseness to reconstruct images with only a few set of these items. Given a set $\image = (\image_k)_{k=1}^L \in \RR^{L \times M} $ of $L$ signals $\image_k \in \RR^M$ (raveled images of $M$ pixels), unsupervised learning aims at finding the least surprising cause for the data knowing a model for the generation of this data. % the value of the positive coefficient does not matter much : more bits on address than on quantification: form of independenace...
+Let's assume for instance the generic Generative Linear Model, such that $\image = \dico \cdot \coef + \epsilon $, where $\epsilon  \in \RR^{L \times M}$ is without loss of generality a Normal iid noise and  $\coef = (\coef)_{k=1}^L \in \RR^{L \times N} $ and of the dictionary $\dico \in \RR^{N \times M}$. 
+
+dictionary learning aims at finding the best dictionary $\dico=(\dico_i)_{i=1}^N$ of $N$ atoms $\dico_i \in \RR^M$ such that they best represent the data. In probabilistic term, this amounts to minimize the (negative) free-energy $F$ as a bound on surprise:
+\begin{equation} F = KL( q(\coef, \dico  | \image ) ||  p( \coef, \dico | \image) ) \end{equation}
+which is the Kullback-Leibler distance between the density of images according to a known generative model and the current approximation of this density using the current estimate of sparse coefficients.
 
 Most of existing models of unsupervised learning aim at optimising a cost defined on prior assumptions on representation's sparseness. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps. First, knowing a dictionary of receptive fields $\dico_i$, the sparse coding is achieved using a gradient descent over a convex cost derived from a sparse prior probability distribution function of the coefficients $a_i$. Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning. In general, the parameterisation of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. 
 In particular, using a known coding of the image $\coef$, we may approximate the probability using
-$$ p(\image | \dico ) = \int  p(\image | \coef, \dico ) dP(\coef) \approx q = p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) $$
+\begin{equation} p(\image | \dico ) = \int  p(\image | \coef, \dico ) dP(\coef) \approx q = p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) \end{equation}
 %$$\hat{\coef}= \Arg\Max $$
-This is the classical formulation from Olshausen and Field but this ignores the approximation during learning (objective only valid at convergence) - a nice move would be to use free-energy as a bound on surprise - and that homeosatsis comes as a additional mechanism - restricts the set of possible dictionaries.
+This is the classical formulation from Olshausen and Field but this ignores the approximation during learning (objective only valid at convergence) - a nice move would be to use free-energy as a bound on surprise - and that homeostasis comes as a additional mechanism - restricts the set of possible dictionaries.
 
 % - noise comes from independent mixings (Cournot) - inversely, knowing the mixes, we extract the signal
 % - we wish to reduce noise as much as possible by having the least number of sources => sparse coding (inverse fof central limit theorem?)
@@ -506,19 +509,19 @@ This is the classical formulation from Olshausen and Field but this ignores the 
 %~\citep{Perrinet10shl,Perrinet15bicv}. This is supporting the idea that an unsupervised learning algorithm based on sparse coding could be use to describe efficiently image processing in the primary visual cortex. Learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} on patches taken from natural images as a sequence of coding and learning steps
 
 
-% the value of the positive coefficient does not matter much : more bits on address than on quantification: form of independenace...
-
-Assuming a Generative Linear Model, such that $\image = \dico \cdot \coef + \epsilon $, where $\epsilon  \in \RR^{L \times M}$ is without loss of generality a Normal iid noise.  The sparse coding is obtained by minimizing a $\ell^0$ constrained optimization
-%$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
-where the $\ell^0$ pseudo-norm of $\coef_i \in \RR^N$ is
-$$ \norm{\coef_k}_0 = \abs{\enscond{i}{\coef_k(i) \neq 0}}. $$
-The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding.
-
-\begin{equation}%
-\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
-\end{equation}%
+% 
+%\begin{equation}%
+%\mathcal{C}_0( \coef | \image , \dico) = \frac{1}{2\sigma_n^2} \| \image - \dico \coef \|^2 + \lambda \| \coef \|_0 \nonumber%
+%\end{equation}%
 
 \subsection{Algorithm: Sparse Coding}
+
+ The sparse coding is obtained by minimizing a $\ell^0$ constrained optimization
+%$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
+where the $\ell^0$ pseudo-norm of $\coef_i \in \RR^N$ is
+\begin{equation} \norm{\coef_k}_0 = \abs{\enscond{i}{\coef_k(i) \neq 0}}. \end{equation}
+The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding.
+
 
 It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl} by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
 
@@ -537,7 +540,7 @@ is the set of coefficients of the data $y_j$. This joint optimization reads
 %$$ \umin{ D \in \Dd, X \in \Xx_k } E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
 %\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
 $$E(X,D) = \frac{1}{2}\norm{Y-DX}^2 =
-%\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
+\frac{1}{2} \sum_{j=1}^m \norm{y_j - D x_j}^2. $$
 
 
 link of sparse coding with the cortical architecture (see rao and ballard) : 
