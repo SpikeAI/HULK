@@ -513,7 +513,7 @@ The proposed algorithm is:
 }
 \end{enumerate}
 \end{enumerate}
-
+%: we use ADAM eta scheduling + initialization  of the weights to 1/f noise (see annex)
 We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of free-energy as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an decrease of free-energy. 
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
@@ -530,10 +530,14 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 \draw (.85\linewidth, .38\linewidth) node [above right=0mm] {$\mathsf{box}$};
 \end{tikzpicture}}
 \caption{
-{\bf Quantitative role of homeostasis in sparse coding}: We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
-{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features.  Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
-{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients. 
- {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+{\bf Optimal homeostasis and its role in unsupervised learning}: 
+{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies ('None', 'OLS' or 'HEH') but only used in 'HEH'. At convergence of 'HEH', the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+{\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies ('None', 'OLS' or 'HEH'). 
+{\sf (C)}~Effect of homeostatic learning rate on the final cost. This shows that HEH is robust across a wide range of parameters.
+%We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
+%{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features.  Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
+%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients. 
+% {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 \label{fig:HEH}}%
 \end{figure}%
 %------------------------------%
