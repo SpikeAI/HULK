@@ -393,12 +393,12 @@ where the first term in the RHS is the (positive) Kullback-Leibler distance betw
 An advantage of this formulation is that the free energy can be rewritten as
 \begin{equation} F =  KL( q_\Psi(\coef_k  | \image_k) ||  p_\dico(\coef) )  - \int \log  p(\image_k | \coef_k, \dico ) dq_\Psi(\coef_k  | \image_k) \end{equation}
 In particular, using a known coding $\hat{\coef}$ of the image $\image_k$, we may approximate the free-energy by ignoring the first term in the RHS:
-\begin{equation} F \approx  - \log [ p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) ] = \frac{1}{2} \| \image - \dico \hat{\coef} \|^2  - \log p_\dico(\hat{\coef}) \label{eq:sparse_cost} \end{equation}
+\begin{equation} F \approx  - \log [ p(\image | \hat{\coef}, \dico ) P(\hat{\coef}) ] = \frac{1}{2} \norm{\image_k - \dico \hat{\coef}}_2^2  - \log p_\dico(\hat{\coef}) \label{eq:sparse_cost} \end{equation}
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex#L374
 Such hypothesis allows to retrieve the cost that is optimized in most of existing models of unsupervised learning. Explicitly, the representation is optimized by minimizing a cost defined on prior assumptions on representation's sparseness, that is on $\log p_\dico( \coef )$. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} by defining a sparse prior probability distribution function for each coefficients in the factorial form $\log p_\dico(\coef) \sim \beta \sum_i \log ( 1 + \frac{a_i^2}{\sigma^2} )$ where $\beta$ corresponds to the steepness of the prior and $\sigma$ to its scaling (see Figure 13.2 from~\citep{Olshausen02}). Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning.
 Indeed, performing a gradient descent on $F$ with respect to $\dico$, we have $\forall i$:
 $$ \frac{\partial }{\partial \dico_i } F = \frac{1}{2} \frac{\partial }{\partial \dico_i }[(\image - \dico \coef)^T (\image - \dico \coef)] =  \hat{\coef} (\image - \dico \hat{\coef}).$$
-%It is linear (at the single neuraon level) but the sparse code is not linear (at population level) - link with back-propagation
+%It is linear (at the single neuraon level) but the sparse code is not linear (at population level) \textendash link with back-propagation
 In general, the parameterization of the prior has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. For instance, a L2-norm penalty term corresponds to Tikhonov regularization~\citep{Tikhonov77} or a L1-norm term corresponds to the convex cost which is optimized by the Lasso, LARS, Basis Pursuit, Fista or coordinate descent algorithms.  %In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients. 
 This is the classical formulation from~\citet{Olshausen97} but we have here highlighted thanks to the free-energy formulation that this ignores the approximation during learning (objective only valid at convergence) and that this may influence the convergence to an optimal representation.%- a nice move would be to use free-energy as a bound on surprise - and that homeostasis comes as a additional mechanism - restricts the set of possible dictionaries.
 %link of sparse coding with the cortical architecture (see rao and ballard) : 
@@ -408,40 +408,33 @@ This is the classical formulation from~\citet{Olshausen97} but we have here high
 In fact, the spiking nature of neural information demonstrates that the transition from an inactive to an active state is far more significant at the coding time scale than smooth changes of the firing rate. 
 This is for instance perfectly illustrated by the binary nature of the neural code in the auditory cortex of rats~\citep{DeWeese03}. Binary codes also emerge as optimal neural codes for rapid signal transmission~\citep{Bethge03,Nikitin09}. This is also relevant for neuromorphic systems which transmit discrete events (such as a network packet). With a binary event-based code, the cost is only incremented when a new neuron gets active, regardless to the analog value. Stating that an active neuron carries a bounded amount of information of $\lambda$ bits, an upper bound for the representation cost of neural activity on the receiver end is proportional to the count of active neurons, that is, to the $\ell_0$ pseudo-norm $\norm{\coef}_0 = \abs{\enscond{i}{\coef_i \neq 0}}$:%
 \begin{equation}%
-\mathcal{C}_0( \coef | \image_k , \dico) = \frac{1}{2} \| \image_k - \dico \coef \|^2 + \lambda \| \coef \|_0%
+\mathcal{C}_0( \coef | \image_k , \dico) = \frac{1}{2} \norm{\image_k - \dico \hat{\coef}}_2^2 + \lambda\norm{\coef}_0%
 \label{eq:L0_cost}%
 \end{equation}%
-This cost is similar with information criteria such as the Akaike Information Criteria~\citep{Akaike74} or distortion rate~\citep[p.~571]{Mallat98}. For $\lambda=\log_2 N$, it gives the total information in bits to code for   % the value of the positive coefficient does not matter much : more bits on address than on quantification: form of independenace...
+This cost is similar with information criteria such as the Akaike Information Criteria~\citep{Akaike74} or distortion rate~\citep[p.~571]{Mallat98}. For $\lambda=\log_2 N$, it gives the total information in bits to code for the residual (using entropic coding) and the list of spikes' addresses. In general the high inter-connectivity of neurons (on average $10000$ synapses per neurons) justifies such an informational perspective with respect to the analog quantization of information in the point-to-point transfer of information between neurons.
+But \seeEq{L0_cost} defines a harder cost to optimize (in comparison to convex formulations in Equation~\ref{eq:sparse_cost} for instance) since the hard $\ell_0$ pseudo-norm sparseness leads to a non-convex optimization problem which is \emph{NP-complete} with respect to the dimension $M$ of the dictionary~\citep[p.~418]{Mallat98}.
 
-This simple non-parametric cost has the advantage of being dynamic: The number of active cells for one given signal grows in time with the number of spikes reaching the target population. But \seeEq{L0_cost} defines a harder cost to optimize (in comparison to Equation~\ref{eq:sparse_cost} for instance) since the hard $\ell_0$ pseudo-norm sparseness leads to a non-convex optimization problem which is \emph{NP-complete} with respect to the dimension $M$ of the dictionary~\citep[p.~418]{Mallat98}.
-
-
- The sparse coding is obtained by minimizing a $\ell^0$ constrained optimization
-%$$ \umin{ \norm{x}_0 \leq N_0 } \frac{1}{2}\norm{\image - \dico \coef}^2 .  $$
-where the $\ell^0$ pseudo-norm of $\coef_i \in \RR^N$ is
-The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding.
+Using the implemented sparse coding algorithms part of the sklearn library, we could control the convergence of the learning with different sparse coding algorithms. In particular we compared the learning as implemented with matching pursuit to that with OMP, LARS or coordinate descent. 
+We will use a modified version of the {\color{BrickRed}matching} {\color{OliveGreen}pursuit} algorithm~\citep{Mallat93}:
 %\begin{equation} \hat{\coef}= \Arg\Max  \end{equation}
 
 
 \begin{enumerate}%
-{\color{OliveGreen}
-	\item draw a signal $\image$ from the database, its energy is $E = \| \image \|^2$,%
-	\item set sparse vector $\coef$ to zero, initialize $\bar{a}_i=<\image, \dico_i >$ for all $i$,% using~\seeEq{coco},%
-	\item while the residual energy $E$ is above a given threshold do:
+
+	\item draw a signal $\image$ from the database, and set sparse vector $\coef$ to zero,
+	\item initialize $\bar{a}_i=<\image, \dico_i >$ for all $i$,% using~\seeEq{coco},%N
+	\item while $\norm{\coef}_0<N_0$:
 	\begin{enumerate}
 		{\color{BrickRed}
 			\item select the best match: $i^\ast = \mbox{ArgMax}_{i} [z_i( \bar{a}_i )]$,% with~\seeEq{mp1},
-		}
 		\item set the sparse coefficient: $a_{i^\ast} = \bar{a}_{i^\ast}$,
-		\item update residual coefficients: $\forall i, \bar{a}_i \leftarrow \bar{a}_i - a_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
-		\item update energy: $E \leftarrow E - a_{i^\ast}^2 $.
-	\end{enumerate}
+		}
+		{\color{OliveGreen}\item update residual coefficients: $\forall i, \bar{a}_i \leftarrow \bar{a}_i - a_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
 }
+	\end{enumerate}
 \end{enumerate}
-It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl} by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously. In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.%
-
-Using the implemented sparse coding algorithms part of the sklearn library, we could control the convergence of the learning with different sparse coding algorithms. In particular we compared the learning as implemented with matching pursuit to that with  OMP, LARS or coordinate descent. 
-
+Where the parameter $N_0>0$ controls the amount of sparsity that we impose to the coding and the $z_i$ are scalar functions which we set for the moement to  a non-linear transform the rectified linear unit (ReLU) with gain $\gamma_i>0$:  $z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$. 
+It was found that by using an algorithm like Matching Pursuit, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior~\citep{Perrinet10shl} by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}-A, None). In particular, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimizes the learning of an efficient neural representation.%
 
 %\subsection{Learning to be sparse: Sparse Hebbian Learning}
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
@@ -483,9 +476,9 @@ Using the implemented sparse coding algorithms part of the sklearn library, we c
 %\label{fig:sparsenet}}%
 %\end{figure}%
 %%------------------------------%
-Ringach02
-
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 \subsection{Algorithm: Optimal homeostasis}\label{HEH}
+%~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 % - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
 % - goals = memory / separation / representation
 
@@ -495,9 +488,9 @@ In particular, this could be a problem \emph{during} learning if we use the cost
 % we know that during learning, there are distortions in the code / dictionary : normalisation is not enough.
 During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation. 
 % method zero = just normalizing the coefficitents (Mairal) -  first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
+ (\seeFig{map}-A, None)
 
-
-To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalisation, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalization, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
 
 % using cumulative distribution = "inverse transform sampling" / a monotonic point scalar function does not change the LK distance / free-energy
 In particular, we will set the a priori probability of selecting coefficients {\color{BrickRed} $\forall (i,j), P(\coef_i)=P(\coef_j)$} to ensure the optimality of the choice of the  pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.%
@@ -514,7 +507,7 @@ The proposed algorithm is:
 \item draw a signal $\image$ from the database,%
 \item compute sparse representation vector $\coef = S(\image)$
 \item modify dictionary:  $\forall i, \dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image - \dico\coef)$,% using~\seeEq{learn}, 
-\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \| \dico_{i}\|$,% using~\seeEq{learn}, 
+\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \norm{\dico_{i}}$,% using~\seeEq{learn}, 
 {\color{BrickRed}
 \item update homeostasis functions: $z_i( \cdot ) \leftarrow (1- \eta_h ) z_i( \cdot ) + \eta_h \delta( a_i \leq \cdot)$.% using~\seeEq{learn_homeo}
 }
@@ -609,7 +602,7 @@ We compared qualitatively the set $\dico$ of receptive filters generated by the 
 
 \subsection{Algorithm: Approximate homeostasis}\label{HAP}
 %: incompatible with nueromimetic / fast implementation
-We have shown above that we can find an exact solution to the problem of homeostasis during sparse hebbian learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This is similar to that used by Olshausen. This is similar to the mechanisms of gain normalization proposed by Schwartz and which were recently shown to provide efficient coding mechanisms by Simoncelli. This simplifies our algorithm above by removing step d.iii and using for each atom as a non-linear transform the rectified linear unit (ReLU) with gain $\gamma_i>0$:  $z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. 
+We have shown above that we can find an exact solution to the problem of homeostasis during sparse hebbian learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This is similar to that used by Olshausen. This is similar to the mechanisms of gain normalization proposed by Schwartz and which were recently shown to provide efficient coding mechanisms by Simoncelli.  However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. 
 
 %: Comparison to Sandin
 Recently, a similar approach was proposed by Sandin. Based on the same observations, authors propose to optimise the coding during learning by modulating the gain of each dictionary element based on the recent history. They base their Equalitarian Matching Pursuit  algorithm on the following heuristics which cancels the activation of all filters that were more often activated than a given threshold:
