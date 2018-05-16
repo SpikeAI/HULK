@@ -6,7 +6,6 @@
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{0}%
 \def\Draft{1}%
@@ -44,8 +43,8 @@
 %       raised=-.13em]{superiors}
 %\usepackage[utf8]{inputenc} % allow utf-8 input
 %\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
-\usepackage{dsfont}
-\usepackage{hyperref}       % hyperlinks
+%\usepackage{dsfont}
+%\usepackage{hyperref}       % hyperlinks
 % --------------------------------------------------------------------------
 %                    METADATA
 % --------------------------------------------------------------------------
@@ -61,35 +60,15 @@
 \newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\EmailA}{victor.boutin@univ-amu.fr}%
 \newcommand{\EmailB}{angelo.franciosini@univ-amu.fr}%
-\newcommand{\EmailC}{laurent.perrinet@univ-amu.fr}%victor.boutin@univ-amu.fr
+\newcommand{\EmailC}{laurent.perrinet@univ-amu.fr}%
 \newcommand{\WebsiteC}{http://invibe.net/LaurentPerrinet}%
-%Submission Format
-%
-%Before you log onto the submission website, you should have the following items prepared. Submissions that do not meet these guidelines may be rejected. Abstract selection is a competitive process, so please read carefully:
-%
-%    * Title - 100 characters or fewer (including spaces), capitalized in sentence case
-%    * Author list - including email addresses of all authors
-%    * Summary - 300 words or fewer, text only. This summary will appear in the printed conference program if your submission is accepted.
-%    * PDF submission - This should be one page (A4 or US Letter) in PDF format. The title and author names should appear at the head of the page (contact info may be omitted), followed by the 300-word Summary. The rest of the document should expand upon the central question(s), approach, results, and/or conclusions of the study. Figures are optional. You may include equations as appropriate. Font size (including any figure legends) must be at least 12 point. Margins should be at least 0.5". Because space is limited, you do not need to touch upon all the major points of the Summary; rather you should aim to add whatever detail is need to help reviewers evaluate the technical correctness and significance of your study.
-%    * Two Program Committee members (see below) who could handle your submission. We cannot honor all specific requests, but your list will help us direct your submission to Program Committee members with appropriate expertise. 
-%
-%Evaluation Criteria
-%
-%PDF submissions will be evaluated on the basis of the following criteria (equally weighted):
-%
-%    * Significance, originality, and potential impact of your claims to the COSYNE audience. Please indicate why your question is important and how your claims advance the field. Reviewers will be asked to rate your claims in this regard, without regard to whether your methods/results technically support those claims (see below). If your aim is to develop a new approach or technique, indicate why this is useful. Implicitly included in this category is the quality of fit of your abstract for the COSYNE conference audience -- potentially inappropriate abstracts include pure machine learning studies, or studies of single cells with no clear implications for neural systems.
-%    * Technical correctness. Reviewers will be asked to rate the quality of your methods and/or data in supporting your claims (see above). Thus, you should clearly outline the methods used, results obtained, and critical controls. Include sufficient detail in your submission to allow reviewers to evaluate whether your approach is appropriate for supporting your claims, and whether your results are technically sound. However, your submission should not be as detailed as the Methods section of a full-length paper (e.g., do not list concentrations of drugs, etc.). 
-%
-%You should not feel obliged to fill the entire page, and we expect that many successful submissions will not include figures.
-%
-%Approximately 20 submissions will be chosen for short talks and ~300 will be chosen for poster presentations. We expect ~20% of submissions will be rejected due to limitations on poster space. 
 \newcommand{\Title}{%
 A fast algorithm for unsupervised learning
 %alternatives: - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
 %# Homeostatic Unsupervised Learning of Kernels
 }%
 \newcommand{\Abstract}{
-The formation of structure in the brain, that is, of the connection between cells within neural populations, is by large an unsupervised learning process: The emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. A major difficulty in defining unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is carried out knowing a code that is not yet optimal. We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the emergence of localized filters sensitive to orientation. The key to this algorithm lies in a adaptive mechanism of homeostasis that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurones. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement an even faster unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
+The formation of structure in the brain, that is, of the connection between cells within neural populations, is by large an unsupervised learning process: The emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. A major difficulty in defining unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is carried out knowing a code that is not yet optimal. We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the emergence of localized filters sensitive to orientation. The key to this algorithm lies in an adaptive mechanism of homeostasis that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurones. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement an even faster unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 }
 \newcommand{\Keywords}{Vision, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\Acknowledgments}{%
@@ -192,8 +171,7 @@ archivePrefix = "arXiv",
 	Url = {http://discovery.ucl.ac.uk/1332718/ http://www.ncbi.nlm.nih.gov/pubmed/22108672 http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC3273486},
 	Volume = {13},
 	Year = {2012},
-	Bdsk-Url-1 = {http://discovery.ucl.ac.uk/1332718/%20http://www.ncbi.nlm.nih.gov/pubmed/22108672%20http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC3273486},
-	Bdsk-Url-2 = {https://doi.org/10.1038/nrn3136}}
+	}
 @article{Loxley17,
 abstract = {The two-dimensional Gabor function is adapted to natural image statistics, leading to a tractable probabilistic generative model that can be used to model simple cell receptive field profiles, or generate basis functions for sparse coding applications. Learning is found to be most pronounced in three Gabor function parameters representing the size and spatial frequency of the two-dimensional Gabor function and characterized by a nonuniform probability distribution with heavy tails. All three parameters are found to be strongly correlated, resulting in a basis of multiscale Gabor functions with similar aspect ratios and size-dependent spatial frequencies. A key finding is that the distribution of receptive-field sizes is scale invariant over a wide range of values, so there is no characteristic receptive field size selected by natural image statistics. The Gabor function aspect ratio is found to be approximately conserved by the learning rules and is therefore not well determined by natural image statistics. This allows for three distinct solutions: a basis of Gabor functions with sharp orientation resolution at the expense of spatial-frequency resolution, a basis of Gabor functions with sharp spatial-frequency resolution at the expense of orientation resolution, or a basis with unit aspect ratio. Arbitrary mixtures of all three cases are also possible. Two parameters controlling the shape of the marginal distributions in a probabilistic generative model fully account for all three solutions. The best-performing probabilistic generative model for sparse coding applications is found to be a gaussian copula with Pareto marginal probability density functions.},
 author = {Loxley, P. N.},
@@ -286,6 +264,9 @@ year = {2017}
 %\usepackage{amsthm}
 %\usepackage{amsfonts, amssymb, amscd}
 %: symbols
+\newcommand{\coef}{\mathbf{a}} % image's hidden param
+\newcommand{\image}{\mathbf{I}} % the image
+\newcommand{\dico}{\Phi} % the dictionary
 \newcommand{\umin}[1]{\underset{#1}{\min}\;}
 \newcommand{\enscond}[2]{\lbrace #1, #2 \rbrace}
 \newcommand{\norm}[1]{|\!| #1 |\!|}
@@ -293,8 +274,6 @@ year = {2017}
 \newcommand{\dotp}[2]{\langle #1,\,#2\rangle}
 \newcommand{\eqdef}{\ensuremath{\stackrel{\mbox{\upshape\tiny def.}}{=}}}
 \newcommand{\eqset}{\ensuremath{\stackrel{\mbox{\upshape\tiny set}}{=}}}
-\newcommand{\eq}[1]{\begin{equation*}#1\end{equation*}}
-\newcommand{\eql}[1]{\begin{equation}#1\end{equation}}
 \newcommand{\pd}[2]{ \frac{ \partial #1}{\partial #2} }
 \newcommand{\NN}{\mathbb{N}}
 \newcommand{\Xx}{\mathcal{X}}
@@ -302,31 +281,19 @@ year = {2017}
 \newcommand{\Dd}{\mathcal{D}}
 \newcommand{\CC}{\mathbb{C}}
 \usepackage{siunitx}
-%\renewcommand{\cite}{\citep}%
 \newcommand{\ms}{\si{\milli\second}}%
 \newcommand{\m}{\si{\meter}}%
 \newcommand{\s}{\si{\second}}%
+\newcommand{\eq}[1]{\begin{equation*}#1\end{equation*}}
+\newcommand{\eql}[1]{\begin{equation}#1\end{equation}}
 \newcommand{\seeFig}[1]{Figure~\ref{fig:#1}}%
 \newcommand{\seeSec}[1]{Section~\ref{sec:#1}}%
 \newcommand{\seeEq}[1]{Eq.~\ref{eq:#1}}%
-
-\newcommand{\coef}{\mathbf{a}} % image's hidden param
-\newcommand{\image}{\mathbf{I}} % the image
-\newcommand{\dico}{\Phi} % the dictionary
+%
 %\showthe\columnwidth
 %
-% paper title
-% can use linebreaks \\ within to get better formatting as desired
-%\usepackage{titling}
-%\setlength{\droptitle}{-6em}
-%\posttitle{\par\end{center}\vspace{-2.3em}}
 
 \title{\Title}
-
-
-% author names and affiliations
-% use a multiple column layout for up to three different
-% affiliations
 \author{%
 %\makebox[.45\linewidth]{\FirstNameA\ \AuthorA}
 %\and \makebox[.45\linewidth]{\FirstNameB\ \AuthorB}% \\ \Institute\ \Organism
@@ -336,7 +303,6 @@ year = {2017}
 \date{\Institute\ \\ 
 \Organism\
 }
-
 % The \author macro works with any number of authors. There are two
 % commands used to separate the names and addresses of multiple
 % authors: \And and \AND.
@@ -377,14 +343,11 @@ year = {2017}
 %% Address \\
 %% \texttt{email} \\
 %}
-
-%\setlength{\pdfpagewidth}{\paperwidth}
-%\setlength{\pdfpageheight}{\paperheight}
-\usepackage{times}
+%
+%\usepackage{times}
 \usepackage{graphicx}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
-
-
+%
 %\pagestyle{empty}		% No page numbers
 \begin{document}
 %
