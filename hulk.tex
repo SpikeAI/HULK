@@ -438,7 +438,7 @@ More generally, we will place ourselves in the framework of the principle of fre
 \end{tikzpicture}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are {\sf None} a simple normalization of the atoms, {\sf OLS} the method of~\citep{Olshausen97}, {\sf (HEH)} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
@@ -515,7 +515,7 @@ Still, there are many solutions to this optimization problem and here, we will u
 	\end{enumerate}
 \end{enumerate}
 Where the parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this algorithm presented here lies in the scalar functions $z_i$ which control the competition for the best match between components in the algorithm. While in the original algorithm an identical symmetric function is chosen (that is, $\forall i, z_i(\coef) = |\coef|$), we will define at first this functions as the non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$ and $\delta$ is Kronecker's indicator function. 
-We found that by using an algorithm like Matching Pursuit (that is using the symmetric function or setting $\forall i, \gamma_i=1$), the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}-A, {\sf None}). %~\citep{Perrinet10shl}
+We found that by using an algorithm like Matching Pursuit (that is using the symmetric function or setting $\forall i, \gamma_i=1$), the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}-A, \texttt{None}). %~\citep{Perrinet10shl}
 Moreover, using the implemented sparse coding algorithms part of the \verb+sklearn+ library, we comapred the convergence of the learning with different sparse coding algorithms. In particular we compared the learning as implemented with matching pursuit to that with OMP, LARS or coordinate descent (see Annex). 
 In particular, for all these sparse coding algorithms, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism based on the functions $z_i$ which optimizes the learning of an efficient representation.%
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
@@ -527,7 +527,7 @@ In particular, for all these sparse coding algorithms, during the early learning
 Knowing a dictionary and a sparse coding algorithm, we may transform any data $\image$ into a set of sparse coefficients. As we have seen,
 In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step.
 % method zero = just normalizing the coefficitents (Mairal) - first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
- (\seeFig{map}-A, {\sf None})
+ (\seeFig{map}-A, \texttt{None})
 
 
 % we know that during learning, there are distortions in the code / dictionary : normalisation is not enough.
@@ -572,9 +572,9 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 \end{tikzpicture}}
 \caption{
 {\bf Optimal homeostasis and its role in unsupervised learning}:
-{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies ({\sf None}, {\sf OLS} or {\sf HEH}) but only used in {\sf HEH}. At convergence of {\sf HEH}, the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
-{\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies ({\sf None}, {\sf OLS} or {\sf HEH}).
-{\sf (C)}~Effect of homeostatic learning rate on the final cost. This shows that {\sf HEH} is robust across a wide range of parameters.
+{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. At convergence of \texttt{HEH}, the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+{\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}).
+{\sf (C)}~Effect of homeostatic learning rate on the final cost. This shows that \texttt{HEH} is robust across a wide range of parameters.
 %We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
 %{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
 %{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
@@ -598,7 +598,7 @@ V_i \leftarrow (1- \eta_h ) V_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} a_{i, k}^2 
 This is similar to the mechanisms of gain normalization proposed by~\citep{Schwartz01} and which were recently shown to provide efficient coding mechanisms by Simoncelli. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on the higher statistical moments, for instance when an atom is winning more at the earlier iterations, its pdf will typically be more kurtototic than a filter that has learned less.
 
 %: Comparison to Sandin
-Recently, such an approach was proposed by~\citet{Sandin17}. Based on the same observations, authors propose to optimise the coding during learning by modulating the gain of each dictionary element based on the recent history. They base their Equalitarian Matching Pursuit ({\sf EMP}) algorithm on a heuristics which cancels the activation of all filters that were more often activated than a given threshold (parameterized by $1+\alpha_h$). In our setting, we may compute a similar algorithm using an evaluation of probability of activation followed by binary gates:
+Recently, such an approach was proposed by~\citet{Sandin17}. Based on the same observations, authors propose to optimise the coding during learning by modulating the gain of each dictionary element based on the recent history. They base their Equalitarian Matching Pursuit (\texttt{EMP}) algorithm on a heuristics which cancels the activation of all filters that were more often activated than a given threshold (parameterized by $1+\alpha_h$). In our setting, we may compute a similar algorithm using an evaluation of probability of activation followed by binary gates:
 \begin{equation}%
 p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} (a_{i, k} > 0) \textrm{ and }
 \gamma_i = \delta (p_i < N_0/N*(1+\alpha_h)
@@ -613,11 +613,11 @@ For this we need to derivate the change of modulation gain that would be necessa
 \begin{equation}%
 \gamma_i = \exp(-(p_i - p_0) / \alpha_h)
 \end{equation}%
-We will coin this algorithm variant as Homeostasis on Activation Probability ({\sf HAP}). % derivation p.56N de 2018-01-09 HULK
+We will coin this algorithm variant as Homeostasis on Activation Probability (\texttt{HAP}). % derivation p.56N de 2018-01-09 HULK
 %\subsection{Approximate homeostasis yields similar performance}
-Following these derivations, we quantitatively compared ({\sf HAP}, {\sf EMP} and {\sf HAP}) to {\sf HEH}\seeFig{HAP}. This shows that while {\sf EMP} outperforms {\sf OLS}, {\sf HAP} proves to be closer to the optimal solution given by {\sf HEH}.
+Following these derivations, we quantitatively compared (\texttt{HAP}, \texttt{EMP} and \texttt{HAP}) to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}.
 % effect of coding algorithm
-In particular, we replicated in {\sf HAP} the result of Sandin that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little.
+In particular, we replicated in \texttt{HAP} the result of Sandin that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little.
 
 %%------------------------------%
 %: \seeFig{HAP}
@@ -637,7 +637,7 @@ In particular, we replicated in {\sf HAP} the result of Sandin that while homeos
 \end{tikzpicture}}
 \caption{
 {\bf Comparative evaluation of homeostatic strategies}: %
- {\sf (A)}~10 from the 324 dictionaries learned for the 3 algorithms ({\sf HEH}, {\sf EMP}, {\sf HAP}) and compared to the simple normalisation ({\sf None}). {\sf (B)}~Comparison of the free-energy during learning: The convergence velocity of {\sf HAP} is slightly better as {\sf EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
+ {\sf (A)}~10 from the 324 dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
