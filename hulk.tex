@@ -30,8 +30,8 @@
 %%\usepackage{csquotes}%
 %\usepackage[autostyle]{csquotes}
 %%% Sans-serif Arial-like fonts
-%\renewcommand{\rmdefault}{phv} 
-%\renewcommand{\sfdefault}{phv} 
+%\renewcommand{\rmdefault}{phv}
+%\renewcommand{\sfdefault}{phv}
 %   \usepackage{textcomp}
 %   \usepackage{libertine}%[sb]
 %   \usepackage[varqu,varl]{inconsolata}% sans serif typewriter
@@ -68,14 +68,24 @@ A fast algorithm for unsupervised learning
 %# Homeostatic Unsupervised Learning of Kernels
 }%
 \newcommand{\Abstract}{
-The formation of structure in the brain, that is, of the connection between cells within neural populations, is by large an unsupervised learning process: The emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. A major difficulty in defining unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is carried out knowing a code that is not yet optimal. We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the emergence of localized filters sensitive to orientation. The key to this algorithm lies in an adaptive mechanism of homeostasis that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurones. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement an even faster unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
+The formation of structure in the brain, that is, of the connection between cells within neural populations, is by large an unsupervised learning process: The emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the emergence of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1.
+We modeled these representations using sparse unsupervised learning algorithms.
+A major difficulty in defining unsupervised learning algorithms is that during this process, on the one hand the coding is performed knowing an immature structure and on the other hand, the adaptation of this structure is carried out knowing a code that is not yet optimal.
+To address this problem, we propose here to introduce a new regulation process between learning and coding, called homeostasis. Our homeostasis is compatible with a neuromimetic architecture and
+ allows for the fast emergence of localized filters sensitive to orientation
+%We propose here a fast algorithm compatible with a neuromimetic architecture which solves this problem and allows for the fast emergence of localized filters sensitive to orientation.
+The key to this algorithm lies in a simple yet optimal mechanism of homeostasis that reconciles the antagonistic processes that occur at the coding and learning time scales.
+We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurones. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement an even faster unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy to the fast classification of images, for example in hierarchical and dynamic architectures.
 }
 \newcommand{\Keywords}{Vision, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\Acknowledgments}{%
-This work was supported by XXXAFXXX and the Doc2Amu project which received funding from a co-fund with the European Union's Horizon 2020 research and innovation programme and the region Provence Alpes Cote d'Azur. }
+%This work was supported by XXXAFXXX and the Doc2Amu project which received funding from a co-fund with the European Union's Horizon 2020 research and innovation programme and the region Provence Alpes Cote d'Azur. 
+%
+This research has received funding from the European Union’s Horizon 2020 research and innovation programme under the Marie Skłodowska-Curie grant agreement No713750. Also, it has been carried out with the financial support of the Regional Council of Provence-Alpes-Côte d’Azur and with the financial support of the A*MIDEX (n° ANR- 11-IDEX-0001-02), funded by the Investissements d'Avenir project funded by the French Government, managed by the French National Research Agency (ANR).
+}
 \newcommand{\Links}{%
 \begin{itemize}
-\item Correspondence and requests for materials should be addressed to LUP (email:\EmailC ). 
+\item Correspondence and requests for materials should be addressed to LUP (email:\EmailC ).
 \item Code and supplementary material available at \url{\WebsiteC/Publications/BoutinFranciosiniPerrinet18hulk}.
 \end{itemize}
 } %
@@ -119,7 +129,7 @@ archivePrefix = "arXiv",
   year={2009},
   publisher={Public Library of Science}
 }
-	
+
 @incollection{Zoran12,
 	Author = {Zoran, Daniel and Weiss, Yair},
 	Booktitle = {Advances in Neural Information Processing Systems 25},
@@ -335,7 +345,7 @@ year = {2017}
 %\makebox[.9\linewidth]{\FirstNameA\ \AuthorA and \FirstNameB\ \AuthorB} %\\ \Institute\
 \FirstNameA\ \AuthorA \and \FirstNameB\ \AuthorB \and \FirstNameC\ \AuthorC
 }
-\date{\Institute\ \\ 
+\date{\Institute\ \\
 \Organism\
 }
 % The \author macro works with any number of authors. There are two
@@ -399,17 +409,16 @@ year = {2017}
 %: motivation: why sparseness? biology
 The neural architecture is a complex dynamic system that operates at different time scales. In particular, one of its properties is to succeed in the feat of being able to both represent information quickly but also to be able to adapt autonomously in the long term to optimize this coding: In the case of the mammalian primary visual cortex (V1) for instance, one can observe the rapid coding of retinal image, as a process of transforming the raw visual information into a rough sketch that represents the outlines of objects in the image. As the structure of visual objects in the environment, this sketch has the property of being \emph{sparse}: for each raw image a small number of components will be selected relative to the size of the representation dictionary. This rapid operation, of the order of 50 milli-seconds in humans, is key to the results of~\citet{Hubel68}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations. A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image. Indeed, the work of~\citet{Olshausen96} has shown that by imposing a sparse prior on the encoding of the image, we can obtain the emergence of such cells in a neural-type model. %
 
-%: in machine learning:  from data to knowledge
-It is important to note at this point that recent advances in artificial intelligence can shed new light on the functioning of these biological neural processes and in general on generic algorithms for unsupervised learning. In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. This training is therefore carried out autonomously and is particularly useful for image and signal compression, object detection, source separation and noise reduction in raw signals. In particular, this class of algorithms is extremely beneficial in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of an optimization of information transfer. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. For instance, these solutions make similarly an hypothesis for the sparseness of the coding. This principle is general enough to be applied to many signal classes and to allow a mathematical analysis of this problem. %  (Donoho). 
-This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. %In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. %This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. 
-However, recent studies seem to question this principle of sparse coding~\citep{Eichhorn09,Zoran12} and suggest that a simpler analysis applied in a more complex metric is sufficient to explain the emergence of orientation selective filters similar to those observed in the primary visual cortex. %
-%In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture~\citep{Perrinet10shl}. %It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals~\citep{PerrinetBednar15}. 
-A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective~\citep{Elad10}. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to \emph{quantitatively} evaluate the joint exploration of new learning or coding strategies. %As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
+%: in machine learning
+It is important to note at this point that learning algorithms used in artificial intelligence can shed new light on the functioning of these neural processes and in particular on unsupervised learning. In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. This training is therefore carried out autonomously and is particularly used for image and signal compression, object detection, source separation and noise reduction in raw signals. As such, this class of algorithms is extremely useful in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of either an optimization of information transfer (Bell), or in the form of recursive algorithms in statistics and probabilities with, for example, projection continuation. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. These solutions take the form of parsimonious coding, i. e. for which a small number of components will be selected according to the size of the dictionary. This principle is general enough to be applied to many signal classes and allow a mathematical analysis of this problem (Donoho). In particular, ~\citep{Perrinet10shl} have shown that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture.
+%In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture~\citep{Perrinet10shl}. %It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals~\citep{PerrinetBednar15}.
+However, recent studies seem to question this principle of parsimonious coding (Eichhorn 2009, Zoran and Weiss 2012) and suggest that simpler analysis applied in a complex metric is sufficient to explain the emergence of selective filters with orientation similar to those observed in the primary visual cortex.
 
 %: encompassed in probabilistic approaches
-In order to offer a broader perspective on the problem of understanding these biological neural processes, we will try to express it into this generic probabilistic framework. This approach was already widely used in the generic principle of redundancy reduction~\citep{Atick92}. %It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981).
-Other studies show that these rules are tantamount to forcing the system to be close to a criticality regime and optimizing the balance between coding and learning. % (Beggs, 2008 in Sandin). 
-More generally, we will place ourselves in the framework of the principle of free-energy minimization formulated by Karl Friston~\citep{Friston12}. This principle makes it possible to explicitly address the joint problem of coding and unsupervised learning. In this theory, learning to reduce redundancy is no longer a goal in itself but contributes to the minimization of free-energy at different time scales, from coding to learning. According to this principle, the overall goal of the neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning. The goal of these processes is thus simply to not be surprised by any sensory input. This theory extends that of~\citep{Olshausen97} and shows that overall, sparse coding is a form of predictive coding. Thus, the set of processes at different time scales are thus considered as working synergestically and provide for a novel normative theory of coding and learning in early sensory areas such as V1.
+In order to offer a broader perspective on this problem, we will try to express it in the generic form of a probabilistic problem.
+This approach is already widely used Barlow's early work ( Barlow 1989), he hypothesized that neurons are driven by a self-organizing strategy so that they encode the information in such a way that they minimize the statistical dependency among them. It is called the reduncancy reduction hypothesis.
+%This approach is already widely used in Barlow's early work under the term of redundancy reduction principle (see also Atick).
+It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981). Other studies show that these rules are tantamount to forcing the system to be close to a criticality regime and optimizing the balance between coding and learning (Beggo, 2008 in Sandin) More generally, we will place ourselves in the framework of the principle of free energy minimization formulated by Karl Friston~\citep{Friston12}. This principle makes it possible to explicitly address the problem of coding and unsupervised learning, also during learning. In this theory, learning is no longer a goal in itself but contributes to the the minimization of free energy at different time scales, from coding to learning. According to this principle, the overall goal of neural system is to be able to best predict any sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning. The goal of these processes is thus simply to not be surprised by the sensory input. As such, the aim of learning is to obtain a coding that is the least variable a priori, that is to say, before having received the sensory information. On the one hand, this theory extends that of Olshausen and shows that overall, sparse coding also has a predictive part. Thus, this will also allow us to formulate a normative theory of the neural code at its different time scales. Thus, the set of processes at different time scales are thus considered as working synergistically and provide for a novel normative theory of coding in early sensory areas such as V1.
 
 %: homeostasis
 %------------------------------%
@@ -426,24 +435,23 @@ More generally, we will place ourselves in the framework of the principle of fre
 \draw (.9\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
 \end{tikzpicture}}
 \caption{
-{\bf Role of homeostasis in learning sparse representations}: 
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are {\sf (None)} a simple normalization of the atoms, {\sf (OLS)} the method of~\citep{Olshausen97}, {\sf (HEH)} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. % 
+{\bf Role of homeostasis in learning sparse representations}:
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are {\sf (None)} a simple normalization of the atoms, {\sf (OLS)} the method of~\citep{Olshausen97}, {\sf (HEH)} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
-In particular, a component often ignored in this type of learning is the set of homeostasis mechanisms that control the average coding activity during learning. Indeed, these are implemented in the original algorithms~\citep{Olshausen97} as a heuristic that simply prevents the algorithm from diverging. It consists in most unsupervised learning algorithms simply in an equalization of the energy of each component of the dictionary~\citep{Mairal11}. However, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall transduction of neural information. For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of neural populations. % (citation needed). 
-This mechanism then makes it possible to balance the contribution of the excitatory populations with respect to that in inhibitory populations. By this mechanism, this type of so-called balanced networks can explain many features inherent in the primary visual cortex~\citep{Hansel12}. These mechanisms, which often take the form of normalization rules~\citep{Schwartz01} in the network, are often used as normative theory to explain the mechanisms present in the primary visual cortex~\citep{Carandini12}. However, this work is often intended to show that the cells' selectivity that emerges from these algorithms have the same characteristics as that observed in neurophysiology~\citep{Ringach02,Rehn07, Loxley17}. Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuro-mimetic algorithms~\citep{Brito16}. These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence. However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem of unsupervised learning. Framing this problem in a probabilistic framework allows to consider in addition to coding and learning the intermediate time scale of homeostasis. This allows us also to associate homeostasis with adaptation mechanisms~\citep{Rao99}. Our main argument is that by optimizing unsupervised learning at different time scales, we allow for the implementation of fast algorithms compatible with the performance of biological networks and in comparison with classical~\citep{Olshausen97} or Deep Learning approaches.
+In particular, a component often ignored in this type of learning is the set of mechanisms of homeostasis. Indeed, these are implemented in the original algorithms~\citep{Olshausen97} as a heuristic that simply prevents the algorithm from diverging. It consists in some recent algorithms to constitute only of an equalization of the energy of each component of the dictionary~\citep{Mairal11}. However, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall functioning of the neural code. For example, the networks of GABA-type inhibitory neurons make it possible to regulate the overall activity of neural populations (citation needed). This mechanism then makes it possible to balance the contribution of the excitatory populations with respect to that in inhibitory populations. By this mechanism, this type of so-called balanced networks can explain many features inherent in the primary visual cortex (Hansel). These mechanisms, which often take the form of normalization rules~\citep{Schwartz01} in the network, are often used as normative theory to explain the mechanisms present in the primary visual cortex~\citep{Carandini12}. However, this work is often intended to show that the cells that emerge from these algorithms have the same characteristics as that observed in neurophysiology~\citep{Ringach02,Rehn07, Loxley17}. Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuro-mimetic algorithms (Gerstner and Brito). These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence. However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem of unsupervised learning. Framing this problem in a probabilistic framework allows to consider in addition to coding and learning the intermediate time scale of homeostasis. This allows us also to associate homeostasis with adaptation mechanisms (Rao Balard). Our main argument is that by optimizing unsupervised learning at different time scales, we allow for the implementation of fast algorithms compatible with the performance of biological networks and in comparison with classical (Olshausen) or Deep Learning approaches.
 
 %: outline
-This paper is organized according to the following plan. First we will show the importance of homeostasis in unsupervised learning algorithms. We will derive an optimal rule for homeostatic adaptation based on histogram equalization. We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning databases, we will be able to give a quantitative analysis that will make it possible to compare these different solutions. 
+This paper is organized according to the following plan. First we will show the importance of homeostasis in unsupervised learning algorithms. We will derive an optimal rule for homeostatic adaptation based on histogram equalization. We will then show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. By using different learning databases, we will be able to give a quantitative analysis that will make it possible to compare these different solutions.
 %: scripts on github
 All these algorithms were implemented using using \verb+Python+ (version 3.6.5)
 with packages \verb+NumPy+ (version 1.14.3) and \verb+SciPy+ (version 1.1.0)~\citep{Oliphant07}.
 %on a cluster of Linux computing nodes.
-%Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}. 
+%Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}.
 In particular, we focused in our architecture to be able to quantitatively cross-validate for every single hyper-parameters\footnote{These python scripts are available at \url{https://github.com/XXX/ZZZ}. % and documented at \url{https://pythonhosted.org/ZZZ}.
 }. %Indeed, we think it is better to spend time on this than to have only one model with zillions of parameters that is optimized once.
-To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule by using a simple heuristic. We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms~\citep{Olshausen97, Sandin17}. 
+To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimetic homeostasis algorithm derived from the optimal rule by using a simple heuristic. We will then compare the results of this new algorithm with the optimal algorithm as well as with other existing unsupervised learning algorithms~\citep{Olshausen97, Sandin17}.
 % ----------------------------------------------------------------------
 \section{Unsupervised learning and the optimal representation of images}%\label{algorithm}
 % ----------------------------------------------------------------------
@@ -458,7 +466,7 @@ To simplify the optimal rule of homeostasis, we will then deliver a neuro-mimeti
 Visual items composing natural images are often sparse, such that knowing a model for the generation of images, the brain may use this property to reconstruct images with only a few of these items. 
 In the context of the representation of natural images $\image = (\image_k)_{k=1}^L \in \RR^{L \times M}$ represented as a set of $L$ vector samples as images raveled along $M$ pixels (the $\image_{j, k} \in \RR$ are the corresponding luminance values), let us assume the generic Generative Linear Model, such that $\image = \dico \coef + \epsilon $, where by definition, the coefficients are denoted by $\coef = (\coef_k)_{k=1}^L \in \RR^{L \times N}$ and the dictionary by $\dico \in \RR^{N \times M}$. Finally, $\epsilon \in \RR^{L \times M}$ is a Gaussian iid noise which is Normal without loss of generality by scaling the norm of the dictionary's rows. Knowing this model, unsupervised learning aims at finding the least surprising causes (the parameters $\coef$ and $\dico$) for the data $\image$ but also the fact that we may only have access to a (possibly wrong) recognition model $q_\Psi(\coef_k | \image_k)$ for any sample $k$ (where $\Psi$ are the parameters of this model) to encode the image into coefficients. In probabilistic term, this amounts to minimize the free-energy $F$ as a bound on surprise of the (unknown) density of the parameters $p_\dico( \coef_k | \image_k)$~\citep{Friston12,Kingma13,Doersch2016}:
 \begin{equation} -\log p_\dico( \coef_k | \image_k) \leq F \eqdef KL( q_\Psi(\coef_k | \image_k) || p_\dico( \coef_k | \image_k) )  -\log p_\dico( \coef_k | \image_k) \end{equation}
-where the first term in the RHS is the (positive) Kullback-Leibler distance between the density of images using the current estimate of the (unknown) marginal posterior probability. 
+where the first term in the RHS is the (positive) Kullback-Leibler distance between the density of images using the current estimate of the (unknown) marginal posterior probability.
 
 An advantage of this formulation is that the free-energy can be rewritten as
 \begin{equation} F = KL( q_\Psi(\coef_k | \image_k) || p_\dico(\coef) ) - \int \log p(\image_k | \coef_k, \dico ) dq_\Psi(\coef_k | \image_k) \end{equation}
@@ -504,7 +512,7 @@ Still, there are many solutions to this optimization problem and here, we will u
 \end{enumerate}
 Where the parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this algorithm presented here lies in the scalar functions $z_i$ which control the competition for the best match between components in the algorithm. While in the original algorithm a symmetric function is chosen (that is, $\forall i, z_i(\coef) = |\coef|$), we will define at first this functions as the non-linear rectified linear unit (ReLU) with gain $\gamma_i>0$: $z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$ and $\delta$ is Kronecker's indicator function. 
 We found that by using an algorithm like Matching Pursuit (that is setting $\forall i, \gamma_i=1$, the learning algorithm could provide results similar to {\sc SparseNet}, but without the need of parametric assumptions on the prior by using this more generic $\ell_0$ norm sparseness. However, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}-A, None). %~\citep{Perrinet10shl}
-Moreover, using the implemented sparse coding algorithms part of the \verb+sklearn+ library, we could control the convergence of the learning with different sparse coding algorithms. In particular we compared the learning as implemented with matching pursuit to that with OMP, LARS or coordinate descent. 
+Moreover, using the implemented \subparagraph{•}se coding algorithms part of the \verb+sklearn+ library, we could control the convergence of the learning with different sparse coding algorithms. In particular we compared the learning as implemented with matching pursuit to that with OMP, LARS or coordinate descent. 
 In particular, for all these sparse coding algorithms, during the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism based on the functions $z_i$ which optimizes the learning of an efficient representation.%
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 \subsection{Algorithm: Optimal homeostasis}\label{HEH}
@@ -512,19 +520,19 @@ In particular, for all these sparse coding algorithms, during the early learning
 % - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
 % - goals = memory / separation / representation
 
-Knowing a dictionary and a sparse coding algorithm, we may transform any data $\image$ into a set of sparse coefficients. As we have seen, 
-In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step. 
+Knowing a dictionary and a sparse coding algorithm, we may transform any data $\image$ into a set of sparse coefficients. As we have seen,
+In particular, this could be a problem \emph{during} learning if we use the cost to measure representation efficiency for this learning step.
 % method zero = just normalizing the coefficitents (Mairal) - first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
  (\seeFig{map}-A, None)
 
 
 % we know that during learning, there are distortions in the code / dictionary : normalisation is not enough.
-During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation. 
+During the early learning phase, some cells may learn ``faster'' than others. There is the need for a homeostasis mechanism that will ensure convergence of learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism which optimises the learning of an efficient neural representation.
 
 % using cumulative distribution = "inverse transform sampling" / a monotonic point scalar function does not change the LK distance / free-energy
 In particular, we will set the a priori probability of selecting coefficients {\color{BrickRed} $\forall (i,j), P(\coef_i)=P(\coef_j)$} to ensure the optimality of the choice of the pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.%
 
-To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurones. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neurone is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalization, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+To achieve this, we first formulate analytically the problem of representation efficiency in a population of sensory neurons. For the particular $\ell_0$ norm sparseness, we show that sparseness is optimal, in term of Shannon entropy, when average activity within the neural population is uniformly balanced (i.e. each neuron is selected with the same probability when encoding a large set of data). To achieve this uniformity, we define an homeostatic gain control mechanism based on histogram equalization, that is in transforming coefficients in terms of z-scores $z_i(a_i) = P( \cdot > a_i)$. The cumulative distribution $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most  as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
 
 
 Finally, the unsupervised learning can be summarized using the following steps:
@@ -535,15 +543,15 @@ The proposed algorithm is:
 \begin{enumerate}
 \item draw a signal $\image$ from the database,%
 \item compute sparse representation vector $\coef = S(\image; z_i)$
-\item modify dictionary: $\forall i, \dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image - \dico\coef)$,% using~\seeEq{learn}, 
-\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \norm{\dico_{i}}$,% using~\seeEq{learn}, 
-{\color{MidnightBlue} 
+\item modify dictionary: $\forall i, \dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image - \dico\coef)$,% using~\seeEq{learn},
+\item normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \norm{\dico_{i}}$,% using~\seeEq{learn},
+{\color{MidnightBlue}
 \item update homeostasis functions: $z_i( \cdot ) \leftarrow (1- \eta_h ) z_i( \cdot ) + \eta_h \delta( a_i \leq \cdot)$.% using~\seeEq{learn_homeo}
 }
 \end{enumerate}
 \end{enumerate}
 %: we use ADAM eta scheduling + initialization of the weights to 1/f noise (see annex)
-We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of free-energy as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an decrease of free-energy. 
+We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of free-energy as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error, and in an decrease of free-energy.
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
 \begin{figure}[!ht]%%[p!]
@@ -559,20 +567,20 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 \draw (.85\linewidth, .38\linewidth) node [above right=0mm] {$\mathsf{box}$};
 \end{tikzpicture}}
 \caption{
-{\bf Optimal homeostasis and its role in unsupervised learning}: 
+{\bf Optimal homeostasis and its role in unsupervised learning}:
 {\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies ('None', 'OLS' or 'HEH') but only used in 'HEH'. At convergence of 'HEH', the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
-{\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies ('None', 'OLS' or 'HEH'). 
+{\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies ('None', 'OLS' or 'HEH').
 {\sf (C)}~Effect of homeostatic learning rate on the final cost. This shows that HEH is robust across a wide range of parameters.
 %We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
 %{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
-%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients. 
+%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
 % {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 \label{fig:HEH}}%
 \end{figure}%
 %------------------------------%
-% 
-% LUP\ IS\ HERE\ 
-% 
+%
+% LUP\ IS\ HERE\
+%
 %----------------------------------------------------------------------------%
 \section{Results: Fast unsupervised learning using homeostasis}\label{results}
 %----------------------------------------------------------------------------%
@@ -594,7 +602,7 @@ p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} (a_{i, k} >
 Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP.
 
 %: derivation
-Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that . However, the sparse coding function $S(\image)$ is not derivable, yet we may use 
+Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that . However, the sparse coding function $S(\image)$ is not derivable, yet we may use
 For this we need to derivate the change of modulation gain that would be necessary to achieve an equiprobable probability, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$:
 %      # cf. https://github.com/VictorBoutin/CHAMP/blob/caa2a77cc65d0043db1aeb11eedb707633a93df4/CHAMP/CHAMP_Layer.py#L365
 %      gain = np.exp(-(1 / alpha_homeo) * (mean_measure-target))
@@ -605,7 +613,7 @@ We will coin this algorithm variant as Homeostasis on Activation Probability (HA
 %\subsection{Approximate homeostasis yields similar performance}
 Following these derivations, we quantitatively compared (OLS, EMP and HAP) to 'HEH'\seeFig{HAP}. This shows that while 'EMP' outperforms 'OLS', 'HAP' proves to be closer to the optimal solution given by 'HEH'.
 % effect of coding algorithm
-In particular, we replicated in 'HAP' the result of Sandin that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little. 
+In particular, we replicated in 'HAP' the result of Sandin that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little.
 
 %%------------------------------%
 %: \seeFig{HAP}
@@ -643,15 +651,15 @@ In particular, we replicated in 'HAP' the result of Sandin that while homeostasi
 
 %: 2- benchmarking of computation time: toward event-driven?
 
-% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases. 
+% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases.
 %
-One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. 
- %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit. 
+One core advantage of sparse representations is the efficient coding of complex signals using compact codes. For instance, it allows for the representation of any sample as a combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that sparse coding can be optimized by designing a proper homeostatic rule regulating the competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a gain normalisation similar to what is observed in biological neural networks. We validated this theoretical insight by challenging the matching pursuit sparse coding algorithm with the same learning rule but with or without homeostasis. Simulations show that for a given homeostasis rule, gradient descent performed similarly the learning of a dataset of image patches. While the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals. To further validate these results, we will apply this algorithm to the optimisation of a visual system to be embedded in an aerial robot. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms.
+ %The different sparse coding algorithms were chosen for their efficiency and generality. They include least-angle regression, orthogonal matching pursuit and basis pursuit.
 
 %2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
 %3. application to asynchronous / focal log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
 
-To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid, energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).% 
+To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid, energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).%
 %
 
 
@@ -717,12 +725,10 @@ Moreover, by its nature, this algorithm can easily be extended to convolutional 
 %an important condition for using sparse models in computer vision algorithms.
 %% and we will explore this aspect in the following
 %%
-%%%%%----------------------------------------------------------------- 
-%%\section*{Acknowledgments}
-%%%{\bf Acknowledgments}\\
-%%\Acknowledgments
-
-%%%----------------------------------------------------------------- 
+%%%%%-----------------------------------------------------------------
+%\section*{Acknowledgments}
+%\Acknowledgments
+%%%-----------------------------------------------------------------
 \printbibliography
 
 \end{document}
