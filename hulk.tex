@@ -486,7 +486,8 @@ This is the classical formulation from~\citet{Olshausen97} but thanks to the fre
 %link of sparse coding with the cortical architecture (see rao and ballard) : 
 
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-\subsection{Algorithm: Sparse Coding}
+\subsection{Algorithm: Sparse Coding with a control mechanism for the selection of atoms}
+% TODO: check when we use 'atoms' or 'components'
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 In fact, the spiking nature of neural information demonstrates that the transition from an inactive to an active state is far more significant at the coding time scale than smooth changes of the firing rate. 
 This is for instance perfectly illustrated by the binary nature of the neural code in the auditory cortex of rats~\citep{DeWeese03}. Binary codes also emerge as optimal neural codes for rapid signal transmission~\citep{Bethge03}. This is also relevant for neuromorphic systems which transmit discrete, asynchornous events (such as a network packet). With a binary event-based code, the cost is only incremented when a new neuron gets active, regardless to the analog value. Stating that an active neuron carries a bounded amount of information of $\lambda$ bits, an upper bound for the representation cost of neural activity on the receiver end is proportional to the count of active neurons, that is, to the $\ell_0$ pseudo-norm $\norm{\coef}_0 = \abs{\enscond{i}{\coef_i \neq 0}}$:%
