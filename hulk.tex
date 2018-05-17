@@ -247,7 +247,7 @@ year = {2017}
 }
 
 
-@inproceedings{vincent2008extracting,
+@inproceedings{Vincent08,
   title={Extracting and composing robust features with denoising autoencoders},
   author={Vincent, Pascal and Larochelle, Hugo and Bengio, Yoshua and Manzagol, Pierre-Antoine},
   booktitle={Proceedings of the 25th international conference on Machine learning},
@@ -256,7 +256,7 @@ year = {2017}
   organization={ACM}
 }
 
-@article{DBLP:journals/corr/MakhzaniF13,
+@article{MakhzaniF13,
   author    = {Alireza Makhzani and
                Brendan J. Frey},
   title     = {k-Sparse Autoencoders},
@@ -271,7 +271,7 @@ year = {2017}
   bibsource = {dblp computer science bibliography, https://dblp.org}
 }
 
-@article{papyan2016convolutional,
+@article{Papyan16,
   title={Convolutional neural networks analyzed via convolutional sparse coding},
   author={Papyan, Vardan and Romano, Yaniv and Elad, Michael},
   journal={stat},
@@ -481,7 +481,7 @@ Amazingly  ~\citet{Olshausen96} has shown that such filters are emerging when co
 %: in machine learning:  from data to knowledge
 Recent advance in machine learning, and especially on unsupervised learning has shed new light on the functioning of these biological neural processes. 
 %It is important to note at this point that recent advances in artificial intelligence can shed new light on the functioning of these biological neural processes and in general on generic algorithms for unsupervised learning. 
-Unsupervised learning aims at learning the best dictionary to represent the input image, without using other knowledge than the input itself. Algorithms that combines such strategy with deep layer-wise structure show great succes in tasks like image denoising ~\citep{vincent2008extracting}, classification. A variant consists in forcing the generated representation to be sparse encoded~\citep{DBLP:journals/corr/MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{papyan2016convolutional}. Interestingly, \citep{papyan2016convolutional} proposes a model of Convolutional Sparse Coding (CSC) tighly connected with Convolutional Neural Network (CNN), so much that the forward pass of the CNN is a CSC with a thresholding pursuit algorithm.
+Unsupervised learning aims at learning the best dictionary to represent the input image, without using other knowledge than the input itself. Algorithms that combines such strategy with deep layer-wise structure show great success in tasks like image denoising ~\citep{Vincent08}, classification. A variant consists in forcing the generated representation to be sparse encoded~\citep{MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{Papyan16}. Interestingly, \citep{Papyan16} proposes a model of Convolutional Sparse Coding (CSC) tightly connected with Convolutional Neural Network (CNN), so much that the forward pass of the CNN is a CSC with a thresholding pursuit algorithm.
 
 %In general, unsupervised learning aims at learning the dictionary that best reprent the input image. These family of algorithm has been used with to tackle tasks as image denoising () or classification.
 %In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. 
