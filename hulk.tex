@@ -340,13 +340,14 @@ maintained by Schloss Dagstuhl LZI at University of Trier	homebrowsesearchabout
 %\if 1\Draft
 %\usepackage{setspace}
 %\fi
+%: symbols
 % MATHS (AMS)
-%\usepackage{amsmath}
+\usepackage{amsmath}
+\DeclareMathOperator*{\ArgMax}{\arg\max}   % https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
 %%\usepackage{amsfonts}
 %\usepackage{amssymb}
 %\usepackage{amsthm}
 %\usepackage{amsfonts, amssymb, amscd}
-%: symbols
 \newcommand{\coef}{\mathbf{a}} % image's hidden param
 \newcommand{\image}{\mathbf{I}} % the image
 \newcommand{\dico}{\Phi} % the dictionary
@@ -556,7 +557,7 @@ Still, there are many solutions to this optimization problem and here, we will u
 	\item while $\norm{\coef}_0<N_0$:
 	\begin{enumerate}
 		{\color{BrickRed}
-			\item select the best match: $i^\ast = \mbox{ArgMax}_{i} [z_i( \bar{\coef}_i )]$,% with~\seeEq{mp1},
+			\item select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef}_i )]$,% with~\seeEq{mp1},
 		\item set the sparse coefficient: $\coef_{i^\ast} = \bar{\coef}_{i^\ast}$,
 		}
 		{\color{OliveGreen}\item update residual coefficients: $\forall i, \bar{\coef}_i \leftarrow \bar{\coef}_i - \coef_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
@@ -586,7 +587,7 @@ To achieve this uniformity, we may define an homeostatic gain control mechanism 
 However, an important point is that this objective is circular as we can not access the true posterior $p_\dico(\coef)$: Indeed, the coefficients depend on non-linear coefficients through $\coef = S(\image_k; \dico, z_i)$, while the non-linear functions depend on the (cumulative) distribution of the coefficients.
 We will make the assumption that such a problem can be solved iteratively by slowly learning the non-linear functions. 
 Starting 
-Finally, the function $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most as that with the maximal z-score: $i^\ast = \mathrm{Argmax}_i z_i(a_i)$. The rest of the algorithm is left unchanged.
+Finally, the function $z_i$ for each coefficient of the sparse vector is calculated using Hebbian learning to smooth its evolution during learning. At the coding level, this z-score function is incorporated in the matching step of the matching pursuit algorithm, to modulate the choice of the most as that with the maximal z-score: $i^\ast = \ArgMax_i z_i(a_i)$. The rest of the algorithm is left unchanged.
 We will coin this algorithm variant as Histogram Equalization Homeostasis (\texttt{HEH}). 
 
 Furthermore, as we adapt the dictionaries progressively during Sparse Hebbian Learning, we may incorporate this \texttt{HEH} homeostasis during learning by chosing an appropriate learning rate $\eta_h$. 
