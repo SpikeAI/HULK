@@ -5,7 +5,6 @@
 %!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
-% Guidelines for Writing a Good NIPS Paper : https://nips.cc/Conferences/2015/PaperInformation/EvaluationCriteria
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{0}%
@@ -248,6 +247,15 @@ url = {http://ieeexplore.ieee.org/document/7965902/},
 year = {2017}
 }
 
+
+@inproceedings{vincent2008extracting,
+  title={Extracting and composing robust features with denoising autoencoders},
+  author={Vincent, Pascal and Larochelle, Hugo and Bengio, Yoshua and Manzagol, Pierre-Antoine},
+  booktitle={Proceedings of the 25th international conference on Machine learning},
+  pages={1096--1103},
+  year={2008},
+  organization={ACM}
+}
 % --------------------------------------------------------------------------
 % --------------------------------------------------------------------------
 % --------------------------------------------------------------------------
@@ -423,9 +431,12 @@ Amazingly  ~\citet{Olshausen96} has shown that such filters are emerging when co
 %: in machine learning:  from data to knowledge
 Recent advance in machine learning, and especially on unsupervised learning has shed new light on the functioning of these biological neural processes. 
 %It is important to note at this point that recent advances in artificial intelligence can shed new light on the functioning of these biological neural processes and in general on generic algorithms for unsupervised learning. 
-For a classification task, unsupervised learning aims at learning the best dictionary to represent the input image when the categorization data is unknown.
+Unsupervised learning aims at learning the best dictionary to represent the input image, without using other knowledge than the input itself. Algorithms that combines such strategy with deep layer-wise structure show great succes in tasks like image denoising ~\citep{vincent2008extracting}, classification, or data preprocessing.
+%In general, unsupervised learning aims at learning the dictionary that best reprent the input image. These family of algorithm has been used with to tackle tasks as image denoising () or classification.
 %In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. 
-This training is therefore carried out autonomously and is particularly useful for solving broader problems : image and signal compression, object detection, source separation and noise reduction in raw signals.
+%For this type of task, recent algorithms like autoencoders ~\citep{baldi2012autoencoders} shows great success by combining unsupervised learining and deep architectures
+
+This training is therefore carried out autonomously and is particularly useful for solving various problems like image and signal compression, object detection, source separation and noise reduction in raw signals.
 %This training is therefore carried out autonomously and is particularly useful for image and signal compression, object detection, source separation and noise reduction in raw signals. 
 In particular, this class of algorithms is extremely beneficial in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of an optimization of information transfer. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. For instance, these solutions make similarly an hypothesis for the sparseness of the coding. This principle is general enough to be applied to many signal classes and to allow a mathematical analysis of this problem. %  (Donoho). 
 This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. %In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. %This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. 
@@ -441,9 +452,18 @@ More generally, we will place ourselves in the framework of the principle of fre
 
 %: homeostasis
 %------------------------------%
-%: see Figure~\ref{fig:map} figure_map
+%: see Figure~\ref{fig:map}
 \begin{figure}%[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_map}}
+\centering{
+\begin{tikzpicture}
+%\draw [anchor=north west] (0, .9\linewidth) node {\includegraphics[width=.75\linewidth]{ssc_nohomeo}};
+%\draw [anchor=north west] (0, 0) node {\includegraphics[width=.75\linewidth]{ssc_homeo}};
+%4_D-comparing_convergence_results.pdf
+\draw (.0\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (.5\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{B}$};
+\draw (.0\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\draw (.9\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\end{tikzpicture}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
 We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
