@@ -1,3 +1,8 @@
+data_cache/
+figure_map.jpg
+figure_map.png
+figure_map.tiff
+figure_map_*
 .ipynb_checkpoints
 hulk.bib
 hulk.pdf
