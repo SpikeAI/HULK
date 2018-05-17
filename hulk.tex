@@ -8,8 +8,8 @@
 % Guidelines for Writing a Good NIPS Paper : https://nips.cc/Conferences/2015/PaperInformation/EvaluationCriteria
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\def\Draft{0}%
 \def\Draft{1}%
+\def\Draft{0}%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \if 1\Draft
 \documentclass[a4paper, 11pt, draft]{article} % For LaTeX2e
@@ -638,7 +638,7 @@ In particular, we replicated in \texttt{HAP} the result of Sandin that while hom
 %%------------------------------%
 %: \seeFig{HAP}
 \begin{figure}[!ht]%%[p!]
-
+\centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
 {\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
  {\sf (A)}~10 from the 324 dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
