@@ -256,6 +256,33 @@ year = {2017}
   year={2008},
   organization={ACM}
 }
+
+@article{DBLP:journals/corr/MakhzaniF13,
+  author    = {Alireza Makhzani and
+               Brendan J. Frey},
+  title     = {k-Sparse Autoencoders},
+  journal   = {CoRR},
+  volume    = {abs/1312.5663},
+  year      = {2013},
+  url       = {http://arxiv.org/abs/1312.5663},
+  archivePrefix = {arXiv},
+  eprint    = {1312.5663},
+  timestamp = {Wed, 07 Jun 2017 14:42:09 +0200},
+  biburl    = {https://dblp.org/rec/bib/journals/corr/MakhzaniF13},
+  bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{papyan2016convolutional,
+  title={Convolutional neural networks analyzed via convolutional sparse coding},
+  author={Papyan, Vardan and Romano, Yaniv and Elad, Michael},
+  journal={stat},
+  volume={1050},
+  pages={27},
+  year={2016}
+}
+maintained by Schloss Dagstuhl LZI at University of Trier	homebrowsesearchabout
+
+
 % --------------------------------------------------------------------------
 % --------------------------------------------------------------------------
 % --------------------------------------------------------------------------
@@ -431,18 +458,18 @@ Amazingly  ~\citet{Olshausen96} has shown that such filters are emerging when co
 %: in machine learning:  from data to knowledge
 Recent advance in machine learning, and especially on unsupervised learning has shed new light on the functioning of these biological neural processes. 
 %It is important to note at this point that recent advances in artificial intelligence can shed new light on the functioning of these biological neural processes and in general on generic algorithms for unsupervised learning. 
-Unsupervised learning aims at learning the best dictionary to represent the input image, without using other knowledge than the input itself. Algorithms that combines such strategy with deep layer-wise structure show great succes in tasks like image denoising ~\citep{vincent2008extracting}, classification, or data preprocessing.
+Unsupervised learning aims at learning the best dictionary to represent the input image, without using other knowledge than the input itself. Algorithms that combines such strategy with deep layer-wise structure show great succes in tasks like image denoising ~\citep{vincent2008extracting}, classification. A variant consists in forcing the generated representation to be sparse encoded~\citep{DBLP:journals/corr/MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{papyan2016convolutional}. Interestingly, \citep{papyan2016convolutional} proposes a model of Convolutional Sparse Coding (CSC) tighly connected with Convolutional Neural Network (CNN), so much that the forward pass of the CNN is a CSC with a thresholding pursuit algorithm.
+
 %In general, unsupervised learning aims at learning the dictionary that best reprent the input image. These family of algorithm has been used with to tackle tasks as image denoising () or classification.
 %In the field of machine learning, unsupervised learning corresponds to learning representation dictionaries when the categorization data is unknown. 
-%For this type of task, recent algorithms like autoencoders ~\citep{baldi2012autoencoders} shows great success by combining unsupervised learining and deep architectures
 
-This training is therefore carried out autonomously and is particularly useful for solving various problems like image and signal compression, object detection, source separation and noise reduction in raw signals.
+%This training is therefore carried out autonomously and is particularly useful for solving various problems like image and signal compression, object detection, source separation and noise reduction in raw signals.
 %This training is therefore carried out autonomously and is particularly useful for image and signal compression, object detection, source separation and noise reduction in raw signals. 
-In particular, this class of algorithms is extremely beneficial in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of an optimization of information transfer. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. For instance, these solutions make similarly an hypothesis for the sparseness of the coding. This principle is general enough to be applied to many signal classes and to allow a mathematical analysis of this problem. %  (Donoho). 
-This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. %In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. %This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. 
-However, recent studies seem to question this principle of sparse coding~\citep{Eichhorn09,Zoran12} and suggest that a simpler analysis applied in a more complex metric is sufficient to explain the emergence of orientation selective filters similar to those observed in the primary visual cortex. %
+%In particular, this class of algorithms is extremely beneficial in the first layers of artificial intelligence algorithms such as deep learning algorithms. There are many variants of such algorithms that take the form of an optimization of information transfer. An important class of these algorithms considers that all the solutions that will be considered are those that correspond to an optimal coding. For instance, these solutions make similarly an hypothesis for the sparseness of the coding. This principle is general enough to be applied to many signal classes and to allow a mathematical analysis of this problem. %  (Donoho). 
+%This type of unsupervised learning algorithm~\citep{Olshausen97} has been related to many other types of optimal representation algorithms used in both signal processing and artificial intelligence. %In particular, this algorithm allows the extraction of the independent components of the signal, for example the orientations in the image. %This representation makes it possible to observe the emergence of representations which are invariant to geometric transforms such as rotations and translations in V1. 
+%However, recent studies seem to question this principle of sparse coding~\citep{Eichhorn09,Zoran12} and suggest that a simpler analysis applied in a more complex metric is sufficient to explain the emergence of orientation selective filters similar to those observed in the primary visual cortex. %
 %In particular, we have shown above that a rapid algorithm of parsimonious coding can be implemented in a normal neural architecture~\citep{Perrinet10shl}. %It has also been shown that such coding can improve classification algorithms, in particular by limiting the number of layers required in a deep learning algorithm for classifying images that contain or do not contain animals~\citep{PerrinetBednar15}. 
-A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective~\citep{Elad10}. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to \emph{quantitatively} evaluate the joint exploration of new learning or coding strategies. %As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
+%A recent rapprochement between these algorithms and machine learning algorithms makes it possible to place them in a new perspective~\citep{Elad10}. Indeed, these unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to \emph{quantitatively} evaluate the joint exploration of new learning or coding strategies. %As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding.
 
 %: encompassed in probabilistic approaches
 In order to offer a broader perspective on the problem of understanding these biological neural processes, we will try to express it into this generic probabilistic framework. 
