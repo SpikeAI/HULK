@@ -5,6 +5,7 @@
 %!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
+% Guidelines for Writing a Good NIPS Paper : https://nips.cc/Conferences/2015/PaperInformation/EvaluationCriteria
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{0}%
@@ -451,18 +452,9 @@ More generally, we will place ourselves in the framework of the principle of fre
 
 %: homeostasis
 %------------------------------%
-%: see Figure~\ref{fig:map}
+%: see Figure~\ref{fig:map} figure_map
 \begin{figure}%[!ht]%%[p!]
-\centering{
-\begin{tikzpicture}
-%\draw [anchor=north west] (0, .9\linewidth) node {\includegraphics[width=.75\linewidth]{ssc_nohomeo}};
-%\draw [anchor=north west] (0, 0) node {\includegraphics[width=.75\linewidth]{ssc_homeo}};
-%4_D-comparing_convergence_results.pdf
-\draw (.0\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{A}$};
-\draw (.5\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{B}$};
-\draw (.0\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
-\draw (.9\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
-\end{tikzpicture}}
+\centering{\includegraphics[width=\linewidth]{figure_map}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
 We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
