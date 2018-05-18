@@ -22,9 +22,10 @@ for i_cv in range(N_cv):
 # Figure 2-B
 from shl_scripts.shl_experiments import SHL_set
 variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness']
-# variables = ['eta', 'alpha_homeo', 'eta_homeo']
 
-n_jobs = 1 # running in parallel on a multi-core machine
+variables = ['eta', 'alpha_homeo', 'eta_homeo']
+
+n_jobs = 18 # running in parallel on a multi-core machine
 for homeo_method in homeo_methods:
     experiments = SHL_set(dict(homeo_method=homeo_method, datapath=datapath), tag=tag + '_' + homeo_method)
     experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
@@ -33,3 +34,5 @@ for homeo_method in homeo_methods:
 for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
     opts = dict(homeo_method='None', learning_algorithm=algorithm, verbose=0)
     shl = SHL(opts)
+    dico= shl.learn_dico(data=data, list_figures=[],
+                   matname=tag + ' - algorithm={}'.format(algorithm))
