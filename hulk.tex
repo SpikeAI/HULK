@@ -767,73 +767,7 @@ One core advantage of sparse representations is the efficient coding of complex 
 
 %2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
 %3. application to asynchronous / focal log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
-
-To further validate these results, we applied this algorithm to the optimization of a visual system embedded in an aerial robot. Indeed, such robots have an increasing demand for visual applications, such as computation of optic flow for flight stabilization or for common visual categorization tasks such as recognition of pilot's gestures. However, embedding such a system is often difficult as it necessitates to be rapid, energy efficient and lightweight. We resolved this problem by introducing our novel algorithm as an output of our visual sensors (the ``retina''). Results were collected by comparing the image reconstruction error for different information bandwidths in the output bus of this retina.Quantitative results show that the quality of the reconstruction was improved in our algorithm on a database of natural, flying videos of the aerial robot.In particular, this algorithm provides with a real-life example showing how to improve our understanding of the emergence of edge-selective simple cells, drawing the bridge between structure (representation) and function (efficient coding).%
-%
-
-
- By developing this
-fast learning algorithm we hope for its rapid application in artificial
-intelligence algorithms. This type of architecture is economical,
-efficient and fast. It makes it possible to be transferred to most deep
-learning algorithms, a major flaw of which is to be very greedy in
-computing resources. In particular, we are considering perspectives for
-coding within a dynamic flow of sensory data and we hope to apply this
-type of algorithm on embedded systems such as aerial robots. Along with
-this, we hope that this new type of rapid unsupervised learning
-algorithm can provide a normative theory for the coding of information
-in low-level sensory processing, whether it is visual or auditory, for
-example.
-
-Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases. This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. Finally we will conclude by showing the importance of homeostasis in unsupervised learning algorithms.
-
-%The different SHL algorithms simply differ by the coding step.
-%This implies that they only differ by first, how sparseness is defined at a functional level and second, how the inverse problem corresponding to the coding step is solved at the algorithmic level.
-%Most of the schemes cited above use a less strict, parametric definition of sparseness (like the convex L$_1$-norm), but for which a mathematical formulation of the optimization problem exists.
-%Few studies such as~\citep{Liu14,Peharz12} use the stricter $\ell_0$ pseudo-norm as the coding problem gets more difficult.
-%A thorough comparison of these different strategies was recently presented in~\citep{Charles12}.
-%See also~\citep{Aharon06} for properties of the coding solutions to the $\ell_0$ pseudo-norm.
-%Similarly, in~\citep{Perrinet10shl}, we preferred to retrieve an approximate solution to the coding problem to have a better match with the measure of efficiency~\seeEq{L0_cost}. % (see Section~\ref{sec:matchingpursuit} for a description of the algorithm)
-%
-%Such an algorithmic framework is implemented in the SHL-scripts package\footnote{These scripts are available at~\url{https://github.com/bicv/SHL_scripts} and documented at~\url{https://pythonhosted.org/SHL_scripts}.}.
-%These scripts allow the retrieval of the database of natural images and the replication of the results of~\citep{Perrinet10shl} reported in this section. With a correct tuning of parameters, we observed that different coding schemes show qualitatively a similar emergence of edge-like filters. The specific coding algorithm used to obtain this sparseness appears to be of secondary importance as long as it is adapted to the data and yields sufficiently efficient sparse representation vectors. However, resulting dictionaries vary qualitatively among these schemes and it was unclear which algorithm is the most efficient and what was the individual role of the different mechanisms that constitute SHL schemes. At the learning level, we have shown that the homeostasis mechanism had a great influence on the qualitative distribution of learned filters~\citep{Perrinet10shl}.
-%
-%Results are shown in Figure~\ref{fig:sparsenet}.
-%This figure represents the qualitative results of the formation of edge-like filters (receptive fields).
-%More importantly, it shows the quantitative results as the average decrease of the squared error as a function of the sparseness.
-%This gives a direct access to the cost as computed in Equation~\ref{eq:L0_cost}.
-%These results are comparable with the \sparsenet\ algorithm.
-%Moreover, this solution,
-%by giving direct access to the atoms (filters) that are chosen,
-%provides with a more direct tool to manipulate sparse components.
-%One further advantage consists in the fact that this unsupervised learning model is non-parametric (compare with~\seeEq{sparse_cost})
-%and thus does not need to be parametrically tuned.
-%Results show the role of homeostasis on the unsupervised algorithm.
-%In particular, using the comparison of coding and decoding efficiency with and without this specific homeostasis,
-%we have proven that cooperative homeostasis optimized overall representation efficiency (see also Section~\ref{sec:laughlin}).
-%
-%It is at this point important to note that in this algorithm,
-%we achieve an exponential convergence of the squared error~\citep[p.~422]{Mallat98},
-%but also that this curve can be directly derived from the coefficients' values.
-%Indeed, for $N$ coefficients (that is, $\| \coef \|_0 = N$), we have the squared error equal to:
-%\begin{equation}%
-%E_N \eqdef \| \image - \dico\coef \| ^2 / \| \image \| ^2 = 1 - \sum_{1\leq k\leq N} a_{k}^2 / \| \image \| ^2%
-%\label{eq:error}%
-%\end{equation}%
-%As a consequence, the sparser the distributions of coefficients, then quicker is the decrease of the residual energy.
-%%Note that the observed distribution of coefficients follow a power-law. This was already observed in~\citep{Perrinet03ieee}. This power-law (``scale-free'') distribution is defined by
-%%\begin{equation}%
-%%\log p(a) \propto - \gamma \log a_{k}%
-%%\label{eq:powerlaw}%
-%%\end{equation}%
-%%The value of $\gamma$ quantifies therefore the strength of the sparseness in the signal.
-%% TODO: discuss this? or say it will be discussed below
-%In the following section, we will describe different variations of this algorithm. To compare their respective efficiency,
-%we will plot the decrease of the coefficients along with the decrease of the residual's energy. % as a measure of sparseness.
-%Using such tools, we will now explore if such a property extends to full-scale images and not only to image patches,
-%an important condition for using sparse models in computer vision algorithms.
-%% and we will explore this aspect in the following
-%%
+By developing this fast learning algorithm we hope for its rapid application in artificial intelligence algorithms. This type of architecture is economical, efficient and fast. It makes it possible to be transferred to most deep learning algorithms, a major flaw of which is to be very greedy in computing resources. In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots. Along with this, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory, for example. Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by the hypothesis of invariances to the translation of representations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases (see Annex). This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. Finally such computational results highlight the importance of homeostasis in unsupervised learning algorithms and for the study of neural systems.
 %%%%%-----------------------------------------------------------------
 % NIPS submissisons are anonymous
 %\section*{Acknowledgments}
