@@ -32,5 +32,105 @@ for homeo_method in homeo_methods:
 for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
     opts = dict(homeo_method='None', learning_algorithm=algorithm, verbose=0)
     shl = SHL(opts)
-    shl.learn_dico(data=data, list_figures=[],
-                   matname=tag + ' - algorithm={}'.format(algorithm))
+
+
+
+
+from CHAMP.DataTools import LocalContrastNormalization, FilterInputData, GenerateMask
+from CHAMP.DataLoader import LoadData
+import os
+home = os.getenv('HOME')
+datapath = os.path.join(home, "tmp/database")
+path = os.path.join(datapath, "Face_DataBase")
+TrSet, TeSet = LoadData('Face', path, decorrelate=False, resize=(65, 65))
+to_display = TrSet[0][0, 0:10, :, :, :]
+print('Size=', TrSet[0].shape)
+
+# MP Parameters
+nb_dico = 20
+width = 9
+dico_size = (width, width)
+l0 = 20
+seed = 30
+# Learning Parameters
+eta = .05
+nb_epoch = 500
+
+TrSet, TeSet = LoadData('Face', path, decorrelate=False, resize=(65, 65))
+N_TrSet, _, _, _ = LocalContrastNormalization(TrSet)
+Filtered_L_TrSet = FilterInputData(
+    N_TrSet, sigma=0.25, style='Custom', start_R=15)
+to_display = Filtered_L_TrSet[0][0, 0:10, :, :, :]
+
+mask = GenerateMask(full_size=(nb_dico, 1, width, width), sigma=0.8, style='Gaussian')
+
+
+from CHAMP.CHAMP_Layer import CHAMP_Layer
+from CHAMP.Monitor import DisplayDico, DisplayConvergenceCHAMP, DisplayWhere
+
+from CHAMP.DataTools import SaveNetwork, LoadNetwork
+
+
+
+fname = 'data_cache/CHAMP_high_HAP.pkl'
+try:
+    L1_mask = LoadNetwork(loading_path=fname)
+except:
+
+    nb_dico = 60
+    width = 19
+    dico_size = (width, width)
+    l0 = 5
+    mask = GenerateMask(full_size=(nb_dico, 1, width, width), sigma=0.8, style='Gaussian')
+    # Learning Parameters
+    eta_homeo = 0.0025
+    eta = .05
+    nb_epoch = 500
+    # learn
+    L1_mask = CHAMP_Layer(l0_sparseness=l0, nb_dico=nb_dico,
+                          dico_size=dico_size, mask=mask, verbose=2)
+    dico_mask = L1_mask.TrainLayer(
+        Filtered_L_TrSet, eta=eta, eta_homeo=eta_homeo, nb_epoch=nb_epoch, seed=seed)
+    SaveNetwork(Network=L1_mask, saving_path=fname)
+
+
+
+fname = 'data_cache/CHAMP_MNIST_HAP.pkl'
+try:
+    L1_mask = LoadNetwork(loading_path=fname)
+except:
+
+    path = os.path.join(datapath, "MNISTtorch")
+
+    TrSet, TeSet = LoadData('MNIST', data_path=path)
+    N_TrSet, _, _, _ = LocalContrastNormalization(TrSet)
+    Filtered_L_TrSet = FilterInputData(
+        N_TrSet, sigma=0.25, style='Custom', start_R=15)
+
+
+    nb_dico = 60
+    width = 7
+    dico_size = (width, width)
+    l0 = 15
+    # Learning Parameters
+    eta_homeo = 0.0025
+    eta = .05
+    nb_epoch = 500
+    # learn
+    L1_mask = CHAMP_Layer(l0_sparseness=l0, nb_dico=nb_dico,
+                          dico_size=dico_size, mask=mask, verbose=2)
+    dico_mask = L1_mask.TrainLayer(
+        Filtered_L_TrSet, eta=eta, eta_homeo=eta_homeo, nb_epoch=nb_epoch, seed=seed)
+    SaveNetwork(Network=L1_mask, saving_path=fname)
+
+
+
+fname = 'data_cache/CHAMP_low_None.pkl'
+try:
+    L1_mask = LoadNetwork(loading_path=fname)
+except:
+    L1_mask = CHAMP_Layer(l0_sparseness=l0, nb_dico=nb_dico,
+                      dico_size=dico_size, mask=mask, verbose=2)
+    dico_mask = L1_mask.TrainLayer(
+        Filtered_L_TrSet, eta=eta, nb_epoch=nb_epoch, seed=seed)
+    SaveNetwork(Network=L1_mask, saving_path=fname)
