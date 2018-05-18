@@ -2,7 +2,12 @@ data_cache/
 figure_map.jpg
 figure_map.png
 figure_map.tiff
-figure_map_*
+figure_HAP.jpg
+figure_HAP.png
+figure_HAP.tiff
+figure_HEH.jpg
+figure_HEH.png
+figure_HEH.tiff
 .ipynb_checkpoints
 hulk.bib
 hulk.pdf
