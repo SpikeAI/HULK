@@ -28,11 +28,9 @@ for homeo_method in homeo_methods:
     experiments = SHL_set(dict(homeo_method=homeo_method, datapath=datapath), tag=tag + '_' + homeo_method)
     experiments.run(variables=variables, n_jobs=n_jobs)
 
-fig, ax = None, None
-for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
-opts = dict(homeo_method='None', learning_algorithm=algorithm, verbose=0)
 
-experiments = SHL_set(opts, tag=tag + ' - algorithm={}'.format(algorithm))
-experiments.scan(variable='eta', list_figures=list_figures, display='')
-fig, ax = experiments.scan(variable='eta', list_figures=[], display='final', fig=fig, ax=ax, label=algorithm, display_variable='F')
-ax.legend()
+for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
+    opts = dict(homeo_method='None', learning_algorithm=algorithm, verbose=0)
+    shl = SHL(opts)
+    shl.learn_dico(data=data, list_figures=[],
+                   matname=tag + ' - algorithm={}'.format(algorithm))
