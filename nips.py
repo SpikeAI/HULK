@@ -8,6 +8,12 @@ shl = SHL(datapath=datapath)
 data = shl.get_data(matname='data')
 
 tag = 'NIPS'
+
+shl = SHL(one_over_F=True)
+dico_1oF = shl.learn_dico(data=data, matname=tag + '_OVF', list_figures=[])
+
+
+
 # Figure 1 & 3
 N_cv = 10
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
@@ -36,3 +42,6 @@ for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
     shl = SHL(opts)
     dico= shl.learn_dico(data=data, list_figures=[],
                    matname=tag + ' - algorithm={}'.format(algorithm))
+
+shl = SHL(one_over_F=True)
+dico_1oF = shl.learn_dico(data=data, matname=tag + '_OVF', list_figures=[])
