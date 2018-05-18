@@ -683,7 +683,7 @@ To recapitulate the different choices we made from the learning to the coding an
 \State initialize components $\dico_i$ to random points on the unit $L$-dimensional sphere,
 \For{$1024$ iterations}:
 \State draw a signal $\image_k$ from the database,%
-\State compute sparse representation vector $\coef = S(\image_k; \Psi=\{\dico, z_i, N_0\})$
+\State compute sparse representation vector $\coef = S(\image_k; \Psi=\{\dico, z_i, N_0\})$, see Algorithm~\ref{amp},
 \State modify dictionary: $\forall i, \dico_{i} \leftarrow \dico_{i} + \eta a_{i} (\image_k - \dico\coef)$,% using~\seeEq{learn},
 \State normalize dictionary: $\dico_{i} \leftarrow \dico_{i} / \norm{\dico_{i}}$,% using~\seeEq{learn},
 \State {\color{MidnightBlue} update homeostasis functions: $z_i( \cdot ) \leftarrow (1- \eta_h ) z_i( \cdot ) + \eta_h \delta( a_i \leq \cdot)$.% using~\seeEq{learn_homeo}
@@ -733,24 +733,24 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %: incompatible with nueromimetic / fast implementation
 %- first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
 % (\seeFig{map}-A, \texttt{OLS})
-We have shown above that we can find an exact solution to the problem of homeostasis during sparse hebbian learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be used by modifying the gain of the slope of the ReLu function to operate a gradient descent on cost based on the distribution of the coefficients. For instance, the strategy of~\citep{Olshausen97} assumes a cost on the the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g$ (and assuming a multiplicative noise parametrized by $\alpha$) :
+We have shown above that we can find an exact solution to the problem of homeostasis during Sparse Hebbian Learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be used by modifying the gain of the slope of the ReLu function to operate a gradient descent on the cost based on the distribution of each coefficients. For instance, the strategy of~\citep{Olshausen97} assumes a cost on the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g^2$ (and assuming a multiplicative noise parametrized by $\alpha$) :
 \begin{equation}%
 V_i \leftarrow (1- \eta_h ) V_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} a_{i, k}^2 \textrm{ and }
 \gamma_i \leftarrow \gamma_i \cdot \left( \frac{V_i}{\sigma_g^2} \right)^\alpha
 \end{equation}%
-This is similar to the mechanisms of gain normalization proposed by~\citep{Schwartz01} and which were recently shown to provide efficient coding mechanisms by~\citep{Simoncelli17}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on higher statistical moments than variance, for instance when an atom is winning more at the earlier iterations, its pdf will typically be more kurtotic than a filter that has learned less.
+This is similar to the mechanisms of gain normalization proposed by~\citep{Schwartz01} and which were recently shown to provide efficient coding mechanisms by~\citep{Simoncelli17}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on higher statistical moments than variance, for instance when an atom is winning more at the earlier iterations, its pdf will typically be more kurtotic than a filter that has learned less. Such strategy can be included in the SHL algorithm by replacing line 8 in Algorithm~\ref{shl}.
 %TODO say that in these variants this replaces 2e in the learning
 
 %: Comparison to Sandin
-Recently, such an approach was proposed by~\citet{Sandin17}. Based on the same observations, authors propose to optimise the coding during learning by modulating the gain of each dictionary element based on the recent history. They base their Equalitarian Matching Pursuit (\texttt{EMP}) algorithm on a heuristics which cancels the activation of all filters that were more often activated than a given threshold (parameterized by $1+\alpha_h$). In our setting, we may compute a similar algorithm using an evaluation of probability of activation followed by binary gates:
+Recently, such an approach was proposed by~\citet{Sandin17}. Based on the same observations, authors propose to optimize the coding during learning by modulating the gain of each dictionary element based on the recent activation history. They base their Equalitarian Matching Pursuit (\texttt{EMP}) algorithm on a heuristics which cancels the activation of any filter that was more often activated than a given threshold probability (parameterized by $1+\alpha_h$). In our setting, we may compute a similar algorithm using an evaluation of probability of activation followed by binary gates:
 \begin{equation}%
 p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} \delta(a_{i, k} > 0) \textrm{ and }
 \gamma_i = \delta (p_i < N_0/N*(1+\alpha_h)
 \end{equation}%
-Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP.
+Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP (see Annex 2.4). Again, such strategy can be included in Algorithm~\ref{shl}.
 
 %: derivation
-Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that XXX. However, the sparse coding function $S(\image)$ is not derivable, yet we may use XXX
+Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image)$ is not derivable, yet we may use XXX
 For this we need to derivate the change of modulation gain that would be necessary to achieve an equiprobable probability, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
 %      # cf. https://github.com/VictorBoutin/CHAMP/blob/caa2a77cc65d0043db1aeb11eedb707633a93df4/CHAMP/CHAMP_Layer.py#L365
 %      gain = np.exp(-(1 / alpha_homeo) * (mean_measure-target))
