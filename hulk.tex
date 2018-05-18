@@ -5,7 +5,6 @@
 %!BIB TS-program = biber
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
-% Guidelines for Writing a Good NIPS Paper : https://nips.cc/Conferences/2015/PaperInformation/EvaluationCriteria
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\Draft{0}%
@@ -336,7 +335,7 @@ maintained by Schloss Dagstuhl LZI at University of Trier	homebrowsesearchabout
 
 \usepackage[dvipsnames]{xcolor}
 
-%\usepackage{tikz}%
+\usepackage{tikz}%
 %\if 1\Draft
 %\usepackage{setspace}
 %\fi
@@ -429,8 +428,7 @@ maintained by Schloss Dagstuhl LZI at University of Trier	homebrowsesearchabout
 %
 %\usepackage{times}
 \usepackage{graphicx}
-%\DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\DeclareGraphicsExtensions{.pdf}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 %
 %\pagestyle{empty}		% No page numbers
 \begin{document}
@@ -483,10 +481,19 @@ More generally, we will place ourselves in the framework of the principle of fre
 %------------------------------%
 %: see Figure~\ref{fig:map}
 \begin{figure}%[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_map}}
+\centering{
+\begin{tikzpicture}
+%\draw [anchor=north west] (0, .9\linewidth) node {\includegraphics[width=.75\linewidth]{ssc_nohomeo}};
+%\draw [anchor=north west] (0, 0) node {\includegraphics[width=.75\linewidth]{ssc_homeo}};
+%4_D-comparing_convergence_results.pdf
+\draw (.0\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (.5\linewidth, .381\linewidth) node [above right=0mm] {$\mathsf{B}$};
+\draw (.0\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\draw (.9\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\end{tikzpicture}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $10$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
@@ -610,9 +617,19 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
 \begin{figure}[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_HEH}}
+\centering{
+\begin{tikzpicture}
+%\draw [anchor=north west] (0, .8\linewidth) node {\includegraphics[width=\linewidth]{PDF_nohomeo}};
+%\draw [anchor=north west] (0, .4\linewidth) node {\includegraphics[width=\linewidth]{z_score}};
+%\draw [anchor=north west] (0, .0) node {\includegraphics[width=\linewidth]{PDF_homeo}};
+\draw (.7\linewidth, 0) node [above right=0mm] {$\mathsf{A}$};
+\draw (.3\linewidth, 0) node [above right=0mm] {$\mathsf{B}$};
+\draw (-.1\linewidth, 0) node [above right=0mm] {$\mathsf{C}$};
+\draw (.0\linewidth, .38\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\draw (.85\linewidth, .38\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\end{tikzpicture}}
 \caption{
-{\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
+{\bf Optimal homeostasis and its role in unsupervised learning}:
 {\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. At convergence of \texttt{HEH}, the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 {\sf (B)}~Effect of learning rate on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}).
 {\sf (C)}~Effect of homeostatic learning rate on the final cost. This shows that \texttt{HEH} is robust across a wide range of parameters.
@@ -665,9 +682,21 @@ In particular, we replicated in \texttt{HAP} the result of Sandin that while hom
 %%------------------------------%
 %: \seeFig{HAP}
 \begin{figure}[!ht]%%[p!]
-
+\centering{
+\begin{tikzpicture}
+%\draw [anchor=north west] (0, .39\linewidth) node {\includegraphics[width=.47\linewidth]{dico_MP}};
+%\draw [anchor=north west] (.5\linewidth, .39\linewidth) node {\includegraphics[width=.47\linewidth]{dico_SN}};
+%\draw [anchor=north west] (.25\linewidth, -.1\linewidth) node {\includegraphics[width=.47\linewidth]{dico_MEUL}};
+%\draw [anchor=north west] (.1\linewidth, -.6\linewidth) node {\includegraphics[width=.8\linewidth]{Comparison_reconstruction}};
+\draw (0, .39\linewidth) node [above right=0mm] {$\mathsf{A}$};
+\draw (.5\linewidth, .39\linewidth) node [above right=0mm] {$\mathsf{B}$};
+%\draw (.2\linewidth, -.16\linewidth) node [above right=0mm] {$\mathsf{C}$};
+%\draw (.05\linewidth, -.67\linewidth) node [above right=0mm] {$\mathsf{D}$};
+\draw (.0\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\draw (.85\linewidth, .0\linewidth) node [above right=0mm] {$\mathsf{box}$};
+\end{tikzpicture}}
 \caption{
-{\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
+{\bf Comparative evaluation of homeostatic strategies}: %
  {\sf (A)}~10 from the 324 dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
