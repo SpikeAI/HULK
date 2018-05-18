@@ -750,8 +750,8 @@ p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} \delta(a_{i
 Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP (see Annex 2.4). Again, such strategy can be included in Algorithm~\ref{shl}.
 
 %: derivation
-Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image)$ is not derivable, yet we may use XXX
-For this we need to derivate the change of modulation gain that would be necessary to achieve an equiprobable probability, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
+Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image)$ is not derivable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability. 
+One possible heuristic is then to derivate the change of modulation gain that would be necessary to achieve an equiprobable probability, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
 %      # cf. https://github.com/VictorBoutin/CHAMP/blob/caa2a77cc65d0043db1aeb11eedb707633a93df4/CHAMP/CHAMP_Layer.py#L365
 %      gain = np.exp(-(1 / alpha_homeo) * (mean_measure-target))
 \begin{equation}%
