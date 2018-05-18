@@ -23,7 +23,7 @@ for i_cv in range(N_cv):
 from shl_scripts.shl_experiments import SHL_set
 variables = ['eta', 'alpha_homeo', 'eta_homeo']
 
-n_jobs = 2 # running in parallel on a multi-core machine
+n_jobs = 18 # running in parallel on a multi-core machine
 for homeo_method in homeo_methods:
     experiments = SHL_set(dict(homeo_method=homeo_method, datapath=datapath), tag=tag + '_' + homeo_method)
     experiments.run(variables=variables, n_jobs=n_jobs)
