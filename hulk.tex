@@ -490,8 +490,8 @@ The neural architecture is a complex dynamic system that operates at different t
  In the case of the mammalian primary visual cortex (V1) for instance, one can consider the rapid coding of retinal image as a process of transforming the raw visual information into a rough sketch that represents the outlines of objects in the image.
 This sketch and the visual information share the same property of being \emph{sparse} : for each image only a small number of atoms are selected to describe the input. Thus the coding phase consists in choosing the right encoder (called atom) among a collection of them (called dictionary) to  best represent the input.
 %As the structure of visual objects in the environment, this sketch has the property of being \emph{sparse}: for each raw image a small number of atoms will be selected relative to the size of the representation dictionary.
-This rapid operation, of the order of 50 milli-seconds in humans, is the key to the results of~\citet{Hubel68}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations.
-Amazingly~\citet{Olshausen96} has shown that such filters are emerging when coupling an unsupervised learning strategy with a sparse prior on the encoding step.
+This rapid coding operation, of the order of 50 milli-seconds in humans, is the key to the results of~\citet{Hubel68}, who showed that some cells of the mammalian primary visual cortex have relatively localized receptive fields which are predominantly selective at different orientations.
+Amazingly,~\citet{Olshausen96} has shown that such filters are emerging when coupling an unsupervised learning strategy with a sparse prior on the encoding step.
 %Amazingly, emergence of such filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image.
  %A major step in understanding this observation has been to show that the emergence of these filters can be explained as the coupling of a simple Hebbian learning with an ``optimal'' coding of the image.
 % Indeed, the work of~\citet{Olshausen96} has shown that by imposing a sparse prior on the encoding of the image, we can obtain the emergence of such cells in a neural-type model. %
@@ -529,7 +529,7 @@ This theory extends that of~\citep{Olshausen97} and shows that overall, sparse c
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
 We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are :  \texttt{None} (using a simple simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using optimal homeostasis described in this paper). {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($M= 18 \times 18=256$) are presented in a matrix (separated by a white border). %Note that their position in the matrix is arbitrary as in ICA. 
-{\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. While \texttt{OLS} provides a faster convergence than  \texttt{None}, our method provides a better final convergence.%
+{\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. While \texttt{OLS} provides a faster convergence than  \texttt{None}, the \texttt{HEH}  method provides a better final convergence.%
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
