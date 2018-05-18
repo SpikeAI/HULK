@@ -605,7 +605,7 @@ However, \seeEq{L0_cost} defines a harder cost to optimize (in comparison to con
 
 Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{BrickRed}matching} {\color{OliveGreen}pursuit} (MP) algorithm~\citep[p.~422]{Mallat98}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons. For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database:%~\citep{Mallat93}:
 \begin{algorithm}
-\caption{Adaptive Matching Pursuit}\label{amp}
+\caption{Adaptive Matching Pursuit  $\coef = S(\image_k; \Psi=\{\dico, z_i, N_0\})$}\label{amp}
 \begin{algorithmic}[1]
 \State set the sparse vector $\coef$ to zero,
 \State initialize $\bar{\coef}_i=<\image_k, \dico_i >$ for all $i$
@@ -677,7 +677,7 @@ To recapitulate the different choices we made from the learning to the coding an
 % TODO: check it is not floating
 %The proposed algorithm is:
 \begin{algorithm}
-\caption{Sparse Hebbian Learning}\label{shl}
+\caption{Sparse Hebbian Learning  $\dico = H(\image; \eta, \eta_h, N_0)$}\label{shl}
 \begin{algorithmic}[1]
 \State Initialize the point non-linear gain functions $z_i$ to similar cumulative distribution functions,%
 \State initialize components $\dico_i$ to random points on the unit $L$-dimensional sphere,
