@@ -28,7 +28,7 @@ variables = ['eta', 'alpha_homeo', 'eta_homeo']
 n_jobs = 4 # running in parallel on a multi-core machine
 for homeo_method in homeo_methods:
     experiments = SHL_set(dict(homeo_method=homeo_method, datapath=datapath), tag=tag + '_' + homeo_method)
-    experiments.run(variables=variables, n_jobs=n_jobs, verbose=1)
+    experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
 
 
 for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
