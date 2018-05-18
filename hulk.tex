@@ -529,7 +529,8 @@ This theory extends that of~\citep{Olshausen97} and shows that overall, sparse c
 \centering{\includegraphics[width=\linewidth]{figure_map}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are :  \texttt{None} (using a simple simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using optimal homeostasis described in this paper). {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($M= 18 \times 18=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. %
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are :  \texttt{None} (using a simple simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using optimal homeostasis described in this paper). {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($M= 18 \times 18=256$) are presented in a matrix (separated by a white border). %Note that their position in the matrix is arbitrary as in ICA. 
+{\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. While \texttt{OLS} provides a faster convergence than  \texttt{None}, our method provides a better final convergence.%
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
@@ -648,6 +649,22 @@ In particular, at any step \emph{during} learning, dictionaries may not have bee
 As we have seen above, a component of the free-energy is $KL( q_\Psi(\coef | \image_k) || p_\dico(\coef) )$ which gets minimal over a set of samples only when the recognition model gets closer to the true generative model. While the latter is hidden, we know about its structure in an optimal representation within a population of sensory neurons. In particular, as information is coded in the address of neurons, information transfer, in term of Shannon entropy, is optimized when average activity within the neural population is uniformly balanced (i.e. each neuron is \emph{a priori} selected with the same probability).
 In particular, a necessary (yet not sufficient) condition for minimizing this cost is that the a priori probability of selecting coefficients are identical $\forall (i,j), q_\Psi(\coef_i)=q_\Psi(\coef_j)$ to ensure the optimality of the choice of the pseudo $\ell_0$-norm and compare it to the representation in the primary visual cortex.
 % mutual information $KL( q_\Psi(\coef | \image_k) \leq MI( q_\Psi(\coef)$%
+%------------------------------%
+%: see Figure~\ref{fig:HEH}
+\begin{figure}[!ht]%[p!]%%
+\centering{\includegraphics[width=\linewidth]{figure_HEH}}
+\caption{
+{\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
+{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that all cumulative functions start around $1 - N_0/N \approx .970 $. At convergence of \texttt{HEH}, the probability of choosing any filter is equiprobable, while the distirbution of coefficients is more variable for \texttt{None} and \texttt{OLS}. As a consequence, entropy is maximal for \texttt{HEH}, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+{\sf (B)}~Effect of learning rate $\eta$ on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}).
+{\sf (C)}~Effect of homeostatic learning rate $\eta_h$ on the final cost. This shows that \texttt{HEH} is robust across a wide range of parameters.
+%We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
+%{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
+%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
+% {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+\label{fig:HEH}}%
+\end{figure}%
+%------------------------------%
 
 %: % using cumulative distribution = "inverse transform sampling" / circular problem= has to be done progressively
 % a monotonic point scalar function does not change the KL distance / free-energy
@@ -692,26 +709,7 @@ To recapitulate the different choices we made from the learning to the coding an
 %\end{enumerate}
 %\end{enumerate}
 
-We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of free-energy as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error as represented by the decrease of free-energy.
-%------------------------------%
-%: see Figure~\ref{fig:HEH}
-\begin{figure}[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_HEH}}
-\caption{
-{\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
-{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that all cumulative functions start around $1 - N_0/N \approx .970 $. At convergence of \texttt{HEH}, the probability of choosing any filter is equiprobable. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
-{\sf (B)}~Effect of learning rate $\eta$ on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}).
-{\sf (C)}~Effect of homeostatic learning rate $\eta_h$ on the final cost. This shows that \texttt{HEH} is robust across a wide range of parameters.
-%We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
-%{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
-%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
-% {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
-\label{fig:HEH}}%
-\end{figure}%
-%------------------------------%
-%
-% LUP\ IS\ HERE\
-%
+We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of free-energy as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error as represented by the decrease of free-energy. %
 %----------------------------------------------------------------------------%
 \section{Results: Fast unsupervised learning using homeostasis}\label{results}
 %----------------------------------------------------------------------------%
@@ -757,7 +755,7 @@ In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
 {\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
- {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis \texttt{HEH}. {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this could be a good compromise for fast unsupervised learning.
+ {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (\seeFig{map}-A, \texttt{HEH}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
