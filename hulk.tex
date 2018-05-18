@@ -603,7 +603,7 @@ However, \seeEq{L0_cost} defines a harder cost to optimize (in comparison to con
 %See also~\citep{Aharon06} for properties of the coding solutions to the $\ell_0$ pseudo-norm.
 %Similarly, in~\citep{Perrinet10shl}, we preferred to retrieve an approximate solution to the coding problem to have a better match with the measure of efficiency~\seeEq{L0_cost}. % (see Section~\ref{sec:matchingpursuit} for a description of the algorithm)
 
-Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{BrickRed}matching} {\color{OliveGreen}pursuit} (MP) algorithm~\citep[p.~422]{Mallat98}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons. For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database:%~\citep{Mallat93}:
+Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{BrickRed}matching} {\color{OliveGreen}pursuit} (MP) algorithm~\citep[p.~422]{Mallat98}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons. For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database, we get the coefficients $\coef = S(\image_k; \Psi=\{\dico, z_i, N_0\})$ thans to Algorithm~\ref{amp}. The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this variant of MP lies in the scalar functions $z_i$ which control the competition for the best match between components in the algorithm. While in the original algorithm an identical symmetric function is chosen (that is, $\forall i, z_i(\coef) = |\coef|$), we will define these at first attempt as the non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$ and $\delta$ is Kronecker's indicator function.
 \begin{algorithm}
 \caption{Adaptive Matching Pursuit  $\coef = S(\image_k; \Psi=\{\dico, z_i, N_0\})$}\label{amp}
 \begin{algorithmic}[1]
@@ -617,19 +617,6 @@ Still, there are many solutions to this optimization problem and here, we will u
 \EndWhile
 \end{algorithmic}
 \end{algorithm}
-%\begin{enumerate}%
-%
-%	\item set the sparse vector $\coef$ to zero,
-%	\item initialize $\bar{\coef}_i=<\image_k, \dico_i >$ for all $i$,% using~\seeEq{coco},%N
-%	\item while $\norm{\coef}_0<N_0$:
-%	\begin{enumerate}
-%		\item {\color{BrickRed}select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef}_i )]$},% with~\seeEq{mp1},
-%		\item set the sparse coefficient: $\coef_{i^\ast} = \bar{\coef}_{i^\ast}$,
-%		\item {\color{OliveGreen}update residual coefficients: $\forall i, \bar{\coef}_i \leftarrow \bar{\coef}_i - \coef_{i^\ast} <\dico_{i^\ast} , \dico_i > $,% for all $i$ using~\seeEq{mp3},
-%}
-%	\end{enumerate}
-%\end{enumerate}
-The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this variant of MP lies in the scalar functions $z_i$ which control the competition for the best match between components in the algorithm. While in the original algorithm an identical symmetric function is chosen (that is, $\forall i, z_i(\coef) = |\coef|$), we will define these at first attempt as the non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_i) = \gamma_i * \coef_i * \delta(\coef_i>0)$ and $\delta$ is Kronecker's indicator function.
 %It is at this point important to note that in this algorithm,
 %we achieve an exponential convergence of the squared error~\citep[p.~422]{Mallat98},
 %but also that this curve can be directly derived from the coefficients' values.
