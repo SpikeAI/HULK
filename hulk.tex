@@ -529,7 +529,7 @@ This theory extends that of~\citep{Olshausen97} and shows that overall, sparse c
 \centering{\includegraphics[width=\linewidth]{figure_map}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. %
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($M= 18 \times 18=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. %
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
@@ -720,7 +720,7 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 \centering{\includegraphics[width=\linewidth]{figure_HEH}}
 \caption{
 {\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
-{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. At convergence of \texttt{HEH}, the probability of choosing any filter is independent. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+{\sf (A)}~~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that all cumulative functions start around $1 - N_0/N \approx .970 $. At convergence of \texttt{HEH}, the probability of choosing any filter is equiprobable. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 {\sf (B)}~Effect of learning rate $\eta$ on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}).
 {\sf (C)}~Effect of homeostatic learning rate $\eta_h$ on the final cost. This shows that \texttt{HEH} is robust across a wide range of parameters.
 %We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
