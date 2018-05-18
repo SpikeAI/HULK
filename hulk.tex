@@ -747,7 +747,8 @@ Recently, such an approach was proposed by~\citet{Sandin17}. Based on the same o
 p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} \delta(a_{i, k} > 0) \textrm{ and }
 \gamma_i = \delta (p_i < N_0/N*(1+\alpha_h)
 \end{equation}%
-Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP (see Annex 2.4). Again, such strategy can be included in Algorithm~\ref{shl}.
+Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. %Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP.
+Again, such strategy can be included in Algorithm~\ref{shl}.
 
 %: derivation
 Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image)$ is not derivable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability. 
@@ -762,7 +763,7 @@ We will coin this variant of the algorithm Homeostasis on Activation Probability
 %\subsection{Approximate homeostasis yields similar performance}
 Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}.
 % effect of coding algorithm
-In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little.
+In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4).
 
 %%------------------------------%
 %: \seeFig{HAP}
@@ -770,7 +771,7 @@ In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
 {\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
- {\sf (A)}~$18$ from the $441$ dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
+ {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis \texttt{HEH}. {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this could be a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
