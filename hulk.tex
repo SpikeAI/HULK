@@ -747,14 +747,13 @@ We will coin this variant of the algorithm Homeostasis on Activation Probability
 %\subsection{Approximate homeostasis yields similar performance}
 Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}.
 % effect of coding algorithm
-In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4).
-
+In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4). %
 %%------------------------------%
 %: \seeFig{HAP}
 \begin{figure}[!ht]%%[p!]
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
-{\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
+{\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
  {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (\seeFig{map}-A, \texttt{HEH}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
@@ -766,7 +765,6 @@ In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that
 %\label{fig:quant}}%
 \end{figure}%
 %%------------------------------%
-
 %-----------------------------------------------------------------%
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 %-----------------------------------------------------------------%
