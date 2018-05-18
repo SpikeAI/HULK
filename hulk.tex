@@ -507,7 +507,7 @@ More generally, we will place ourselves in the framework of the principle of fre
 \centering{\includegraphics[width=\linewidth]{figure_map}}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $324$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations. %
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning steps). The compared algorithms are \texttt{None} a simple normalization of the atoms, \texttt{OLS} the method of~\citep{Olshausen97}, \texttt{HEH} the optimal homeostasis described in this paper. {\sf (A)} For each algorithm, we show $18$ randomly drawn atoms from the $441$ filters of the same size as the image patches ($16 \times 16$, $M=256$) are presented in a matrix (separated by a white border). Note that their position in the matrix is arbitrary as in ICA. {\sf (B)} Evolution of free-energy (in bits) as a function of the number of iterations cross-validated over $10$ runs. %
 \label{fig:map}}%
 \end{figure}%
 %%------------------------------%
@@ -725,7 +725,7 @@ In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
 {\bf Homeostasis on Activation Probability and a quantitative evaluation of homeostatic strategies}: %
- {\sf (A)}~10 from the 324 dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
+ {\sf (A)}~$18$ from the $441$ dictionaries learned for the 3 algorithms (\texttt{HEH}, \texttt{EMP}, \texttt{HAP}) and compared to the simple normalisation (\texttt{None}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence velocity of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding HEH homeostatic, demonstrating that this could be a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
