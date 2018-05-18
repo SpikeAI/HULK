@@ -8,9 +8,10 @@ shl = SHL(datapath=datapath)
 data = shl.get_data(matname='data')
 
 tag = 'NIPS'
-
-shl = SHL(one_over_F=True)
-dico_1oF = shl.learn_dico(data=data, matname=tag + '_OVF', list_figures=[])
+shl = SHL(eta=0.01, beta1=0.)
+dico_fixed = shl.learn_dico(data=data, matname=tag + '_fixed', list_figures=[])
+shl = SHL()
+dico_default = shl.learn_dico(data=data, matname=tag + '_default', list_figures=[])
 
 
 
