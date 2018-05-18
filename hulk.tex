@@ -706,6 +706,23 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %----------------------------------------------------------------------------%
 \subsection{Results: Fast unsupervised learning using homeostasis}\label{results}
 %----------------------------------------------------------------------------%
+%%------------------------------%
+%: \seeFig{HAP}
+\begin{figure}[!ht]%[p!]%
+\centering{\includegraphics[width=\linewidth]{figure_HAP}}
+\caption{
+{\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
+ {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (\seeFig{map}-A, \texttt{HEH}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
+\label{fig:HAP}}%
+%\caption{
+%{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
+% {\sf (A-C)}~144 dictionaries learned from the MNIST database with a sparseness of 5 after 10000 iterations with {\sf (A)}~MP Algorithm ($\eta=0.01$): No homeostasis regulation, only a small subset of dictionaries are selected with a high probability to describe the dataset.
+%{\sf (B)}~SPARSENET Algorithm ($\eta=0.01$, $\eta_h=0.01$, $\alpha_h=0.02$): The homeostasis regulation is made by normalizing the volatility.
+%{\sf (C)}~MEUL Algorithm ($\eta=0.01$, $\eta_h=0.01$): All dictionaries are selected with the same probability to describe the dataset, leading to a cooperative learning.
+% {\sf (D)}~Comparison of the reconstruction error (computed as the square root of the squared difference between the image and the residual) for the 3 algorithms (MEUL, SPARSENET, MP): The convergence velocity of MEUL is higher than SPARSENET and MP.
+%\label{fig:quant}}%
+\end{figure}%
+%%------------------------------%
 %\subsection{Algorithm: Approximate homeostasis}\label{HAP}
 %: incompatible with nueromimetic / fast implementation
 %- first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
@@ -741,23 +758,6 @@ We will coin this variant of the algorithm Homeostasis on Activation Probability
 Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}.
 % effect of coding algorithm
 In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4). %
-%%------------------------------%
-%: \seeFig{HAP}
-\begin{figure}[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_HAP}}
-\caption{
-{\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
- {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (\seeFig{map}-A, \texttt{HEH}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is slightly better as \texttt{EMP} and is similar to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
-\label{fig:HAP}}%
-%\caption{
-%{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
-% {\sf (A-C)}~144 dictionaries learned from the MNIST database with a sparseness of 5 after 10000 iterations with {\sf (A)}~MP Algorithm ($\eta=0.01$): No homeostasis regulation, only a small subset of dictionaries are selected with a high probability to describe the dataset.
-%{\sf (B)}~SPARSENET Algorithm ($\eta=0.01$, $\eta_h=0.01$, $\alpha_h=0.02$): The homeostasis regulation is made by normalizing the volatility.
-%{\sf (C)}~MEUL Algorithm ($\eta=0.01$, $\eta_h=0.01$): All dictionaries are selected with the same probability to describe the dataset, leading to a cooperative learning.
-% {\sf (D)}~Comparison of the reconstruction error (computed as the square root of the squared difference between the image and the residual) for the 3 algorithms (MEUL, SPARSENET, MP): The convergence velocity of MEUL is higher than SPARSENET and MP.
-%\label{fig:quant}}%
-\end{figure}%
-%%------------------------------%
 %-----------------------------------------------------------------%
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 %-----------------------------------------------------------------%
