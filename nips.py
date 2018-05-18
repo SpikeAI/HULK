@@ -22,10 +22,9 @@ for i_cv in range(N_cv):
 # Figure 2-B
 from shl_scripts.shl_experiments import SHL_set
 variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness']
+# variables = ['eta', 'alpha_homeo', 'eta_homeo']
 
-variables = ['eta', 'alpha_homeo', 'eta_homeo']
-
-n_jobs = 4 # running in parallel on a multi-core machine
+n_jobs = 1 # running in parallel on a multi-core machine
 for homeo_method in homeo_methods:
     experiments = SHL_set(dict(homeo_method=homeo_method, datapath=datapath), tag=tag + '_' + homeo_method)
     experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
