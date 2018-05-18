@@ -711,7 +711,7 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 \caption{
 {\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
  {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (\seeFig{map}-A, \texttt{HEH}). {\sf (B)}~Comparison of the free-energy during learning cross-validated over $10$ runs: The convergence of \texttt{HAP} is similar to \texttt{EMP} and get close to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
-\label{fig:HAP}}%
+\label{fig:HAP}}%# TODO: include OLS
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
 % {\sf (A-C)}~144 dictionaries learned from the MNIST database with a sparseness of 5 after 10000 iterations with {\sf (A)}~MP Algorithm ($\eta=0.01$): No homeostasis regulation, only a small subset of dictionaries are selected with a high probability to describe the dataset.
@@ -753,17 +753,13 @@ p_i \leftarrow (1- \eta_h ) p_i + \eta_h \cdot 1/L\sum_{k=1\cdots L} \delta(a_{i
 \end{equation}%
 We will coin this variant of the algorithm Homeostasis on Activation Probability (\texttt{HAP}). % derivation p.56N de 2018-01-09 HULK
 %\subsection{Approximate homeostasis yields similar performance}
-Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}.
+Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} outperforms \texttt{OLS}, \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}. %
 % effect of coding algorithm
 In particular, we replicated in \texttt{HAP} the result of~\citet{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4). %
 %-----------------------------------------------------------------%
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 %-----------------------------------------------------------------%
-%
-% LUP\ IS\ HERE\
-%
 %: 2- benchmarking of computation time: toward event-driven?
-
 % Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases.
 %
 One core advantage of sparse representations is the efficient coding of complex signals using compact codes. Input are thus represented as combination of few elements drawn from a large dictionary of basis functions. In the context of the efficient processing of natural images, we propose here that such sparse coding strategies can be optimized by including a proper homeostatic regulation enforcing a competition between the elements of the dictionary. Indeed, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. The sparseness constraint introduces a competition which can be optimized by ensuring that each item in the dictionary is selected as often as others. We implemented this rule by introducing a non-linear gain normalization similar to what is observed in biological neural networks. We validated this theoretical insight by challenging this adaptive unsupervised learning algorithm with different heuristics for homeostasis. Simulations show that at convergence, while the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals~\citep{Ringach02,Rehn07,Loxley17}. To further validate these results, we quantitatively compared the efficiency of the different variants of the algorithms, both at the level of homeostasis (homeostatic learning rate, parameters of the heuristics), but also to the coding (by changing $M$, $N$ or $N_0$) and to the learning (by changing the learning rate, the scheduling or $M$). This demonstrated that overall, the neuro-inspired homeostatic algorithm provided with the best compromise between efficiency and computational cost. In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms.
