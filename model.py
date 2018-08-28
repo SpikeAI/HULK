@@ -7,7 +7,7 @@ datapath = '../../SHL_master/database'
 shl = SHL(datapath=datapath)
 data = shl.get_data(matname='data')
 
-tag = 'NIPS'
+tag = 'ICLR'
 # Figure 1 & 3
 N_cv = 10
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
