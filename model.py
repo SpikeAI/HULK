@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
+tag = 'ICLR'
 from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
 datapath = '../../SparseHebbianLearning/database'
-opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5., cache_dir='cache_dir_42', datapath=datapath, verbose=0)
+opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5, cache_dir='cache_dir_42', datapath=datapath, verbose=0)
 shl = SHL(**opts)
-data = shl.get_data(matname='data')
+data = shl.get_data(matname=tag)
 
 # running main simulations
-tag = 'ICLR'
 # Figure 1 & 3
 N_cv = 10
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
