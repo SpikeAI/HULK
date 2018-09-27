@@ -15,7 +15,7 @@ homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
 seed = 42
 
 # running in parallel on a multi-core machine
-n_jobs = 8
+n_jobs = 8 
 n_jobs = 35
 
 list_figures = []
