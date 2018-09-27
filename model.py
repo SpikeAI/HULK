@@ -4,10 +4,10 @@ from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
 datapath = '../../SparseHebbianLearning/database'
 opts = dict(datapath=datapath, verbose=0)
-
 shl = SHL(**opts)
 data = shl.get_data(matname='data')
 
+# running main simulations
 tag = 'ICLR'
 # Figure 1 & 3
 N_cv = 10
@@ -15,7 +15,7 @@ homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
 seed = 42
 
 # running in parallel on a multi-core machine
-n_jobs = 8 
+n_jobs = 8
 n_jobs = 35
 
 list_figures = []
