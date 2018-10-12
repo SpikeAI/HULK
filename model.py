@@ -4,7 +4,14 @@ tag = 'ICLR'
 from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
 datapath = '../../SparseHebbianLearning/database'
-opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5, cache_dir='cache_dir_42', datapath=datapath, verbose=0)
+# different runs
+#opts = dict(eta=0.007, eta_homeo=0.02, alpha_homeo=.5, cache_dir='cache_dir_1100', datapath=datapath) 
+#opts = dict(eta=0.007, eta_homeo=0.02, alpha_homeo=.08, cache_dir='cache_dir_1900', datapath=datapath) 
+#opts = dict(eta=0.007, eta_homeo=0.005, alpha_homeo=5., cache_dir='cache_dir_1700', datapath=datapath)
+#opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=.5, cache_dir='cache_dir_frioul', datapath=datapath)
+#opts = dict(eta=0.007, eta_homeo=0.005, alpha_homeo=5., cache_dir='cache_dir', datapath=datapath)
+#opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5, cache_dir='cache_dir_42', datapath=datapath, verbose=0)
+opts = dict(eta=0.005, eta_homeo=0.005, alpha_homeo=2.5, cache_dir='cache_dir', datapath=datapath, verbose=0)
 shl = SHL(**opts)
 data = shl.get_data(matname=tag)
 
