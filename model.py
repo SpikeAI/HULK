@@ -29,8 +29,8 @@ except:
     n_jobs = 4
     n_jobs = 9
     n_jobs = 10
-    n_jobs = 35
     n_jobs = 1
+    n_jobs = 35
 
 list_figures = []
 
