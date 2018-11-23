@@ -11,7 +11,8 @@ datapath = '../../SparseHebbianLearning/database'
 #opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=.5, cache_dir='cache_dir_frioul', datapath=datapath)
 #opts = dict(eta=0.007, eta_homeo=0.005, alpha_homeo=5., cache_dir='cache_dir', datapath=datapath)
 #opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5, cache_dir='cache_dir_42', datapath=datapath, verbose=0)
-opts = dict(eta=0.005, eta_homeo=0.005, alpha_homeo=2.5, cache_dir='cache_dir', datapath=datapath, verbose=0)
+#opts = dict(eta=0.005, eta_homeo=0.005, alpha_homeo=2.5, cache_dir='cache_dir', datapath=datapath, verbose=0)
+opts = dict(cache_dir='cache_dir', datapath=datapath, verbose=0)
 shl = SHL(**opts)
 data = shl.get_data(matname=tag)
 
@@ -42,9 +43,8 @@ for homeo_method in homeo_methods:
     experiments.run(variables=['seed'], n_jobs=n_jobs, verbose=0)
 
 # Figure 2-B
-variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness']
-
 variables = ['eta', 'alpha_homeo', 'eta_homeo']
+variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness', 'n_dictionary']
 
 for homeo_method in homeo_methods:
     opts_ = opts.copy()
@@ -59,3 +59,5 @@ for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
     shl = SHL(**opts_)
     dico= shl.learn_dico(data=data, list_figures=[],
                    matname=tag + ' - algorithm={}'.format(algorithm))
+    
+    
