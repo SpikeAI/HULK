@@ -24,8 +24,10 @@ seed = 42
 
 # running in parallel on a multi-core machine
 import sys
+print(int(sys.argv[1]))
 try:
-    n_jobs = sys.argv[2]
+    n_jobs = int(sys.argv[1])
+    print('n_jobs', n_jobs)
 except:
     n_jobs = 4
     n_jobs = 9
@@ -33,31 +35,33 @@ except:
     n_jobs = 1
     n_jobs = 35
 
-list_figures = []
-
-from shl_scripts.shl_experiments import SHL_set
-for homeo_method in homeo_methods:
-    opts_ = opts.copy()
-    opts_.update(homeo_method=homeo_method)
-    experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, N_scan=N_cv)
-    experiments.run(variables=['seed'], n_jobs=n_jobs, verbose=0)
-
-# Figure 2-B
-variables = ['eta', 'alpha_homeo', 'eta_homeo']
-variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness', 'n_dictionary']
-
-for homeo_method in homeo_methods:
-    opts_ = opts.copy()
-    opts_.update(homeo_method=homeo_method)
-    experiments = SHL_set(opts_, tag=tag + '_' + homeo_method)
-    experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
-
-# Annex X.X
-for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
-    opts_ = opts.copy()
-    opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
-    shl = SHL(**opts_)
-    dico= shl.learn_dico(data=data, list_figures=[],
-                   matname=tag + ' - algorithm={}'.format(algorithm))
     
-    
+if n_jobs>0:
+
+    list_figures = []
+
+    from shl_scripts.shl_experiments import SHL_set
+    for homeo_method in homeo_methods:
+        opts_ = opts.copy()
+        opts_.update(homeo_method=homeo_method)
+        experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, N_scan=N_cv)
+        experiments.run(variables=['seed'], n_jobs=n_jobs, verbose=0)
+
+    # Figure 2-B
+    variables = ['eta', 'alpha_homeo', 'eta_homeo']
+    variables = ['eta', 'alpha_homeo', 'eta_homeo', 'l0_sparseness', 'n_dictionary']
+
+    for homeo_method in homeo_methods:
+        opts_ = opts.copy()
+        opts_.update(homeo_method=homeo_method)
+        experiments = SHL_set(opts_, tag=tag + '_' + homeo_method)
+        experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
+
+    # Annex X.X
+    for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
+        opts_ = opts.copy()
+        opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
+        shl = SHL(**opts_)
+        dico= shl.learn_dico(data=data, list_figures=[],
+                       matname=tag + ' - algorithm={}'.format(algorithm))
+
