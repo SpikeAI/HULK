@@ -5,14 +5,10 @@ from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
 datapath = '../../SparseHebbianLearning/database'
 # different runs
-#opts = dict(eta=0.007, eta_homeo=0.02, alpha_homeo=.5, cache_dir='cache_dir_1100', datapath=datapath) 
-#opts = dict(eta=0.007, eta_homeo=0.02, alpha_homeo=.08, cache_dir='cache_dir_1900', datapath=datapath) 
-#opts = dict(eta=0.007, eta_homeo=0.005, alpha_homeo=5., cache_dir='cache_dir_1700', datapath=datapath)
-#opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=.5, cache_dir='cache_dir_frioul', datapath=datapath)
-#opts = dict(eta=0.007, eta_homeo=0.005, alpha_homeo=5., cache_dir='cache_dir', datapath=datapath)
-#opts = dict(eta=0.0033, eta_homeo=0.05, alpha_homeo=2.5, cache_dir='cache_dir_42', datapath=datapath, verbose=0)
-#opts = dict(eta=0.005, eta_homeo=0.005, alpha_homeo=2.5, cache_dir='cache_dir', datapath=datapath, verbose=0)
+#opts = dict(cache_dir='cache_dir_ICLR', datapath=datapath, verbose=0)
+opts = dict(cache_dir='cache_dir_cluster', datapath=datapath, verbose=0)
 opts = dict(cache_dir='cache_dir', datapath=datapath, verbose=0)
+
 shl = SHL(**opts)
 data = shl.get_data(matname=tag)
 
@@ -24,10 +20,9 @@ seed = 42
 
 # running in parallel on a multi-core machine
 import sys
-print(int(sys.argv[1]))
 try:
     n_jobs = int(sys.argv[1])
-    print('n_jobs', n_jobs)
+    print('n_jobs=', n_jobs)
 except:
     n_jobs = 4
     n_jobs = 9
@@ -58,6 +53,10 @@ if n_jobs>0:
         experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
 
     # Annex X.X
+
+    shl = SHL(**opts)
+    dico = shl.learn_dico(data=data, list_figures=list_figures, matname=tag + '_vanilla')
+    
     for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'omp', 'mp']: # 'threshold',
         opts_ = opts.copy()
         opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
@@ -65,3 +64,12 @@ if n_jobs>0:
         dico= shl.learn_dico(data=data, list_figures=[],
                        matname=tag + ' - algorithm={}'.format(algorithm))
 
+    shl = SHL(one_over_F=False, **opts)
+    dico_w = shl.learn_dico(data=data, matname=tag + '_WHITE', list_figures=[])
+    shl = SHL(one_over_F=True, **opts)
+    dico_1oF = shl.learn_dico(data=data, matname=tag + '_OVF', list_figures=[])
+
+    shl = SHL(beta1=0., **opts)
+    dico_fixed = shl.learn_dico(data=data, matname=tag + '_fixed', list_figures=[])
+    shl = SHL(**opts)
+    dico_default = shl.learn_dico(data=data, matname=tag + '_default', list_figures=[])
