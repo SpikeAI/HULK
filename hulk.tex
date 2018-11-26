@@ -23,9 +23,9 @@
 \documentclass{article} % For LaTeX2e
 \usepackage[final]{pdfpages}
 \fi
-\usepackage[dvipsnames]{xcolor}
 %\usepackage{xcolor}
 \usepackage{iclr2019_conference,times}
+\usepackage[dvipsnames]{xcolor}
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
 \input{math_commands.tex}
 %============ common ===================
@@ -520,5 +520,5 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 %\printbibliography
 \bibliography{hulk}
 \bibliographystyle{iclr2019_conference}
-\includepdf[pages=-]{Annex.pdf}
+\includepdf[pages=-,pagecommand={},width=\textwidth]{Annex.pdf}
 \end{document}
