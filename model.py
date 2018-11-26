@@ -6,8 +6,8 @@ from shl_scripts.shl_experiments import SHL, prun
 datapath = '../../SparseHebbianLearning/database'
 # different runs
 #opts = dict(cache_dir='cache_dir_ICLR', datapath=datapath, verbose=0)
-opts = dict(cache_dir='cache_dir_cluster', datapath=datapath, verbose=0)
-opts = dict(cache_dir='cache_dir', datapath=datapath, verbose=0)
+#opts = dict(cache_dir='cache_dir_cluster', datapath=datapath, verbose=0)
+opts = dict(datapath=datapath, verbose=0)
 
 shl = SHL(**opts)
 data = shl.get_data(matname=tag)
