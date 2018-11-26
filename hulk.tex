@@ -21,6 +21,7 @@
 \documentclass[draft]{article} % For LaTeX2e
 \else
 \documentclass{article} % For LaTeX2e
+\usepackage[final]{pdfpages}
 \fi
 \usepackage[dvipsnames]{xcolor}
 %\usepackage{xcolor}
@@ -472,7 +473,7 @@ Again, such strategy can be included in Algorithm~\ref{alg:shl}.
 
 %: derivation
 % TODO: - HAP: The proposed approximation HAP is the novelty of this paper, as it permits to reduce the computational cost of the HEH technique with an approximate regularizing function z_i. However, the construction of this rule is not detailed enough. It is introduced as modulation change needed to maximize the entropy of the coefficient activation probability but this part should be extended to give more insight on such construction.
-Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image_k; \Psi=\{\dico, z, N_0\})$ is not differentiable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability. 
+Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using a gradient descent approach on gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $-\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image_k; \Psi=\{\dico, z, N_0\})$ is not differentiable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability. 
 One possible heuristic is then to differentiate the change of modulation gain that would be necessary to achieve an equiprobable probability, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
 %      # cf. https://github.com/VictorBoutin/CHAMP/blob/caa2a77cc65d0043db1aeb11eedb707633a93df4/CHAMP/CHAMP_Layer.py#L365
 %      gain = np.exp(-(1 / alpha_homeo) * (mean_measure-target))
@@ -519,4 +520,5 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 %\printbibliography
 \bibliography{hulk}
 \bibliographystyle{iclr2019_conference}
+\includepdf[pages=-]{Annex.pdf}
 \end{document}
