@@ -21,8 +21,9 @@
 \documentclass[draft]{article} % For LaTeX2e
 \else
 \documentclass{article} % For LaTeX2e
-\usepackage[final]{pdfpages}
 \fi
+\usepackage[final]{pdfpages}
+\newcommand{\printingPaperWidth}{216mm}
 %\usepackage{xcolor}
 \usepackage{iclr2019_conference,times}
 \usepackage[dvipsnames]{xcolor}
@@ -520,5 +521,8 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 %\printbibliography
 \bibliography{hulk}
 \bibliographystyle{iclr2019_conference}
-\includepdf[pages=-,pagecommand={},width=\textwidth]{Annex.pdf}
+% width=\printingPaperWidth, fitpaper=true, scale=0.25, 
+\pagestyle{empty}
+\includepdf[pages=-, fitpaper=true, pagecommand={
+\addcontentsline{toc}{section}{Appendix}},width=\textwidth]{Annex.pdf}
 \end{document}
