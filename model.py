@@ -32,6 +32,7 @@ except:
 
     
 if n_jobs>0:
+    # Figure 1 & 3
 
     list_figures = []
 
@@ -43,10 +44,10 @@ if n_jobs>0:
         experiments.run(variables=['seed'], n_jobs=n_jobs, verbose=0)
 
     # Figure 2-B
-    variables = ['eta', 'alpha_homeo', 'eta_homeo']
-    variables = ['eta', 'eta_homeo', 'l0_sparseness', 'n_dictionary']
-    bases = [10, 10, 2, 2]
-    bases = [4] * 4
+    variables = ['eta', 'eta_homeo']
+
+    list_figures = []
+    bases = [10] * len(variables)
 
     for homeo_method, base in zip(homeo_methods, bases):
         opts_ = opts.copy()
@@ -54,11 +55,23 @@ if n_jobs>0:
         experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, base=base)
         experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
 
+
+
     # Annex X.X
 
     shl = SHL(**opts)
     dico = shl.learn_dico(data=data, list_figures=list_figures, matname=tag + '_vanilla')
+
     
+    variables = ['alpha_homeo', 'l0_sparseness', 'n_dictionary']
+    bases = [4] * len(variables)
+
+    for homeo_method, base in zip(homeo_methods, bases):
+        opts_ = opts.copy()
+        opts_.update(homeo_method=homeo_method)
+        experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, base=base)
+        experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
+
     for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'elastic', 'omp', 'mp']: # 'threshold',
         opts_ = opts.copy()
         opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
