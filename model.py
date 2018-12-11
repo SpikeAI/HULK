@@ -47,12 +47,10 @@ if n_jobs>0:
     variables = ['eta', 'eta_homeo']
 
     list_figures = []
-    bases = [10] * len(variables)
-
-    for homeo_method, base in zip(homeo_methods, bases):
+    for homeo_method in homeo_methods:
         opts_ = opts.copy()
         opts_.update(homeo_method=homeo_method)
-        experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, base=base)
+        experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, base=10)
         experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
 
 
