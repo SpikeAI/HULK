@@ -6,9 +6,10 @@
 % -*- coding: UTF-8; -*-
 % vim: set fenc=utf-8
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
+% TODO : change notation for x = A @ y
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[letterpaper, final, conference]{IEEEtran}
+\documentclass[letterpaper,final,conference]{IEEEtran}
 %============ common ===================
 %\usepackage[utf8]{luainputenc}
 %\usepackage[english]{babel}%
@@ -148,7 +149,10 @@ This research has received funding from the European Union’s Horizon 2020 rese
 %\pagestyle{empty}		% No page numbers
 %\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
 \begin{document}
-\title{\Title}
+\title{\Title
+\thanks{\Acknowledgments
+}
+}
 %\author{%
 %\makebox[.45\linewidth]{\FirstNameA\ \AuthorA}
 %\and \makebox[.45\linewidth]{\FirstNameB\ \AuthorB}% \\ \Institute\ \Organism
@@ -162,19 +166,19 @@ This research has received funding from the European Union’s Horizon 2020 rese
 \IEEEauthorblockA{\textit{\Institute\ } \\
 \textit{\Organism\ }\\
 Marseille, France \\
-\email{\EmailA}}
+\textit{\EmailA}}
 \and
 \IEEEauthorblockN{\FirstNameB\ \AuthorB }
 \IEEEauthorblockA{\textit{\Institute\ } \\
 \textit{\Organism\ }\\
 Marseille, France \\
-\email{\EmailB}}
+\textit{\EmailB}}
 \and
 \IEEEauthorblockN{\FirstNameC\ \AuthorC }
 \IEEEauthorblockA{\textit{\Institute\ } \\
 \textit{\Organism\ }\\
 Marseille, France \\
-\email{\EmailC}}
+\textit{\EmailC}}
 }
 
 %% Authors must not appear in the submitted version. They should be hidden
@@ -323,16 +327,16 @@ However, \seeEq{L0_cost} defines a harder cost to optimize (in comparison to con
 %See also~\citep{Aharon06} for properties of the coding solutions to the $\ell_0$ pseudo-norm.
 %Similarly, in~\citep{Perrinet10shl}, we preferred to retrieve an approximate solution to the coding problem to have a better match with the measure of efficiency~\seeEq{L0_cost}. % (see Section~\ref{sec:matchingpursuit} for a description of the algorithm)
 
-Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{BrickRed}Matching} {\color{OliveGreen}Pursuit} (MP) algorithm~\citep[p.~422]{Mallat98}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons (that is, $\lambda$ bits). For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database, we get the coefficients $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$ thanks to Algorithm~\ref{alg:gmp}. The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this generalization of MP lies in the scalar functions $z = \{z_i \}_{i = 1 \ldots N }$ which control the competition for the best {\color{BrickRed}match} across atoms. While an identical symmetric function is chosen in the original MP algorithm (that is, $\forall i, z_i(\coef_{k}) = |\coef_{k}|$), we will define these at a first attempt as the rescaled non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_{k,i}) = \gamma_i * \coef_{k,i} * \delta(\coef_{k,i}>0)$ where $\delta$ is Kronecker's indicator function.
+Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{red}Matching} {\color{green}Pursuit} (MP) algorithm~\citep[p.~422]{Mallat98}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons (that is, $\lambda$ bits). For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database, we get the coefficients $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$ thanks to Algorithm~\ref{alg:gmp}. The parameter $N_0>0$ controls the amount of sparsity that we impose to the coding. The novelty of this generalization of MP lies in the scalar functions $z = \{z_i \}_{i = 1 \ldots N }$ which control the competition for the best {\color{red}match} across atoms. While an identical symmetric function is chosen in the original MP algorithm (that is, $\forall i, z_i(\coef_{k}) = |\coef_{k}|$), we will define these at a first attempt as the rescaled non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_{k,i}) = \gamma_i * \coef_{k,i} * \delta(\coef_{k,i}>0)$ where $\delta$ is Kronecker's indicator function.
 %\begin{algorithm}
 %\caption{Generalized Matching Pursuit: $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$}\label{alg:gmp}
 \begin{algorithmic}[1]
 \State set the sparse vector $\coef_{k}$ to zero,
 \State initialize $\bar{\coef_{k}}_i=\langle\image_k, \dico_i \rangle$ for all $i$
 \While{$\norm{\coef_{k}}_0<N_0$}:
-\State {\color{BrickRed}select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef_{k}}_i )]$}
+\State {\color{red}select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef_{k}}_i )]$}
 \State update the sparse coefficient: $\coef_{k, i^\ast} = \coef_{k, i^\ast} + \bar{\coef_{k, i^\ast}}$,
-\State {\color{OliveGreen}update residual coefficients: $\forall i, \bar{\coef_{k,i}} \leftarrow \bar{\coef_{k,i}} - \coef_{k,i^\ast} \langle\dico_{i^\ast} , \dico_i \rangle $.% for all $i$ using~\seeEq{mp3},
+\State {\color{green}update residual coefficients: $\forall i, \bar{\coef_{k,i}} \leftarrow \bar{\coef_{k,i}} - \coef_{k,i^\ast} \langle\dico_{i^\ast} , \dico_i \rangle $.% for all $i$ using~\seeEq{mp3},
 }
 \EndWhile
 \end{algorithmic}
@@ -524,8 +528,8 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 % theorems.
 % another perspective is precision-weighted inference see page 11 of Kingma
 %%%%%-----------------------------------------------------------------
-\section*{Acknowledgments}
-\Acknowledgments
+%\section*{Acknowledgments}
+%\Acknowledgments
 %%%-----------------------------------------------------------------
 %\printbibliography
 \bibliographystyle{IEEEtran}
