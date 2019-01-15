@@ -9,7 +9,7 @@
 % TODO : change notation for x = A @ y
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[letterpaper,final,conference]{IEEEtran}
+\documentclass[letterpaper,final,conference,10pt]{IEEEtran}
 %============ common ===================
 %\usepackage[utf8]{luainputenc}
 %\usepackage[english]{babel}%
@@ -41,13 +41,13 @@
 \newcommand{\AuthorC}{Perrinet}%
 \newcommand{\FirstNameC}{Laurent U}%
 \newcommand{\Institute}{Institut Neurosciences Timone}%, Marseille, France}%\\ Aix Marseille Univ, CNRS}%
-\newcommand{\Organism}{Aix-Marseille Universit\'e, CNRS}%
+\newcommand{\Organism}{Aix Marseille Université, CNRS}%
 \newcommand{\Address}{27, Bd. Jean Moulin, 13385 Marseille Cedex 5, France}%
-\newcommand{\Website}{http://invibe.net/LaurentPerrinet}%
 \newcommand{\EmailA}{victor.boutin@univ-amu.fr}%
 \newcommand{\EmailB}{angelo.franciosini@univ-amu.fr}%
 \newcommand{\EmailC}{laurent.perrinet@univ-amu.fr}%
-\newcommand{\WebsiteC}{http://invibe.net/LaurentPerrinet}%
+\newcommand{\Website}{https://spikeai.github.io/}%
+\newcommand{\WebsiteC}{https://spikeai.github.io/}%
 \newcommand{\Title}{%
 %alternatives: - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
 %# Homeostatic Unsupervised Learning of Kernels
@@ -56,7 +56,7 @@
 An adaptive homeostatic algorithm for the unsupervised learning of visual features
 }%
 \newcommand{\Abstract}{ %  13 characters left
-The formation of structure in the brain, that is, of the connections between cells within neural populations, is by large an unsupervised learning process: the emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the formation of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. We modeled these mechanisms using sparse Hebbian learning algorithms. These algorithms alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty faced by these algorithms is to deduce a good representation while knowing immature encoders, and to learn good encoders with a non-optimal representation. To address this problem, we propose to introduce a new regulation process between learning and coding, called homeostasis. Our homeostasis is compatible with a neuro-mimetic architecture and allows for the fast emergence of localized filters sensitive to orientation. The key to this algorithm lies in a simple adaptation mechanism based on non-linear functions that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of existing unsupervised learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement a more rapid unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and we illustrate this with one result in a convolutional neural network.
+The formation of structure in the brain, that is, of the connections between cells within neural populations, is by large an unsupervised learning process: the emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the formation of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. We modeled these mechanisms using sparse Hebbian learning algorithms. These algorithms alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty is to deduce a good representation while knowing immature encoders, and to learn good encoders with a non-optimal representation. To address this problem, we propose to introduce a new regulation process between learning and coding, called homeostasis. It is compatible with a neuro-mimetic architecture and allows for the fast emergence of localized filters sensitive to orientation. The key to this algorithm lies in a simple adaptation mechanism based on non-linear functions that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement a more rapid unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and we illustrate this with one result in a convolutional neural network.
 }
 \newcommand{\Keywords}{Vision, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\SubjectAreas}{Sparse Coding, Unsupervised Learning, Natural Scene Statistics, Biologically Plausible Deep Networks, Visual Perception, Computer Vision}%
@@ -369,7 +369,7 @@ For all these sparse coding algorithms, during the early learning step, some cel
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
 %: \seeFig{HEH}
-\begin{figure}%[!ht]%[p!]%%
+\begin{figure*}%[!ht]%[p!]%%
 \centering{\includegraphics[width=\linewidth]{figure_HEH}}
 %\vspace*{-.1cm}
 \caption{
@@ -381,7 +381,7 @@ For all these sparse coding algorithms, during the early learning step, some cel
 %{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
 % {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 \label{fig:HEH}}%
-\end{figure}%
+\end{figure*}%
 %------------------------------%
 % TODO Say explictly that we reproduce ~\citep{Perrinet10shl} + python code
 % - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
@@ -503,13 +503,9 @@ Overall, these quantitative results show that the~\texttt{HEH} algorithm could b
 %-----------------------------------------------------------------%
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
 %-----------------------------------------------------------------%
-%: 2- benchmarking of computation time: toward event-driven?
-% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases.
-One core advantage of sparse representations is the efficient coding of complex signals using compact codes. Inputs are thus represented as combination of few elements drawn from a large dictionary of atoms. As a consequence, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. This constraint introduces a competition between atoms. In the context of the efficient processing of natural images, we proposed here that such strategies can be optimized by including a proper homeostatic regulation enforcing a fair competition between the elements of the dictionary. We implemented this rule by introducing a non-linear gain normalization similar to what is observed in biological neural networks. We validated this theoretical insight by challenging this adaptive unsupervised learning algorithm with different heuristics for the homeostasis. Simulations show that at convergence, while the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals~\citep{Ringach02,Rehn07,Loxley17}. To further validate these results, we quantitatively compared the efficiency of the different variants of the algorithms, both at the level of homeostasis (homeostatic learning rate, parameters of the heuristics), but also to the coding (by changing $M$, $N$ or $N_0$) and to the learning (by changing the learning rate, the scheduling or $M$). This demonstrated that overall, this neuro-inspired homeostatic algorithm provided with the best compromise between efficiency and computational cost. 
-
 %%------------------------------%
 %: \seeFig{CNN}
-\begin{figure*}%[!ht]%[p!]%
+\begin{figure*}[!ht]%[p!]%
 \centering{\includegraphics[width=\linewidth]{figure_CNN}}
 %\vspace*{-.1cm}
 \caption{
@@ -518,6 +514,10 @@ One core advantage of sparse representations is the efficient coding of complex 
 \label{fig:CNN}}%# TODO: do figure :-0
 \end{figure*}%
 %%------------------------------%
+%: 2- benchmarking of computation time: toward event-driven?
+% Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases.
+One core advantage of sparse representations is the efficient coding of complex signals using compact codes. Inputs are thus represented as combination of few elements drawn from a large dictionary of atoms. As a consequence, a common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. This constraint introduces a competition between atoms. In the context of the efficient processing of natural images, we proposed here that such strategies can be optimized by including a proper homeostatic regulation enforcing a fair competition between the elements of the dictionary. We implemented this rule by introducing a non-linear gain normalization similar to what is observed in biological neural networks. We validated this theoretical insight by challenging this adaptive unsupervised learning algorithm with different heuristics for the homeostasis. Simulations show that at convergence, while the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, homeostasis results in a more homogeneous set of orientation selective filters, which is closer to what is found in the visual cortex of mammals~\citep{Ringach02,Rehn07,Loxley17}. To further validate these results, we quantitatively compared the efficiency of the different variants of the algorithms, both at the level of homeostasis (homeostatic learning rate, parameters of the heuristics), but also to the coding (by changing $M$, $N$ or $N_0$) and to the learning (by changing the learning rate, the scheduling or $M$). This demonstrated that overall, this neuro-inspired homeostatic algorithm provided with the best compromise between efficiency and computational cost. 
+
 %2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
 %3. application to asynchronous / focal log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
 In summary, this biologically-inspired learning rule demonstrates that principles observed in neural computations can help improve real-life machine learning algorithms. Indeed, by developing this fast learning algorithm, we hope for its use in artificial intelligence algorithms. This type of architecture is economical, efficient and fast. In particular the HAP algorithms uses only ReLUs such that it is easy to be transferred to most deep learning algorithms.  %In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots. 
@@ -530,8 +530,246 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 %\Acknowledgments
 %%%-----------------------------------------------------------------
 %\printbibliography
-\bibliographystyle{IEEEtran}
-\bibliography{hulk}
+%\bibliographystyle{IEEEtran}
+%\bibliography{hulk}
+% Generated by IEEEtran.bst, version: 1.12 (2007/01/11)
+\begin{thebibliography}{10}
+\providecommand{\url}[1]{#1}
+\csname url@samestyle\endcsname
+\providecommand{\newblock}{\relax}
+\providecommand{\bibinfo}[2]{#2}
+\providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
+\providecommand{\BIBentryALTinterwordstretchfactor}{4}
+\providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
+\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
+  \fontdimen4\font\relax}
+\providecommand{\BIBforeignlanguage}[2]{{%
+\expandafter\ifx\csname l@#1\endcsname\relax
+\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
+\typeout{** loaded for the language `#1'. Using the pattern for}%
+\typeout{** the default language instead.}%
+\else
+\language=\csname l@#1\endcsname
+\fi
+#2}}
+\providecommand{\BIBdecl}{\relax}
+\BIBdecl
+
+\bibitem{Hubel68}
+\BIBentryALTinterwordspacing
+D.~H. Hubel and T.~N. Wiesel, ``Receptive fields and functional architecture of
+  monkey striate cortex.'' \emph{Journal of {P}hysiology}, vol. 195, no.~1, pp.
+  215--243, Mar. 1968. [Online]. Available:
+%  \url{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1557912/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Olshausen96}
+\BIBentryALTinterwordspacing
+B.~A. Olshausen and D.~J. Field, ``Natural image statistics and efficient
+  coding,'' \emph{Network: {C}omputation in {N}eural {S}ystems}, vol.~7, no.
+  6583, pp. 333--9, Jun. 1996. [Online]. Available:
+%  \url{http://dx.doi.org/10.1038/381607a0}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Vincent08}
+P.~Vincent, H.~Larochelle, Y.~Bengio, and P.-A. Manzagol, ``Extracting and
+  composing robust features with denoising autoencoders,'' in \emph{Proceedings
+  of the 25th international conference on Machine learning}.\hskip 1em plus
+  0.5em minus 0.4em\relax ACM, 2008, pp. 1096--1103.
+
+\bibitem{Sulam2017multi}
+J.~Sulam, V.~Papyan, Y.~Romano, and M.~Elad, ``Multi-layer convolutional sparse
+  modeling: Pursuit and dictionary learning,'' \emph{arXiv preprint
+  arXiv:1708.08705}, 2017.
+
+\bibitem{MakhzaniF13}
+\BIBentryALTinterwordspacing
+A.~Makhzani and B.~J. Frey, ``k-sparse autoencoders,'' \emph{CoRR}, vol.
+  abs/1312.5663, 2013. [Online]. Available:
+%  \url{http://arxiv.org/abs/1312.5663}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Papyan16}
+V.~Papyan, Y.~Romano, and M.~Elad, ``Convolutional neural networks analyzed via
+  convolutional sparse coding,'' \emph{stat}, vol. 1050, p.~27, 2016.
+
+\bibitem{Kingma13}
+D.~P. {Kingma} and M.~{Welling}, ``{Auto-Encoding Variational Bayes},''
+  \emph{ArXiv e-prints}, Dec. 2013.
+
+\bibitem{Olshausen97}
+\BIBentryALTinterwordspacing
+B.~A. Olshausen and D.~J. Field, ``Sparse coding with an overcomplete basis
+  set: A strategy employed by {V1}?'' \emph{Vision Research}, vol.~37, no.~23,
+  pp. 3311--3325, Dec. 1997. [Online]. Available:
+%  \url{http://dx.doi.org/10.1016/S0042-6989(97)00169-7}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Mairal14}
+J.~Mairal, F.~Bach, J.~Ponce \emph{et~al.}, ``Sparse modeling for image and
+  vision processing,'' \emph{Foundations and Trends in Computer Graphics and
+  Vision}, vol.~8, no. 2-3, pp. 85--283, 2014.
+
+\bibitem{Marder2006variability}
+E.~Marder and J.-M. Goaillard, ``Variability, compensation and homeostasis in
+  neuron and network function,'' \emph{Nature Reviews Neuroscience}, vol.~7,
+  no.~7, p. 563, 2006.
+
+\bibitem{Hansel12}
+D.~Hansel and C.~van Vreeswijk, ``The mechanism of orientation selectivity in
+  primary visual cortex without a functional map,'' \emph{Journal of
+  Neuroscience}, vol.~32, no.~12, pp. 4049--4064, 2012.
+
+\bibitem{Schwartz01}
+O.~Schwartz and E.~P. Simoncelli, ``Natural signal statistics and sensory gain
+  control,'' \emph{Nature Neuroscience}, vol.~4, no.~8, pp. 819--25, 2001.
+
+\bibitem{Carandini12}
+\BIBentryALTinterwordspacing
+M.~Carandini and D.~J.~D. Heeger, ``Normalization as a canonical neural
+  computation,'' \emph{Nature Reviews Neuroscience}, vol.~13, no. November, pp.
+  1--12, jan 2012. [Online]. Available:
+  \url{http://discovery.ucl.ac.uk/1332718/
+  http://www.ncbi.nlm.nih.gov/pubmed/22108672
+  http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC3273486}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Ringach02}
+D.~L. Ringach, ``Spatial structure and symmetry of simple-cell receptive fields
+  in macaque primary visual cortex,'' \emph{Journal of neurophysiology},
+  vol.~88, no.~1, pp. 455--463, 2002.
+
+\bibitem{Rehn07}
+M.~Rehn and F.~T. Sommer, ``A model that uses few active neurones to code
+  visual input predicts the diverse shapes of cortical receptive fields,''
+  \emph{Journal of {C}omputational {N}euroscience}, vol.~22, no.~2, pp.
+  135--46, 2007.
+
+\bibitem{Loxley17}
+\BIBentryALTinterwordspacing
+P.~N. Loxley, ``The two-dimensional gabor function adapted to natural image
+  statistics: A model of simple-cell receptive fields and sparse structure in
+  images,'' \emph{Neural Computation}, vol.~29, no.~10, pp. 2769--2799, oct
+  2017. [Online]. Available: \url{http://www.ncbi.nlm.nih.gov/pubmed/28777727
+  http://www.mitpressjournals.org/doi/abs/10.1162/neco_a_00997}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Brito16}
+C.~S. Brito and W.~Gerstner, ``Nonlinear hebbian learning as a unifying
+  principle in receptive field formation,'' \emph{PLoS computational biology},
+  vol.~12, no.~9, p. e1005070, 2016.
+
+\bibitem{Rao99}
+\BIBentryALTinterwordspacing
+R.~Rao and D.~Ballard, ``Predictive coding in the visual cortex: a functional
+  interpretation of some extra-classical receptive-field effects,''
+  \emph{Nature {N}euroscience}, vol.~2, no.~1, pp. 79--87, Jan. 1999. [Online].
+  Available: \url{http://dx.doi.org/10.1038/4580}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Perrinet10shl}
+\BIBentryALTinterwordspacing
+L.~U. Perrinet, ``Role of homeostasis in learning sparse representations,''
+  \emph{Neural Computation}, vol.~22, no.~7, pp. 1812--1836, Jul. 2010.
+  [Online]. Available:
+  \url{http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Sandin17}
+\BIBentryALTinterwordspacing
+F.~Sandin and S.~Martin-del Campo, ``Dictionary learning with equiprobable
+  matching pursuit,'' \emph{arXiv preprint arXiv:1611.09333}, pp. 557--564, may
+  2017. [Online]. Available: \url{http://ieeexplore.ieee.org/document/7965902/}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Olshausen02}
+B.~A. Olshausen, ``Sparse codes and spikes,'' in \emph{Probabilistic {M}odels
+  of the {B}rain: {P}erception and {N}eural {F}unction}, R.~P.~N. Rao, B.~A.
+  Olshausen, and M.~S. Lewicki, Eds.\hskip 1em plus 0.5em minus 0.4em\relax MIT
+  Press, 2002, ch. Sparse Codes and Spikes, pp. 257--72.
+
+\bibitem{Smith06}
+\BIBentryALTinterwordspacing
+E.~C. Smith and M.~S. Lewicki, ``Efficient auditory coding,'' \emph{Nature},
+  vol. 439, no. 7079, pp. 978--982, Feb. 2006. [Online]. Available:
+  \url{http://dx.doi.org/10.1038/nature04485}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Hebb49}
+D.~O. Hebb, \emph{The organization of behavior: {A} neuropsychological
+  theory}.\hskip 1em plus 0.5em minus 0.4em\relax New York: Wiley, 1949.
+
+\bibitem{Oja82}
+E.~Oja, ``A {S}implified {N}euron {M}odel as a {P}rincipal {C}omponent
+  {A}nalyzer,'' \emph{Journal of {M}athematical biology}, vol.~15, pp. 267--73,
+  1982.
+
+\bibitem{Tikhonov77}
+\BIBentryALTinterwordspacing
+A.~N. Tikhonov, \emph{Solutions of {Ill-Posed} Problems}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Washington: Winston \& Sons, 1977. [Online]. Available:
+  \url{http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/0470991240}
+\BIBentrySTDinterwordspacing
+
+\bibitem{efron2004least}
+B.~Efron, T.~Hastie, I.~Johnstone, R.~Tibshirani \emph{et~al.}, ``Least angle
+  regression,'' \emph{The Annals of statistics}, vol.~32, no.~2, pp. 407--499,
+  2004.
+
+\bibitem{beck2009fast}
+A.~Beck and M.~Teboulle, ``A fast iterative shrinkage-thresholding algorithm
+  for linear inverse problems,'' \emph{SIAM journal on imaging sciences},
+  vol.~2, no.~1, pp. 183--202, 2009.
+
+\bibitem{DeWeese03}
+\BIBentryALTinterwordspacing
+M.~R. DeWeese, M.~Wehr, and A.~M. Zador, ``Binary spiking in auditory cortex,''
+  \emph{Journal of Neuroscience}, vol.~23, no.~21, pp. 7940--7949, Aug. 2003.
+  [Online]. Available:
+  \url{http://www.jneurosci.org/content/23/21/7940.abstract}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Bethge03}
+M.~Bethge, D.~Rotermund, and K.~Pawelzik, ``Second order phase transition in
+  neural rate coding: Binary encoding is optimal for rapid signal
+  transmission,'' \emph{Physical {R}eview {L}etters}, vol.~90, no.~8, p.
+  088104, 2003.
+
+\bibitem{Akaike74}
+H.~Akaike, ``A new look at the statistical model identification,'' \emph{I{EEE}
+  Transactions on Automatic Control}, vol.~19, pp. 716--23, 1974.
+
+\bibitem{Mallat98}
+S.~Mallat, \emph{A wavelet tour of signal processing}, 2nd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Academic Press, 1998.
+
+\bibitem{pati1993orthogonal}
+Y.~C. Pati, R.~Rezaiifar, and P.~S. Krishnaprasad, ``Orthogonal matching
+  pursuit: Recursive function approximation with applications to wavelet
+  decomposition,'' in \emph{Signals, Systems and Computers, 1993. 1993
+  Conference Record of The Twenty-Seventh Asilomar Conference on}.\hskip 1em
+  plus 0.5em minus 0.4em\relax IEEE, 1993, pp. 40--44.
+
+\bibitem{Doersch2016}
+\BIBentryALTinterwordspacing
+C.~Doersch, ``Tutorial on variational autoencoders,'' \emph{arXiv:1606.05908
+  [cs, stat]}, Jun. 2016. [Online]. Available:
+  \url{http://arxiv.org/abs/1606.05908}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Laughlin81}
+\BIBentryALTinterwordspacing
+S.~Laughlin, ``A simple coding procedure enhances a neuron's information
+  capacity.'' \emph{Zeitschrift f\"{u}r Naturforschung. Section C:
+  Biosciences}, vol.~36, no. 9-10, pp. 910--912, 1981. [Online]. Available:
+  \url{http://view.ncbi.nlm.nih.gov/pubmed/7303823}
+\BIBentrySTDinterwordspacing
+
+\bibitem{Simoncelli17}
+E.~P. Simoncelli, ``Optimal representations and efficient coding,''
+  \emph{Annual Review of Vision Science}, vol.~3, no.~1, 2017.
+
+\end{thebibliography}
 %%%-----------------------------------------------------------------
 %\newpage
 %\pagestyle{empty}
