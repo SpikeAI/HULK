@@ -1,12 +1,9 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-tag = 'ICLR'
+tag = 'IJCNN'
 from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
 datapath = '../../SparseHebbianLearning/database'
-# different runs
-#opts = dict(cache_dir='cache_dir_ICLR', datapath=datapath, verbose=0)
-#opts = dict(cache_dir='cache_dir_cluster', datapath=datapath, verbose=0)
 opts = dict(datapath=datapath, verbose=0)
 
 shl = SHL(**opts)
