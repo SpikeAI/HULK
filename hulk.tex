@@ -530,7 +530,7 @@ We have shown above that we can find an exact solution to the problem of homeost
 &V_i \leftarrow (1- \eta_h ) \cdot V_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} a_{i, k}^2 \\ &\textrm{ and }
 \gamma_i \leftarrow \gamma_i \cdot \left( \frac{V_i}{\sigma_g^2} \right)^\alpha
 \end{align}%
-This is similar to the mechanisms of gain normalization proposed by~\cite{Schwartz01} and which were recently shown to provide efficient coding mechanisms by~\cite{Simoncelli17}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on higher statistical moments rather than variance, for instance when an atom is winning more frequently during the earliest iterations, its pdf will typically be more kurtotic than a filter that has learned less.
+This is similar to the mechanisms of gain normalization proposed by~\cite{Schwartz01} and which were recently shown to provide efficient coding mechanisms by~\cite{Simoncelli01}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on higher statistical moments rather than variance, for instance when an atom is winning more frequently during the earliest iterations, its pdf will typically be more kurtotic than a filter that has learned less.
 %TODO say that in these variants this replaces 2e in the learning
 
 %: Comparison to Sandin
