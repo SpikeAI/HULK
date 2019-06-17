@@ -8,8 +8,12 @@
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex
 % TODO : change notation for x = A @ y
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% https://www.mdpi.com/authors/latex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[letterpaper,final,conference,10pt]{IEEEtran}
+\documentclass[vision,article,submit,oneauthor,pdftex]{Definitions/mdpi}
+
+% If you would like to post an early version of this manuscript as a preprint, you may use preprint as the journal and change 'submit' to 'accept'. The document class line would be, e.g., \documentclass[preprints,article,accept,moreauthors,pdftex]{mdpi}. This is especially recommended for submission to arXiv, where line numbers should be removed before posting. For preprints.org, the editorial staff will make this change immediately prior to posting.
+
 %============ common ===================
 %\usepackage[utf8]{luainputenc}
 %\usepackage[english]{babel}%
@@ -106,18 +110,48 @@
 %   A biologically-plausible sparse Hebbian learning algorithm (combined with a
 %   simplified homeostasis rule) is applied convincingly in a single layered
 %   convolutional neural network for sparse coding.
+%=================================================================
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
+\makeatother
+\pubvolume{xx}
+\issuenum{1}
+\articlenumber{5}
+\pubyear{2019}
+\copyrightyear{2019}
+%\externaleditor{Academic Editor: name}
+\history{Received: date; Accepted: date; Published: date}
+%\updates{yes} % If there is an update available, un-comment this line
+
+%% MDPI internal command: uncomment if new journal that already uses continuous page numbers 
+%\continuouspages{yes}
+
+%------------------------------------------------------------------
+% The following line should be uncommented if the LaTeX file is uploaded to arXiv.org
+%\pdfoutput=1
+
+%=================================================================
+% Add packages and commands here. The following packages are loaded in our class file: fontenc, calc, indentfirst, fancyhdr, graphicx, lastpage, ifthen, lineno, float, amsmath, setspace, enumitem, mathpazo, booktabs, titlesec, etoolbox, amsthm, hyphenat, natbib, hyperref, footmisc, geometry, caption, url, mdframed, tabto, soul, multirow, microtype, tikz
+
+%=================================================================
+%% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
+%% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
+
+%=================================================================
+
 % --------------------------------------------------------------------------
 %                    METADATA
 % --------------------------------------------------------------------------
-\newcommand{\Author}{Perrinet}%
+\newcommand{\LastName}{Perrinet}%
 \newcommand{\FirstName}{Laurent U}%
 \newcommand{\Institute}{Institut de Neurosciences de la Timone}%, Marseille, France}%\\ Aix Marseille Univ, CNRS}%
 \newcommand{\Organism}{Aix Marseille Université, CNRS}%
 \newcommand{\Address}{27, Bd. Jean Moulin, 13385 Marseille Cedex 5, France}%
 \newcommand{\Email}{laurent.perrinet@univ-amu.fr}%
 \newcommand{\Website}{https://spikeai.github.io/}%
-\newcommand{\WebsiteC}{https://spikeai.github.io/}%
-\newcommand{\Title}{%
+\newcommand{\orcID}{0000-0002-9536-010X}%
+\newcommand{\myTitle}{%
 %alternatives: - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
 %# Homeostatic Unsupervised Learning of Kernels
 %An adaptive homeostatic algorithm for the unsupervised learning of independent visual features
@@ -140,13 +174,13 @@ This research has received funding from the European Union’s Horizon 2020 rese
 \item Code and supplementary material available at \url{\WebsiteC/Publications/Perrinet19hulk}.
 \end{itemize}
 } %
-\newcommand{\citep}[1]{\cite{#1}}
+%\newcommand{\citep}[1]{\cite{#1}}
 %\newcommand{\citet}[1]{(\textcite{#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
 %\hypersetup{%
 %pdftitle={\Title},%
-%pdfauthor={Corrresponding author: \AuthorC < \EmailC > \Address - \WebsiteC },%
+%pdfauthor={Corrresponding author: \LastNameC < \EmailC > \Address - \WebsiteC },%
 %pdfkeywords={\Keywords},%
 %pdfsubject={\Acknowledgments}%
 %}%
@@ -217,78 +251,54 @@ This research has received funding from the European Union’s Horizon 2020 rese
 %
 %\pagestyle{empty}		% No page numbers
 %\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
-\begin{document}
-\title{\Title
-\thanks{\Acknowledgments
-}
-}
-%\author{%
-%\makebox[.45\linewidth]{\FirstNameA\ \AuthorA}
-%\and \makebox[.45\linewidth]{\FirstNameB\ \AuthorB}% \\ \Institute\ \Organism
-%\makebox[.9\linewidth]{\FirstNameA\ \AuthorA and \FirstNameB\ \AuthorB} %\\ \Institute\
-%\FirstNameA\ \AuthorA \and \FirstNameB\ \AuthorB \and \FirstNameC\ \AuthorC
-%\date{\Institute\ \\
-%\Organism\
-%}
 
-\author{
-\IEEEauthorblockN{\FirstName\ \Author }
-\IEEEauthorblockA{\textit{\Institute\ } \\
+%=================================================================
+% Full title of the paper (Capitalized)
+\Title{\myTitle}
+
+% Author Orchid ID: enter ID or remove command
+\newcommand{\orcidauthorA}{\orcID} % Add \orcidA{} behind the author's name
+
+% Authors, for the paper (add full first names)
+\Author{\FirstName\ \LastName \orcidA{}}
+
+% Authors, for metadata in PDF
+\AuthorNames{\FirstName\ \LastName}
+
+% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+\address{%
+\textit{\Institute\ } \\
 \textit{\Organism\ }\\
-Marseille, France \\
-\textit{\Email}}
-}
+Marseille, France ; \textit{\Email}}
 
-%% Authors must not appear in the submitted version. They should be hidden
-%% as long as the \iclrfinalcopy macro remains commented out below.
-%% Non-anonymous submissions will be rejected without review.
-%
-%\author{Antiquus S.~Hippocampus, Natalia Cerebro \& Amelie P. Amygdale \thanks{ Use footnote for providing further information
-%about author (webpage, alternative address)---\emph{not} for acknowledging
-%funding agencies.  Funding acknowledgements go at the end of the paper.} \\
-%Department of Computer Science\\
-%Cranberry-Lemon University\\
-%Pittsburgh, PA 15213, USA \\
-%\texttt{\{hippo,brain,jen\}@cs.cranberry-lemon.edu} \\
-%\And
-%Ji Q. Ren \& Yevgeny LeNet \\
-%Department of Computational Neuroscience \\
-%University of the Witwatersrand \\
-%Joburg, South Africa \\
-%\texttt{\{robot,net\}@wits.ac.za} \\
-%\AND
-%Coauthor \\
-%Affiliation \\
-%Address \\
-%\texttt{email}
-%}
-%
-%% The \author macro works with any number of authors. There are two commands
-%% used to separate the names and addresses of multiple authors: \And and \AND.
-%%
-%% Using \And between authors leaves it to \LaTeX{} to determine where to break
-%% the lines. Using \AND forces a linebreak at that point. So, if \LaTeX{}
-%% puts 3 of 4 authors names on the first line, and the last on the second
-%% line, try using \AND instead of \And before the third author name.
-%%}
-%%
+% Contact information of the corresponding author
+\corres{Correspondence: \Email .}
 
-%
-% make the title area
-\maketitle
-%\vspace*{-.6cm}
-\begin{abstract}
-%{\bf Abstract.}
-\Abstract
-%\vspace*{-.4cm}
-\end{abstract}
+%% Current address and/or shared authorship
+%\firstnote{Current address: Affiliation 3} 
+%\secondnote{These authors contributed equally to this work.}
+% The commands \thirdnote{} till \eighthnote{} are available for further notes
+
+%\simplesumm{} % Simple summary
+
+%\conference{} % An extended version of a conference paper
+
+% Abstract (Do not insert blank lines, i.e. \\) 
+\abstract{\Abstract}
+
+% Keywords
+\keyword{\Keywords}
+
+% The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
+%\PACS{J0101}
+%\MSC{}
+%\JEL{}
+
+
+\begin{document}
 %
 % >>> YOU ARE HERE <<<
 %
-
-\begin{IEEEkeywords}
-\Keywords
-\end{IEEEkeywords}
 % \thispagestyle{empty}
 \section{Introduction}\label{introduction}
 %: motivation: why sparseness? biology
@@ -525,7 +535,7 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %: incompatible with nueromimetic / fast implementation
 %- first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
 % (\seeFig{map}-A, \texttt{OLS})
-We have shown above that we can find an exact solution to the problem of homeostasis during Sparse Hebbian Learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be implemented by modifying the gain $\gamma_i$ of the slope of the ReLu function to operate a gradient descent on the cost based on the distribution of each coefficients. Such strategy can be included in the SHL algorithm by replacing line 8 in the learning lgorithm. For instance, the strategy of~\citep{Olshausen97} assumes a cost on the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g^2$ (and assuming a multiplicative noise parameterized by $\alpha$) :
+We have shown above that we can find an exact solution to the problem of homeostasis during Sparse Hebbian Learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be implemented by modifying the gain $\gamma_i$ of the slope of the ReLu function to operate a gradient descent on the cost based on the distribution of each coefficients. Such strategy can be included in the SHL algorithm by replacing line 8 in the learning algorithm. For instance, the strategy of~\citep{Olshausen97} assumes a cost on the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g^2$ (and assuming a multiplicative noise parameterized by $\alpha$) :
 \begin{align}
 &V_i \leftarrow (1- \eta_h ) \cdot V_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} a_{i, k}^2 \\ &\textrm{ and }
 \gamma_i \leftarrow \gamma_i \cdot \left( \frac{V_i}{\sigma_g^2} \right)^\alpha
@@ -583,251 +593,63 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 % HAP what limits?
 % theorems.
 % another perspective is precision-weighted inference see page 11 of Kingma
-%%%%%-----------------------------------------------------------------
-%\section*{Acknowledgments}
-%\Acknowledgments
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{6pt} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+%\supplementary{The following are available online at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title.}
+
+% Only for the journal Methods and Protocols:
+% If you wish to submit a video article, please do so with any other supplementary material.
+% \supplementary{The following are available at \linksupplementary{s1}, Figure S1: title, Table S1: title, Video S1: title. A supporting video article is available at doi: link.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing--original draft preparation, X.X.; writing--review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y.'', please turn to the  \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work reported.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\funding{Please add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' and  and ``The APC was funded by XXX''. Check carefully that the details given are accurate and use the standard spelling of funding agency names at \url{https://search.crossref.org/funding}, any errors may affect your future funding.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgments{\Acknowledgments}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\conflictsofinterest{Declare conflicts of interest or state ``The authors declare no conflict of interest.'' Authors must identify and declare any personal circumstances or interest that may be perceived as inappropriately influencing the representation or interpretation of reported research results. Any role of the funders in the design of the study; in the collection, analyses or interpretation of data; in the writing of the manuscript, or in the decision to publish the results must be declared in this section. If there is no role, please state ``The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the results''.} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+\abbreviations{The following abbreviations are used in this manuscript:\\
+
+\noindent 
+\begin{tabular}{@{}ll}
+MDPI & Multidisciplinary Digital Publishing Institute\\
+DOAJ & Directory of open access journals\\
+TLA & Three letter acronym\\
+LD & linear dichroism
+\end{tabular}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% optional
+\appendixtitles{no} %Leave argument "no" if all appendix headings stay EMPTY (then no dot is printed after "Appendix A"). If the appendix sections contain a heading then change the argument to "yes".
+\appendix
+\section{}
+\unskip
+\subsection{}
+The appendix is an optional section that can contain details and data supplemental to the main text. For example, explanations of experimental details that would disrupt the flow of the main text, but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data is shown in the main text can be added here if brief, or as Supplementary data. Mathematical proofs of results not central to the paper can be added as an appendix.
+
+\section{}
+All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g., Figure A1, Figure A2, etc. 
+
+\reftitle{References}
 %%%-----------------------------------------------------------------
 %\printbibliography
-%\bibliographystyle{IEEEtran}
-%\bibliography{hulk}
-% Generated by IEEEtran.bst, version: 1.12 (2007/01/11)
-\begin{thebibliography}{10}
-\providecommand{\url}[1]{#1}
-\csname url@samestyle\endcsname
-\providecommand{\newblock}{\relax}
-\providecommand{\bibinfo}[2]{#2}
-\providecommand{\BIBentrySTDinterwordspacing}{\spaceskip=0pt\relax}
-\providecommand{\BIBentryALTinterwordstretchfactor}{4}
-\providecommand{\BIBentryALTinterwordspacing}{\spaceskip=\fontdimen2\font plus
-\BIBentryALTinterwordstretchfactor\fontdimen3\font minus
-  \fontdimen4\font\relax}
-\providecommand{\BIBforeignlanguage}[2]{{%
-\expandafter\ifx\csname l@#1\endcsname\relax
-\typeout{** WARNING: IEEEtran.bst: No hyphenation pattern has been}%
-\typeout{** loaded for the language `#1'. Using the pattern for}%
-\typeout{** the default language instead.}%
-\else
-\language=\csname l@#1\endcsname
-\fi
-#2}}
-\providecommand{\BIBdecl}{\relax}
-\BIBdecl
-
-\bibitem{Hubel68}
-\BIBentryALTinterwordspacing
-D.~H. Hubel and T.~N. Wiesel, ``Receptive fields and functional architecture of
-  monkey striate cortex.'' \emph{Journal of {P}hysiology}, vol. 195, no.~1, pp.
-  215--243, Mar. 1968. [Online]. Available:
-%  \url{http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1557912/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Olshausen96}
-\BIBentryALTinterwordspacing
-B.~A. Olshausen and D.~J. Field, ``Natural image statistics and efficient
-  coding,'' \emph{Network: {C}omputation in {N}eural {S}ystems}, vol.~7, no.
-  6583, pp. 333--9, Jun. 1996. [Online]. Available:
-%  \url{http://dx.doi.org/10.1038/381607a0}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Vincent08}
-P.~Vincent, H.~Larochelle, Y.~Bengio, and P.-A. Manzagol, ``Extracting and
-  composing robust features with denoising autoencoders,'' in \emph{Proceedings
-  of the 25th international conference on Machine learning}.\hskip 1em plus
-  0.5em minus 0.4em\relax ACM, 2008, pp. 1096--1103.
-
-\bibitem{Sulam2017multi}
-J.~Sulam, V.~Papyan, Y.~Romano, and M.~Elad, ``Multi-layer convolutional sparse
-  modeling: Pursuit and dictionary learning,'' \emph{arXiv preprint
-  arXiv:1708.08705}, 2017.
-
-\bibitem{MakhzaniF13}
-\BIBentryALTinterwordspacing
-A.~Makhzani and B.~J. Frey, ``k-sparse autoencoders,'' \emph{CoRR}, vol.
-  abs/1312.5663, 2013. [Online]. Available:
-%  \url{http://arxiv.org/abs/1312.5663}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Papyan16}
-V.~Papyan, Y.~Romano, and M.~Elad, ``Convolutional neural networks analyzed via
-  convolutional sparse coding,'' \emph{stat}, vol. 1050, p.~27, 2016.
-
-\bibitem{Kingma13}
-D.~P. {Kingma} and M.~{Welling}, ``{Auto-Encoding Variational Bayes},''
-  \emph{ArXiv e-prints}, Dec. 2013.
-
-\bibitem{Olshausen97}
-\BIBentryALTinterwordspacing
-B.~A. Olshausen and D.~J. Field, ``Sparse coding with an overcomplete basis
-  set: A strategy employed by {V1}?'' \emph{Vision Research}, vol.~37, no.~23,
-  pp. 3311--3325, Dec. 1997. [Online]. Available:
-%  \url{http://dx.doi.org/10.1016/S0042-6989(97)00169-7}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Mairal14}
-J.~Mairal, F.~Bach, J.~Ponce \emph{et~al.}, ``Sparse modeling for image and
-  vision processing,'' \emph{Foundations and Trends in Computer Graphics and
-  Vision}, vol.~8, no. 2-3, pp. 85--283, 2014.
-
-\bibitem{Marder2006variability}
-E.~Marder and J.-M. Goaillard, ``Variability, compensation and homeostasis in
-  neuron and network function,'' \emph{Nature Reviews Neuroscience}, vol.~7,
-  no.~7, p. 563, 2006.
-
-\bibitem{Hansel12}
-D.~Hansel and C.~van Vreeswijk, ``The mechanism of orientation selectivity in
-  primary visual cortex without a functional map,'' \emph{Journal of
-  Neuroscience}, vol.~32, no.~12, pp. 4049--4064, 2012.
-
-\bibitem{Schwartz01}
-O.~Schwartz and E.~P. Simoncelli, ``Natural signal statistics and sensory gain
-  control,'' \emph{Nature Neuroscience}, vol.~4, no.~8, pp. 819--25, 2001.
-
-\bibitem{Carandini12}
-\BIBentryALTinterwordspacing
-M.~Carandini and D.~J.~D. Heeger, ``Normalization as a canonical neural
-  computation,'' \emph{Nature Reviews Neuroscience}, vol.~13, no. November, pp.
-  1--12, jan 2012. [Online]. Available:
-  \url{http://discovery.ucl.ac.uk/1332718/
-  http://www.ncbi.nlm.nih.gov/pubmed/22108672
-  http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=PMC3273486}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Ringach02}
-D.~L. Ringach, ``Spatial structure and symmetry of simple-cell receptive fields
-  in macaque primary visual cortex,'' \emph{Journal of neurophysiology},
-  vol.~88, no.~1, pp. 455--463, 2002.
-
-\bibitem{Rehn07}
-M.~Rehn and F.~T. Sommer, ``A model that uses few active neurones to code
-  visual input predicts the diverse shapes of cortical receptive fields,''
-  \emph{Journal of {C}omputational {N}euroscience}, vol.~22, no.~2, pp.
-  135--46, 2007.
-
-\bibitem{Loxley17}
-\BIBentryALTinterwordspacing
-P.~N. Loxley, ``The two-dimensional gabor function adapted to natural image
-  statistics: A model of simple-cell receptive fields and sparse structure in
-  images,'' \emph{Neural Computation}, vol.~29, no.~10, pp. 2769--2799, oct
-  2017. [Online]. Available: \url{http://www.ncbi.nlm.nih.gov/pubmed/28777727
-  http://www.mitpressjournals.org/doi/abs/10.1162/neco_a_00997}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Brito16}
-C.~S. Brito and W.~Gerstner, ``Nonlinear hebbian learning as a unifying
-  principle in receptive field formation,'' \emph{PLoS computational biology},
-  vol.~12, no.~9, p. e1005070, 2016.
-
-\bibitem{Rao99}
-\BIBentryALTinterwordspacing
-R.~Rao and D.~Ballard, ``Predictive coding in the visual cortex: a functional
-  interpretation of some extra-classical receptive-field effects,''
-  \emph{Nature {N}euroscience}, vol.~2, no.~1, pp. 79--87, Jan. 1999. [Online].
-  Available: \url{http://dx.doi.org/10.1038/4580}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Perrinet10shl}
-\BIBentryALTinterwordspacing
-L.~U. Perrinet, ``Role of homeostasis in learning sparse representations,''
-  \emph{Neural Computation}, vol.~22, no.~7, pp. 1812--1836, Jul. 2010.
-  [Online]. Available:
-  \url{http://invibe.net/LaurentPerrinet/Publications/Perrinet10shl}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Sandin17}
-\BIBentryALTinterwordspacing
-F.~Sandin and S.~Martin-del Campo, ``Dictionary learning with equiprobable
-  matching pursuit,'' \emph{arXiv preprint arXiv:1611.09333}, pp. 557--564, may
-  2017. [Online]. Available: \url{http://ieeexplore.ieee.org/document/7965902/}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Olshausen02}
-B.~A. Olshausen, ``Sparse codes and spikes,'' in \emph{Probabilistic {M}odels
-  of the {B}rain: {P}erception and {N}eural {F}unction}, R.~P.~N. Rao, B.~A.
-  Olshausen, and M.~S. Lewicki, Eds.\hskip 1em plus 0.5em minus 0.4em\relax MIT
-  Press, 2002, ch. Sparse Codes and Spikes, pp. 257--72.
-
-\bibitem{Smith06}
-\BIBentryALTinterwordspacing
-E.~C. Smith and M.~S. Lewicki, ``Efficient auditory coding,'' \emph{Nature},
-  vol. 439, no. 7079, pp. 978--982, Feb. 2006. [Online]. Available:
-  \url{http://dx.doi.org/10.1038/nature04485}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Hebb49}
-D.~O. Hebb, \emph{The organization of behavior: {A} neuropsychological
-  theory}.\hskip 1em plus 0.5em minus 0.4em\relax New York: Wiley, 1949.
-
-\bibitem{Oja82}
-E.~Oja, ``A {S}implified {N}euron {M}odel as a {P}rincipal {C}omponent
-  {A}nalyzer,'' \emph{Journal of {M}athematical biology}, vol.~15, pp. 267--73,
-  1982.
-
-\bibitem{Tikhonov77}
-\BIBentryALTinterwordspacing
-A.~N. Tikhonov, \emph{Solutions of {Ill-Posed} Problems}.\hskip 1em plus 0.5em
-  minus 0.4em\relax Washington: Winston \& Sons, 1977. [Online]. Available:
-  \url{http://www.amazon.com/exec/obidos/redirect?tag=citeulike07-20\&path=ASIN/0470991240}
-\BIBentrySTDinterwordspacing
-
-\bibitem{efron2004least}
-B.~Efron, T.~Hastie, I.~Johnstone, R.~Tibshirani \emph{et~al.}, ``Least angle
-  regression,'' \emph{The Annals of statistics}, vol.~32, no.~2, pp. 407--499,
-  2004.
-
-\bibitem{beck2009fast}
-A.~Beck and M.~Teboulle, ``A fast iterative shrinkage-thresholding algorithm
-  for linear inverse problems,'' \emph{SIAM journal on imaging sciences},
-  vol.~2, no.~1, pp. 183--202, 2009.
-
-\bibitem{DeWeese03}
-\BIBentryALTinterwordspacing
-M.~R. DeWeese, M.~Wehr, and A.~M. Zador, ``Binary spiking in auditory cortex,''
-  \emph{Journal of Neuroscience}, vol.~23, no.~21, pp. 7940--7949, Aug. 2003.
-  [Online]. Available:
-  \url{http://www.jneurosci.org/content/23/21/7940.abstract}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Bethge03}
-M.~Bethge, D.~Rotermund, and K.~Pawelzik, ``Second order phase transition in
-  neural rate coding: Binary encoding is optimal for rapid signal
-  transmission,'' \emph{Physical {R}eview {L}etters}, vol.~90, no.~8, p.
-  088104, 2003.
-
-\bibitem{Akaike74}
-H.~Akaike, ``A new look at the statistical model identification,'' \emph{I{EEE}
-  Transactions on Automatic Control}, vol.~19, pp. 716--23, 1974.
-
-\bibitem{Mallat98}
-S.~Mallat, \emph{A wavelet tour of signal processing}, 2nd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Academic Press, 1998.
-
-\bibitem{pati1993orthogonal}
-Y.~C. Pati, R.~Rezaiifar, and P.~S. Krishnaprasad, ``Orthogonal matching
-  pursuit: Recursive function approximation with applications to wavelet
-  decomposition,'' in \emph{Signals, Systems and Computers, 1993. 1993
-  Conference Record of The Twenty-Seventh Asilomar Conference on}.\hskip 1em
-  plus 0.5em minus 0.4em\relax IEEE, 1993, pp. 40--44.
-
-\bibitem{Doersch2016}
-\BIBentryALTinterwordspacing
-C.~Doersch, ``Tutorial on variational autoencoders,'' \emph{arXiv:1606.05908
-  [cs, stat]}, Jun. 2016. [Online]. Available:
-  \url{http://arxiv.org/abs/1606.05908}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Laughlin81}
-\BIBentryALTinterwordspacing
-S.~Laughlin, ``A simple coding procedure enhances a neuron's information
-  capacity.'' \emph{Zeitschrift f\"{u}r Naturforschung. Section C:
-  Biosciences}, vol.~36, no. 9-10, pp. 910--912, 1981. [Online]. Available:
-  \url{http://view.ncbi.nlm.nih.gov/pubmed/7303823}
-\BIBentrySTDinterwordspacing
-
-\bibitem{Simoncelli17}
-E.~P. Simoncelli, ``Optimal representations and efficient coding,''
-  \emph{Annual Review of Vision Science}, vol.~3, no.~1, 2017.
-
-\end{thebibliography}
+\externalbibliography{yes}
+\bibliography{hulk}
 %%%-----------------------------------------------------------------
 %\newpage
 %\pagestyle{empty}

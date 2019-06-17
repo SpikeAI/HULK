@@ -1,9 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*
-tag = 'IJCNN'
+
+# running in parallel on a multi-core machine
+import sys
+
+try:
+    tag = sys.argv[1]
+    print('tag =', tag)
+except:
+    tag = 'HULK'
+
+try:
+    n_jobs = int(sys.argv[2])
+    print('n_jobs =', n_jobs)
+except:
+    n_jobs = 4
+    n_jobs = 9
+    n_jobs = 10
+    n_jobs = 1
+    n_jobs = 35
+
+
 from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
-datapath = '../../SparseHebbianLearning/database'
+datapath = '../SparseHebbianLearning/database'
 opts = dict(datapath=datapath, verbose=0)
 
 shl = SHL(**opts)
@@ -15,17 +35,6 @@ N_cv = 10
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
 seed = 42
 
-# running in parallel on a multi-core machine
-import sys
-try:
-    n_jobs = int(sys.argv[1])
-    print('n_jobs=', n_jobs)
-except:
-    n_jobs = 4
-    n_jobs = 9
-    n_jobs = 10
-    n_jobs = 1
-    n_jobs = 35
 
     
 if n_jobs>0:
