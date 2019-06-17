@@ -79,14 +79,10 @@
 \newcommand{\Website}{https://spikeai.github.io/}%
 \newcommand{\orcID}{0000-0002-9536-010X}%
 \newcommand{\myTitle}{%
-%alternatives: - Homeostasis is necessary for the unsupervised learning of orientation-selective cells
-%# Homeostatic Unsupervised Learning of Kernels
-%An adaptive homeostatic algorithm for the unsupervised learning of independent visual features
-%A fast algorithm for unsupervised learning
 An adaptive homeostatic algorithm for the unsupervised learning of visual features
 }%
-\newcommand{\Abstract}{ %  13 characters left
-The formation of structure in the brain, that is, of the connections between cells within neural populations, is by large an unsupervised learning process: the emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one may observe during development the formation of cells selective to localized, oriented features. This leads to the development of a rough representation of contours of the retinal image in area V1. We modeled these mechanisms using sparse Hebbian learning algorithms. These algorithms alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty is to deduce a good representation while knowing immature encoders, and to learn good encoders with a non-optimal representation. To address this problem, we propose to introduce a new regulation process between learning and coding, called homeostasis. It is compatible with a neuromimetic architecture and allows for the fast emergence of localized filters sensitive to orientation. The key to this algorithm lies in a simple adaptation mechanism based on non-linear functions that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a range of learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement a more rapid unsupervised learning algorithm while keeping a large part of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and we illustrate this with one result in a convolutional neural network.
+\newcommand{\Abstract}{ %
+The formation of structure in the brain, that is, of the connections between cells within neural populations, is by large an unsupervised learning process: the emergence of this architecture is mostly self-organized. In the primary visual cortex of mammals, for example, one can observe during development the formation of cells selective to localized, oriented features which results in the development of a representation of contours in area V1. We modeled such a process using sparse Hebbian learning algorithms. These algorithms alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty is to deduce a good representation while knowing immature encoders, and to learn good encoders with a non-optimal representation. To solve this problem, we propose to introduce a new regulation process between learning and coding, called homeostasis. It is compatible with a neuromimetic architecture and allows for a more efficient emergence of localized filters sensitive to orientation. The key to this algorithm lies in a simple adaptation mechanism based on non-linear functions that reconciles the antagonistic processes that occur at the coding and learning time scales. We tested this unsupervised algorithm with this homeostasis rule for a series of learning algorithms coupled with different neural coding algorithms. In addition, we propose a simplification of this optimal homeostasis rule by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, we show that this heuristic allows to implement a faster unsupervised learning algorithm while retaining much of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and we illustrate it with a result in a convolutional neural network.
 }
 \newcommand{\Keywords}{Vision, Sparseness, Computer vision, Unsupervised learning, Neuroscience}%
 \newcommand{\SubjectAreas}{Sparse Coding, Unsupervised Learning, Natural Scene Statistics, Biologically Plausible Deep Networks, Visual Perception, Computer Vision}%
@@ -232,6 +228,19 @@ Marseille, France ; \textit{\Email}}
 %: motivation: why sparseness? biology
 The neural architecture implements a complex dynamic system that operates at different time scales. One of its properties is to succeed in representing information quickly (coding step) while optimizing in the long term this encoding (learning step). In the case of the mammalian primary visual cortex (V1) for instance, the results of Hubel \& Wiesel~\cite{Hubel68} showed that cells of V1 have relatively localized receptive fields which are predominantly selective at different orientations. As such, this rapid coding of the retinal image, of the order of 50 milliseconds in humans, transforms the raw visual information into a rough ``sketch'' that represents the outlines of objects in the image by using elementary edge-like features. This internal representation and the visual information share the same property of being \emph{sparse}: for most natural images, only a relatively small number of features (also called atoms) are necessary to describe the input. Thus, the coding step consists in choosing the right encoder that selects as few features as possible among a collection of them (called the \emph{dictionary}). Amazingly, Olshausen \& Field~\cite{Olshausen96} have shown that when enforcing a sparse prior on the encoding step, such edge-like filters are emerging using a simple Hebbian unsupervised learning strategy. % thus yielding an ``optimal'' coding of the image.
 
+%------------------------------%
+%: see Figure~\ref{fig:map}
+%: \seeFig{map}
+\begin{figure*}%[!ht]%%[p!]
+\centering{\includegraphics[width=\linewidth]{figure_map}}
+%\vspace*{-.1cm}
+\caption{
+{\bf Role of homeostasis in learning sparse representations}:
+We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning epochs). The compared algorithms are : \texttt{None} (using a simple simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using the optimal homeostasis described in this paper). {\sf (A)}~For each algorithm, we show $18$ atoms from the $441$ filters of the same size as the image patches ($M= 22 \times 22=484$, circularly masked) and presented in a matrix (separated by a white border). The upper and lower row respectively show the least and most probably selected atoms. This highlights the fact that without proper homeostasis, dictionary learning leads to inhomogeneous representations. {\sf (B)}~Evolution of cost  $F$ (in bits, see~\seeEq{L0_cost_full}) as a function of the number of iterations and cross-validated over $10$ runs. While \texttt{OLS} provides a similar convergence than  \texttt{None}, the \texttt{HEH}  method provides a better final convergence.%
+\label{fig:map}}%
+\end{figure*}%
+%%------------------------------%
+
 %: in machine learning:  from data to knowledge
 Additionally, recent advances in machine learning, and especially on unsupervised learning have shed new light on the functioning of the underlying biological neural processes. By definition, unsupervised learning aims at learning the best dictionary to represent the input image autonomously, that is, without using other external knowledge such as in supervised or reinforcement learning. Algorithms that include the output of such a process as the input to classical, supervised deep-learning show great success in tasks like image denoising~\citep{Vincent08} or classification~\citep{Sulam2017multi}. A variant consists in forcing the generated representation to be sparsely encoded~\citep{MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{Papyan16}. Interestingly, \citep{Papyan16} proposes a model of Convolutional Sparse Coding (CSC) tightly connected with Convolutional Neural Network (CNN), so much that the forward pass of the CNN is equivalent to a CSC with a thresholding pursuit algorithm. These unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to \emph{quantitatively} evaluate the joint exploration of new learning or coding strategies. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding, and that both are inter-dependent.
 
@@ -260,19 +269,6 @@ Finally, we will conclude by showing an application of such an adaptive algorith
 \section{Unsupervised learning and the optimal representation of images}%\label{algorithm}
 % ----------------------------------------------------------------------
 % 
-%: homeostasis
-%------------------------------%
-%: see Figure~\ref{fig:map}
-%: \seeFig{map}
-\begin{figure*}[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_map}}
-%\vspace*{-.1cm}
-\caption{
-{\bf Role of homeostasis in learning sparse representations}:
-We show the results of Sparse Hebbian Learning using different homeostasis algorithms at convergence ($1024$ learning epochs). The compared algorithms are : \texttt{None} (using a simple simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using the optimal homeostasis described in this paper). {\sf (A)}~For each algorithm, we show $18$ atoms from the $441$ filters of the same size as the image patches ($M= 22 \times 22=484$, circularly masked) and presented in a matrix (separated by a white border). The upper and lower row respectively show the least and most probably selected atoms. This highlights the fact that without proper homeostasis, dictionary learning leads to inhomogeneous representations. {\sf (B)}~Evolution of cost  $F$ (in bits, see~\seeEq{L0_cost_full}) as a function of the number of iterations and cross-validated over $10$ runs. While \texttt{OLS} provides a similar convergence than  \texttt{None}, the \texttt{HEH}  method provides a better final convergence.%
-\label{fig:map}}%
-\end{figure*}%
-%%------------------------------%
 %: free-energy formulation
 % TODO: better define p_\phi and q_\psi / we do a Gaussian mixture models 
 Visual items composing natural images are often sparse, such that knowing a model for the generation of images, the brain may use this property to reconstruct images using only a few of these items.
