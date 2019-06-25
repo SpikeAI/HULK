@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*
-
 # running in parallel on a multi-core machine
 import sys
 
@@ -35,8 +32,10 @@ N_cv = 10
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
 seed = 42
 
+import numpy as np
+np.set_printoptions(precision=2, suppress=True)
+np.random.seed(seed)
 
-    
 if n_jobs>0:
     # Figure 1 & 3
 
@@ -66,7 +65,7 @@ if n_jobs>0:
     shl = SHL(**opts)
     dico = shl.learn_dico(data=data, list_figures=list_figures, matname=tag + '_vanilla')
 
-    
+
     variables = ['alpha_homeo', 'l0_sparseness', 'n_dictionary']
     bases = [4] * len(variables)
 
@@ -84,13 +83,13 @@ if n_jobs>0:
                        matname=tag + ' - algorithm={}'.format(algorithm))
 
     for homeo_method in ['None', 'HAP']:
-        for algorithm in ['lasso_lars', 'lars', 'elastic', 'omp', 'mp']: # 'threshold', 'lasso_cd', 
+        for algorithm in ['lasso_lars', 'lars', 'elastic', 'omp', 'mp']: # 'threshold', 'lasso_cd',
             opts_ = opts.copy()
             opts_.update(homeo_method=homeo_method, learning_algorithm=algorithm, verbose=0)
             shl = SHL(**opts_)
             dico= shl.learn_dico(data=data, list_figures=[],
                            matname=tag + ' - algorithm={}'.format(algorithm) + ' - homeo_method={}'.format(homeo_method))
-    
+
     shl = SHL(one_over_F=False, **opts)
     dico_w = shl.learn_dico(data=data, matname=tag + '_WHITE', list_figures=[])
     shl = SHL(one_over_F=True, **opts)
@@ -100,3 +99,71 @@ if n_jobs>0:
     dico_fixed = shl.learn_dico(data=data, matname=tag + '_fixed', list_figures=[])
     shl = SHL(**opts)
     dico_default = shl.learn_dico(data=data, matname=tag + '_default', list_figures=[])
+
+else:
+    # some overhead for the formatting of figures
+    import matplotlib.pyplot as plt
+
+    fontsize = 12
+    FORMATS = ['.pdf', '.eps', '.png', '.tiff']
+    FORMATS = ['.pdf', '.png']
+    dpi_export = 600
+
+    fig_width_pt = 318.670  # Get this from LaTeX using \showthe\columnwidth
+    fig_width_pt = 450  # Get this from LaTeX using \showthe\columnwidth
+    #fig_width_pt = 1024 #221     # Get this from LaTeX using \showthe\columnwidth / x264 asks for a multiple of 2
+    ppi = 72.27 # (constant) definition of the ppi = points per inch
+    inches_per_pt = 1.0/ppi  # Convert pt to inches
+    #inches_per_cm = 1./2.54
+    fig_width = fig_width_pt*inches_per_pt  # width in inches
+    grid_fig_width = 2*fig_width
+    phi = (np.sqrt(5) + 1. ) /2
+    #legend.fontsize = 8
+    #fig_width = 9
+    fig_height = fig_width/phi
+    figsize = (fig_width, fig_height)
+
+
+    def adjust_spines(ax, spines):
+        for loc, spine in ax.spines.items():
+            if loc in spines:
+                spine.set_position(('outward', 10))  # outward by 10 points
+                spine.set_smart_bounds(True)
+            else:
+                spine.set_color('none')  # don't draw spine
+
+        # turn off ticks where there is no spine
+        if 'left' in spines:
+            ax.yaxis.set_ticks_position('left')
+        else:
+            # no yaxis ticks
+            ax.yaxis.set_ticks([])
+
+        if 'bottom' in spines:
+            ax.xaxis.set_ticks_position('bottom')
+        else:
+            # no xaxis ticks
+            ax.xaxis.set_ticks([])
+
+    import matplotlib
+    pylab_defaults = {
+        'font.size': 10,
+        'xtick.labelsize':'medium',
+        'ytick.labelsize':'medium',
+        'text.usetex': False,
+        'font.family' : 'sans-serif',
+        'font.sans-serif' : ['Helvetica'],
+        }
+
+    #matplotlib.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
+    matplotlib.rcParams.update(pylab_defaults)
+    #matplotlib.rcParams.update({'text.usetex': True})
+
+    import matplotlib.cm as cm
+
+
+    from IPython.display import Image
+
+    DEBUG = True
+    DEBUG = False
+    hl, hs = 10*'-', 10*' '
