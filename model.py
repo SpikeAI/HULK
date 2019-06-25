@@ -3,20 +3,22 @@ import sys
 
 try:
     tag = sys.argv[1]
-    print('tag =', tag)
 except:
     tag = 'HULK'
 
+print('tag =', tag)
+
 try:
     n_jobs = int(sys.argv[2])
-    print('n_jobs =', n_jobs)
 except:
     n_jobs = 4
     n_jobs = 9
     n_jobs = 10
     n_jobs = 1
     n_jobs = 35
+    n_jobs = 0
 
+print('n_jobs =', n_jobs)
 
 from shl_scripts.shl_experiments import SHL, prun
 # pre-loading data
@@ -152,7 +154,7 @@ else:
         'ytick.labelsize':'medium',
         'text.usetex': False,
         'font.family' : 'sans-serif',
-        'font.sans-serif' : ['Helvetica'],
+        'font.sans-serif' : ['sans-serif'],#['Optima'],#['Palatino'],# 
         }
 
     #matplotlib.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
