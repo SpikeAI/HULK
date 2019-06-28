@@ -154,7 +154,7 @@ else:
         'ytick.labelsize':'medium',
         'text.usetex': False,
         'font.family' : 'sans-serif',
-        'font.sans-serif' : ['sans-serif'],#['Optima'],#['Palatino'],# 
+        'font.sans-serif' : ['sans-serif'],#['Optima'],#['Palatino'],#
         }
 
     #matplotlib.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
