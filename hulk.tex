@@ -19,7 +19,7 @@
 % cover: 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-
+%
 %Please consider our original manuscript "An adaptive homeostatic algorithm for the unsupervised learning of visual features" that we wish to submit for publication in your journal. 
 %
 %Recent advances in machine learning applied to computer vision have proven the importance of learning in achieving performant applications. Learning also allows for a better understanding of the underlying results in the field of neuroscience. Among the algorithms of learning, one of the most challenging is unsupervised learning. Here, we identified a possible problem in some variants of a classical solution of unsupervised learning applied to the coding of natural images for vision. We then found a simple solution to that problem as a homeostasis rule and show by simulations how it allows a more efficient learning of filters. Moreover, we provide with a computationally effective simplification of this homeostasis rule which we prove yields similar results. We also applied such a program to a convolutional neural network (CNN).
@@ -27,8 +27,8 @@
 %As a summary, we believe this work is of importance to the readers of your journal as it speaks to the different fields in which the prediction of our model could be tested. First in models, as it improves the representation of natural images, then in psychophysics as such a rule would influence the way sensory signals are coded and finally in neurophysiology, as we claim that the distribution of features should follow a different distribution as previously thought. To ease the transfer of that knowledge, we have made all the code to replicate our simulations as an open-source code with accompanying notebooks.
 %
 %None of the material has been published or is under consideration for publication in other journals. This work constitutes a comprehensive extension to the paper referenced as "Perrinet, L.U. Role of Homeostasis in Learning Sparse Representations. Neural Computation 2010, 22, 1812–1836. doi:10.1162/neco.2010.05-08-795".
-
-
+%
+%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -516,11 +516,11 @@ A simpler approach is to compute the change of modulation gain that would be nec
 &p_i \leftarrow (1- \eta_h ) \cdot p_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} \delta(a_{i, k} > 0) \\ &\textrm{ and }
 \gamma_i = \frac{\log(p_i)}{\log(p_0)}
 \end{align}%
-Where $\eta_h$ controls as above the speed of the sliding average for estimating the activation probability. Note that the gain is one if the activation probability reached the target, excitatory if the probability is below the target and inhibitory otherwise. Assuming an exponential probability distribution function for the sparse coefficients before the thresholding operation, this expression follows as the solution to scale coefficients such that overall each neuron fires with equal probability. We will coin this variant of the algorithm Homeostasis on Activation Probability (\texttt{HAP}). % derivation p.56N de 2018-01-09 HULK + 2019-04-24 HULK reborn
+Where $\eta_h$ controls as above the speed of the sliding average for estimating the activation probability. Note that the gain is equal to one if the activation probability reaches the target probability and respectively excitatory or inhibitory if the probability is below or above the target. Assuming an exponential probability distribution function for the sparse coefficients before the thresholding operation, this expression follows as the solution to scale coefficients such that overall each neuron fires with equal probability. We will coin this variant of the algorithm Homeostasis on Activation Probability (\texttt{HAP}). % derivation p.56N de 2018-01-09 HULK + 2019-04-24 HULK reborn
 %\subsection{Approximate homeostasis yields similar performance}
 Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} slightly outperforms \texttt{OLS} (which itself is more efficient than \texttt{None}, see~\seeFig{HEH}-B), \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}. %
 % effect of coding algorithm
-In particular, we replicated in \texttt{HAP} the result of~\cite{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see Annex 2.4). Also, we verified the dependence of this efficiency with respect to different hyperparameters (as we did in~\seeFig{HEH}-B). %
+In particular, we replicated in \texttt{HAP} the result of~\cite{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see \href{https://spikeai.github.io/HULK/#Testing-different-algorithms}{Annex 2.4}). Also, we verified the dependence of this efficiency with respect to different hyperparameters (as we did in~\seeFig{HEH}-B). %
 Overall, these quantitative results show that the~\texttt{HEH} algorithm could be replaced by a simpler and more rapid heuristic, \texttt{HAP}, which is based on activation probability. This would generate similar efficiency for the coding of patches from natural images.
 %-----------------------------------------------------------------%
 \section{Discussion and conclusion}\label{discussion-et-conclusion}
