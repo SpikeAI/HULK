@@ -30,7 +30,7 @@ data = shl.get_data(matname=tag)
 
 # running main simulations
 # Figure 1 & 3
-N_cv = 10
+N_cv = 10 # cross-validate with 10 different learnings
 homeo_methods = ['None', 'OLS', 'HEH', 'HAP', 'EMP']
 seed = 42
 
@@ -66,7 +66,6 @@ if n_jobs>0:
 
     shl = SHL(**opts)
     dico = shl.learn_dico(data=data, list_figures=list_figures, matname=tag + '_vanilla')
-
 
     variables = ['alpha_homeo', 'l0_sparseness', 'n_dictionary']
     bases = [4] * len(variables)
@@ -154,7 +153,7 @@ else:
         'ytick.labelsize':'medium',
         'text.usetex': False,
         'font.family' : 'sans-serif',
-        'font.sans-serif' : ['sans-serif'],#['Optima'],#['Palatino'],#
+        'font.sans-serif' : ['DejaVu Sans'],#['Optima'],#['Palatino'],#
         }
 
     #matplotlib.rcParams.update({'font.size': 18, 'font.family': 'STIXGeneral', 'mathtext.fontset': 'stix'})
