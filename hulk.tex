@@ -105,29 +105,21 @@ The formation of structure in the visual system, that is, of the connections bet
 }
 \newcommand{\Keywords}{Vision; Sparseness; Computer vision; Unsupervised learning; Neuroscience}%
 \newcommand{\SubjectAreas}{Sparse Coding, Unsupervised Learning, Natural Scene Statistics, Biologically Plausible Deep Networks, Visual Perception, Computer Vision}%
-\newcommand{\Acknowledgments}{%
-This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''.
-}
+\newcommand{\Acknowledgments}{This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''.}
 \newcommand{\Links}{%
 All scripts to reproduce figures in this paper are available at \url{\Website}. More information and pointers to the open-sourced code and supplementary control simulations are available at \url{https://laurentperrinet.github.io/publication/perrinet-19-hulk/}. 
-%\begin{itemize}
-%\item Correspondence and requests for materials should be addressed to LUP (email:\Email ).
-%\item Code and supplementary material available at \url{\WebsiteC/publication/perrinet-19-hulk/}.
-%\end{itemize}
 } %
-%\newcommand{\citep}[1]{\cite{#1}}
-%\newcommand{\citet}[1]{(\textcite{#1})}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
-%\hypersetup{%
-%pdftitle={\Title},%
-%pdfauthor={Corrresponding author: \LastNameC < \EmailC > \Address - \WebsiteC },%
-%pdfkeywords={\Keywords},%
-%pdfsubject={\Acknowledgments}%
-%}%
 %\usepackage[utf8]{inputenc} % allow utf-8 input
 %\usepackage[T1]{fontenc}    % use 8-bit T1 fonts
 \usepackage{hyperref}       % hyperlinks
+%\hypersetup{%
+%pdftitle={\myTitle},%
+%pdfauthor={Corrresponding author: \FirstName \LastName < \Email > \Address - https://laurentperrinet.github.io },%
+%pdfkeywords={\Keywords},%
+%pdfsubject={\Acknowledgments}%
+%}%
 \usepackage{url}            % simple URL typesetting
 \usepackage{booktabs}       % professional-quality tables
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
@@ -144,14 +136,7 @@ All scripts to reproduce figures in this paper are available at \url{\Website}. 
 %\usepackage[dvipsnames]{xcolor}
 \usepackage{xcolor}
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
-\input{math_commands.tex}
-
-%\usepackage[noend]{algpseudocode}
-
-%\makeatletter
-%\def\BState{\State\hskip-\ALG@thistlm}
-%\makeatother
-
+\input{Definitions/math_commands.tex}
 %: symbols
 % MATHS (AMS)
 \DeclareMathOperator*{\ArgMax}{\arg\max}   % https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
