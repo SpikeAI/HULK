@@ -1,4 +1,7 @@
-default: fetch_frioul
+default: pdf
+
+pdf:
+	latexmk -pdf hulk.tex
 
 tmp_database:
 	mkdir -p /tmp/database/ && rsync -a "/Users/laurentperrinet/science/VB_These/Rapport d'avancement/database/Face_DataBase/Raw_DataBase" /tmp/database/
