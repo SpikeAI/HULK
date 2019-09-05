@@ -76,12 +76,12 @@ if n_jobs>0:
         experiments = SHL_set(opts_, tag=tag + '_' + homeo_method, base=base)
         experiments.run(variables=variables, n_jobs=n_jobs, verbose=0)
 
-    for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'elastic', 'omp', 'mp']: # 'threshold',
-        opts_ = opts.copy()
-        opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
-        shl = SHL(**opts_)
-        dico= shl.learn_dico(data=data, list_figures=[],
-                       matname=tag + ' - algorithm={}'.format(algorithm))
+    #for algorithm in ['lasso_lars', 'lasso_cd', 'lars', 'elastic', 'omp', 'mp']: # 'threshold',
+    #    opts_ = opts.copy()
+    #    opts_.update(homeo_method='None', learning_algorithm=algorithm, verbose=0)
+    #    shl = SHL(**opts_)
+    #    dico= shl.learn_dico(data=data, list_figures=[],
+    #                   matname=tag + ' - algorithm={}'.format(algorithm))
 
     for homeo_method in ['None', 'HAP']:
         for algorithm in ['lasso_lars', 'lars', 'elastic', 'omp', 'mp']: # 'threshold', 'lasso_cd',
