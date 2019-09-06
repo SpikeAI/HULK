@@ -1,5 +1,8 @@
 default: pdf
 
+diff:
+	git diff  --color-words -r 00d0776b2c6d0c2192e9bed1326f7629f54ed0c6  hulk.tex | aha > 2019-09-06_diff.html
+
 pdf:
 	latexmk -pdf hulk.tex
 

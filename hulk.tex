@@ -240,7 +240,6 @@ The architecture of the visual system implements a complex dynamic system that o
 %: \seeFig{map}
 \begin{figure*}%[!ht]%%[p!]
 \centering{\includegraphics[width=\linewidth]{figure_map}}
-%\vspace*{-.1cm}
 \caption{
 {\bf Role of homeostasis in learning sparse representations}:
 We show the results of a same Sparse Hebbian Learning algorithm using different homeostasis algorithms at convergence ($4096$ learning epochs). The compared algorithms are : \texttt{None} (using a simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using the optimal homeostasis rule described in this paper). {\sf (A)}~For each algorithm, we show $18$ atoms from the $1156$ filters of the same size as the image patches ($M= 21 \times 21=441$, circularly masked) and presented in each matrix (separated by a white border). The upper and lower row respectively show the least and most probably selected atoms. This highlights the fact that without proper homeostasis, dictionary learning leads to inhomogeneous representations. {\sf (B)}~Evolution of cost  $F$ (in bits, see~\seeEq{L0_cost_full}) as a function of the number of iterations and cross-validated over $10$ runs. While \texttt{OLS} provides a similar convergence than \texttt{None}, the \texttt{HEH} method provides a better final convergence. %
@@ -286,7 +285,7 @@ Finally, we will conclude by showing an application of such an adaptive algorith
 %: free-energy formulation
 % TODO: better define p_\phi and q_\psi / we do a Gaussian mixture models
 Visual items composing natural images are often sparse such that, knowing a model for the generation of images, the brain may use this property to represent images using only a few of these items.
-In the context of the representation of natural images represented in a matrix $\image = (\image_k)_{k=1}^K \in \RR^{K \times M}$ as a set of $K$ vector samples (herein, we will use a batch size of $K=256$) as images raveled along $M = 21^2 = 441$ pixels\footnote{We use image patches drawn from large images of outdoor scenes, as provided in the \emph{kodakdb} database which is available in the project's repository. These are circularly masked to avoid artifacts (see \href{https://spikeai.github.io/HULK/#Loading-a-database}{Annex}).} (each $\image_{k, j} \in \RR$ are the corresponding luminance values), let us assume the generic Generative Linear Model, such that for any sample $k$ the image was generated as $\image_k = \dico^T \coef_{k} + \epsilon $, where by definition, the $N$ coefficients are denoted by $\coef_{k} = (\coef_{k, i})_{i=1}^N \in \RR^{N}$ and the dictionary by $\dico \in \RR^{N \times M}$. Finally, $\epsilon \in \RR^{M}$ is a Gaussian iid noise which is Normal without loss of generality by scaling the norm of the dictionary's rows. Knowing this model, unsupervised learning aims at finding the least surprising causes (the parameters $\hat{\coef}_{k}$ and $\dico$) for the data $\image_k$.
+Images are represented in a matrix $\image = (\image_k)_{k=1}^K \in \RR^{K \times M}$ as a batch of $K$ vectorial samples (herein, we will use a batch size of $K=256$) where each image is raveled along $M = 21^2 = 441$ pixels. We use image patches drawn from large images of outdoor scenes, as provided in the \emph{kodakdb} database which is available in the project's repository. These are circularly masked to avoid artifacts (see \href{https://spikeai.github.io/HULK/#Loading-a-database}{Annex}). Each $\image_{k, j} \in \RR$ is the corresponding luminance value. In the context of the representation of natural images, let us assume the generic Generative Linear Model, such that for any sample $k$ the image was generated as $\image_k = \dico^T \coef_{k} + \epsilon $, where by definition, the $N$ coefficients are denoted by $\coef_{k} = (\coef_{k, i})_{i=1}^N \in \RR^{N}$ and the dictionary by $\dico \in \RR^{N \times M}$. Finally, $\epsilon \in \RR^{M}$ is a Gaussian iid noise which is Normal without loss of generality by scaling the norm of the dictionary's rows. Knowing this model, unsupervised learning aims at finding the least surprising causes (the parameters $\hat{\coef}_{k}$ and $\dico$) for the data $\image_k$.
 %This should take into account the fact that we may only have access to a (possibly wrong) recognition model $q_\Psi(\coef_{k} | \image_k)$ for any sample $k$ (where $\Psi$ are the parameters of this model) to encode the image into coefficients. In probabilistic term, this amounts to minimize the free-energy $F$ as a bound on surprise of the (unknown) density of the parameters $p( \coef_{k} | \image_k)$~\citep{Friston12,Kingma13,Doersch2016}:
 %TODO: cherish a rigorous argumentation
 %\begin{equation} -\log p( \coef_{k} | \image_k) \leq F \eqdef KL( q_\Psi(\coef_{k} | \image_k) || p( \coef_{k} | \image_k) )  -\log p( \coef_{k} | \image_k) \end{equation}
@@ -378,7 +377,6 @@ For all these sparse coding algorithms, during the early learning step, some cel
 %: \seeFig{HEH}
 \begin{figure*}%[!ht]%[p!]%%
 \centering{\includegraphics[width=\linewidth]{figure_HEH}}
-%\vspace*{-.1cm}
 \caption{
 {\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
 {\sf (A)}~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that for our choice of $N_0=21$ and $N=26^2=676$, all cumulative functions start around $1 - N_0/N \approx .968 $. At convergence of \texttt{HEH}, the probability of choosing any filter is equiprobable, while the distribution of coefficients is more variable for \texttt{None} and \texttt{OLS}. As a consequence, the distortion between the distributions of sparse coefficients is minimal for \texttt{HEH}, a property which is essential for the optimal representation of signals in distributed networks such as the brain. %
@@ -453,7 +451,6 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %: \seeFig{HAP}
 \begin{figure*}%[!ht]%[p!]%
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
-%\vspace*{-.1cm}
 \caption{
 {\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
  {\sf (A)}~$18$ from the $441$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (see \seeFig{map}-A, \texttt{HEH}).
@@ -512,7 +509,6 @@ Overall, these quantitative results show that the~\texttt{HEH} algorithm could b
 %: \seeFig{CNN}
 \begin{figure*}%[!ht]%[p!]%
 \centering{\includegraphics[width=\linewidth]{figure_CNN}}
-%\vspace*{-.1cm}
 \caption{
 {\bf Extension to Convolutional Neural Networks (CNNs)}: %
  We extend the HAP algorithm to a single layered CNN with $20$ kernels and using the ATT face database. We show here the kernels learned without (\texttt{None}, top row) and with (\texttt{HAP}, bottom row) homeostasis (note that we used the same initial conditions). As for the simpler case, we observe a heterogeneity of activation counts without homeostasis, that is, in the case which simply normalizes the energy of kernels (see {\sf (A)}). With homeostasis, we observe the convergence of the activation probability for the different kernels (see {\sf (B)}). This demonstrates that this heuristic extends well to a CNN architecture.
