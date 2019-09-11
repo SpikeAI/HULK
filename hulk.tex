@@ -10,7 +10,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % https://www.mdpi.com/authors/latex
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\documentclass[vision,article,submit,oneauthor,pdftex]{Definitions/mdpi}
+\documentclass[vision,article,accept,oneauthor,pdftex]{Definitions/mdpi}
 
 % video abstract: This video would show the emergence of filters as the number of epochs increases. This shows intuitively the progressive appearance of oriented edges and allows for a face-to-face comparison of different variants of sparse hebbian learning.
 
@@ -57,9 +57,9 @@
 %
 %----------------------------------------------
 %=================================================================
-\firstpage{1}
-\makeatletter
-\setcounter{page}{\@firstpage}
+\firstpage{1} 
+\makeatletter 
+\setcounter{page}{\@firstpage} 
 \makeatother
 \pubvolume{xx}
 \issuenum{1}
@@ -67,8 +67,8 @@
 \pubyear{2019}
 \copyrightyear{2019}
 %\externaleditor{Academic Editor: name}
-\history{Received: date; Accepted: date; Published: date}
-%\updates{yes} % If there is an update available, un-comment this line
+\history{Received: 28 June 2019; Accepted: 9 September 2019 ; Published: date}
+\updates{yes} % If there is an update available, un-comment this line
 
 %% MDPI internal command: uncomment if new journal that already uses continuous page numbers
 %\continuouspages{yes}
@@ -84,39 +84,45 @@
 %% Please use the following mathematics environments: Theorem, Lemma, Corollary, Proposition, Characterization, Property, Problem, Example, ExamplesandDefinitions, Hypothesis, Remark, Definition, Notation, Assumption
 %% For proofs, please use the proof environment (the amsthm package is loaded by the MDPI class).
 
-%=================================================================
+\Title{An Adaptive Homeostatic Algorithm for the Unsupervised Learning of Visual Features}
 
+\newcommand{\orcidauthorA}{0000-0002-9536-010X}
 % --------------------------------------------------------------------------
 %                    METADATA
 % --------------------------------------------------------------------------
-\newcommand{\LastName}{Perrinet}%
-\newcommand{\FirstName}{Laurent U}%
+\Author{\hl{Laurent} U. Perrinet \orcidA{}}%
+%Please carefully check the accuracy of names and affiliations. 
+
+\AuthorNames{Laurent U. Perrinet}
 % Aix Marseille Univ, CNRS, INT, Inst Neurosci Timone, Marseille, France
 %\newcommand{\Institute}{Institut de Neurosciences de la Timone (UMR7289)}%,
-\newcommand{\Institute}{INT, Inst Neurosci Timone}%,
-%\newcommand{\Organism}{Aix Marseille Univ and Centre National de la Recherche Scientifique (CNRS)}%
-\newcommand{\Organism}{Aix Marseille Univ, CNRS}%
+
+\address[1]{%
+INT, Inst Neurosci Timone, Aix Marseille Univ, CNRS, 27, Bd. Jean Moulin, CEDEX 5, 13385 Marseille, France; laurent.perrinet@univ-amu.fr}
+%$^{2}$ \quad Affiliation 2; e-mail@e-mail.com}
+%\newcommand{\Institute}{INT, Inst Neurosci Timone}%,
+%%\newcommand{\Organism}{Aix Marseille Univ and Centre National de la Recherche Scientifique (CNRS)}%
+%\newcommand{\Organism}{Aix Marseille Univ, CNRS}%
 %3. Travaux financés par A*MIDEX
 %Indiquer dans les remerciements la mention suivante :
 %Version en langue française : "Ce travail a bénéficié d'une aide du gouvernement français au titre du Programme Investissements d’Avenir, Initiative d’Excellence d’Aix­Marseille Université ­ A*MIDEX"
 %Version en langue anglaise : "The project leading to this publication has received funding from Excellence Initiative of Aix­Marseille University ­ A*MIDEX, a French “Investissements d’Avenir” programme”.
 %\newcommand{\Address}{Marseille, France}%
-\newcommand{\Address}{27, Bd. Jean Moulin, 13385 Marseille Cedex 5, France}%
-\newcommand{\Email}{laurent.perrinet@univ-amu.fr}%
-\newcommand{\Website}{https://spikeai.github.io/HULK}%
-\newcommand{\orcID}{0000-0002-9536-010X}%
-\newcommand{\myTitle}{%
-An adaptive homeostatic algorithm for the unsupervised learning of visual features
-}%
-\newcommand{\Abstract}{ %
-The formation of structure in the visual system, that is, of the connections between cells within neural populations, is by large an unsupervised learning process. In the primary visual cortex of mammals, for example, one can observe during development the formation of cells selective to localized, oriented features which results in the development of a representation in area V1 of images' edges. This can be modeled using a sparse Hebbian learning algorithms which alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty of such algorithms is the joint problem of finding a good representation while knowing immature encoders, and to learn good encoders with a non-optimal representation. To solve this problem, this work introduces a new regulation process between learning and coding which is motivated by the homeostasis processes observed in biology. Such an optimal homeostasis rule is implemented by including an adaptation mechanism based on non-linear functions that balance the antagonistic processes that occur at the coding and learning time scales. It is compatible with a neuromimetic architecture and allows for a more efficient emergence of localized filters sensitive to orientation. In addition, this homeostasis rule is simplified by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, numerical simulations show that this heuristic allows to implement a faster unsupervised learning algorithm while retaining much of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and this is illustrated by showing the effect of homeostasis in the emergence of edge-like filters for a convolutional neural network.
-}
-\newcommand{\Keywords}{Vision; Sparseness; Computer vision; Unsupervised learning; Neuroscience}%
-\newcommand{\SubjectAreas}{Sparse Coding, Unsupervised Learning, Natural Scene Statistics, Biologically Plausible Deep Networks, Visual Perception, Computer Vision}%
-\newcommand{\Acknowledgments}{This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''. This work was granted access to the HPC resources of Aix-Marseille Université financed by the project Equip@Meso (ANR-10-EQPX-29-01) of the program ``Investissements d’Avenir'' supervised by the Agence Nationale de la Recherche.}
-\newcommand{\Links}{%
-All scripts to reproduce figures in this paper are available at \url{\Website}. More information and pointers to the open-sourced code and supplementary control simulations are available at \url{https://laurentperrinet.github.io/publication/perrinet-19-hulk/}.
-} %
+%\newcommand{\Address}{}%
+%%\newcommand{\Email}{}%
+%\newcommand{\Website}{https://spikeai.github.io/HULK}%
+%\newcommand{\orcID}{}%
+
+
+\abstract{The formation of structure in the visual system, that is, of the connections between cells within neural populations, is by and large an unsupervised learning process. In the primary visual cortex of mammals, for example, one can observe during development the formation of cells selective to localized, oriented features, which results in the development of a representation in area V1 of images' edges. This can be modeled using a sparse Hebbian learning algorithms which alternate a coding step to encode the information with a learning step to find the proper encoder. A major difficulty of such algorithms is the joint problem of finding a good representation while knowing immature encoders, and to learn good encoders with a nonoptimal representation. To solve this problem, this work introduces a new regulation process between learning and coding which is motivated by the homeostasis processes observed in biology. Such an optimal homeostasis rule is implemented by including an adaptation mechanism based on nonlinear functions that balance the antagonistic processes that occur at the coding and learning time scales. It is compatible with a neuromimetic architecture and allows for a more efficient emergence of localized filters sensitive to orientation. In addition, this homeostasis rule is simplified by implementing a simple heuristic on the probability of activation of neurons. Compared to the optimal homeostasis rule, numerical simulations show that this heuristic allows to implement a faster unsupervised learning algorithm while retaining much of its effectiveness. These results demonstrate the potential application of such a strategy in machine learning and this is illustrated by showing the effect of homeostasis in the emergence of edge-like filters for a convolutional neural network.}
+
+\keyword{vision; sparseness; computer vision; unsupervised learning; neuroscience}%
+%
+%\newcommand{\SubjectAreas}{Sparse Coding, Unsupervised Learning, Natural Scene Statistics, Biologically Plausible Deep Networks, Visual Perception, Computer Vision}%
+%\newcommand{\Acknowledgments}{This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''. This work was granted access to the HPC resources of Aix-Marseille Université financed by the project Equip@Meso (ANR-10-EQPX-29-01) of the program ``Investissements d’Avenir'' supervised by the Agence Nationale de la Recherche.}
+%\newcommand{\Links}{%
+%All scripts to reproduce figures in this paper are available at \url{\Website}. More information and pointers to the open-sourced code and supplementary control simulations are available at \url{https://laurentperrinet.github.io/publication/perrinet-19-hulk/}.
+%} %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\usepackage[unicode,linkcolor=blue,citecolor=blue,filecolor=black,urlcolor=blue,pdfborder={0 0 0}]{hyperref}%
 %\usepackage[utf8]{inputenc} % allow utf-8 input
@@ -144,7 +150,7 @@ All scripts to reproduce figures in this paper are available at \url{\Website}. 
 %\usepackage[dvipsnames]{xcolor}
 \usepackage{xcolor}
 % Optional math commands from https://github.com/goodfeli/dlbook_notation.
-\input{Definitions/math_commands.tex}
+%\input{Definitions/math_commands.tex}
 %: symbols
 % MATHS (AMS)
 \DeclareMathOperator*{\ArgMax}{\arg\max}   % https://tex.stackexchange.com/questions/5223/command-for-argmin-or-argmax
@@ -183,46 +189,46 @@ All scripts to reproduce figures in this paper are available at \url{\Website}. 
 
 \usepackage{graphicx}
 %\DeclareGraphicsExtensions{.pdf,.png,.jpg}
-\DeclareGraphicsExtensions{.pdf}
+%\DeclareGraphicsExtensions{.pdf}
 %
 %\pagestyle{empty}		% No page numbers
 %\iclrfinalcopy % Uncomment for camera-ready version, but NOT for submission.
 
 %=================================================================
-% Full title of the paper (Capitalized)
-\Title{\myTitle}
-
-% Author Orchid ID: enter ID or remove command
-\newcommand{\orcidauthorA}{\orcID} % Add \orcidA{} behind the author's name
-
-% Authors, for the paper (add full first names)
-\Author{\FirstName\ \LastName \orcidA{}}
-
-% Authors, for metadata in PDF
-\AuthorNames{\FirstName\ \LastName}
-
-% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
-\address{%
-\textit{\Organism\ , \Institute\ } \\
-\Address ; \textit{\Email}}
-
-% Contact information of the corresponding author
-\corres{Correspondence: \Email .}
-
-%% Current address and/or shared authorship
-%\firstnote{Current address: Affiliation 3}
-%\secondnote{These authors contributed equally to this work.}
-% The commands \thirdnote{} till \eighthnote{} are available for further notes
-
-%\simplesumm{} % Simple summary
-
-%\conference{} % An extended version of a conference paper
-
-% Abstract (Do not insert blank lines, i.e. \\)
-\abstract{\Abstract}
-
-% Keywords
-\keyword{\Keywords}
+%% Full title of the paper (Capitalized)
+%\Title{\myTitle}
+%
+%% Author Orchid ID: enter ID or remove command
+%\newcommand{\orcidauthorA}{\orcID} % Add \orcidA{} behind the author's name
+%
+%% Authors, for the paper (add full first names)
+%\Author{\FirstName\ \LastName \orcidA{}}
+%
+%% Authors, for metadata in PDF
+%\AuthorNames{\FirstName\ \LastName}
+%
+%% Affiliations / Addresses (Add [1] after \address if there is only one affiliation.)
+%\address{%
+%\textit{\Organism\ , \Institute\ } \\
+%\Address ; \textit{\Email}}
+%
+%% Contact information of the corresponding author
+%\corres{Correspondence: \Email .}
+%
+%%% Current address and/or shared authorship
+%%\firstnote{Current address: Affiliation 3}
+%%\secondnote{These authors contributed equally to this work.}
+%% The commands \thirdnote{} till \eighthnote{} are available for further notes
+%
+%%\simplesumm{} % Simple summary
+%
+%%\conference{} % An extended version of a conference paper
+%
+%% Abstract (Do not insert blank lines, i.e. \\)
+%\abstract{\Abstract}
+%
+%% Keywords
+%\keyword{\Keywords}
 
 % The fields PACS, MSC, and JEL may be left empty or commented out if not applicable
 %\PACS{J0101}
@@ -232,22 +238,16 @@ All scripts to reproduce figures in this paper are available at \url{\Website}. 
 
 \begin{document}
 % \thispagestyle{empty}
-\section{Introduction: Reconciling competition and cooperation}\label{introduction}
+\section{Introduction: Reconciling Competition and~Cooperation}\label{introduction}
 %: motivation: why sparseness? biology
-The architecture of the visual system implements a complex dynamic system that operates at different time scales. One of its properties is to succeed in representing information quickly while optimizing this encoding in the long term. Respectively, these correspond to the coding and learning time scales. In the case of the mammalian primary visual cortex (V1) for instance, the results of Hubel \& Wiesel~\cite{Hubel68} showed that cells of V1 have predominantly relatively localized receptive fields which are selective at different orientations. As such, this rapid coding of the retinal image, of the order of $50$ milliseconds in humans, transforms the raw visual information into a rough ``sketch'' that represents the outlines of objects in the image by using elementary edge-like features. An important aspect of this internal representation is that it is \emph{sparse}: for most natural images, only a relatively small number of features (also called atoms) are necessary to describe the input~\cite{Perrinet15sparse}. Thus, the coding step consists in choosing the right encoder that selects as few features as possible among a collection of them (called the \emph{dictionary}). Amazingly, Olshausen \& Field~\cite{Olshausen96} have shown that when enforcing a sparse prior on the encoding step, such edge-like filters are obtained using a simple Hebbian unsupervised learning strategy. % thus yielding an ``optimal'' coding of the image.
+The architecture of the visual system implements a complex dynamic system that operates at different time scales. One of its properties is to succeed in representing information quickly, while~ optimizing this encoding in the long-term. Respectively, these correspond to the coding and learning time scales. In~the case of the mammalian primary visual cortex (V1) for instance, the~results of Hubel \& Wiesel~\cite{Hubel68} show that cells of V1 have predominantly relatively localized receptive fields which are selective at different orientations. As~such, this rapid coding of the retinal image, of~the order of $50$~ milliseconds in humans, transforms the raw visual information into a rough ``sketch'' that represents the outlines of objects in the image by using elementary edge-like features. An~important aspect of this internal representation is that it is ``sparse'': for most natural images, only a relatively small number of features (also called atoms) are necessary to describe the input~\cite{Perrinet15sparse}. Thus, the~coding step consists in choosing the right encoder that selects as few features as possible among a collection of them (called the dictionary). Amazingly, Olshausen \& Field~\cite{Olshausen96} show that when enforcing a sparse prior on the encoding step, such edge-like filters are obtained using a simple Hebbian unsupervised learning strategy. % thus yielding an ``optimal'' coding of the image.
 %------------------------------%
 %: see Figure~\ref{fig:map}
 %: \seeFig{map}
-\begin{figure*}%[!ht]%%[p!]
-\centering{\includegraphics[width=\linewidth]{figure_map}}
-\caption{
-{\bf Role of homeostasis in learning sparse representations}:
-This plot shows the results of the same Sparse Hebbian Learning algorithm at convergence ($4096$ learning epochs) but using different homeostasis algorithms. The compared algorithms are : \texttt{None} (using a simple normalization of the atoms), \texttt{OLS} (the method of~\citep{Olshausen97}), \texttt{HEH} (using the optimal homeostasis rule described in this paper). {\sf (A)}~For each algorithm, $18$ atoms from the $N=676$ filters are shown. These are of the same size as the image patches ($M= 21 \times 21=441$, circularly masked) and presented in each matrix (separated by a white border). The upper and lower row respectively show the least and most probably selected atoms. This highlights qualitatively the fact that without proper homeostasis, dictionary learning leads to inhomogeneous representations. {\sf (B)}~Evolution of cost $F$ (in bits, see~\seeEq{L0_cost_full}) as a function of the number of iterations and cross-validated over $10$ runs. While \texttt{OLS} provides a similar convergence than \texttt{None}, the \texttt{HEH} method provides quantitatively a better final convergence. %
-\label{fig:map}}%
-\end{figure*}%
+
 %%------------------------------%
 %: in machine learning: from data to knowledge
-Additionally, recent advances in machine learning, and especially on unsupervised learning have shed new light on the functioning of the underlying biological neural processes. By definition, unsupervised learning aims at learning the best dictionary to represent the input image autonomously, that is, without using other external knowledge such as in supervised or reinforcement learning. Algorithms that include such a process as the input to classical, supervised deep-learning show great success in tasks like image denoising~\citep{Vincent08} or classification~\citep{Sulam2017multi,PerrinetBednar15}. A variant consists in forcing the generated representation to be sparsely encoded~\citep{MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{Papyan16}. Interestingly,~\citep{Papyan16} proposes a model of Convolutional Sparse Coding (CSC) tightly connected with Convolutional Neural Network (CNN), so much that the forward pass of the CNN is equivalent to a CSC with a thresholding pursuit algorithm. These unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to \emph{quantitatively} evaluate the joint exploration of new learning or coding strategies. As such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding, and that both are inter-dependent.
+Additionally, recent advances in machine learning, and~especially on unsupervised learning, have shed new light on the functioning of the underlying biological neural processes. By~definition, unsupervised learning aims at learning the best dictionary to represent the input image autonomously, that is, without~using other external knowledge, such as in supervised or reinforcement learning. Algorithms that include such a process as the input to classical, supervised deep-learning show great success in tasks like image denoising~\citep{Vincent08} or {classification}~\citep{Sulam2017multi,PerrinetBednar15}. A~variant consists of forcing the generated representation to be sparsely encoded~\citep{MakhzaniF13}, whether by adding a penalty term to the optimized cost function or by encoding each intermediate representation by a pursuit algorithm~\citep{Papyan16}. Interestingly,~\citep{Papyan16} proposes a model of Convolutional Sparse Coding (CSC) tightly connected with a Convolutional Neural Network (CNN), so much that the forward pass of the CNN is equivalent to a CSC with a thresholding pursuit algorithm. These unsupervised algorithms are equivalent to a gradient descent optimization over an informational-type coding cost~\citep{Kingma13}. This cost makes it then possible to quantitatively evaluate the joint exploration of new learning or coding strategies. As~such, this remark shows us that unsupervised learning consists of two antagonistic mechanisms, a~long time scale that corresponds to the learning and exploration of new components and a faster scale that corresponds to coding, and~that both are~interdependent.
 
 %: encompassed in probabilistic approaches -> PRECISION
 %In order to offer a broader perspective on the problem of understanding these biological neural processes, we will try to express it into this generic probabilistic framework. This approach is already widely used in Barlow's early work~\citep{Barlow61}. He hypothesized that neurons are driven by a self-organizing strategy so that they encode the information in such a way that they minimize the statistical dependency among them. It is called the redundancy reduction hypothesis (see also~\citep{Atick92}). %It led to translating this learning problem into a problem of efficient coding, for example by implementing inhibition rules in the retinal receptive field of the saber-toothed tiger (??? Srinivasan, 1981).
@@ -255,14 +255,25 @@ Additionally, recent advances in machine learning, and especially on unsupervise
 %More generally, we will place ourselves in the framework of the principle of free-energy minimization formulated by~\citet{Friston12}. This principle allows to explicitly address the joint problem of coding and unsupervised learning. In this theory, learning to reduce redundancy is no longer a goal in itself but contributes to the minimization of free-energy at different time scales, from coding to learning. According to this principle, the overall goal of the system is to learn a generative model of the data such as to limit as much as possible the surprise generated by any novel sensory input. This principle results in changes in the structure of the population (synaptic connections) but also in adaptation rule before the convergence of the learning. This theory extends that of~\citep{Olshausen97} and shows that overall, sparse coding is a form of predictive coding. Thus, the set of processes at different time scales are thus considered as working in synergy and provide for a novel normative theory of coding and learning in early sensory areas such as V1.
 
 %: importance of homeostasis
-However, when exploring such algorithms, this convergence may fail to reach a global optimum. In particular, we identified that in simulations for which we aim at comparing the model with the biological substrate, such as when the number of neurons increases, the convergence gradually degenerated (as in see Figure~\ref{fig:map}-A "None"). An aspect often ignored in this type of learning is the set of homeostasis processes that control the average activity of neurons within a population. Indeed, there is an intrinsic complexity in unsupervised dictionary learning algorithms. On the one side, neurons are selected by the Sparse Hebbian Learning algorithm by selecting those with maximal activity. This implements a competition within neurons in a population for selecting the one which best matches the visual input. On the other hand, since the learning reinforces the match between the neuron's response and the visual feature, a regulation process is necessary to avoid that only one neuron learns and that other neurons are never selected. Indeed, in such a case, the selection of this neuron would be certain and the surprise associated to this representation would be null. Such homeostatic process thus implements a form of cooperation which aims at optimizing the competition across neurons. But how to adapt the regularization parameter of each atom to make sure no atoms are wasted because of improper regularization settings?
+However, when exploring such algorithms, this convergence may fail to reach a global optimum. In~particular, we identified that in simulations for which we aim at comparing the model with the biological substrate, such as when the number of neurons increases, the~convergence gradually degenerated (see Figure~\ref{fig:map}A, ``None''). An~aspect often ignored in this type of learning is the set of homeostasis processes that control the average activity of neurons within a population. Indeed, there is an intrinsic complexity in unsupervised dictionary learning algorithms. On~the one side, neurons~ are selected by the Sparse Hebbian Learning algorithm by selecting those with maximal activity. This~ implements a competition within neurons in a population for selecting the one which best matches the visual input. On~the other hand, as~the learning reinforces the match between the neuron's response and the visual feature, a~regulation process is necessary to avoid the case where only one neuron learns and the other neurons are never selected. Indeed, in~such a case, the~selection of this neuron would be certain and the surprise associated to this representation would be null. Such~ homeostatic process thus implements a form of cooperation which aims at optimizing the competition across neurons. But~how to adapt the regularization parameter of each atom to make sure no atoms are wasted because of improper regularization settings?
 
-In the original {\sc SparseNet} algorithm of sparse unsupervised learning~\citep{Olshausen97}, homeostasis is implemented as a heuristic that prevents the average energy of each coefficient from diverging. In a majority of present unsupervised learning algorithms, it takes the form of a normalization, that is, an equalization of the energy of each atom in the dictionary~\citep{Mairal14}.
+
+
+In the original {\sc SparseNet} algorithm of sparse unsupervised learning~\citep{Olshausen97}, homeostasis is implemented as a heuristic that prevents the average energy of each coefficient from diverging. In~the majority of present unsupervised learning algorithms, it takes the form of a normalization, that~ is, an~equalization of the energy of each atom in the dictionary~\citep{Mairal14}.
 %: neural mechanisms
-In general, the neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall transduction of neural information. For example, the sub-networks of glutamate and GABA-type neurons may regulate the overall activity of neural populations~\citep{Marder2006variability}. Such mechanisms could be tuned to balance the contribution of the excitatory populations with respect to that of inhibitory populations. As a consequence, this creates a so-called balanced network which may explain many facets of the properties of the primary visual cortex~\citep{Hansel12} such as criticality and scale invariant processing of information in cortical networks, including adaptation. Such a balance may be important to properly represent distributions of activities within a population. This has been demonstrated to be beneficial for image categorization~\citep{PerrinetBednar15}. At the modeling level, these mechanisms are often implemented in the form of normalization rules~\citep{Schwartz01} which are considered as the basis of a normative theory to explain the function of the primary visual cortex~\citep{Carandini12}. However, when extending such models using unsupervised learning, most effort is focused in showing that the cells' selectivity that emerges have the same characteristics than those observed in neuro-physiology~\citep{Ringach02,Rehn07,Loxley17}. Other algorithms use non-linearities that implicitly implement homeostatic rules in neuro-mimetic algorithms~\citep{Brito16} or spiking neurons~\citep{Perrinet03}. These non-linearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence. However most of these non-linear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem underlying unsupervised learning. Framing this problem in a probabilistic framework allows to consider in addition to coding and learning the intermediate time scale of homeostasis and allows to associate it to an adaptation mechanism~\citep{Rao99}. Our main argument is that, compared to classical~\citep{Olshausen97} or Deep Learning approaches, including an homeostatic process optimizes unsupervised learning at both the coding and learning time scales and allows for the implementation of fast algorithms compatible with the performance of biological networks. %
+In general, the~neural mechanisms of homeostasis are at work in many components of the neural code and are essential to the overall transduction of neural information. For~example, the~subnetworks of glutamate and GABA-type neurons may regulate the overall activity of neural populations~\citep{Marder2006variability}. Such mechanisms could be tuned to balance the contribution of the excitatory populations with respect to that of inhibitory populations. As~a consequence, this creates a so-called balanced network, which may explain many facets of the properties of the primary visual cortex~\citep{Hansel12}, such as criticality and scale invariant processing of information in cortical networks, including adaptation. Such a balance may be important to properly represent distributions of activities within a population. This has been demonstrated to be beneficial for image categorization~\citep{PerrinetBednar15}. At~the modeling level, these mechanisms are often implemented in the form of normalization rules~\citep{Schwartz01}, which are considered as the basis of a normative theory to explain the function of the primary visual cortex~\citep{Carandini12}. However, when extending such models using unsupervised learning, most effort is focused in showing that the cells' selectivity has the same characteristics than those observed in neurophysiology~\citep{Ringach02,Rehn07,Loxley17}. Other algorithms use nonlinearities that implicitly implement homeostatic rules in neuromimetic algorithms~\citep{Brito16} or spiking neurons~\citep{Perrinet03}. These nonlinearities are mainly used in the output of successive layers of deep learning networks that are nowadays widely used for image classification or artificial intelligence. However, most of these nonlinear normalization rules are based on heuristics mimicking neural mechanisms but are not justified as part of the global problem underlying unsupervised learning. Framing this problem in a probabilistic framework allows to consider in addition to coding and learning the intermediate time scale of homeostasis and allows to associate it to an adaptation mechanism~\citep{Rao99}. Our main argument is that, compared to classical~\citep{Olshausen97} or Deep Learning approaches, including an homeostatic process optimizes unsupervised learning at both the coding and learning time scales and allows for the implementation of fast algorithms compatible with the performance of biological networks. %
+
+\begin{figure}[H]
+\centering{\includegraphics[width=\linewidth]{figure_map}}
+\caption{
+{{Role} of homeostasis in learning sparse representations}.
+This plot shows the results of the same Sparse Hebbian Learning algorithm at convergence ($4096$ learning epochs), but~using different homeostasis algorithms. The~compared algorithms are : \texttt{None} (using a simple normalization of the atoms), \texttt{OLS} (the method of~the work by the authors of \citep{Olshausen97}), and~\texttt{HEH} (using the optimal homeostasis rule described in this paper). {(\textbf{A})}~For each algorithm, $18$ atoms from the $N=676$ filters are shown. These are of the same size as the image patches ($M= 21 \times 21=441$, circularly masked) and presented in each matrix (separated by a white border). The~upper and lower row respectively show the least and most probably selected atoms. This highlights qualitatively the fact that without proper homeostasis, dictionary learning leads to inhomogeneous representations. {(\textbf{B})}~Evolution of cost $F$ (in bits, see Equation~(\ref{eq:L0_cost_full})) as a function of the number of iterations and cross-validated over $10$ runs. Whereas \texttt{OLS} provides a similar convergence than \texttt{None}, the~\texttt{HEH} method provides quantitatively a better final~ convergence. %
+\label{fig:map}}%
+\end{figure}%
+
 
 %: outline
-In this paper, we will first define a simple algorithm for controlling the selection of coefficients in sparse coding algorithms based on a set of non-linear functions similar to generic neural gain normalization mechanisms. Such functions will be used to implement a homeostasis mechanism based on histogram equalization by progressively adapting these non-linear functions. This algorithm will extend an already existing algorithm of unsupervised sparse learning~\citep{Perrinet10shl} to a more general setting. We will show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. Second, we will propose a simplification of this homeostasis algorithm based on the activation probability of each neuron thanks to the control of the slope of its corresponding Rectifying Linear Unit (ReLU). We show that it yields similar quantitative results as the full homeostasis algorithm and that it converges more rapidly than classical methods~\citep{Olshausen97, Sandin17}. We designed our computational architecture to be able to quantitatively cross-validate for every single hyper-parameter. All these scripts are available at \url{https://github.com/SpikeAI/HULK}, including the \href{\Website}{supplementary material}. %\footnote{All these algorithms were implemented using \verb+Python+ (version 3.6.5) with packages \verb+NumPy+ (version 1.14.3), \verb+sklearn+ (version 0.19.1) and \verb+SciPy+ (version 1.1.0)~\citep{Oliphant07,Pedregosa11}. Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}.}.
+In this paper, we will first define a simple algorithm for controlling the selection of coefficients in sparse coding algorithms based on a set of nonlinear functions similar to generic neural gain normalization mechanisms. Such functions will be used to implement a homeostasis mechanism based on histogram equalization by progressively adapting these nonlinear functions. This algorithm will extend an already existing algorithm of unsupervised sparse learning~\citep{Perrinet10shl} to a more general setting. We will show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. Second, we will propose a simplification of this homeostasis algorithm based on the activation probability of each neuron, thanks to the control of the slope of its corresponding Rectifying Linear Unit (ReLU). We show that it yields similar quantitative results as the full homeostasis algorithm and that it converges more rapidly than classical methods~\citep{Olshausen97, Sandin17}. We~ designed our computational architecture to be able to quantitatively cross-validate for every single hyperparameter. All these scripts are available at: \url{https://github.com/SpikeAI/HULK}, including the {Supplementary Material}. %\footnote{All these algorithms were implemented using \verb+Python+ (version 3.6.5) with packages \verb+NumPy+ (version 1.14.3), \verb+sklearn+ (version 0.19.1) and \verb+SciPy+ (version 1.1.0)~\citep{Oliphant07,Pedregosa11}. Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}.}. URLs are not allowed in main text, please remove.
 Finally, we will conclude by showing an application of such an adaptive algorithm to CNNs and discuss on its development in real-world architectures.
 % ----------------------------------------------------------------------
 % RTC
@@ -276,7 +287,7 @@ Finally, we will conclude by showing an application of such an adaptive algorith
 % - we wish to reduce noise as much as possible by having the least number of sources => sparse coding (inverse of central limit theorem?)
 %
 % ----------------------------------------------------------------------
-\section{Unsupervised learning and the optimal representation of images}%\label{algorithm}
+\section{Unsupervised Learning and the Optimal Representation of~Images}%\label{algorithm}
 % ----------------------------------------------------------------------
 %
 % >>> YOU ARE HERE <<<
@@ -284,8 +295,8 @@ Finally, we will conclude by showing an application of such an adaptive algorith
 %
 %: free-energy formulation
 % TODO: better define p_\phi and q_\psi / we do a Gaussian mixture models
-Visual items composing natural images are often sparse such that, knowing a model for the generation of images, the brain may use this property to represent images using only a few of these items.
-Images are represented in a matrix $\image = (\image_k)_{k=1}^K \in \RR^{K \times M}$ as a batch of $K$ vectorial samples (herein, we will use a batch size of $K=256$) where each image is raveled along $M = 21^2 = 441$ pixels. We use image patches drawn from large images of outdoor scenes, as provided in the \emph{kodakdb} database which is available in the project's repository. These are circularly masked to avoid artifacts (see \href{https://spikeai.github.io/HULK/#Loading-a-database}{Annex}). Each $\image_{k, j} \in \RR$ is the corresponding luminance value. In the context of the representation of natural images, let us assume the generic Generative Linear Model, such that for any sample $k$ the image was generated as $\image_k = \dico^T \coef_{k} + \epsilon $, where by definition, the $N$ coefficients are denoted by $\coef_{k} = (\coef_{k, i})_{i=1}^N \in \RR^{N}$ and the dictionary by $\dico \in \RR^{N \times M}$. Finally, $\epsilon \in \RR^{M}$ is a Gaussian iid noise which is Normal without loss of generality by scaling the norm of the dictionary's rows. Knowing this model, unsupervised learning aims at finding the least surprising causes (the parameters $\hat{\coef}_{k}$ and $\dico$) for the data $\image_k$.
+Visual items composing natural images are often sparse, such that knowing a model for the generation of images, the~brain may use this property to represent images using only a few of these items.
+Images are represented in a matrix $\image = (\image_k)_{k=1}^K \in \RR^{K \times M}$ as a batch of $K$ vectorial samples (herein, we will use a batch size of $K=256$), where each image is raveled along $M = 21^2 = 441$ pixels. We use image patches drawn from large images of outdoor scenes, as~provided in the ``kodakdb'' database which is available in the project's repository. These are circularly masked to avoid artifacts (see \href{https://spikeai.github.io/HULK/#Loading-a-database}{Annex}). Each $\image_{k, j} \in \RR$ is the corresponding luminance value. In~the context of the representation of natural images, let us assume the generic Generative Linear Model, such that for any sample $k$ the image was generated as $\image_k = \dico^T \coef_{k} + \epsilon $, where by definition, the~$N$ coefficients are denoted by $\coef_{k} = (\coef_{k, i})_{i=1}^N \in \RR^{N}$ and the dictionary by $\dico \in \RR^{N \times M}$. Finally, $\epsilon \in \RR^{M}$ is a Gaussian iid noise, which is normal without loss of generality by scaling the norm of the dictionary's rows. By~understanding this model, unsupervised learning aims at finding the least surprising causes (the parameters $\hat{\coef}_{k}$ and $\dico$) for the data $\image_k$.
 %This should take into account the fact that we may only have access to a (possibly wrong) recognition model $q_\Psi(\coef_{k} | \image_k)$ for any sample $k$ (where $\Psi$ are the parameters of this model) to encode the image into coefficients. In probabilistic term, this amounts to minimize the free-energy $F$ as a bound on surprise of the (unknown) density of the parameters $p( \coef_{k} | \image_k)$~\citep{Friston12,Kingma13,Doersch2016}:
 %TODO: cherish a rigorous argumentation
 %\begin{equation} -\log p( \coef_{k} | \image_k) \leq F \eqdef KL( q_\Psi(\coef_{k} | \image_k) || p( \coef_{k} | \image_k) ) -\log p( \coef_{k} | \image_k) \end{equation}
@@ -293,35 +304,39 @@ Images are represented in a matrix $\image = (\image_k)_{k=1}^K \in \RR^{K \time
 %An advantage of this formulation is that the free-energy can be rewritten as
 %\begin{equation} F = KL( q_\Psi(\coef_{k} | \image_k) || p(\coef_{k}) ) - \int \log p(\image_k | \coef_{k} ) dq_\Psi(\coef_{k} | \image_k) \end{equation}
 %In particular, using a known coding $\hat{\coef_{k}}$ of the image $\image_k$ and by ignoring the first term in the right hand side, we may approximate the free-energy as:
-In particular, the cost %relative to using a coding $\hat{\coef_{k}}$ of the image $\image_k$
-may be formalized in probabilistic terms as~\citep{Olshausen97}:
+In particular, the~cost %relative to using a coding $\hat{\coef_{k}}$ of the image $\image_k$
+may be formalized in probabilistic terms as~\citep{Olshausen97}
 \begin{align}
 F &\approx \langle - \log [ p(\image_k | \hat{\coef}_{k}, \dico ) p(\hat{\coef}_{k}) ]\rangle_{k = 1 \ldots K} \\
 &= \langle \frac{1}{2} \norm{\image_k - \dico \hat{\coef}_{k}}_2^2 - \log p(\hat{\coef}_{k})\rangle_{k = 1 \ldots K} \label{eq:sparse_cost} \end{align}
 % https://github.com/bicv/Perrinet2015BICV_sparse/blob/master/sparse.tex#L374
-Such hypothesis allows to define in all generality the different costs which are optimized in most existing models of unsupervised learning. Explicitly, the representation is optimized by minimizing a cost defined on prior assumptions on representation's sparseness, that is on $\log p( \hat{\coef}_{k})$. For instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} by defining a sparse prior probability distribution function for each coefficients in the factorial form $\log p(\coef_{k}) \sim -\beta \sum_i \log ( 1 + \frac{a_i^2}{\sigma^2} )$ where $\beta$ corresponds to the steepness of the prior and $\sigma$ to its scaling (see Figure 13.2 from~\citep{Olshausen02}). Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning.
-Indeed, to compute the partial derivative of $F$ with respect to $\dico$, we have simply:
+
+Such hypothesis allows us to define, in~all generality, the~different costs that are optimized in most existing models of unsupervised learning. Explicitly, the~representation is optimized by minimizing a cost defined on prior assumptions on representation's sparseness, that is on $\log p( \hat{\coef}_{k})$. For~instance, learning is accomplished in {\sc SparseNet}~\citep{Olshausen97} by defining a sparse prior probability distribution function for each coefficients in the factorial form $\log p(\coef_{k}) \sim -\beta \sum_i \log ( 1 + \frac{a_i^2}{\sigma^2} )$, where $\beta$ corresponds to the steepness of the prior and $\sigma$ to its scaling (see Figure~13.2 from the work by the authors of~\citep{Olshausen02}). Then, knowing this sparse solution, learning is defined as slowly changing the dictionary using Hebbian learning.
+Indeed, to~compute the partial derivative of $F$ with respect to $\dico$, we have simply:
 \begin{align}
 \frac{\partial }{\partial \dico } F &= \langle\frac{1}{2} \frac{\partial }{\partial \dico_i }[(\image_k - \dico^T \hat{\coef}_{k})^T (\image_k - \dico^T \hat{\coef}_{k})]\rangle_{k = 1 \ldots K} \\
 &= \langle\hat{\coef}_{k} (\image_k - \dico^T \hat{\coef}_{k})\rangle_{k = 1 \ldots K}.
 \end{align}
-This allows to define unsupervised learning as the (stochastic) gradient descent using this equation. Similarly to Eq.~17 in~\citep{Olshausen97} or to Eq.~2 in~\citep{Smith06}, the relation is a linear ``Hebbian'' rule~\citep{Hebb49} since it enhances the weight of neurons proportionally to the activity (coefficients) between pre- and post-synaptic neurons. Note that there is no learning for non-activated coefficients (for which $\hat{\coef}_{k}=0$). Implementing a stochastic gradient descent, we can also use a (classical) scheduling of the learning rate and a proper initialization of the weights (see \href{https://spikeai.github.io/HULK/#Testing-two-different-dictionary-initalization-strategies}{Annex}). The only novelty of this formulation compared to other linear Hebbian learning rules such as~\citep{Oja82} is to take advantage of the sparse (non-linear) representation, hence the name Sparse Hebbian Learning (SHL).
+
+This allows to define unsupervised learning as the (stochastic) gradient descent using this equation. Similarly to Equation~(17) in the work by the authors of~\citep{Olshausen97} or to Equation~(2) in the work by the authors of~\citep{Smith06}, the~relation is a linear ``Hebbian'' rule~\citep{Hebb49}, as~it enhances the weight of neurons proportionally to the activity (coefficients) between pre- and postsynaptic neurons. Note that there is no learning for nonactivated coefficients (for which $\hat{\coef}_{k}=0$). Implementing a stochastic gradient descent, we can also use a (classical) scheduling of the learning rate and a proper initialization of the weights (see \href{https://spikeai.github.io/HULK/#Testing-two-different-dictionary-initalization-strategies}{Annex}). The~only novelty of this formulation compared to other linear Hebbian learning rules, such as those in the work by the authors of~\citep{Oja82}, is to take advantage of the sparse (nonlinear) representation, hence the name Sparse Hebbian Learning (SHL).
 %It is linear (at the single neuraon level) but the sparse code is not linear (at population level) \textendash link with back-propagation
-In general, the parameterization of the prior in~\seeEq{sparse_cost} has major impacts on results of the sparse coding and thus on the emergence of edge-like receptive fields and requires proper tuning. For instance, a L2-norm penalty term (that is, a Gaussian prior on the coefficients) corresponds to Tikhonov regularization~\citep{Tikhonov77} and a L1-norm term (that is, an exponential prior for the coefficients) corresponds to the LASSO convex cost which may be optimized by least-angle regression (LARS)~\citep{efron2004least} or FISTA~\citep{beck2009fast}. %In fact, the definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients.
+In general, the~parameterization of the prior in~Equation (\ref{eq:sparse_cost}) has major impacts on results of the sparse coding, and~thus on the emergence of edge-like receptive fields and requires proper tuning. For~instance, a~L2-norm penalty term (that is, a~Gaussian prior on the coefficients) corresponds to Tikhonov regularization~\citep{Tikhonov77} and a L1-norm term (that is, an~exponential prior for the coefficients) corresponds to the LASSO convex cost which may be optimized by least-angle regression (LARS)~\citep{efron2004least} or FISTA~\citep{beck2009fast}. %In fact, the~definition of the prior corresponds to an objective sparseness and does not always fit to the observed probability distribution function of the coefficients.
 %This is the classical formulation from~\citet{Olshausen97} but thanks to the free-energy formulation, we have highlighted here the different hypothesis and approximation made to derive the learning rule.
 % In particular the objective is only valid at convergence when the recognition model matches the true prior distribution of coefficients (that is, when $KL( q_\Psi(\coef_{k} | \image_k) || p(\coef_{k}) )=0$) and this approximation may influence the predicted optimal representation obtained at convergence and which follows the iterations of the learning process.%- a nice move would be to use free-energy as a bound on surprise - and that homeostasis comes as a additional mechanism - restricts the set of possible dictionaries. (for a review, see~\citep{Pece02}) such as numerical optimization~\citep{Olshausen97}, non-negative matrix factorization~\citep{Lee99,Ranzato07} or Matching Pursuit~\citep{Perrinet03ieee,Smith06,Rehn07,Perrinet10shl}
 %link of sparse coding with the cortical architecture (see rao and ballard) :
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-\subsection{Algorithm: Sparse Coding with a control mechanism for the selection of atoms}
+\subsection{Algorithm: Sparse Coding with a Control Mechanism for the Selection of~Atoms}
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-Concerning the choice of a proper prior distribution, the spiking nature of neural information demonstrates that the transition from an inactive to an active state is far more significant at the coding time scale than smooth changes of the firing rate. This is for instance perfectly illustrated by the binary nature of the neural code in the auditory cortex of rats~\citep{DeWeese03}. Binary codes also emerge as optimal neural codes for rapid signal transmission~\citep{Bethge03}. This is also relevant for neuromorphic systems which transmit discrete, asynchronous events such as a network packet or an Address-Event Representation~\citep{Khoei19}. With a binary event-based code, the cost is only incremented when a new neuron gets active, regardless to its (analog) value. Stating that an active neuron carries a bounded amount of information of $\lambda$ bits, an upper bound for the representation cost of neural activity on the receiver end is proportional to the count of active neurons, that is, to the $\ell_0$ pseudo-norm $\norm{\coef_{k}}_0 = \abs{\enscond{i}{\coef_{k, i} \neq 0}}$:%
+Concerning the choice of a proper prior distribution, the~spiking nature of neural information demonstrates that the transition from an inactive to an active state is far more significant at the coding time scale than smooth changes of the firing rate. This is, for~instance, perfectly illustrated by the binary nature of the neural code in the auditory cortex of rats~\citep{DeWeese03}. Binary codes also emerge as optimal neural codes for rapid signal transmission~\citep{Bethge03}. This is also relevant for neuromorphic systems which transmit discrete, asynchronous events such as a network packet or an Address-Event Representation~\citep{Khoei19}. With~a binary event-based code, the~cost is only incremented when a new neuron gets active, regardless~ to its (analog) value. Stating that an active neuron carries a bounded amount of information of $\lambda$ bits, an~upper bound for the representation cost of neural activity on the receiver end is proportional to the count of active neurons, that is, to~the $\ell_0$ pseudo-norm $\norm{\coef_{k}}_0 = \abs{\enscond{i}{\coef_{k, i} \neq 0}}$:%
 % TODO clarify the benefit of using the free energy F
 \begin{align}%
 F \approx  \langle \frac{1}{2} \norm{\image_k - \dico \coef_{k}}_2^2 + \lambda\norm{\coef_{k}}_0 \rangle_{k = 1 \ldots K}%
 \label{eq:L0_cost}%
 \end{align}%
-This cost is similar with information criteria such as the Akaike Information Criteria~\citep{Akaike74} or distortion rate~\cite[p.~571]{Mallat98}. For $\lambda=\log_2 N$, it gives the total information (in bits) to code for the residual (using entropic coding) and the list of spikes' addresses, as would be sufficient when using a rank-order quantization~\citep{Perrinet03ieee}. In general, the high inter-connectivity of neurons (on average of the order of $10000$ synapses per neurons) justifies such an informational perspective with respect to the analog quantization of information in the point-to-point transfer of information between neurons.
-However, \seeEq{L0_cost} defines a non-convex cost which is harder to optimize (in comparison to convex formulations in Equation~\ref{eq:sparse_cost} for instance) since the $\ell_0$ pseudo-norm sparseness leads to a non-convex optimization problem which is \emph{NP-complete} with respect to the dimension $M$ of the dictionary~\cite[p.~418]{Mallat98}.
+
+This cost is similar with information criteria such as the Akaike Information Criteria~\citep{Akaike74} or distortion rate~(\cite{Mallat98} p.~571) %Please ensure this reference formatting is correct.
+. For~$\lambda=\log_2 N$, it gives the total information (in bits) to code for the residual (using entropic coding) and the list of spikes' addresses, as~would be sufficient when using a rank-order quantization~\citep{Perrinet03ieee}. In~general, the~high interconnectivity of neurons (on average of the order of $10000$ synapses per neurons) justifies such an informational perspective with respect to the analog quantization of information in the point-to-point transfer of information between neurons.
+However, Equation (\ref{eq:L0_cost}) defines a nonconvex cost which is harder to optimize (in comparison to convex formulations in Equation~(\ref{eq:sparse_cost}) for instance) since the $\ell_0$ pseudo-norm sparseness leads to a nonconvex optimization problem, which is ``NP-complete'' with respect to the dimension $M$ of the dictionary~(\cite{Mallat98}~ p.~418) .
 %The different SHL algorithms simply differ by the coding step.
 %This implies that they only differ by first, how sparseness is defined at a functional level and second, how the inverse problem corresponding to the coding step is solved at the algorithmic level.
 %Most of the schemes cited above use a less strict, parametric definition of sparseness (like the convex L$_1$-norm), but for which a mathematical formulation of the optimization problem exists.
@@ -331,22 +346,8 @@ However, \seeEq{L0_cost} defines a non-convex cost which is harder to optimize (
 %Similarly, in~\citep{Perrinet10shl}, we preferred to retrieve an approximate solution to the coding problem to have a better match with the measure of efficiency~\seeEq{L0_cost}. % (see Section~\ref{sec:matchingpursuit} for a description of the algorithm)
 
 % see Algorithm~\ref{alg:gmp}
-\begin{algorithm}[h!]
-\begin{spacing}{1.5}
-\caption{Generalized Matching Pursuit: $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$}\label{alg:gmp}
-\begin{algorithmic}[1]
-\State set the sparse vector $\coef_{k}$ to zero,
-\State initialize $\bar{\coef}_{k,i}=\langle\image_k, \dico_i \rangle$ for all $i$
-\While{$\norm{\coef_{k}}_0<N_0$}:
-\State {\color{black}select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef}_{k,i} )]$}
-\State update the sparse coefficient: $\coef_{k, i^\ast} = \coef_{k, i^\ast} + \bar{\coef}_{k, i^\ast}$,
-\State {\color{black}update residual: $\forall i, \bar{\coef}_{k,i} \leftarrow \bar{\coef}_{k,i} - \coef_{k,i^\ast} \langle\dico_{i^\ast} , \dico_i \rangle $.% for all $i$ using~\seeEq{mp3},
-}
-\EndWhile
-\end{algorithmic}
-\end{spacing}
-\end{algorithm}
-Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{black}Matching} {\color{black}Pursuit} (MP) algorithm~\cite[p.~422]{Mallat98}, see Algorithm~\ref{alg:gmp}. A crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons (that is, $\log_2 N$ bits per event). For this reason, we will introduce a mechanism to tune this competition. For any signal $\image_k$ drawn from the database, we get the coefficients $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$ thanks to the sparse coding step. The parameter $N_0 \eqdef \norm{\coef_{k}}_0$ controls the amount of sparsity that we impose to the coding. The novelty of this generalization of MP lies in the scalar functions $z = \{z_i \}_{i = 1 \ldots N }$ which control the competition for the best {\color{black}match} across atoms. While the absolute value function is chosen in the original MP algorithm (that is, $\forall i, z_i(\coef_{k}) = |\coef_{k}|$), we will define these at a first attempt as the rescaled non-linear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_{k,i}) = \gamma_i * \coef_{k,i} * \delta(\coef_{k,i}>0)$ where $\delta$ is Kronecker's indicator function.
+
+Still, there are many solutions to this optimization problem and here, we will use a generalized version of the {\color{black}Matching} {\color{black}Pursuit} (MP) algorithm~(\cite{Mallat98} p.~422), see Algorithm~\ref{alg:gmp}. A~crucial aspect of this algorithm is the $\ArgMax$ function as it produces at each step a competition among $N$ neurons (that is, $\log_2 N$ bits per event). For~this reason, we will introduce a mechanism to tune this competition. For~any signal $\image_k$ drawn from the database, we get the coefficients $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$ thanks to the sparse coding step. The~parameter $N_0 \eqdef \norm{\coef_{k}}_0$ controls the amount of sparsity that we impose to the coding. The~novelty of this generalization of MP lies in the scalar functions $z = \{z_i \}_{i = 1 \ldots N }$ which control the competition for the best {\color{black}match} across atoms. Although~the absolute value function is chosen in the original MP algorithm (that is, $\forall i, z_i(\coef_{k}) = |\coef_{k}|$), we will define these at a first attempt as the rescaled nonlinear rectified linear unit (ReLU) with gain $\gamma_i$: $\forall i, z_i (\coef_{k,i}) = \gamma_i * \coef_{k,i} * \delta(\coef_{k,i}>0)$ where $\delta$ is Kronecker's indicator function.
 %It is at this point important to note that in this algorithm,
 %we achieve an exponential convergence of the squared error~\citep[p.~422]{Mallat98},
 %but also that this curve can be directly derived from the coefficients' values.
@@ -364,54 +365,94 @@ Still, there are many solutions to this optimization problem and here, we will u
 %%The value of $\zeta$ quantifies therefore the strength of the sparseness in the signal.
 %% discuss this? or say it will be discussed below
 % method zero = just normalizing the coefficitents (Mairal14)
-We found as in~\citep{Rehn07} that by using an algorithm like Matching Pursuit (that is using the symmetric function or setting $\forall i, \gamma_i=1$ as in~\citep{Mairal14} for instance), the Sparse Hebbian Learning algorithm could provide results similar to {\sc SparseNet}, leading to the emergence of Gabor-like edge detectors as is observed in simple cells of the primary visual cortex~\citep{Fischer07}. One advantage compared to~\citep{Olshausen97} is the non-parametric assumption on the prior based on this more generic $\ell_0$ pseudo-norm sparseness. Importantly for our study, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the full objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}-A, \texttt{None}). % With a correct tuning of parameters, we observed that different coding schemes show qualitatively a similar emergence of edge-like filters. The specific coding algorithm used to obtain this sparseness appears to be of secondary importance as long as it is adapted to the data and yields sufficiently efficient sparse representation vectors. However, resulting dictionaries vary qualitatively among these schemes and it was unclear which algorithm is the most efficient and what was the individual role of the different mechanisms that constitute SHL schemes. At the learning level, we have shown that the homeostasis mechanism had a great influence on the qualitative distribution of learned filters~\citep{Perrinet10shl}.~\citep{Perrinet10shl}
+We found, as~in the work by the authors of~\citep{Rehn07}, that by using an algorithm like Matching Pursuit (that is using the symmetric function or setting $\forall i, \gamma_i=1$ as in~\citep{Mairal14} for instance), the~Sparse Hebbian Learning algorithm could provide results similar to {\sc SparseNet}, leading~ to the emergence of Gabor-like edge detectors as is observed in simple cells of the primary visual cortex~\citep{Fischer07}. One advantage compared to~\citep{Olshausen97} is the nonparametric assumption on the prior based on this more generic $\ell_0$ pseudo-norm sparseness. Importantly for our study, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the full objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}A, \texttt{None}). % With a correct tuning of parameters, we observed that different coding schemes show qualitatively a similar emergence of edge-like filters. The~specific coding algorithm used to obtain this sparseness appears to be of secondary importance as long as it is adapted to the data and yields sufficiently efficient sparse representation vectors. However, resulting dictionaries vary qualitatively among these schemes and it was unclear which algorithm is the most efficient and what was the individual role of the different mechanisms that constitute SHL schemes. At~the learning level, we have shown that the homeostasis mechanism had a great influence on the qualitative distribution of learned filters~\citep{Perrinet10shl}.~\citep{Perrinet10shl}
 %Moreover, using other sparse coding algorithms which are implemented in the \verb+sklearn+ library, we compared the convergence of the learning with different sparse coding algorithms. In particular, we compared the learning as implemented with matching pursuit to that with orthogonal matching pursuit (OMP)~\citep{pati1993orthogonal}, LARS or FISTA (see SI). %
 % TODO answer What do you mean by "some cells learn 'faster'"? This is the justification for your homeostatis mechanism but it is not shown in your paper. Also, I guess you did not provide the annex. The 'Annex.html' document has a section "Testing different algorithms" but it only display 5 algorithms that perform the same, which does not convince me that some extra mechanism is needed.
 % show the example in the map / synthetic unbalanced network
-For all these sparse coding algorithms, during the early learning step, some cells may learn ``faster'' than others. These cells have more peaked distributions of their activity and tend to be selected more often (as shown in Figure~\ref{fig:map}-A "None" and quantified in the variability of their distributions in Figure~\ref{fig:HEH}-A "None"). It is thus necessary to include a homeostasis process that will ensure the convergence of the learning. The goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism based on the functions $z_i$ which optimizes the learning of an efficient representation.%
+For all these sparse coding algorithms, during~the early learning step, some cells may learn ``faster'' than others. These cells have more peaked distributions of their activity and tend to be selected more often (as shown in Figure~\ref{fig:map}A ``None'' and quantified in the variability of their distributions in Figure~\ref{fig:HEH}A ``None''). It is thus necessary to include a homeostasis process that will ensure the convergence of the learning. The~goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism based on the functions $z_i$, which optimizes the learning of an efficient representation.%
+
+\begin{algorithm}[H]
+\begin{spacing}{1.5}
+\caption{Generalized Matching Pursuit: $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$}\label{alg:gmp}
+\begin{algorithmic}[1]
+\State set the sparse vector $\coef_{k}$ to zero,
+\State initialize $\bar{\coef}_{k,i}=\langle\image_k, \dico_i \rangle$ for all $i$
+\While{$\norm{\coef_{k}}_0<N_0$}:
+\State {\color{black}select the best match: $i^\ast = \ArgMax_{i} [z_i( \bar{\coef}_{k,i} )]$}
+\State update the sparse coefficient: $\coef_{k, i^\ast} = \coef_{k, i^\ast} + \bar{\coef}_{k, i^\ast}$,
+\State {\color{black}update residual: $\forall i, \bar{\coef}_{k,i} \leftarrow \bar{\coef}_{k,i} - \coef_{k,i^\ast} \langle\dico_{i^\ast} , \dico_i \rangle $.% for all $i$ using~\seeEq{mp3},
+}
+\EndWhile
+\end{algorithmic}
+\end{spacing}
+\end{algorithm}
+
+\begin{figure}[H]
+\centering{\includegraphics[width=\linewidth]{figure_HEH}}
+\caption{
+{Histogram Equalization Homeostasis and its role in unsupervised learning}.
+{(\textbf{A})}~Nonlinear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that for our choice of $N_0=21$ and $N=26^2=676$, all cumulative functions start around $1 - N_0/N \approx 0.968 $. At~convergence of \texttt{HEH}, the~probability of choosing any filter is equiprobable, while the distribution of coefficients is more variable for \texttt{None} and \texttt{OLS}. As~a consequence, the~distortion between the distributions of sparse coefficients is minimal for \texttt{HEH}, a~property which is essential for the optimal representation of signals in distributed networks such as the brain. %
+{(\textbf{B})}~Effect of learning rate $\eta$ (\texttt{eta}) and homeostatic learning rate $\eta_h$ (\texttt{eta\_homeo}) on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}). Parameters were explored around a default value and over a 4 octaves logarithmic scale. This shows that \texttt{HEH} is robust across a wide range of parameters.
+%We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
+%{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
+%{\sf (B)}~Nonlinear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the nonlinear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
+% {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
+\label{fig:HEH}}%
+\end{figure}% remove figure 2 to here, out it after its first citation
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
-\subsection{Algorithm: Histogram Equalization Homeostasis}\label{HEH}
+\subsection{Algorithm: Histogram Equalization~Homeostasis}\label{HEH}
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 %------------------------------%
 %: see Figure~\ref{fig:HEH}
 %: \seeFig{HEH}
-\begin{figure*}%[!ht]%[p!]%%
-\centering{\includegraphics[width=\linewidth]{figure_HEH}}
-\caption{
-{\bf Histogram Equalization Homeostasis and its role in unsupervised learning}:
-{\sf (A)}~Non-linear homeostatic functions $z_i, \forall i$ learned using Hebbian learning. These functions were computed for different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}) but only used in \texttt{HEH}. Note that for our choice of $N_0=21$ and $N=26^2=676$, all cumulative functions start around $1 - N_0/N \approx .968 $. At convergence of \texttt{HEH}, the probability of choosing any filter is equiprobable, while the distribution of coefficients is more variable for \texttt{None} and \texttt{OLS}. As a consequence, the distortion between the distributions of sparse coefficients is minimal for \texttt{HEH}, a property which is essential for the optimal representation of signals in distributed networks such as the brain. %
-{\sf (B)}~Effect of learning rate $\eta$ (\texttt{eta}) and homeostatic learning rate $\eta_h$ (\texttt{eta\_homeo}) on the final cost as computed for the same learning algorithms but with different homeostatic strategies (\texttt{None}, \texttt{OLS} or \texttt{HEH}). Parameters were explored around a default value and over a 4 octaves logarithmic scale. This shows that \texttt{HEH} is robust across a wide range of parameters.
-%We show the results of Sparse Coding using the two different homeostasis algorithms using surrogate data where each filter was equiprobable but for which we manipulated the first half of the coefficients to be artificially twice as big. %
-%{\sf (A)}~Such a situation replicates a situation arising during learning when a sub-group of filters is more active, e.~g. because it learned more salient features. Here, we show the probability of the selection of the different filters (normalized to an average of $1$) which shows a bias of the standard Matching Pursuit to select more often filters whose activity is higher. %We evaluated the efficiency of retrieving the correct coefficients to about $\ %
-%{\sf (B)}~Non-linear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the non-linear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
-% {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
-\label{fig:HEH}}%
-\end{figure*}%
+
 %------------------------------%
 % TODO Say explictly that we reproduce ~\citep{Perrinet10shl} + python code
 % - a measure is that the Orientation Selectivity (OS) is highest - because we know that the structure of the world is like this...
 % - goals = memory / separation / representation
-Knowing a dictionary and a sparse coding algorithm, we may transform any data sample $\image_k$ into a set of sparse coefficients using the above algorithm: $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$. However, at any step \emph{during} learning, dictionaries may not have learned homogeneously and may as a result exhibit different distributions for the coefficients.
-Regrettably, this would not be taken into account in the original cost (see~\seeEq{L0_cost}) as we assumed by hypothesis and as in~\cite{Olshausen97} that the components of the sparse vector are identically distributed. To overcome this problem, we may use an additional component to the cost which measures the deviation to this hypothesis:
+Knowing a dictionary and a sparse coding algorithm, we may transform any data sample $\image_k$ into a set of sparse coefficients using the above algorithm: $\coef_{k} = S(\image_k; \Psi=\{\dico, z, N_0\})$. However, at~any step during learning, dictionaries may not have learned homogeneously and may as a result exhibit different distributions for the coefficients.
+Regrettably, this would not be taken into account in the original cost (see~Equation	(\ref{eq:L0_cost})) as we assumed by hypothesis and as in~\cite{Olshausen97} that the components of the sparse vector are identically distributed. To~overcome this problem, we may use an additional component to the cost which measures the deviation to this hypothesis:
 \begin{equation}%
 F \approx \langle \frac{1}{2} \norm{\image_k - \dico \coef_{k}}_2^2 + \lambda\norm{\coef_{k}}_0 + \mu\texttt{W}(\coef_{k}) \rangle_{k = 1 \ldots K}%
 \label{eq:L0_cost_full}%
 \end{equation}%
-Where we define the distance $\texttt{W}(\coef_{k})$ as the sum of the distances of each individual coefficient's cumulative probability distribution (that we denote as $P^i$) to the average cumulative probability distribution $P^0 = \frac 1 N \sum_i P^i$. Each distance for each atom of index $i$ is defined as the earth mover's distance (Wasserstein metric with $p=1$) such that $ \texttt{W}(\coef_{k}) = \sum_i \int_{a\geq0} | P^i(a) - P^0(a)| da $~\citep{Vallender74}. In general, such a distance gives a measure of the solution to the well-known transportation problem between two histograms. In our setting, given a proper value for $\mu$, this gives a lower bound of the estimate of the quantization error. Indeed, as information is coded in the address of neurons (using $\lambda$ bits per coefficient) based on the average distribution of coefficients across neurons, quantization error is lowest when the activity within the neural population is uniformly balanced, that is when each coefficient value is \emph{a priori} selected with the same probability. When this hypothesis does not hold, we need to transform the value of a coefficient from that which was expected (that is, the average across neurons). It can be shown that this error is proportional to the additional information (in bits) which is necessary to code the vector of coefficients compared to the case where distributions are identically distributed. In particular, a necessary and sufficient condition for minimizing this additional term is that the prior probability of selecting coefficients are identical $\forall (i,j), p(\coef_{k,i})=p(\coef_{k,j})$. This would result in $\forall i, P^i = P^0$ and thus $\texttt{W}(\coef_{k})= 0$ and cancel the additional term. To reach this optimum, we may use different transformation functions $z_i$ to influence the choice of coefficients such that we may use these functions to optimize the objective cost defined by~\seeEq{L0_cost_full}.
+where we define the distance $\texttt{W}(\coef_{k})$ as the sum of the distances of each individual coefficient's cumulative probability distribution (that we denote as $P^i$) to the average cumulative probability distribution $P^0 = \frac 1 N \sum_i P^i$. Each distance for each atom of index $i$ is defined as the earth mover's distance (Wasserstein metric with $p=1$), such {that} $ \texttt{W}(\coef_{k}) = \sum_i \int_{a\geq0} | P^i(a) - P^0(a)| da $~\citep{Vallender74}. In~general, such a distance gives a measure of the solution to the well-known transportation problem between two histograms. In~our setting, given a proper value for $\mu$, this gives a lower bound of the estimate of the quantization error. Indeed, as~information is coded in the address of neurons (using $\lambda$ bits per coefficient) based on the average distribution of coefficients across neurons, quantization error is lowest when the activity within the neural population is uniformly balanced, that is when each coefficient value is a priori selected with the same probability. When this hypothesis does not hold, we~ need to transform the value of a coefficient from that which was expected (that is, the~average across neurons). It can be shown that this error is proportional to the additional information (in bits) which is necessary to code the vector of coefficients compared to the case where distributions are identically distributed. In~particular, a~necessary and sufficient condition for minimizing this additional term is that the prior probability of selecting coefficients are identical $\forall (i,j), p(\coef_{k,i})=p(\coef_{k,j})$. This~ would result in $\forall i, P^i = P^0$ and thus $\texttt{W}(\coef_{k})= 0$ and cancel the additional term. To~reach this optimum, we may use different transformation functions $z_i$ to influence the choice of coefficients such that we may use these functions to optimize the objective cost defined by~Equation~(\ref{eq:L0_cost_full}).
+
 % mutual information $KL( q_\Psi(\coef | \image_k) \leq MI( q_\Psi(\coef)$% %$q_\Psi(\coef_{k,i})=q_\Psi(\coef_{k,j})$
 
 %: % using cumulative distribution = "inverse transform sampling" / circular problem= has to be done progressively
 % a monotonic point scalar function does not change the KL distance / free-energy
-To achieve this uniformity, we may define a homeostatic gain control mechanism based on histogram equalization, that is, by transforming coefficients in terms of quantiles by setting $\forall i, z_i( a ) = P^i(a) \eqdef Pr( a > a_i)$. Such a transform is similar to the inverse transform sampling which is used to optimize representation in auto-encoders~\citep{Doersch2016} and can be considered as a non-parametric extension of the ``reparameterization trick'' used in variational auto-encoders~\citep{Kingma13}. %
-Moreover, it has been found that such an adaptation mechanism is observed in the response of the retina to various contrast distributions~\citep{Laughlin81}. However, an important point to note is that this joint optimization problem between coding and homeostasis is circular as we can not access the true posterior $Pr(\coef)$: Indeed, the coefficients depend on non-linear coefficients through $\coef_{k} = S(\image_k; \Psi=\{\dico, z_i, N_0\})$, while the non-linear functions depend on the (cumulative) distribution of the coefficients. We will make the assumption that such a problem can be solved iteratively by slowly learning the non-linear functions. Starting with an initial set of non-linear functions as in \texttt{None}, we will derive an approximation for the sparse coefficients. Then, the function $z_i$ for each coefficient of the sparse vector is calculated using an iterative moving average scheme (parameterized by time constant $1/\eta_h$) to smooth its evolution during learning. At the coding level, this non-linear function is incorporated in the matching step of the matching pursuit algorithm (see Algorithm~\ref{alg:gmp}), to modulate the choice of the most probable as that corresponding to the maximal quantile: $i^\ast = \ArgMax_i z_i(a_i)$. We will coin this variant as Histogram Equalization Homeostasis (\texttt{HEH}). The rest of this Sparse Hebbian Learning algorithm is left unchanged. As we adapt the dictionaries progressively during Sparse Hebbian Learning, we may incorporate this \texttt{HEH} homeostasis during learning by choosing an appropriate learning rate $\eta_h$.
-To recapitulate the different choices we made from the learning to the coding and the homeostasis, the unsupervised learning can be summarized using the following steps:
+To achieve this uniformity, we may define a homeostatic gain control mechanism based on histogram equalization, that is, by~transforming coefficients in terms of quantiles by setting $\forall i, z_i( a ) = P^i(a) \eqdef Pr( a > a_i)$. Such a transform is similar to the inverse transform sampling which is used to optimize representation in auto-encoders~\citep{Doersch2016} and can be considered as a nonparametric extension of the ``reparameterization trick'' used in variational auto-encoders~\citep{Kingma13}. %
+Moreover, it has been found that such an adaptation mechanism is observed in the response of the retina to various contrast distributions~\citep{Laughlin81}. However, an~important point to note is that this joint optimization problem between coding and homeostasis is circular as we can not access the true posterior $Pr(\coef)$: Indeed, the~coefficients depend on nonlinear coefficients through $\coef_{k} = S(\image_k; \Psi=\{\dico, z_i, N_0\})$, whereas the nonlinear functions depend on the (cumulative) distribution of the coefficients. We will make the assumption that such a problem can be solved iteratively by slowly learning the nonlinear functions. Starting with an initial set of nonlinear functions as in \texttt{None}, we will derive an approximation for the sparse coefficients. Then, the~function $z_i$ for each coefficient of the sparse vector is calculated using an iterative moving average scheme (parameterized by time constant $1/\eta_h$) to smooth its evolution during learning. At~the coding level, this nonlinear function is incorporated in the matching step of the matching pursuit algorithm (see Algorithm~\ref{alg:gmp}), to~modulate the choice of the most probable as that corresponding to the maximal quantile: $i^\ast = \ArgMax_i z_i(a_i)$. We will coin this variant as Histogram Equalization Homeostasis (\texttt{HEH}). The~rest of this Sparse Hebbian Learning algorithm is left unchanged. As~we adapt the dictionaries progressively during Sparse Hebbian Learning, we may incorporate this \texttt{HEH} homeostasis during learning by choosing an appropriate learning rate $\eta_h$.
+To recapitulate the different choices we made from the learning to the coding and the homeostasis, the~unsupervised learning can be summarized using the following steps.
 %The proposed algorithm is:
+
+
+We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Figure~\ref{fig:map}A). A~more quantitative study of the coding is shown by comparing the decrease of the cost as a function of the iteration step (see Figure~\ref{fig:map}B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error as represented by the decrease of the cost $F$. %
+%----------------------------------------------------------------------------%
+\subsection{Results: A More Efficient Unsupervised Learning Using~Homeostasis}\label{results}
+%----------------------------------------------------------------------------%
+%%------------------------------%
+% TODO: this rule does not seem to improve the results when compared to pre-existing rule such as EMP (Figure3). The quantitative evaluation of this rule is also not sufficient as the different results are only evaluated in term of optimization cost and do not appear to be evaluated on a test set.
+%: \seeFig{HAP}
+
+%%------------------------------%
+%\subsection{Algorithm: Approximate homeostasis}\label{HAP}
+%: incompatible with nueromimetic / fast implementation
+%- first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
+% (\seeFig{map}-A, \texttt{OLS})
+We have shown above that we can find an exact solution to the problem of homeostasis during Sparse Hebbian Learning. However, this solution has several drawbacks. First, it is computationally-intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be implemented by modifying the gain $\gamma_i$ of the slope of the ReLU function to operate a gradient descent on the cost based on the distribution of each coefficients. Such strategy can be included in the SHL algorithm by replacing line~ \hyperlink{here2}{9} in the learning algorithm (see Algorithm~\ref{alg:shl}) by $z_i( a ) = \gamma_i \cdot a \cdot \delta(\cdot >0)$. For~instance, the~strategy in {\sc SparseNet}~\citep{Olshausen97} assumes a cost on the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g^2$ (and assuming a multiplicative noise parameterized by $\alpha$) :
+\begin{align}
+&V_i \leftarrow (1- \eta_h ) \cdot V_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} a_{i, k}^2 \\ &\textrm{ and }
+\gamma_i \leftarrow \gamma_i \cdot \left( \frac{V_i}{\sigma_g^2} \right)^\alpha
+\end{align}%
+
 % see Algorithm~\ref{alg:shl}
-\begin{algorithm}
-\caption{Homeostatic Unsupervised Learning of Kernels: $\dico = H(\image; \eta, \eta_h, N_0)$}\label{alg:shl}
+\begin{algorithm}[H]
+\caption{Homeostatic Unsupervised Learning of Kernels: $\dico = H(\image; \eta, \eta_h, N_0)$}\label{alg:shl}  %remove algorithm 2 to here, put it after its first citation
 \begin{spacing}{1.5}
 \begin{algorithmic}[1]
-\State Initialize the point non-linear gain functions $z_i$ to similar cumulative distribution functions,%
+\State Initialize the point nonlinear gain functions $z_i$ to similar cumulative distribution functions,%
 \State Initialize $N$ atoms $\dico_i$ to random points on the $M$-unit sphere,
 \For{$T$ epochs}: % TODO : use a convergence criterium instead
 \State draw a new batch $\image$ from the database of natural images,%
@@ -420,7 +461,7 @@ To recapitulate the different choices we made from the learning to the coding an
 % TODO use momentum? ~\citep{Mairal2010}
 \State modify atoms: $\forall i, \dico_{i} \leftarrow \dico_{i} + \eta \cdot \coef_{k,i} \cdot (\image_k - \dico \coef_k)$,% using~\seeEq{learn},
 \State normalize atoms: $\forall i, \dico_{i} \leftarrow \dico_{i} / \norm{\dico_{i}}$,% using~\seeEq{learn},
-\State {\color{blue} \hypertarget{here2}{}update homeostasis functions: $\forall i, z_i( \cdot ) \leftarrow (1- \eta_h ) \cdot z_i( \cdot ) + \eta_h \cdot \delta( \coef_{k,i} \leq \cdot)$.% using~\seeEq{learn_homeo}
+\State { \hypertarget{here2}{}update homeostasis functions: $\forall i, z_i( \cdot ) \leftarrow (1- \eta_h ) \cdot z_i( \cdot ) + \eta_h \cdot \delta( \coef_{k,i} \leq \cdot)$.% using~\seeEq{learn_homeo}
 }
 \EndFor
 \EndFor
@@ -429,7 +470,7 @@ To recapitulate the different choices we made from the learning to the coding an
 \end{algorithm}
 %
 %\begin{enumerate}%
-%\item Initialize the point non-linear gain functions $z_i$ to similar cumulative distribution functions and the atoms $\dico_i$ to random points on the unit $K$-dimensional sphere,%
+%\item Initialize the point nonlinear gain functions $z_i$ to similar cumulative distribution functions and the atoms $\dico_i$ to random points on the unit $K$-dimensional sphere,%
 %\item repeat until learning converged:%
 %\begin{enumerate}
 %\item draw a signal $\image_k$ from the database,%
@@ -442,19 +483,42 @@ To recapitulate the different choices we made from the learning to the coding an
 %\end{enumerate}
 %\end{enumerate}
 
-We compared qualitatively the set $\dico$ of receptive filters generated with different homeostasis algorithms (see Fig.~\ref{fig:map}-A). A more quantitative study of the coding is shown by comparing the decrease of the cost as a function of the iteration step (see Fig.~\ref{fig:map}-B). This demonstrate that forcing the learning activity to be uniformly spread among all receptive fields results in a faster convergence of the representation error as represented by the decrease of the cost $F$. %
-%----------------------------------------------------------------------------%
-\subsection{Results: A more efficient unsupervised learning using homeostasis}\label{results}
-%----------------------------------------------------------------------------%
-%%------------------------------%
-% TODO: this rule does not seem to improve the results when compared to pre-existing rule such as EMP (Figure3). The quantitative evaluation of this rule is also not sufficient as the different results are only evaluated in term of optimization cost and do not appear to be evaluated on a test set.
-%: \seeFig{HAP}
-\begin{figure*}%[!ht]%[p!]%
+This is similar to the mechanisms of gain normalization proposed by the authors of~\cite{Schwartz01}, which were recently shown to provide efficient coding mechanisms by the authors of~\cite{Simoncelli01}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we~ propose to rather use a methodology based on the probability of activation. Indeed, the~main distortion that occurs during learning is on higher statistical moments rather than variance, for~instance when an atom is winning more frequently during the earliest iterations, its pdf will typically be more kurtotic than a filter that has learned less.
+%TODO say that in these variants this replaces 2e in the learning
+
+%: Comparison to Sandin
+Recently, such an approach was proposed by the authors of~\cite{Sandin17}. Based on the same observations, the~authors proposed to optimize the coding during learning by modulating the gain of each dictionary element based on the recent activation history. They base their Equalitarian Matching Pursuit (\texttt{EMP}) algorithm on a heuristics, which cancels the activation of any filter that was more often activated than a given threshold probability (parameterized by $1+\alpha_h$). In~our setting, we may compute a similar algorithm using an evaluation of the probability of activation followed by binary gates
+\begin{align}%
+&p_i \leftarrow (1- \eta_h ) \cdot p_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} \delta(a_{i, k} > 0) \\ &\textrm{ and }
+\gamma_i = \delta (p_i < N_0/N \cdot (1+\alpha_h) )
+\end{align}%
+
+As such, $p_i$ is an approximation of the average activation probability based on a moving average controlled by the learning parameter $\eta_h$.
+Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~Figures~\ref{fig:map} and~\ref{fig:HEH}. %Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for~instance by using OMP instead of MP.
+Again, such~ strategy can be included in line \hyperlink{here2}{9} of the learning~algorithm.
+
+%: derivation
+% TODO: - HAP: The proposed approximation HAP is the novelty of this paper, as it permits to reduce the computational cost of the HEH technique with an approximate regularizing function z_i. However, the construction of this rule is not detailed enough. It is introduced as modulation change needed to maximize the entropy of the coefficient activation probability but this part should be extended to give more insight on such construction.
+Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability, but~using an optimization approach on the gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $-\sum_{i=1\cdots N} p_i \log p_i$. However, the~sparse coding function $S(\image_k; \Psi=\{\dico, z, N_0\})$, which would allow to compute $p_i$ is not differentiable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability.
+A simpler approach is to compute the change of modulation gain that would be necessary to achieve an uniform probability. Indeed, such ``equiprobability'' is the known solution of the maximum entropy problem, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
+\begin{align}%
+% derivation p.56 de 2018-01-09 HULK + p.30 de 2019-04-24 HULK reborn.pdf
+&p_i \leftarrow (1- \eta_h ) \cdot p_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} \delta(a_{i, k} > 0) \\ &\textrm{ and }
+\gamma_i = \frac{\log(1/p_i)}{\log(1/p_0)} = \frac{\log(p_i)}{\log(p_0)}
+\end{align}%
+where $\eta_h$ controls as above the speed of the sliding average for estimating the activation probability. Note that the gain is equal to one if the activation probability reaches the target probability. It~ becomes excitatory or inhibitory for cells whose probability is, respectively, below~or above the target. Assuming~ an exponential probability distribution function for the sparse coefficients before the thresholding operation, this expression follows as the solution to scale coefficients such that overall each neuron fires with equal probability. We will coin this variant of the algorithm Homeostasis on Activation Probability (\texttt{HAP}).
+%\subsection{Approximate homeostasis yields similar performance}
+Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP}, and~\texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that although \texttt{EMP} slightly outperforms \texttt{OLS} (which itself is more efficient than \texttt{None}, see~Figure \ref{fig:HEH}B), \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}. %
+% effect of coding algorithm
+Moreover, we replicated in \texttt{HAP} the result of~\cite{Sandin17} that while homeostasis was essential in improving unsupervised learning, the~coding algorithm (MP vs. OMP) mattered relatively little (see \href{https://spikeai.github.io/HULK/#Testing-different-algorithms}{Annex}). Also, we verified the dependence of this efficiency with respect to different hyperparameters (as we did in~Figure \ref{fig:HEH}B). %
+Overall, these quantitative results show that the~\texttt{HEH} algorithm could be replaced by a simpler and more rapid heuristic, \texttt{HAP}, which is based on activation probability. This would generate a similar efficiency for the coding of patches from natural images.
+
+\begin{figure}[H]
 \centering{\includegraphics[width=\linewidth]{figure_HAP}}
 \caption{
-{\bf Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}: %
- {\sf (A)}~The plot shows $18$ from the $N=676$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (see \seeFig{map}-A, \texttt{HEH}).
- Again, the upper and lower row respectively show the least and most probably selected atoms. {\sf (B)}~Comparison of the cost $F$ during learning and cross-validated over $10$ runs: The convergence of \texttt{OLS} is similar to \texttt{EMP}. The simpler \texttt{HAP} heuristics gets closer to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
+{Homeostasis on Activation Probability (\texttt{HAP}) and a quantitative evaluation of homeostatic strategies}. %
+ {(\textbf{A})}~The plot shows $18$ from the $N=676$ dictionaries learned for the two heuristics \texttt{EMP} and \texttt{HAP} and compared to the optimal homeostasis (see \seeFig{map}A, \texttt{HEH}).
+ Again, the~upper and lower row respectively show the least and most probably selected atoms. {(\textbf{B})}~Comparison of the cost $F$ during learning and cross-validated over $10$ runs: The convergence of \texttt{OLS} is similar to \texttt{EMP}. The~simpler \texttt{HAP} heuristics gets closer to the more demanding \texttt{HEH} homeostatic rule, demonstrating that this heuristic is a good compromise for fast unsupervised learning.
 \label{fig:HAP}}%# TODO: include OLS
 %\caption{
 %{\bf Quantitative role of homeostasis in a classification network}: We used the generic MNIST protocol to assess the role of the homeostasis algorithm on classification. %
@@ -463,66 +527,31 @@ We compared qualitatively the set $\dico$ of receptive filters generated with di
 %{\sf (C)}~MEUL Algorithm ($\eta=0.01$, $\eta_h=0.01$): All dictionaries are selected with the same probability to describe the dataset, leading to a cooperative learning.
 % {\sf (D)}~Comparison of the reconstruction error (computed as the square root of the squared difference between the image and the residual) for the 3 algorithms (MEUL, SPARSENET, MP): The convergence velocity of MEUL is higher than SPARSENET and MP.
 %\label{fig:quant}}%
-\end{figure*}%
-%%------------------------------%
-%\subsection{Algorithm: Approximate homeostasis}\label{HAP}
-%: incompatible with nueromimetic / fast implementation
-%- first method = Olshausen's homeostasis that is a gradient descent on the variance of coefficients. serves as a control
-% (\seeFig{map}-A, \texttt{OLS})
-We have shown above that we can find an exact solution to the problem of homeostasis during Sparse Hebbian Learning. However, this solution has several drawbacks. First, it is computationally intensive on a conventional computer as it necessitates to store each $z_i$ function to store the cumulative distribution of each coefficient. More importantly, it seems that biological neurons seem to rather use a simple gain control mechanism. This can be implemented by modifying the gain $\gamma_i$ of the slope of the ReLU function to operate a gradient descent on the cost based on the distribution of each coefficients. Such strategy can be included in the SHL algorithm by replacing line \hyperlink{here2}{9} in the learning algorithm (see Algorithm~\ref{alg:shl}) by $z_i( a ) = \gamma_i \cdot a \cdot \delta(\cdot >0)$. For instance, the strategy in {\sc SparseNet}~\citep{Olshausen97} assumes a cost on the difference between the observed variance of coefficients $V_i$ as computed over a set of samples compared to a desired value $\sigma_g^2$ (and assuming a multiplicative noise parameterized by $\alpha$) :
-\begin{align}
-&V_i \leftarrow (1- \eta_h ) \cdot V_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} a_{i, k}^2 \\ &\textrm{ and }
-\gamma_i \leftarrow \gamma_i \cdot \left( \frac{V_i}{\sigma_g^2} \right)^\alpha
-\end{align}%
-This is similar to the mechanisms of gain normalization proposed by~\cite{Schwartz01} and which were recently shown to provide efficient coding mechanisms by~\cite{Simoncelli01}. However, compared to these methods which manipulate the gain of dictionaries based on the energy of coefficients, we propose to rather use a methodology based on the probability of activation. Indeed, the main distortion that occurs during learning is on higher statistical moments rather than variance, for instance when an atom is winning more frequently during the earliest iterations, its pdf will typically be more kurtotic than a filter that has learned less.
-%TODO say that in these variants this replaces 2e in the learning
-
-%: Comparison to Sandin
-Recently, such an approach was proposed by~\cite{Sandin17}. Based on the same observations, the authors proposed to optimize the coding during learning by modulating the gain of each dictionary element based on the recent activation history. They base their Equalitarian Matching Pursuit (\texttt{EMP}) algorithm on a heuristics which cancels the activation of any filter that was more often activated than a given threshold probability (parameterized by $1+\alpha_h$). In our setting, we may compute a similar algorithm using an evaluation of the probability of activation followed by binary gates:
-\begin{align}%
-&p_i \leftarrow (1- \eta_h ) \cdot p_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} \delta(a_{i, k} > 0) \\ &\textrm{ and }
-\gamma_i = \delta (p_i < N_0/N \cdot (1+\alpha_h) )
-\end{align}%
-As such $p_i$ is an approximation of the average activation probability based on a moving average controlled by the learning parameter $\eta_h$.
-Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~\seeFig{map} and~\seeFig{HEH}. %Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for instance by using OMP instead of MP.
-Again, such strategy can be included in line \hyperlink{here2}{9} of the learning algorithm.
-
-%: derivation
-% TODO: - HAP: The proposed approximation HAP is the novelty of this paper, as it permits to reduce the computational cost of the HEH technique with an approximate regularizing function z_i. However, the construction of this rule is not detailed enough. It is introduced as modulation change needed to maximize the entropy of the coefficient activation probability but this part should be extended to give more insight on such construction.
-Similarly, we may derive an approximate homeostasis algorithm based on the current activation probability but using an optimization approach on the gain modulation. Ideally, this corresponds to finding $\gamma_i$ such that we minimize the entropy $-\sum_{i=1\cdots N} p_i \log p_i$. However, the sparse coding function $S(\image_k; \Psi=\{\dico, z, N_0\})$ which would allow to compute $p_i$ is not differentiable. %, yet we may use the expression of the cumulative probability functions to see the quantitative effect of $\gamma_i$ on activation probability.
-A simpler approach is to compute the change of modulation gain that would be necessary to achieve an uniform probability. Indeed such ``equiprobability'' is the known solution of the maximum entropy problem, that is when $\forall i, p_i = p_0 \eqdef N_0 / N$: % this replaces step 2 e in the learning
-\begin{align}%
-% derivation p.56 de 2018-01-09 HULK + p.30 de 2019-04-24 HULK reborn.pdf
-&p_i \leftarrow (1- \eta_h ) \cdot p_i + \eta_h \cdot 1/K\sum_{k=1\cdots K} \delta(a_{i, k} > 0) \\ &\textrm{ and }
-\gamma_i = \frac{\log(1/p_i)}{\log(1/p_0)} = \frac{\log(p_i)}{\log(p_0)}
-\end{align}%
-Where $\eta_h$ controls as above the speed of the sliding average for estimating the activation probability. Note that the gain is equal to one if the activation probability reaches the target probability. It becomes excitatory or inhibitory for cells whose probability is respectively below or above the target. Assuming an exponential probability distribution function for the sparse coefficients before the thresholding operation, this expression follows as the solution to scale coefficients such that overall each neuron fires with equal probability. We will coin this variant of the algorithm Homeostasis on Activation Probability (\texttt{HAP}).
-%\subsection{Approximate homeostasis yields similar performance}
-Following these derivations, we quantitatively compared \texttt{OLS}, \texttt{EMP} and \texttt{HAP} to \texttt{HEH} (see~\seeFig{HAP}). This shows that while \texttt{EMP} slightly outperforms \texttt{OLS} (which itself is more efficient than \texttt{None}, see~\seeFig{HEH}-B), \texttt{HAP} proves to be closer to the optimal solution given by \texttt{HEH}. %
-% effect of coding algorithm
-Moreover, we replicated in \texttt{HAP} the result of~\cite{Sandin17} that while homeostasis was essential in improving unsupervised learning, the coding algorithm (MP versus OMP) mattered relatively little (see \href{https://spikeai.github.io/HULK/#Testing-different-algorithms}{Annex}). Also, we verified the dependence of this efficiency with respect to different hyper-parameters (as we did in~\seeFig{HEH}-B). %
-Overall, these quantitative results show that the~\texttt{HEH} algorithm could be replaced by a simpler and more rapid heuristic, \texttt{HAP}, which is based on activation probability. This would generate a similar efficiency for the coding of patches from natural images.
+\end{figure}%
 %-----------------------------------------------------------------%
-\section{Discussion and conclusion}\label{discussion-et-conclusion}
+\section{Discussion and~Conclusions}\label{discussion-et-conclusion}
 %-----------------------------------------------------------------%
 %%------------------------------%
 %: \seeFig{CNN}
-\begin{figure*}%[!ht]%[p!]%
-\centering{\includegraphics[width=\linewidth]{figure_CNN}}
-\caption{
-{\bf Extension to Convolutional Neural Networks (CNNs)}: %
- We extend the HAP algorithm to a single layered CNN with $20$ kernels and using the ATT face database. We show here the kernels learned without (\texttt{None}, top row) and with (\texttt{HAP}, bottom row) homeostasis (note that we used the same initial conditions). As for the simpler case, we observe a heterogeneity of activation counts without homeostasis, that is, in the case which simply normalizes the energy of kernels (see {\sf (A)}). With homeostasis, we observe the convergence of the activation probability for the different kernels (see {\sf (B)}). This demonstrates that this heuristic extends well to a CNN architecture.
-\label{fig:CNN}}%# TODO: do figure :-0
-\end{figure*}%
+
 %%------------------------------%
 %: 2- benchmarking of computation time: toward event-driven?
 % Finally, we show that such an algorithm can be extended to convolutional architectures and we show the results obtained on different natural image databases.
-One core advantage of sparse representations is the efficient coding of complex multi-dimensional signals such as images using compact codes. Inputs are thus represented as a combination of few elements drawn from a large dictionary of atoms. A common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. This constraint introduces a competition between atoms. In the context of the efficient processing of natural images, we proposed here that such strategies can be optimized by including a proper homeostatic regulation enforcing a fair competition between the elements of the dictionary. We implemented this rule by introducing a non-linear gain normalization similar to what is observed in biological neural networks. We validated this theoretical insight by challenging this adaptive unsupervised learning algorithm with different heuristics for the homeostasis. Simulations show that at convergence, while the coding accuracy did not vary much, including homeostasis changed qualitatively the learned features. In particular, including homeostasis resulted in a more homogeneous set of orientation selective filters, which is closer to what is observed in the visual cortex of mammals~\citep{Ringach02,Rehn07,Loxley17}. To further validate these results, we quantitatively compared the efficiency of the different variants of the algorithms, both at the level of homeostasis (homeostatic learning rate, parameters of the heuristics), but also to the coding (by changing $M$, $N$ or $N_0$) and to the learning (by changing the learning rate, the scheduling or $M$). This demonstrated that overall, this neuro-inspired homeostatic algorithm provided with the best compromise between efficiency and computational cost.
+One core advantage of sparse representations is the efficient coding of complex multidimensional signals such as images using compact codes. Inputs are thus represented as a combination of few elements drawn from a large dictionary of atoms. A~common design for unsupervised learning rules relies on a gradient descent over a cost measuring representation quality with respect to sparseness. This constraint introduces a competition between atoms. In~the context of the efficient processing of natural images, we proposed here that such strategies can be optimized by including a proper homeostatic regulation enforcing a fair competition between the elements of the dictionary. We~ implemented this rule by introducing a nonlinear gain normalization similar to what is observed in biological neural networks. We validated this theoretical insight by challenging this adaptive unsupervised learning algorithm with different heuristics for the homeostasis. Simulations show that at convergence, although~the coding accuracy did not vary much, including homeostasis changed, qualitatively, the~learned features. In~particular, including homeostasis resulted in a more homogeneous set of orientation selective filters, which is closer to what is observed in the visual cortex of mammals~\citep{Ringach02,Rehn07,Loxley17}. To~further validate these results, we quantitatively compared the efficiency of the different variants of the algorithms, both at the level of homeostasis (homeostatic learning rate, parameters of the heuristics), but~also to the coding (by changing $M$, $N$ or $N_0$) and to the learning (by changing the learning rate, the~scheduling or $M$). This demonstrated that overall, this neuro-inspired homeostatic algorithm provided with the best compromise between efficiency and computational~cost.
 
 %2. importance of homeo - vanishing term in deep learning -> use deep learning to validate output
 %3. application to asynchronous / focal log-polar (retinal) input / continuous learning / credit assignement (no access to true residual)
-In summary, these results demonstrate that principles observed in biological neural computations can help improve real-life machine learning algorithms, in particular for vision. Indeed, by developing this fast learning algorithm, we hope for its use in real-life machine learning algorithms. This type of architecture is economical, efficient and fast. The HAP algorithms uses only ReLUs such that it is easy to be transferred to most deep learning algorithms. %In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots.
-Along with this, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory, for example. Moreover, by its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by imposing the hypothesis of the invariance of synaptic patterns to spatial translations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases (see \seeFig{CNN} and \href{https://spikeai.github.io/HULK/#Testing-different-algorithms}{Annex}). This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. As such, empirical evaluations of the proposed algorithms should be extended. For instance, it would be very useful to test for image classification results on standard benchmark datasets. %Finally such computational results highlight the importance of homeostasis in unsupervised learning algorithms and for the study of neural systems.
+In summary, these results demonstrate that principles observed in biological neural computations can help improve real-life machine learning algorithms, in~particular, for~vision. Indeed, by~developing this fast learning algorithm, we hope for its use in real-life machine learning algorithms. This type of architecture is economical, efficient and fast. The~HAP algorithms uses only ReLUs such that it is easy to be transferred to most deep learning algorithms. %In particular, we are considering perspectives for coding within a dynamic flow of sensory data and we hope to apply this type of algorithm on embedded systems such as aerial robots.
+Additionally, we hope that this new type of rapid unsupervised learning algorithm can provide a normative theory for the coding of information in low-level sensory processing, whether it is visual or auditory. Moreover, by~its nature, this algorithm can easily be extended to convolutional networks such as those used in deep learning neural networks. This extension is possible by extending the filter dictionary by imposing the hypothesis of the invariance of synaptic patterns to spatial translations. Our results on different databases show the stable and rapid emergence of characteristic filters on these different bases (see \seeFig{CNN} and \href{https://spikeai.github.io/HULK/#Testing-different-algorithms}{Annex}). This result shows a probable prospect of extending this representation and for which we hope to obtain classification results superior to the algorithms existing in the state-of-the-art. As~such, empirical evaluations of the proposed algorithms should be extended. For~instance, it would be very useful to test for image classification results on standard benchmark datasets.
+
+\begin{figure}[H]
+\centering{\includegraphics[width=\linewidth]{figure_CNN}}
+\caption{
+{Extension to Convolutional Neural Networks (CNNs)}. %
+ We extend the HAP algorithm to a single-layered CNN with $20$ kernels and using the ATT face database. We show here the kernels learned without (\texttt{None}, top row) and with (\texttt{HAP}, bottom row) homeostasis (note that we used the same initial conditions). As~for the simpler case, we observe a heterogeneity of activation counts without homeostasis, that is, in~the case which simply normalizes the energy of kernels (see {(\textbf{A})}). With~homeostasis, we observe the convergence of the activation probability for the different kernels (see {(\textbf{B})}). This demonstrates that this heuristic extends well to a CNN architecture.
+\label{fig:CNN}}%# TODO: do figure :-0
+\end{figure}%
+ %Finally such computational results highlight the importance of homeostasis in unsupervised learning algorithms and for the study of neural systems.
 % HAP what limits?
 % theorems.
 % another perspective is precision-weighted inference see page 11 of Kingma
@@ -531,17 +560,21 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 \vspace{6pt}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
-\supplementary{\Links }%*, which are summarized at this \href{https://github.com/laurentperrinet/HULK/raw/master/Annex.pdf}{link}.}
+\supplementary{The following are available at: \url{www.mdpi.com/xxx/s1}, All scripts to reproduce figures in this paper are available at: \url{https://spikeai.github.io/HULK}. More information and pointers to the open-sourced code and supplementary control simulations are available at: \url{https://laurentperrinet.github.io/publication/perrinet-19-hulk/}.}%*, which are summarized at this \href{https://github.com/laurentperrinet/HULK/raw/master/Annex.pdf}{link}.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\authorcontributions{For research articles with several authors, a short paragraph specifying their individual contributions must be provided. The following statements should be used ``conceptualization, X.X. and Y.Y.; methodology, X.X.; software, X.X.; validation, X.X., Y.Y. and Z.Z.; formal analysis, X.X.; investigation, X.X.; resources, X.X.; data curation, X.X.; writing--original draft preparation, X.X.; writing--review and editing, X.X.; visualization, X.X.; supervision, X.X.; project administration, X.X.; funding acquisition, Y.Y.'', please turn to the \href{http://img.mdpi.org/data/contributor-role-instruction.pdf}{CRediT taxonomy} for the term explanation. Authorship must be limited to those who have contributed substantially to the work reported.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\funding{\Acknowledgments}
+%\funding{\Acknowledgments}
 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %\acknowledgments{\Acknowledgments}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\conflictsofinterest{The authors declare no conflict of interest. The funders had no role in the design of the study; in the collection, analyses, or interpretation of data; in the writing of the manuscript, or in the decision to publish the results.}
+\funding{\hl{Please} add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' }
+\acknowledgments{This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''. This work was granted access to the HPC resources of Aix-Marseille Université financed by the project Equip@Meso (ANR-10-EQPX-29-01) of the program ``Investissements d’Avenir'' supervised by the Agence Nationale de la Recherche.}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\conflictsofinterest{The authors declare no conflicts of interest. The~funders had no role in the design of the study; in the collection, analyses, or~interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% optional
 %\abbreviations{The following abbreviations are used in this manuscript:\\
@@ -564,12 +597,314 @@ Along with this, we hope that this new type of rapid unsupervised learning algor
 %The appendix is an optional section that can contain details and data supplemental to the main text. For example, explanations of experimental details that would disrupt the flow of the main text, but nonetheless remain crucial to understanding and reproducing the research shown; figures of replicates for experiments of which representative data is shown in the main text can be added here if brief, or as Supplementary data. Mathematical proofs of results not central to the paper can be added as an appendix.
 %
 %\section{}
-%All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g., Figure A1, Figure A2, etc.
+%All appendix sections must be cited in the main text. In the appendixes, Figures, Tables, etc. should be labeled starting with `A', e.g.,~Figure A1, Figure A2, etc.
 \reftitle{References}
+\begin{thebibliography}{999}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[Hubel and Wiesel(1968)]{Hubel68}
+Hubel, D.H.; Wiesel, T.N.
+\newblock Receptive fields and functional architecture of monkey striate
+  cortex.
+\newblock {\em J. Physiol.} {\bf 1968}, {\em 195},~215--243.
+
+\bibitem[Perrinet(2015)]{Perrinet15sparse}
+Perrinet, L.U. Sparse Models for Computer Vision.
+\newblock In {\em Biologically Inspired Computer Vision}; Crist{\'{o}}bal,~ G.,
+  Keil,~ M.S., Perrinet, L.U., Eds.; Wiley-VCH Verlag GmbH {\&} Co. KGaA: Weinheim, Germany, 2015;
+  Chapter~14.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1002/9783527680863.ch14}{\detokenize{10.1002/9783527680863.ch14}}}.
+
+\bibitem[Olshausen and Field(1996)]{Olshausen96}
+Olshausen, B.; Field, D.J.
+\newblock Natural image statistics and efficient coding.
+\newblock {\em Network: Comput. Neural Syst.} {\bf 1996}, {\em
+  7},~333--339.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/381607a0}{\detokenize{10.1038/381607a0}}}.
+
+
+
+\bibitem[Vincent \em{et~al.}(2008)Vincent, Larochelle, Bengio, and
+  Manzagol]{Vincent08}
+Vincent, P.; Larochelle, H.; Bengio, Y.; Manzagol, P.A.
+\newblock Extracting and Composing Robust Features with Denoising Autoencoders.
+\newblock In  Proceedings of the 25th International Conference on Machine
+  Learning,  Helsinki, Finland, 5--9 July 2008; pp. 1096--1103.
+
+\bibitem[Sulam \em{et~al.}(2017)Sulam, Papyan, Romano, and
+  Elad]{Sulam2017multi}
+Sulam, J.; Papyan, V.; Romano, Y.; Elad, M.
+\newblock Multi-Layer Convolutional Sparse Modeling: Pursuit and Dictionary
+  Learning.
+\newblock {\em arXiv } {\bf 2017}, arXiv:1708.08705.
+
+\bibitem[Perrinet and Bednar(2015)]{PerrinetBednar15}
+Perrinet, L.U.; Bednar, J.A.
+\newblock Edge co-occurrences can account for rapid categorization of natural
+  versus animal images.
+\newblock {\em Sci. Rep.} {\bf 2015}, {\em 5},~11400.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/srep11400}{\detokenize{10.1038/srep11400}}}.
+
+\bibitem[Makhzani and Frey(2013)]{MakhzaniF13}
+Makhzani, A.; Frey, B.J.
+\newblock k-Sparse Autoencoders.
+\newblock {\em arXiv} {\bf 2013},  	arXiv:1312.5663.
+
+\bibitem[Papyan \em{et~al.}(2016)Papyan, Romano, and Elad]{Papyan16}
+Papyan, V.; Romano, Y.; Elad, M.
+\newblock Convolutional neural networks analyzed via convolutional sparse
+  coding.
+\newblock {\em Mach. Learn.} {\bf 2016}, {\em 1050},~27.
+
+
+\bibitem[{Kingma} and {Welling}(2013)]{Kingma13}
+{Kingma}, D.P.; {Welling}, M.
+\newblock {Auto-Encoding Variational Bayes}.
+\newblock {\em arXiv} {\bf 2013}, arXiv:1312.6114.
+
+  \bibitem[Olshausen and Field(1997)]{Olshausen97}
+Olshausen, B.; Field, D.J.
+\newblock Sparse coding with an overcomplete basis set: A strategy employed by
+  {V1}?
+\newblock {\em Vis.~ Res.} {\bf 1997}, {\em 37},~3311--3325.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1016/S0042-6989(97)00169-7}{\detokenize{10.1016/S0042-6989(97)00169-7}}}.
+
+\bibitem[Mairal \em{et~al.}(2014)Mairal, Bach, Ponce, et~al.]{Mairal14}
+Mairal, J.; Bach, F.; Ponce, J.
+\newblock Sparse modeling for image and vision processing.
+\newblock {\em Found. Trends Comput. Graph.~ Vis.} {\bf
+  2014}, {\em 8},~85--283.
+
+
+
+  
+
+
+\bibitem[Marder and Goaillard(2006)]{Marder2006variability}
+Marder, E.; Goaillard, J.M.
+\newblock Variability, compensation and homeostasis in neuron and network
+  function.
+\newblock {\em Nat.~ Rev.~ Neurosci.} {\bf 2006}, {\em 7},~563.
+
+\bibitem[Hansel and van Vreeswijk(2012)]{Hansel12}
+Hansel, D.; van Vreeswijk, C.
+\newblock The mechanism of orientation selectivity in primary visual cortex
+  without a functional map.
+\newblock {\em J. Neurosci.} {\bf 2012}, {\em 32},~4049--4064.
+
+
+
+\bibitem[Schwartz and Simoncelli(2001)]{Schwartz01}
+Schwartz, O.; Simoncelli, E.P.
+\newblock Natural signal statistics and sensory gain control.
+\newblock {\em Nat. Neurosci.} {\bf 2001}, {\em 4},~819--825.
+
+\bibitem[Carandini and Heeger(2012)]{Carandini12}
+Carandini, M.; Heeger, D.J.D.
+\newblock Normalization as a canonical neural computation.
+\newblock {\em Nat. Rev. Neurosci.} {\bf 2012}, {\em 13},~1--12.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/nrn3136}{\detokenize{10.1038/nrn3136}}}.
+
+\bibitem[Ringach(2002)]{Ringach02}
+Ringach, D.L.
+\newblock Spatial structure and symmetry of simple-cell receptive fields in
+  macaque primary visual cortex.
+\newblock {\em J. Neurophysiol.} {\bf 2002}, {\em 88},~455--463.
+
+\bibitem[Rehn and Sommer(2007)]{Rehn07}
+Rehn, M.; Sommer, F.T.
+\newblock A model that uses few active neurones to code visual input predicts
+  the diverse shapes of cortical receptive fields.
+\newblock {\em J. Comput. Neurosci.} {\bf 2007}, {\em
+  22},~135--146.
+
+\bibitem[Loxley(2017)]{Loxley17}
+Loxley, P.N.
+\newblock The Two-Dimensional Gabor Function Adapted to Natural Image
+  Statistics: A Model of Simple-Cell Receptive Fields and Sparse Structure in
+  Images.
+\newblock {\em Neural Comput.} {\bf 2017}, {\em 29},~2769--2799.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1162/neco_a_00997}{\detokenize{10.1162/neco_a_00997}}}.
+
+\bibitem[Brito and Gerstner(2016)]{Brito16}
+Brito, C.S.; Gerstner, W.
+\newblock Nonlinear Hebbian learning as a unifying principle in receptive field
+  formation.
+\newblock {\em PLoS Comput. Biol.} {\bf 2016}, {\em 12},~e1005070.
+
+\bibitem[Perrinet \em{et~al.}(2003)Perrinet, Samuelides, and
+  Thorpe]{Perrinet03}
+Perrinet, L.U.; Samuelides, M.; Thorpe, S.J.
+\newblock Emergence of filters from natural scenes in a sparse spike coding
+  scheme.
+\newblock {\em Neurocomputing} {\bf 2003}, {\em 58--60},~821--826.
+\newblock \hl{Special} issue: Computational Neuroscience: Trends in Research 2004 -
+  Edited by E. De Schutter.
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1016/j.neucom.2004.01.133}{\detokenize{10.1016/j.neucom.2004.01.133}}}.
+  %please confirm if we can delete it
+
+\bibitem[Rao and Ballard(1999)]{Rao99}
+Rao, R.; Ballard, D.
+\newblock Predictive coding in the visual cortex: a functional interpretation
+  of some extra-classical receptive-field effects.
+\newblock {\em Nat. Neurosci.} {\bf 1999}, {\em 2},~79--87.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/4580}{\detokenize{10.1038/4580}}}.
+
+\bibitem[Perrinet(2010)]{Perrinet10shl}
+Perrinet, L.U.
+\newblock Role of Homeostasis in Learning Sparse Representations.
+\newblock {\em Neural Comput.} {\bf 2010}, {\em 22},~1812--1836.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1162/neco.2010.05-08-795}{\detokenize{10.1162/neco.2010.05-08-795}}}.
+
+\bibitem[Sandin and Martin-del Campo(2017)]{Sandin17}
+Sandin, F.; Martin-del Campo, S.
+\newblock Dictionary learning with equiprobable matching pursuit.
+\newblock {\em arXiv} {\bf 2017}, arXiv:1611.09333.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1109/IJCNN.2017.7965902}{\detokenize{10.1109/IJCNN.2017.7965902}}}.
+
+\bibitem[Olshausen(2002)]{Olshausen02}
+Olshausen, B.
+\newblock Sparse Codes and Spikes. In {\em Probabilistic {M}odels of the
+  {B}rain: {P}erception and {N}eural {F}unction}; Rao, R., Olshausen, B.,
+  Lewicki, M., Eds.; MIT Press: Cambridge, MA, USA,  2002; Chapter Sparse Codes and Spikes, pp.
+  257--272.
+
+\bibitem[Smith and Lewicki(2006)]{Smith06}
+Smith, E.C.; Lewicki, M.S.
+\newblock Efficient auditory coding.
+\newblock {\em Nature} {\bf 2006}, {\em 439},~978--982.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1038/nature04485}{\detokenize{10.1038/nature04485}}}.
+
+\bibitem[Hebb(1949)]{Hebb49}
+Hebb, D.O.
+\newblock {\em The organization of behavior: {A} neuropsychological theory};
+  Wiley: New York, NY, USA, 1949.
+
+\bibitem[Oja(1982)]{Oja82}
+Oja, E.
+\newblock A {S}implified {N}euron {M}odel as a {P}rincipal {C}omponent
+  {A}nalyzer.
+\newblock {\em J. Math. Biol.} {\bf 1982}, {\em
+  15},~267--273.
+
+\bibitem[Tikhonov(1977)]{Tikhonov77}
+Tikhonov, A.N.
+\newblock {\em Solutions of {Ill-Posed} Problems}; Winston \& Sons: Washington, DC, USA,    1977.
+
+\bibitem[Efron \em{et~al.}(2004)Efron, Hastie, Johnstone, Tibshirani,
+  et~al.]{efron2004least}
+Efron, B.; Hastie, T.; Johnstone, I.; Tibshirani, R.; Tibshirani, R.
+\newblock Least angle regression.
+\newblock {\em  Ann. Stat.} {\bf 2004}, {\em 32},~407--499.
+
+\bibitem[Beck and Teboulle(2009)]{beck2009fast}
+Beck, A.; Teboulle, M.
+\newblock A fast iterative shrinkage-thresholding algorithm for linear inverse
+  problems.
+\newblock {\em SIAM J. Imaging Sci.} {\bf 2009}, {\em 2},~183--202.
+
+\bibitem[DeWeese \em{et~al.}(2003)DeWeese, Wehr, and Zador]{DeWeese03}
+DeWeese, M.R.; Wehr, M.; Zador, A.M.
+\newblock Binary Spiking in Auditory Cortex.
+\newblock {\em J. Neurosci.} {\bf 2003}, {\em 23},~7940--7949.
+
+\bibitem[Bethge \em{et~al.}(2003)Bethge, Rotermund, and Pawelzik]{Bethge03}
+Bethge, M.; Rotermund, D.; Pawelzik, K.
+\newblock Second Order Phase Transition in Neural Rate Coding: Binary~ Encoding
+  is Optimal for Rapid Signal Transmission.
+\newblock {\em Phys. Rev. Lett.} {\bf 2003}, {\em 90},~088104.
+
+\bibitem[Khoei \em{et~al.}()Khoei, Ieng, and Benosman]{Khoei19}
+Khoei, M.A.; Ieng, S.h.; Benosman, R.
+\newblock Asynchronous {{Event}}-{{Based Motion Processing}}: {{From Visual
+  Events}} to {{Probabilistic Sensory Representation}}.
+\newblock  \emph{Neural Comput.} \textbf{2019}, \emph{31},1--25. 
+  doi:{\changeurlcolor{black}\href{https://doi.org/10/gfzhp2}{\detokenize{10/gfzhp2}}}.
+
+\bibitem[Akaike(1974)]{Akaike74}
+Akaike, H.
+\newblock A New Look at the Statistical Model Identification.
+\newblock {\em I{EEE} Trans. Autom. Control} {\bf 1974}, {\em
+  19},~716--723.
+
+\bibitem[Mallat(1998)]{Mallat98}
+Mallat, S.
+\newblock {\em A Wavelet Tour of Signal Processing}, 2nd Ed.; Academic
+  Press: New York, NY, USA,  1998.
+
+\bibitem[Perrinet \em{et~al.}(2004)Perrinet, Samuelides, and
+  Thorpe]{Perrinet03ieee}
+Perrinet, L.; Samuelides, M.; Thorpe, S.
+\newblock Coding Static Natural Images Using Spiking Event Times: Do~ Neurons
+  Cooperate?
+\newblock {\em IEEE Trans. Neural Networks} {\bf 2004}, {\em
+  15},~1164--1175.
+\newblock \hl{Special} issue on 'Temporal Coding for Neural Information Processing.
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1109/TNN.2004.833303}{\detokenize{10.1109/TNN.2004.833303}}}.
+  %please confirm if we can delete it
+
+\bibitem[Fischer \em{et~al.}(2007)Fischer, Redondo, Perrinet, and
+  Crist{\'o}bal]{Fischer07}
+Fischer, S.; Redondo, R.; Perrinet, L.U.; Crist{\'o}bal, G.
+\newblock Sparse Approximation of Images Inspired from the Functional
+  Architecture of the Primary Visual Areas.
+\newblock {\em EURASIP J. Adv. Signal Process.} {\bf 2007},
+  {\em 2007},~090727-122.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1155/2007/90727}{\detokenize{10.1155/2007/90727}}}.
+
+
+
+\bibitem[Vallender()]{Vallender74}
+Vallender, S.
+\newblock Calculation of the {Wasserstein} Distance between Probability
+  Distributions on the Line.
+\newblock \emph{Theory~ Probab.~ Appl.} \textbf{2006}, {\em 18},~784--786.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1137/1118101}{\detokenize{10.1137/1118101}}}.
+
+\bibitem[Doersch(2016)]{Doersch2016}
+Doersch, C.
+\newblock Tutorial on Variational Autoencoders.
+\newblock {\em arXiv} {\bf 2016}, arXiv:1606.05908.
+
+\bibitem[Laughlin(1981)]{Laughlin81}
+Laughlin, S.
+\newblock A simple coding procedure enhances a neuron's information capacity.
+\newblock {\em Z. Naturforschung. Sect. C Biosci.} {\bf
+  1981}, {\em 36},~910--912.
+
+\bibitem[Simoncelli and Olshausen(2001)]{Simoncelli01}
+Simoncelli, E.P.; Olshausen, B.
+\newblock Natural Image Statistics and Neural Representation.
+\newblock {\em Annu. Rev. Neurosci.} {\bf 2001}, {\em 24},~1193--1216.
+\newblock
+  doi:{\changeurlcolor{black}\href{https://doi.org/10.1146/annurev.neuro.24.1.1193}{\detokenize{10.1146/annurev.neuro.24.1.1193}}}.
+  
+  \bibitem[Pati \em{et~al.}(1993)Pati, Rezaiifar, and
+  Krishnaprasad]{pati1993orthogonal}
+Pati, Y.C.; Rezaiifar, R.; Krishnaprasad, P.S.
+\newblock \hl{Orthogonal} Matching Pursuit: Recursive Function Approximation with
+  Applications to Wavelet Decomposition.
+\newblock  In Proceedings of the  27th Asilomar Conference on Signals, Systems and Computers, Pacific Grove, CA, USA, 1--3 November 1993; pp. 40--44.
+%ref42 is not cited, pleace check
+
+\end{thebibliography}
+
 %%%-----------------------------------------------------------------
 %\printbibliography
-\externalbibliography{yes}
-\bibliography{hulk}
+%\externalbibliography{yes}
+%\bibliography{hulk}
 %%%-----------------------------------------------------------------
 %\newpage
 %\pagestyle{empty}
