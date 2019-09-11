@@ -90,8 +90,8 @@
 % --------------------------------------------------------------------------
 %                    METADATA
 % --------------------------------------------------------------------------
-\Author{\hl{Laurent} U. Perrinet \orcidA{}}%
-%Please carefully check the accuracy of names and affiliations. 
+\Author{Laurent U. Perrinet \orcidA{}}%
+%DONE: Please carefully check the accuracy of names and affiliations. 
 
 \AuthorNames{Laurent U. Perrinet}
 % Aix Marseille Univ, CNRS, INT, Inst Neurosci Timone, Marseille, France
@@ -135,12 +135,12 @@ INT, Inst Neurosci Timone, Aix Marseille Univ, CNRS, 27, Bd. Jean Moulin, CEDEX 
 %pdfsubject={\Acknowledgments}%
 %}%
 \usepackage{url}            % simple URL typesetting
-\usepackage{booktabs}       % professional-quality tables
+%\usepackage{booktabs}       % professional-quality tables
 \usepackage{nicefrac}       % compact symbols for 1/2, etc.
 \usepackage{microtype}      % microtypography
 
-\usepackage[final]{pdfpages}
-\newcommand{\printingPaperWidth}{216mm}
+%\usepackage[final]{pdfpages}
+%\newcommand{\printingPaperWidth}{216mm}
 %\usepackage{xcolor}
 \usepackage{amsmath,amssymb,amsfonts}
 
@@ -273,7 +273,7 @@ This plot shows the results of the same Sparse Hebbian Learning algorithm at con
 
 
 %: outline
-In this paper, we will first define a simple algorithm for controlling the selection of coefficients in sparse coding algorithms based on a set of nonlinear functions similar to generic neural gain normalization mechanisms. Such functions will be used to implement a homeostasis mechanism based on histogram equalization by progressively adapting these nonlinear functions. This algorithm will extend an already existing algorithm of unsupervised sparse learning~\citep{Perrinet10shl} to a more general setting. We will show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. Second, we will propose a simplification of this homeostasis algorithm based on the activation probability of each neuron, thanks to the control of the slope of its corresponding Rectifying Linear Unit (ReLU). We show that it yields similar quantitative results as the full homeostasis algorithm and that it converges more rapidly than classical methods~\citep{Olshausen97, Sandin17}. We~ designed our computational architecture to be able to quantitatively cross-validate for every single hyperparameter. All these scripts are available at: \url{https://github.com/SpikeAI/HULK}, including the {Supplementary Material}. %\footnote{All these algorithms were implemented using \verb+Python+ (version 3.6.5) with packages \verb+NumPy+ (version 1.14.3), \verb+sklearn+ (version 0.19.1) and \verb+SciPy+ (version 1.1.0)~\citep{Oliphant07,Pedregosa11}. Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}.}. URLs are not allowed in main text, please remove.
+In this paper, we will first define a simple algorithm for controlling the selection of coefficients in sparse coding algorithms based on a set of nonlinear functions similar to generic neural gain normalization mechanisms. Such functions will be used to implement a homeostasis mechanism based on histogram equalization by progressively adapting these nonlinear functions. This algorithm will extend an already existing algorithm of unsupervised sparse learning~\citep{Perrinet10shl} to a more general setting. We will show quantitative results of this optimal algorithm by applying it to different pairs of coding and learning algorithms. Second, we will propose a simplification of this homeostasis algorithm based on the activation probability of each neuron, thanks to the control of the slope of its corresponding Rectifying Linear Unit (ReLU). We show that it yields similar quantitative results as the full homeostasis algorithm and that it converges more rapidly than classical methods~\citep{Olshausen97, Sandin17}. We~ designed our computational architecture to be able to quantitatively cross-validate for every single hyperparameter. All these scripts are available as open-sourced code, including the {Supplementary Material}. %\footnote{All these algorithms were implemented using \verb+Python+ (version 3.6.5) with packages \verb+NumPy+ (version 1.14.3), \verb+sklearn+ (version 0.19.1) and \verb+SciPy+ (version 1.1.0)~\citep{Oliphant07,Pedregosa11}. Visualization was performed using \verb+Matplotlib+ (version 2.2.2)~\citep{Hunter07}.}. DONE : URLs are not allowed in main text, please remove.
 Finally, we will conclude by showing an application of such an adaptive algorithm to CNNs and discuss on its development in real-world architectures.
 % ----------------------------------------------------------------------
 % RTC
@@ -366,7 +366,7 @@ Still, there are many solutions to this optimization problem and here, we will u
 %% discuss this? or say it will be discussed below
 % method zero = just normalizing the coefficitents (Mairal14)
 We found, as~in the work by the authors of~\citep{Rehn07}, that by using an algorithm like Matching Pursuit (that is using the symmetric function or setting $\forall i, \gamma_i=1$ as in~\citep{Mairal14} for instance), the~Sparse Hebbian Learning algorithm could provide results similar to {\sc SparseNet}, leading~ to the emergence of Gabor-like edge detectors as is observed in simple cells of the primary visual cortex~\citep{Fischer07}. One advantage compared to~\citep{Olshausen97} is the nonparametric assumption on the prior based on this more generic $\ell_0$ pseudo-norm sparseness. Importantly for our study, we observed that this class of algorithms could lead to solutions corresponding to a local minimum of the full objective function: Some solutions seem as efficient as others for representing the signal but do not represent edge-like features homogeneously (\seeFig{map}A, \texttt{None}). % With a correct tuning of parameters, we observed that different coding schemes show qualitatively a similar emergence of edge-like filters. The~specific coding algorithm used to obtain this sparseness appears to be of secondary importance as long as it is adapted to the data and yields sufficiently efficient sparse representation vectors. However, resulting dictionaries vary qualitatively among these schemes and it was unclear which algorithm is the most efficient and what was the individual role of the different mechanisms that constitute SHL schemes. At~the learning level, we have shown that the homeostasis mechanism had a great influence on the qualitative distribution of learned filters~\citep{Perrinet10shl}.~\citep{Perrinet10shl}
-%Moreover, using other sparse coding algorithms which are implemented in the \verb+sklearn+ library, we compared the convergence of the learning with different sparse coding algorithms. In particular, we compared the learning as implemented with matching pursuit to that with orthogonal matching pursuit (OMP)~\citep{pati1993orthogonal}, LARS or FISTA (see SI). %
+Moreover, using other sparse coding algorithms which are implemented in the \verb+sklearn+ library, we compared the convergence of the learning with different sparse coding algorithms. In particular, we compared the learning as implemented with matching pursuit to that with orthogonal matching pursuit (OMP)~\citep{pati1993orthogonal}, LARS or FISTA (see Supplementary Material). %
 % TODO answer What do you mean by "some cells learn 'faster'"? This is the justification for your homeostatis mechanism but it is not shown in your paper. Also, I guess you did not provide the annex. The 'Annex.html' document has a section "Testing different algorithms" but it only display 5 algorithms that perform the same, which does not convince me that some extra mechanism is needed.
 % show the example in the map / synthetic unbalanced network
 For all these sparse coding algorithms, during~the early learning step, some cells may learn ``faster'' than others. These cells have more peaked distributions of their activity and tend to be selected more often (as shown in Figure~\ref{fig:map}A ``None'' and quantified in the variability of their distributions in Figure~\ref{fig:HEH}A ``None''). It is thus necessary to include a homeostasis process that will ensure the convergence of the learning. The~goal of this work is to study the specific role of homeostasis in learning sparse representations and to propose a homeostasis mechanism based on the functions $z_i$, which optimizes the learning of an efficient representation.%
@@ -398,7 +398,7 @@ For all these sparse coding algorithms, during~the early learning step, some cel
 %{\sf (B)}~Nonlinear homeostatic functions learned using Hebbian learning. These functions were initialized as the cumulative distribution function of uniform random variables. Then they are used to modify choices in the Matching step of the Matching Pursuit algorithm. Progressively, the nonlinear functions converge to the (hidden) cumulative distributions of the coefficients of the surrogate, clearly showing the group of filters with twice a big coefficients.
 % {\sf (C)}~At convergence, the probability of choosing any filter is uniform. As a result, entropy is maximal, a property which is essential for the optimal representation of signals in distributed networks such as the brain.
 \label{fig:HEH}}%
-\end{figure}% remove figure 2 to here, out it after its first citation
+\end{figure}% DONE: remove figure 2 to here, out it after its first citation
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
 \subsection{Algorithm: Histogram Equalization~Homeostasis}\label{HEH}
 %~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~%
@@ -449,7 +449,7 @@ We have shown above that we can find an exact solution to the problem of homeost
 
 % see Algorithm~\ref{alg:shl}
 \begin{algorithm}[H]
-\caption{Homeostatic Unsupervised Learning of Kernels: $\dico = H(\image; \eta, \eta_h, N_0)$}\label{alg:shl}  %remove algorithm 2 to here, put it after its first citation
+\caption{Homeostatic Unsupervised Learning of Kernels: $\dico = H(\image; \eta, \eta_h, N_0)$}\label{alg:shl}  %fig:HEH remove algorithm 2 to here, put it after its first citation
 \begin{spacing}{1.5}
 \begin{algorithmic}[1]
 \State Initialize the point nonlinear gain functions $z_i$ to similar cumulative distribution functions,%
@@ -494,7 +494,7 @@ Recently, such an approach was proposed by the authors of~\cite{Sandin17}. Based
 \end{align}%
 
 As such, $p_i$ is an approximation of the average activation probability based on a moving average controlled by the learning parameter $\eta_h$.
-Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~Figures~\ref{fig:map} and~\ref{fig:HEH}. %Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for~instance by using OMP instead of MP.
+Interestingly, they reported that such a simple heuristic could improve the learning, deriving a similar result as we have shown in~Figures~\ref{fig:map} and~\ref{fig:HEH}. Moreover they have shown that such a homeostatic mechanism is more important than optimizing the coding algorithm, for~instance by using OMP instead of MP.
 Again, such~ strategy can be included in line \hyperlink{here2}{9} of the learning~algorithm.
 
 %: derivation
@@ -570,8 +570,11 @@ Additionally, we hope that this new type of rapid unsupervised learning algorith
 %\acknowledgments{\Acknowledgments}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\funding{\hl{Please} add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' }
-\acknowledgments{This research was supported by ANR project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' N° ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''. This work was granted access to the HPC resources of Aix-Marseille Université financed by the project Equip@Meso (ANR-10-EQPX-29-01) of the program ``Investissements d’Avenir'' supervised by the Agence Nationale de la Recherche.}
+\funding{This research was supported by Agence Nationale de la Recherche (ANR) project ``\href{https://laurentperrinet.github.io/project/anr-horizontal-v1/}{Horizontal-V1}'' grant number ANR-17-CE37-0006 and CNRS grant for Biomimetism ``\href{https://laurentperrinet.github.io/project/spikeai/}{SpikeAI}''. This work was granted access to the HPC resources of Aix-Marseille Université financed by the project Equip@Meso of the program ``Investissements d’Avenir'' by Agence Nationale de la Recherche grant number ANR-10-EQPX-29-01. %Done \hl{Please} add: ``This research received no external funding'' or ``This research was funded by NAME OF FUNDER grant number XXX.'' 
+}
+\acknowledgments{
+I am indebted to Angelo Franciosini and Victor Boutin for their influencal help during the process of writing this paper. Victor Boutin coded most of the network for~\seeFig{CNN}, see \url{https://github.com/VictorBoutin/CHAMP}.
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \conflictsofinterest{The authors declare no conflicts of interest. The~funders had no role in the design of the study; in the collection, analyses, or~interpretation of data; in the writing of the manuscript; or in the decision to publish the~results.}
@@ -744,10 +747,10 @@ Perrinet, L.U.; Samuelides, M.; Thorpe, S.J.
 \newblock Emergence of filters from natural scenes in a sparse spike coding
   scheme.
 \newblock {\em Neurocomputing} {\bf 2003}, {\em 58--60},~821--826.
-\newblock \hl{Special} issue: Computational Neuroscience: Trends in Research 2004 -
+\newblock Computational Neuroscience: Trends in Research 2004 -
   Edited by E. De Schutter.
   doi:{\changeurlcolor{black}\href{https://doi.org/10.1016/j.neucom.2004.01.133}{\detokenize{10.1016/j.neucom.2004.01.133}}}.
-  %please confirm if we can delete it
+  %DONE :please confirm if we can delete it
 
 \bibitem[Rao and Ballard(1999)]{Rao99}
 Rao, R.; Ballard, D.
@@ -849,9 +852,9 @@ Perrinet, L.; Samuelides, M.; Thorpe, S.
   Cooperate?
 \newblock {\em IEEE Trans. Neural Networks} {\bf 2004}, {\em
   15},~1164--1175.
-\newblock \hl{Special} issue on 'Temporal Coding for Neural Information Processing.
+%\newblock \hl{Special} issue on 'Temporal Coding for Neural Information Processing.
   doi:{\changeurlcolor{black}\href{https://doi.org/10.1109/TNN.2004.833303}{\detokenize{10.1109/TNN.2004.833303}}}.
-  %please confirm if we can delete it
+  %DONE :please confirm if we can delete it
 
 \bibitem[Fischer \em{et~al.}(2007)Fischer, Redondo, Perrinet, and
   Crist{\'o}bal]{Fischer07}
@@ -894,10 +897,10 @@ Simoncelli, E.P.; Olshausen, B.
   \bibitem[Pati \em{et~al.}(1993)Pati, Rezaiifar, and
   Krishnaprasad]{pati1993orthogonal}
 Pati, Y.C.; Rezaiifar, R.; Krishnaprasad, P.S.
-\newblock \hl{Orthogonal} Matching Pursuit: Recursive Function Approximation with
+\newblock Orthogonal Matching Pursuit: Recursive Function Approximation with
   Applications to Wavelet Decomposition.
 \newblock  In Proceedings of the  27th Asilomar Conference on Signals, Systems and Computers, Pacific Grove, CA, USA, 1--3 November 1993; pp. 40--44.
-%ref42 is not cited, pleace check
+%DONE (fixed the missing line) ref42 is not cited, pleace check
 
 \end{thebibliography}
 

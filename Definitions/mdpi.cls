@@ -1,5 +1,5 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% %%	MDPI class for LaTeX files	 14.6.2019
+%% %%	MDPI class for LaTeX files	 24.5.2019
 %% %%	For any information please send an e-mail to:
 %% %%		latex@mdpi.com
 %% %%
@@ -20,7 +20,7 @@
 
 %% IDENTIFICATION
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{Definitions/mdpi}[14/06/2019 MDPI paper class]
+\ProvidesClass{Definitions/mdpi}[24/05/2019 MDPI paper class]
 
 %%%% Copyright and citebox
  \AtEndDocument{\par \cright}
@@ -229,7 +229,7 @@
 	\bibpunct{(}{)}{;}{x}{}{}%
 	}{%
 	\bibliographystyle{Definitions/mdpi}
-	\bibpunct{[}{]}{,}{n}{}{,}%
+	\bibpunct{[}{]}{,}{n}{}{}%
 	}%
 
 \renewcommand\NAT@set@cites{%
