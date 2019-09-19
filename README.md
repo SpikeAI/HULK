@@ -1,7 +1,8 @@
 # "An adaptive algorithm for unsupervised learning"
 
-
-![video abstract](https://github.com/laurentperrinet/sciblog/raw/master/files/2019-09-11_Perrinet19.gif)
+<p align="center">
+  <img width="80%" src="https://github.com/laurentperrinet/sciblog/raw/master/files/2019-09-11_Perrinet19.gif">
+</p>
  
  * paper info : https://laurentperrinet.github.io/publication/perrinet-19-hulk/
  * [PDF](https://www.mdpi.com/2411-5150/3/3/47/pdf)
