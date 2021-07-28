@@ -3,9 +3,4 @@ authors:
 - family-names: Perrinet
   given-names: Laurent
   orcid: "https://orcid.org/0000-0002-9536-010X"
-date-released: 2019-09-16
-doi: "10.3390/vision3030047"
-license: "GNU General Public License v3.0"
 message: "If you use this publication, please cite it using these metadata."
-title: "An adaptive homeostatic algorithm for the unsupervised learning of visual features"
-url: "https://github.com/SpikeAI/HULK"
