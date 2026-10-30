@@ -8,4 +8,19 @@ version: 1.0.0
 doi: 10.3390/vision3030047
 date-released: 2019-09-16
 title: "An adaptive homeostatic algorithm for the unsupervised learning of visual features"
-url: "https://github.com/SpikeAI/HULK"
+url: "https://laurentperrinet.github.io/publication/perrinet-19-hulk/"
+repository-code: "https://github.com/SpikeAI/HULK"
+preferred-citation:
+  type: article
+  title: An adaptive homeostatic algorithm for the unsupervised learning of visual features
+  authors:
+  - family-names: Perrinet
+    given-names: Laurent U
+    orcid: https://orcid.org/0000-0002-9536-010X
+  journal: Vision
+  volume: 3
+  issue: 3
+  start: '47'
+  doi: 10.3390/vision3030047
+  year: 2019
+  url: https://laurentperrinet.github.io/publication/perrinet-19-hulk/
